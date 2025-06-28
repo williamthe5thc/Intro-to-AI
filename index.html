@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to AI for Working Professionals</title>
+    <link rel="stylesheet" href="css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .module-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            border: 2px solid var(--neutral-light);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .module-card.completed {
+            border-color: #22c55e;
+        }
+        
+        .module-card.coming-soon {
+            opacity: 0.6;
+        }
+        
+        .module-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .module-number {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .module-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .module-content {
+            padding: 1.5rem;
+        }
+        
+        .module-description {
+            color: var(--neutral-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .module-activities {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .activity-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--neutral-light);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--neutral-medium);
+        }
+        
+        .activity-badge i {
+            font-size: 0.7rem;
+        }
+        
+        .module-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .module-link:hover:not(.disabled) {
+            transform: translateX(2px);
+        }
+        
+        .module-link.disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23cbd5e1" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--neutral-medium);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--neutral-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .progress-indicator {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
+        .progress-indicator.completed {
+            background: #22c55e;
+        }
+        
+        .course-progress {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #22c55e;
+        }
+        
+        .progress-bar {
+            background: #e5e7eb;
+            border-radius: 8px;
+            height: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <span>Course Overview</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="#" class="active"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                    <li><a href="#modules"><i class="fas fa-layer-group"></i>All Modules</a></li>
+                    <li><a href="#assignments"><i class="fas fa-tasks"></i>Assignments</a></li>
+                    <li><a href="#discussions"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="#quizzes"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Master AI for Professional Success</h1>
+                    <p class="hero-subtitle">
+                        Transform your career with practical AI skills. Learn to leverage artificial intelligence tools, master effective prompting, and navigate the ethical landscape of AI in professional settings.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Complete</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">35+</div>
+                            <div class="stat-label">Activities</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Hours Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Progress -->
+            <div class="course-progress">
+                <h3 style="color: #166534; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-trophy"></i>Course Complete!
+                </h3>
+                <p style="color: #374151; margin-bottom: 1rem;">🎉 Congratulations! You've completed all 10 modules of this comprehensive AI professional development course!</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <p style="color: #6b7280; font-size: 0.9rem; margin: 0;">100% Complete • Ready for professional AI certification and career advancement</p>
+            </div>
+
+            <!-- Course Modules Section -->
+            <section id="modules">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Course Modules</h2>
+                
+                <div class="module-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card completed">
+                        <div class="module-header">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 1</div>
+                            <h3 class="module-title">History of AI for Working Professionals</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Explore the development of AI from its early beginnings to current technologies and understand how it evolved to serve working professionals.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-book-open"></i> 3 Activities</span>
+                                <span class="activity-badge"><i class="fas fa-puzzle-piece"></i> Practice</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Quiz</span>
+                                <span class="activity-badge"><i class="fas fa-comments"></i> Discussion</span>
+                            </div>
+                            <a href="modules/module1/welcome.html" class="module-link">
+                                Review Module 1 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 2</div>
+                            <h3 class="module-title">Basic Prompting for Working Professionals</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Learn fundamental prompting techniques for effective AI interactions in professional settings using the CLEAR framework.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-book-open"></i> 3 Activities</span>
+                                <span class="activity-badge"><i class="fas fa-puzzle-piece"></i> Practice Lab</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Quiz</span>
+                                <span class="activity-badge"><i class="fas fa-comments"></i> Discussion</span>
+                            </div>
+                            <a href="modules/module2/welcome.html" class="module-link">
+                                Review Module 2 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 3</div>
+                            <h3 class="module-title">Chatbots & AI Assistants in Professional Context</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Understand how chatbots and AI assistants are transforming professional workflows and their implications for various industries.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-robot"></i> AI Assistants</span>
+                                <span class="activity-badge"><i class="fas fa-briefcase"></i> Professional Use</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Assessment</span>
+                                <span class="activity-badge"><i class="fas fa-comments"></i> Discussion</span>
+                            </div>
+                            <a href="modules/module3/welcome.html" class="module-link">
+                                Review Module 3 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 4</div>
+                            <h3 class="module-title">Media Creation for Working Professionals</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Master AI tools for creating professional media content including images, videos, presentations, and marketing materials.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-image"></i> Image AI</span>
+                                <span class="activity-badge"><i class="fas fa-video"></i> Video Tools</span>
+                                <span class="activity-badge"><i class="fas fa-palette"></i> Creative Suite</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Assessment</span>
+                            </div>
+                            <a href="modules/module4/welcome.html" class="module-link">
+                                Review Module 4 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 5</div>
+                            <h3 class="module-title">Professional AI Toolkit Across Industries</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Master AI tools across diverse professional contexts with industry-specific applications, integration strategies, and professional best practices.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-toolbox"></i> AI Toolkit</span>
+                                <span class="activity-badge"><i class="fas fa-industry"></i> Cross-Industry</span>
+                                <span class="activity-badge"><i class="fas fa-cogs"></i> Integration</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Assessment</span>
+                            </div>
+                            <a href="modules/module5/welcome.html" class="module-link">
+                                Review Module 5 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 6</div>
+                            <h3 class="module-title">Advanced Prompting for Working Professionals</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Master sophisticated prompting strategies including chain-of-thought reasoning, role-playing, and multi-step workflows for complex professional tasks.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-brain"></i> Chain-of-Thought</span>
+                                <span class="activity-badge"><i class="fas fa-user-tie"></i> Role-Playing</span>
+                                <span class="activity-badge"><i class="fas fa-project-diagram"></i> Workflows</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Mastery Quiz</span>
+                            </div>
+                            <a href="modules/module6/welcome.html" class="module-link">
+                                Review Module 6 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 7 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #be185d 0%, #9f1239 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 7</div>
+                            <h3 class="module-title">Ethics of AI & Advanced Prompting</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Navigate the ethical landscape of professional AI use while integrating advanced prompting techniques responsibly and maintaining professional standards.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-shield-alt"></i> Ethics Framework</span>
+                                <span class="activity-badge"><i class="fas fa-balance-scale"></i> Decision Making</span>
+                                <span class="activity-badge"><i class="fas fa-gavel"></i> Case Studies</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Assessment</span>
+                            </div>
+                            <a href="modules/module7/welcome.html" class="module-link">
+                                Review Module 7 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 8 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 8</div>
+                            <h3 class="module-title">AI Integration & Implementation Strategies</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Master systematic approaches for integrating AI tools into professional workflows with strategic planning, change management, and organizational transformation.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-cogs"></i> Integration</span>
+                                <span class="activity-badge"><i class="fas fa-chart-line"></i> Strategy</span>
+                                <span class="activity-badge"><i class="fas fa-users"></i> Change Mgmt</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Assessment</span>
+                            </div>
+                            <a href="modules/module8/welcome.html" class="module-link">
+                                Review Module 8 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 9 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #7c2d12 0%, #92400e 100%);">
+                            <div class="progress-indicator completed">✓</div>
+                            <div class="module-number">Module 9</div>
+                            <h3 class="module-title">Future of AI & Professional Development</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Explore emerging AI trends, develop continuous learning strategies, and position yourself as a future-ready AI professional leader.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-crystal-ball"></i> Future Trends</span>
+                                <span class="activity-badge"><i class="fas fa-chart-line"></i> Career Growth</span>
+                                <span class="activity-badge"><i class="fas fa-graduation-cap"></i> Learning Plan</span>
+                                <span class="activity-badge"><i class="fas fa-question-circle"></i> Assessment</span>
+                            </div>
+                            <a href="modules/module9/welcome.html" class="module-link">
+                                Review Module 9 <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Module 10 -->
+                    <div class="module-card completed">
+                        <div class="module-header" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">
+                            <div class="progress-indicator completed">🎓</div>
+                            <div class="module-number">Module 10</div>
+                            <h3 class="module-title">Capstone Project & Professional Portfolio</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">
+                                Complete your AI mastery journey with a comprehensive capstone project, professional portfolio development, and final certification assessment.
+                            </p>
+                            <div class="module-activities">
+                                <span class="activity-badge"><i class="fas fa-project-diagram"></i> Capstone</span>
+                                <span class="activity-badge"><i class="fas fa-portfolio"></i> Portfolio</span>
+                                <span class="activity-badge"><i class="fas fa-certificate"></i> Final Exam</span>
+                                <span class="activity-badge"><i class="fas fa-users"></i> Alumni Network</span>
+                            </div>
+                            <a href="modules/module10/welcome.html" class="module-link">
+                                Complete Capstone <i class="fas fa-graduation-cap"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div style="margin-top: 3rem;">
+                    <h2 class="section-title"><i class="fas fa-link"></i>Quick Access</h2>
+                    
+                    <div class="activities-card">
+                        <h3 id="assignments"><i class="fas fa-tasks"></i>Key Assignments</h3>
+                        <p>Track your progress through major assignments and projects:</p>
+                        <ul class="activity-links">
+                            <li><a href="modules/module1/practice/ai-timeline-builder.html"><i class="fas fa-history"></i>Module 1: AI Timeline Builder</a></li>
+                            <li><a href="modules/module2/practice/professional-prompt-workshop.html"><i class="fas fa-keyboard"></i>Module 2: Professional Prompt Workshop</a></li>
+                            <li><a href="modules/module3/practice/chatbot-implementation.html"><i class="fas fa-robot"></i>Module 3: Chatbot Implementation Strategy</a></li>
+                            <li><a href="modules/module4/practice/media-creation-lab.html"><i class="fas fa-palette"></i>Module 4: Media Creation Laboratory</a></li>
+                            <li><a href="modules/module6/practice/prompt-optimization-lab.html"><i class="fas fa-brain"></i>Module 6: Advanced Prompting Lab</a></li>
+                            <li><a href="modules/module7/practice/ethics-scenarios.html"><i class="fas fa-gavel"></i>Module 7: Ethics Case Study Analysis</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="activities-card">
+                        <h3 id="discussions"><i class="fas fa-comments"></i>Discussion Forums</h3>
+                        <p>Engage with peers and share insights:</p>
+                        <ul class="activity-links">
+                            <li><a href="modules/module1/assets/discussion-forum.html"><i class="fas fa-history"></i>Module 1: AI Evolution Discussion</a></li>
+                            <li><a href="modules/module2/assets/discussion.html"><i class="fas fa-lightbulb"></i>Module 2: Prompting Strategies Forum</a></li>
+                            <li><a href="modules/module3/assets/discussion.html"><i class="fas fa-robot"></i>Module 3: Professional AI Assistants</a></li>
+                            <li><a href="modules/module4/assets/discussion.html"><i class="fas fa-image"></i>Module 4: Creative AI Applications</a></li>
+                            <li><a href="modules/module6/assets/discussion.html"><i class="fas fa-brain"></i>Module 6: Expert Prompting Strategies</a></li>
+                            <li><a href="modules/module7/assets/discussion.html"><i class="fas fa-balance-scale"></i>Module 7: Professional AI Ethics</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="activities-card">
+                        <h3 id="quizzes"><i class="fas fa-question-circle"></i>Knowledge Assessments</h3>
+                        <p>Test your understanding with comprehensive assessments:</p>
+                        <ul class="activity-links">
+                            <li><a href="modules/module1/assets/history-quiz.html"><i class="fas fa-clock"></i>Module 1: AI History Assessment</a></li>
+                            <li><a href="modules/module2/assets/prompting-quiz.html"><i class="fas fa-keyboard"></i>Module 2: Basic Prompting Quiz</a></li>
+                            <li><a href="modules/module3/assets/chatbot-quiz.html"><i class="fas fa-robot"></i>Module 3: AI Assistant Knowledge Check</a></li>
+                            <li><a href="modules/module4/assets/media-quiz.html"><i class="fas fa-palette"></i>Module 4: Media Creation Assessment</a></li>
+                            <li><a href="modules/module6/assets/advanced-prompting-quiz.html"><i class="fas fa-brain"></i>Module 6: Advanced Prompting Mastery</a></li>
+                            <li><a href="modules/module7/assets/ethics-quiz.html"><i class="fas fa-shield-alt"></i>Module 7: AI Ethics Knowledge Assessment</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
