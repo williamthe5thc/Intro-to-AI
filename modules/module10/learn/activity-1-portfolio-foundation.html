@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: Portfolio Foundation & Personal Branding - Module 10</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .portfolio-framework {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .brand-pillar {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        .brand-pillar:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .pillar-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        .portfolio-template {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .template-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .personal-brand-builder {
+            background: var(--neutral-white);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .brand-element {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: var(--neutral-light);
+            border-radius: 6px;
+        }
+        .industry-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .example-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        .interactive-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #3b82f6;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-portfolio {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .networking-strategy {
+            background: #fef3c7;
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .platform-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .platform-card:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+        }
+        .platform-card.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .career-impact {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 10</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Portfolio Foundation</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/capstone-project.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/capstone-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Portfolio Foundation & Personal Branding</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Build a compelling professional portfolio that showcases your AI expertise and establishes your personal brand as an AI-literate professional. Learn to craft a narrative that demonstrates value, builds credibility, and opens doors to new opportunities across industries.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Portfolio Foundation Objectives</h3>
+                <p style="margin-bottom: 1rem;">Master the fundamentals of professional AI portfolio development:</p>
+                <ul class="modern-list">
+                    <li>Design a portfolio structure that effectively showcases AI skills and business impact</li>
+                    <li>Develop a compelling personal brand narrative around AI expertise</li>
+                    <li>Create professional documentation that demonstrates competency and results</li>
+                    <li>Build networking strategies that leverage your AI portfolio for career advancement</li>
+                    <li>Establish thought leadership and credibility within your industry</li>
+                </ul>
+            </div>
+
+            <!-- The Five Pillars of AI Professional Branding -->
+            <h2 class="section-title"><i class="fas fa-columns"></i>The Five Pillars of AI Professional Branding</h2>
+
+            <div class="portfolio-framework">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-star"></i> Professional AI Brand Foundation
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Your professional AI brand rests on five key pillars that work together to create a compelling narrative of competence, impact, and professional growth.
+                </p>
+                
+                <!-- Pillar 1: Competency Demonstration -->
+                <div class="brand-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">1. Competency Demonstration</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Showcase mastery of AI tools and concepts through concrete examples</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Skill Matrix:</strong> Clear categorization of AI competencies by proficiency level</li>
+                            <li><strong>Tool Expertise:</strong> Documented experience with specific AI platforms and technologies</li>
+                            <li><strong>Learning Journey:</strong> Timeline showing progression from basics to advanced applications</li>
+                            <li><strong>Certifications:</strong> Formal credentials and continuing education commitments</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Industry Example:</strong> A marketing professional includes a skills matrix showing progression from basic chatbot prompting to advanced campaign optimization, with specific tools (GPT-4, Claude, Midjourney) and measurable improvements in campaign performance.
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Business Impact -->
+                <div class="brand-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">2. Business Impact & Results</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Quantify the value created through AI applications</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Impact Documentation:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Quantified Results:</strong> Time saved, costs reduced, quality improved, revenue generated</li>
+                            <li><strong>Process Improvements:</strong> Workflow optimizations and efficiency gains</li>
+                            <li><strong>Strategic Contributions:</strong> How AI skills supported broader business objectives</li>
+                            <li><strong>Innovation Examples:</strong> Novel applications that solved unique challenges</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Industry Example:</strong> A financial analyst documents how AI-assisted data analysis reduced monthly reporting time by 40% while improving accuracy, enabling the team to focus on strategic insights that led to $500K in identified cost savings.
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Problem-Solving Approach -->
+                <div class="brand-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">3. Problem-Solving Methodology</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Demonstrate systematic approach to AI implementation</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Methodology Components:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Assessment Framework:</strong> How you evaluate AI opportunities and constraints</li>
+                            <li><strong>Implementation Strategy:</strong> Step-by-step approach to AI integration</li>
+                            <li><strong>Risk Management:</strong> How you address ethical, quality, and operational risks</li>
+                            <li><strong>Continuous Improvement:</strong> Methods for optimizing and scaling AI applications</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Industry Example:</strong> A healthcare administrator creates a case study showing their systematic approach to implementing AI in patient scheduling: needs assessment, pilot testing, staff training, outcome measurement, and scaling decisions.
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Ethical Leadership -->
+                <div class="brand-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">4. Ethical Leadership & Governance</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Showcase commitment to responsible AI practices</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Ethics Portfolio:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Ethical Framework:</strong> Personal AI ethics principles and decision-making criteria</li>
+                            <li><strong>Governance Examples:</strong> Policies or guidelines you've developed or influenced</li>
+                            <li><strong>Bias Mitigation:</strong> Specific steps taken to ensure fairness and equity</li>
+                            <li><strong>Stakeholder Engagement:</strong> How you involve others in ethical AI decisions</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Industry Example:</strong> An HR director documents their leadership in developing company-wide AI hiring guidelines, including bias testing protocols and transparency requirements that became a model for the industry.
+                    </div>
+                </div>
+
+                <!-- Pillar 5: Future Vision -->
+                <div class="brand-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">5. Future Vision & Thought Leadership</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Position yourself as a forward-thinking AI professional</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Vision Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Industry Insights:</strong> Analysis of AI trends specific to your field</li>
+                            <li><strong>Innovation Pipeline:</strong> Future AI projects and capabilities you're developing</li>
+                            <li><strong>Thought Leadership:</strong> Articles, presentations, or content that shares your expertise</li>
+                            <li><strong>Professional Development:</strong> Ongoing learning and skill expansion plans</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Industry Example:</strong> A supply chain manager writes industry articles about AI in logistics, speaks at conferences, and maintains a professional blog that positions them as a go-to expert for AI transformation in their sector.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Architecture Framework -->
+            <h2 class="section-title"><i class="fas fa-sitemap"></i>Professional AI Portfolio Architecture</h2>
+
+            <div class="portfolio-template">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-blueprint"></i> Comprehensive Portfolio Structure
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    This proven architecture ensures your portfolio tells a compelling, complete story of your AI expertise and professional impact.
+                </p>
+                
+                <!-- Executive Summary -->
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-user-tie"></i> Executive Professional Summary
+                    </h5>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Purpose:</strong> 30-second elevator pitch that immediately establishes your AI credibility
+                        <br><strong>Length:</strong> 3-4 sentences maximum
+                        <br><strong>Focus:</strong> Your unique value proposition as an AI-enhanced professional
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Template:</strong> "Experienced [Your Profession] with 3+ years applying AI to [specific business area], resulting in [quantified impact]. Proven expertise in [key AI tools/approaches] with track record of [major achievement]. Currently pioneering [innovative application] to [business objective]."
+                    </div>
+                </div>
+
+                <!-- AI Competency Matrix -->
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-table"></i> AI Competency Matrix
+                    </h5>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 0.5rem; font-weight: 600; background: #3b82f6; color: white; padding: 0.5rem; border-radius: 4px;">
+                            <div>AI Capability</div>
+                            <div>Level</div>
+                            <div>Experience</div>
+                            <div>Business Application</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 0.5rem; padding: 0.5rem; border-bottom: 1px solid #e2e8f0;">
+                            <div>Advanced Prompting</div>
+                            <div>Expert</div>
+                            <div>2+ years</div>
+                            <div>Content strategy, analysis automation</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 0.5rem; padding: 0.5rem; border-bottom: 1px solid #e2e8f0;">
+                            <div>AI Ethics Framework</div>
+                            <div>Advanced</div>
+                            <div>1 year</div>
+                            <div>Policy development, governance</div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 0.5rem; padding: 0.5rem; border-bottom: 1px solid #e2e8f0;">
+                            <div>Data Analysis AI</div>
+                            <div>Intermediate</div>
+                            <div>6 months</div>
+                            <div>Reporting automation, insights</div>
+                        </div>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Rating Scale:</strong> Beginner (Learning) → Intermediate (Applying) → Advanced (Optimizing) → Expert (Teaching/Leading)
+                    </div>
+                </div>
+
+                <!-- Project Case Studies -->
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-project-diagram"></i> AI Project Case Studies (3-5 projects)
+                    </h5>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Each Case Study Should Include:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Challenge:</strong> What business problem needed solving?</li>
+                            <li><strong>AI Solution:</strong> How did you apply AI to address it?</li>
+                            <li><strong>Implementation:</strong> What was your process and methodology?</li>
+                            <li><strong>Results:</strong> What measurable impact did you achieve?</li>
+                            <li><strong>Lessons Learned:</strong> What insights emerged for future applications?</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Pro Tip:</strong> Choose projects that span different AI capabilities and show progression in complexity and business impact over time.
+                    </div>
+                </div>
+
+                <!-- Professional Development Timeline -->
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-timeline"></i> AI Professional Development Journey
+                    </h5>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Timeline Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Formal Education:</strong> Courses, certifications, workshops completed</li>
+                            <li><strong>Practical Milestones:</strong> First AI project, major implementations, leadership roles</li>
+                            <li><strong>Recognition:</strong> Awards, speaking opportunities, published work</li>
+                            <li><strong>Future Commitments:</strong> Planned learning and development activities</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Visual Format:</strong> Create an interactive timeline that shows your AI journey with key milestones, achievements, and future goals clearly marked.
+                    </div>
+                </div>
+
+                <!-- Thought Leadership & Contributions -->
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-megaphone"></i> Thought Leadership & Industry Contributions
+                    </h5>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Content Categories:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Written Content:</strong> Articles, blog posts, white papers, industry publications</li>
+                            <li><strong>Speaking Engagements:</strong> Conferences, webinars, internal presentations</li>
+                            <li><strong>Community Involvement:</strong> Professional associations, mentoring, advisory roles</li>
+                            <li><strong>Innovation Contributions:</strong> Patents, open-source projects, industry standards</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Growth Strategy:</strong> Even if you're just starting, include plans for thought leadership development - industry insights you want to explore, topics you could speak about, or communities you want to contribute to.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry-Specific Portfolio Examples -->
+            <h2 class="section-title"><i class="fas fa-industry"></i>Industry-Specific Portfolio Applications</h2>
+
+            <div class="industry-examples">
+                <!-- Legal Professional -->
+                <div class="example-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-gavel"></i> Legal Professional
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Contract analysis automation case study</li>
+                            <li>Legal research efficiency improvements</li>
+                            <li>Client communication enhancement projects</li>
+                            <li>AI ethics and legal compliance framework</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Unique Value Proposition:</strong> "Combining legal expertise with AI fluency to deliver faster, more comprehensive client service while maintaining the highest ethical standards."
+                    </div>
+                </div>
+
+                <!-- Healthcare Professional -->
+                <div class="example-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-heartbeat"></i> Healthcare Administrator
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Patient flow optimization using AI analytics</li>
+                            <li>Documentation efficiency improvements</li>
+                            <li>Quality metrics and outcome analysis</li>
+                            <li>HIPAA-compliant AI implementation guidelines</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Unique Value Proposition:</strong> "Leveraging AI to improve patient outcomes and operational efficiency while ensuring privacy, safety, and regulatory compliance."
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="example-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Financial Advisor
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Market analysis and trend identification</li>
+                            <li>Personalized financial planning automation</li>
+                            <li>Risk assessment and portfolio optimization</li>
+                            <li>Fiduciary duty and AI transparency protocols</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Unique Value Proposition:</strong> "Delivering data-driven financial insights and personalized strategies through AI-enhanced analysis while maintaining fiduciary responsibility."
+                    </div>
+                </div>
+
+                <!-- Education Professional -->
+                <div class="example-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i> Educational Leader
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Personalized learning experience design</li>
+                            <li>Student performance analytics and intervention</li>
+                            <li>Curriculum development and optimization</li>
+                            <li>AI literacy program for students and faculty</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Unique Value Proposition:</strong> "Transforming educational outcomes through AI-powered personalization and analytics while fostering critical thinking about technology's role in learning."
+                    </div>
+                </div>
+
+                <!-- Marketing Professional -->
+                <div class="example-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-bullhorn"></i> Marketing Strategist
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>AI-powered content creation and optimization</li>
+                            <li>Customer segmentation and targeting improvements</li>
+                            <li>Campaign performance analysis and prediction</li>
+                            <li>Brand voice consistency across AI-generated content</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Unique Value Proposition:</strong> "Scaling creative excellence and strategic insights through AI while maintaining authentic brand connection and customer relationships."
+                    </div>
+                </div>
+
+                <!-- Operations Manager -->
+                <div class="example-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Operations Manager
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Portfolio Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Process automation and efficiency optimization</li>
+                            <li>Predictive maintenance and resource planning</li>
+                            <li>Quality control and anomaly detection systems</li>
+                            <li>Change management for AI implementation</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Unique Value Proposition:</strong> "Driving operational excellence through strategic AI integration, delivering measurable improvements in efficiency, quality, and cost management."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Platform Strategy -->
+            <h2 class="section-title"><i class="fas fa-network-wired"></i>Professional Platform & Networking Strategy</h2>
+
+            <div class="networking-strategy">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-globe"></i> Multi-Platform Professional Presence
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Your AI portfolio should live across multiple platforms, each optimized for different audiences and purposes. Build a cohesive presence that reinforces your expertise.
+                </p>
+                
+                <div class="platform-grid">
+                    <div class="platform-card" onclick="togglePlatform('linkedin')">
+                        <i class="fab fa-linkedin" style="font-size: 2rem; color: #0077b5; margin-bottom: 0.5rem;"></i>
+                        <h5>LinkedIn</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Professional networking & thought leadership</p>
+                    </div>
+                    <div class="platform-card" onclick="togglePlatform('portfolio')">
+                        <i class="fas fa-globe" style="font-size: 2rem; color: #3b82f6; margin-bottom: 0.5rem;"></i>
+                        <h5>Personal Website</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Comprehensive portfolio showcase</p>
+                    </div>
+                    <div class="platform-card" onclick="togglePlatform('github')">
+                        <i class="fab fa-github" style="font-size: 2rem; color: #333; margin-bottom: 0.5rem;"></i>
+                        <h5>GitHub</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Code samples & project documentation</p>
+                    </div>
+                    <div class="platform-card" onclick="togglePlatform('medium')">
+                        <i class="fab fa-medium" style="font-size: 2rem; color: #00ab6c; margin-bottom: 0.5rem;"></i>
+                        <h5>Medium/Blog</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Thought leadership articles</p>
+                    </div>
+                    <div class="platform-card" onclick="togglePlatform('speaking')">
+                        <i class="fas fa-microphone" style="font-size: 2rem; color: #e11d48; margin-bottom: 0.5rem;"></i>
+                        <h5>Speaking Events</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Conferences & industry presentations</p>
+                    </div>
+                    <div class="platform-card" onclick="togglePlatform('community')">
+                        <i class="fas fa-users" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 0.5rem;"></i>
+                        <h5>Professional Communities</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Industry associations & forums</p>
+                    </div>
+                </div>
+
+                <div id="platform-details" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="platform-content"></div>
+                </div>
+            </div>
+
+            <!-- Career Impact Framework -->
+            <div class="career-impact">
+                <h4 style="color: #059669; margin-bottom: 1.5rem;">
+                    <i class="fas fa-trophy"></i> AI Portfolio Career Impact Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Your AI portfolio becomes a powerful career advancement tool when it clearly demonstrates progression, leadership, and future potential.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #059669; margin-bottom: 0.5rem;"><i class="fas fa-arrow-up"></i> Immediate Impact</h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Increased visibility in current role</li>
+                            <li>Recognition as AI champion</li>
+                            <li>Leadership opportunities in AI initiatives</li>
+                            <li>Professional development fast-tracking</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #059669; margin-bottom: 0.5rem;"><i class="fas fa-handshake"></i> Network Expansion</h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Connections with AI professionals</li>
+                            <li>Industry thought leader relationships</li>
+                            <li>Mentoring and speaking opportunities</li>
+                            <li>Cross-industry collaboration invitations</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #059669; margin-bottom: 0.5rem;"><i class="fas fa-rocket"></i> Career Acceleration</h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Promotion and salary advancement</li>
+                            <li>New job opportunities and offers</li>
+                            <li>Consulting and advisory roles</li>
+                            <li>Industry recognition and awards</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #059669; margin-bottom: 0.5rem;"><i class="fas fa-star"></i> Legacy Building</h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Thought leadership establishment</li>
+                            <li>Industry standard setting</li>
+                            <li>Next generation mentoring</li>
+                            <li>Innovation and change leadership</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Portfolio Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Personal AI Portfolio Builder</h2>
+
+            <div class="interactive-builder">
+                <h4 style="color: #3b82f6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-hammer"></i> Build Your Professional AI Portfolio Framework
+                </h4>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Professional Title & Industry:</label>
+                    <input type="text" id="professionalTitle" placeholder="e.g., Senior Marketing Manager, Healthcare" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Years of Professional Experience:</label>
+                    <select id="experience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select experience level</option>
+                        <option value="early">Early Career (0-3 years)</option>
+                        <option value="mid">Mid-Career (4-10 years)</option>
+                        <option value="senior">Senior Professional (11-20 years)</option>
+                        <option value="executive">Executive/Leadership (20+ years)</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Biggest AI Success Story:</label>
+                    <textarea id="successStory" placeholder="Describe a specific project where AI helped you achieve significant results..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Strongest AI Skills (select all that apply):</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="prompting"> Advanced Prompting
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="ethics"> AI Ethics & Governance
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="analysis"> Data Analysis & Insights
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="automation"> Process Automation
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="content"> Content Creation
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="strategy"> AI Strategy & Implementation
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Career Goals for Next 2 Years:</label>
+                    <textarea id="careerGoals" placeholder="What do you want to achieve professionally using your AI skills?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Target Audience for Your Portfolio:</label>
+                    <select id="targetAudience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select primary audience</option>
+                        <option value="promotion">Current Employer (for promotion)</option>
+                        <option value="job">Potential Employers (job search)</option>
+                        <option value="consulting">Clients (consulting opportunities)</option>
+                        <option value="peers">Industry Peers (thought leadership)</option>
+                        <option value="mixed">Mixed Audience</option>
+                    </select>
+                </div>
+                
+                <button onclick="generatePortfolioStructure()" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate My Portfolio Structure
+                </button>
+                
+                <div id="generatedPortfolio" class="generated-portfolio">
+                    <strong style="color: #065f46;">Your Personalized AI Portfolio Structure:</strong><br><br>
+                    <div id="portfolioStructure" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Next Steps:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with your strongest project as the lead case study</li>
+                            <li>Document 2-3 additional projects to show breadth</li>
+                            <li>Create a professional headshot and bio for all platforms</li>
+                            <li>Begin building your online presence systematically</li>
+                            <li>Set a timeline for portfolio completion and launch</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0369a1; margin-bottom: 1rem;">Ready to Plan Your Capstone Project?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you have your portfolio foundation, let's define and scope the project that will anchor your professional showcase.</p>
+                <a href="activity-2-project-planning.html" class="nav-btn">
+                    <i class="fas fa-project-diagram"></i>
+                    Plan Your Capstone Project
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-project-planning.html" class="nav-btn">
+                    Next: Project Planning
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function togglePlatform(platform) {
+            const detailsDiv = document.getElementById('platform-details');
+            const contentDiv = document.getElementById('platform-content');
+            const platforms = document.querySelectorAll('.platform-card');
+            
+            // Remove selected class from all platforms
+            platforms.forEach(p => p.classList.remove('selected'));
+            
+            // Add selected class to clicked platform
+            event.currentTarget.classList.add('selected');
+            
+            const platformContent = {
+                linkedin: {
+                    title: 'LinkedIn Optimization Strategy',
+                    content: `
+                    <strong>Professional Headline:</strong> "AI-Enhanced [Your Title] | [Key Achievement] | [Industry] Innovation"
+                    
+                    <strong>About Section Structure:</strong>
+                    • Hook: One-sentence AI value proposition
+                    • Story: Brief career progression highlighting AI adoption
+                    • Skills: Top 3-5 AI competencies with specific tools
+                    • Results: 2-3 quantified achievements
+                    • Call-to-action: Invitation to connect or collaborate
+                    
+                    <strong>Content Strategy:</strong>
+                    • Weekly AI industry insights or trends
+                    • Monthly case study or project highlight
+                    • Engage with AI thought leaders and industry experts
+                    • Share learning journey and skill development
+                    
+                    <strong>Connection Strategy:</strong>
+                    • Target AI professionals in your industry
+                    • Connect with course alumni and peers
+                    • Follow and engage with AI influencers
+                    • Join AI and industry-specific groups`
+                },
+                portfolio: {
+                    title: 'Personal Website Portfolio',
+                    content: `
+                    <strong>Homepage Elements:</strong>
+                    • Professional headshot and compelling headline
+                    • 30-second value proposition video or text
+                    • Featured case studies (top 3 projects)
+                    • Client/employer testimonials
+                    • Clear navigation to detailed sections
+                    
+                    <strong>Portfolio Sections:</strong>
+                    • About: Professional story and AI journey
+                    • Projects: Detailed case studies with visuals
+                    • Skills: Interactive competency matrix
+                    • Thought Leadership: Articles, talks, insights
+                    • Contact: Multiple ways to connect
+                    
+                    <strong>Technical Considerations:</strong>
+                    • Mobile-responsive design
+                    • Fast loading times
+                    • SEO optimization for industry keywords
+                    • Easy content updates and maintenance
+                    
+                    <strong>Content Management:</strong>
+                    • Regular updates with new projects
+                    • Blog section for ongoing thought leadership
+                    • Resource library for tools and templates
+                    • Analytics tracking for performance optimization`
+                },
+                github: {
+                    title: 'GitHub Professional Presence',
+                    content: `
+                    <strong>Profile Optimization:</strong>
+                    • Professional bio highlighting AI focus
+                    • Pinned repositories showcasing best work
+                    • Consistent commit history showing ongoing learning
+                    • Professional profile picture matching other platforms
+                    
+                    <strong>Repository Strategy:</strong>
+                    • AI project templates and frameworks
+                    • Documentation examples and best practices
+                    • Code samples from professional applications
+                    • Contribution to open-source AI projects
+                    
+                    <strong>Documentation Standards:</strong>
+                    • Clear README files for every project
+                    • Professional commit messages
+                    • Comprehensive project documentation
+                    • Code comments and explanation
+                    
+                    <strong>Collaboration Approach:</strong>
+                    • Contribute to relevant open-source projects
+                    • Create helpful tools for your industry
+                    • Share templates and frameworks
+                    • Engage with the AI developer community`
+                },
+                medium: {
+                    title: 'Thought Leadership Content',
+                    content: `
+                    <strong>Content Pillars:</strong>
+                    • Industry-specific AI applications
+                    • Lessons learned from implementations
+                    • Trends and future predictions
+                    • Ethical considerations and best practices
+                    
+                    <strong>Article Types:</strong>
+                    • Case studies from your projects
+                    • "How-to" guides for AI implementation
+                    • Industry trend analysis and commentary
+                    • Personal learning journey stories
+                    
+                    <strong>Publishing Strategy:</strong>
+                    • Consistent posting schedule (weekly/bi-weekly)
+                    • Cross-promotion on LinkedIn and other platforms
+                    • Engage with reader comments and discussions
+                    • Submit to relevant publications and platforms
+                    
+                    <strong>Content Development:</strong>
+                    • Research industry-specific angles
+                    • Include visuals and examples
+                    • Write in accessible, professional tone
+                    • End with calls-to-action for engagement`
+                },
+                speaking: {
+                    title: 'Speaking & Presentation Strategy',
+                    content: `
+                    <strong>Speaking Topics:</strong>
+                    • AI implementation in [your industry]
+                    • Lessons learned from AI projects
+                    • Future of AI in professional work
+                    • Ethics and responsible AI practices
+                    
+                    <strong>Opportunity Types:</strong>
+                    • Industry conferences and summits
+                    • Professional association events
+                    • Company lunch-and-learns
+                    • Webinars and virtual events
+                    
+                    <strong>Preparation Strategy:</strong>
+                    • Develop 3-5 signature presentations
+                    • Create compelling speaker bio and headshots
+                    • Build presentation portfolio with examples
+                    • Practice with internal or local groups first
+                    
+                    <strong>Marketing Approach:</strong>
+                    • Speaker page on personal website
+                    • Video clips of presentation highlights
+                    • Testimonials from event organizers
+                    • Active outreach to event organizers`
+                },
+                community: {
+                    title: 'Professional Community Engagement',
+                    content: `
+                    <strong>Industry Associations:</strong>
+                    • Join AI-focused professional groups
+                    • Participate in industry-specific organizations
+                    • Attend local meetups and networking events
+                    • Consider leadership roles in committees
+                    
+                    <strong>Online Communities:</strong>
+                    • AI/ML focused forums and discussions
+                    • Industry-specific online groups
+                    • Professional development communities
+                    • Academic and research networks
+                    
+                    <strong>Contribution Strategy:</strong>
+                    • Share insights and experiences
+                    • Answer questions from newcomers
+                    • Organize or host events and discussions
+                    • Mentor others beginning their AI journey
+                    
+                    <strong>Networking Approach:</strong>
+                    • Be genuinely helpful and supportive
+                    • Share resources and opportunities
+                    • Make introductions between contacts
+                    • Follow up consistently with new connections`
+                }
+            };
+            
+            if (platformContent[platform]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;">${platformContent[platform].title}</h5>
+                    <div style="white-space: pre-line;">${platformContent[platform].content}</div>
+                `;
+                detailsDiv.style.display = 'block';
+            }
+        }
+        
+        function generatePortfolioStructure() {
+            const title = document.getElementById('professionalTitle').value;
+            const experience = document.getElementById('experience').value;
+            const successStory = document.getElementById('successStory').value;
+            const careerGoals = document.getElementById('careerGoals').value;
+            const targetAudience = document.getElementById('targetAudience').value;
+            
+            // Get selected skills
+            const skillCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const skills = Array.from(skillCheckboxes).map(cb => cb.value);
+            
+            if (!title || !experience || !successStory) {
+                alert('Please fill in at least the title, experience level, and success story fields.');
+                return;
+            }
+            
+            const experienceLevels = {
+                early: 'Early Career Professional',
+                mid: 'Mid-Career Professional',
+                senior: 'Senior Professional',
+                executive: 'Executive Leader'
+            };
+            
+            const audienceMapping = {
+                promotion: 'promotion and internal recognition',
+                job: 'attracting new employment opportunities',
+                consulting: 'building consulting and client relationships',
+                peers: 'establishing thought leadership',
+                mixed: 'diverse professional opportunities'
+            };
+            
+            let structure = `AI PROFESSIONAL PORTFOLIO STRUCTURE
+${title.toUpperCase()} | ${experienceLevels[experience] || 'Professional'}
+
+=== EXECUTIVE SUMMARY ===
+[Optimize for ${audienceMapping[targetAudience] || 'professional advancement'}]
+
+Template: "${experienceLevels[experience] || 'Professional'} ${title} with proven expertise in AI implementation, delivering [key metric from your success story]. Specialized in ${skills.join(', ')} with focus on [primary business area]. Currently advancing ${careerGoals || 'AI integration initiatives'} to drive measurable business impact."
+
+=== AI COMPETENCY MATRIX ===
+
+Core Skills Portfolio:
+${skills.map(skill => {
+    const skillMapping = {
+        prompting: 'Advanced Prompting & AI Communication',
+        ethics: 'AI Ethics & Governance Frameworks',
+        analysis: 'Data Analysis & AI-Driven Insights',
+        automation: 'Process Automation & Efficiency',
+        content: 'AI-Enhanced Content Creation',
+        strategy: 'AI Strategy & Implementation'
+    };
+    return `• ${skillMapping[skill] || skill}`;
+}).join('\n')}
+
+=== FLAGSHIP CASE STUDY ===
+
+Project Title: [Derive from your success story]
+Challenge: ${successStory.substring(0, 100)}...
+AI Solution: [Detail your specific approach]
+Business Impact: [Quantified results and metrics]
+Lessons Learned: [Key insights for future applications]
+
+=== ADDITIONAL PROJECT PORTFOLIO ===
+
+Supporting Case Studies (recommend 2-3 more):
+• Project 2: [Different AI capability demonstration]
+• Project 3: [Cross-functional or complex implementation]
+• Project 4: [Innovation or leadership example]
+
+=== PROFESSIONAL DEVELOPMENT TIMELINE ===
+
+Journey Milestones:
+• Foundation Learning: Introduction to AI Course (Current)
+• Skill Application: [First successful project implementation]
+• Leadership Development: [Team training or process implementation]
+• Recognition: [Awards, speaking, or industry acknowledgment]
+• Future Growth: ${careerGoals || 'Continued AI expertise development'}
+
+=== THOUGHT LEADERSHIP STRATEGY ===
+
+Content Focus Areas:
+• AI applications in [your industry]
+• Implementation lessons and best practices
+• Ethical AI considerations and frameworks
+• Future trends and professional development
+
+Platform Strategy:
+• LinkedIn: Weekly industry insights and project updates
+• Personal Website: Comprehensive case studies and portfolio
+• Speaking: Industry conferences and professional events
+• Community: Professional associations and peer networks
+
+=== CAREER ADVANCEMENT ROADMAP ===
+
+Short-term Goals (6 months):
+• Complete capstone project and documentation
+• Launch professional portfolio website
+• Establish LinkedIn thought leadership presence
+• Connect with 50+ AI professionals in your industry
+
+Medium-term Goals (1-2 years):
+• ${careerGoals || 'Advance to senior AI leadership role'}
+• Speak at 2-3 industry events
+• Publish 12+ thought leadership articles
+• Mentor 5+ professionals in AI adoption
+
+Long-term Vision (2+ years):
+• Recognized as AI thought leader in [your industry]
+• Advisory or consulting opportunities
+• Industry standard setting and influence
+• Next generation professional development
+
+=== MEASUREMENT & OPTIMIZATION ===
+
+Portfolio Performance Metrics:
+• Website traffic and engagement analytics
+• LinkedIn profile views and connection growth
+• Speaking opportunity invitations
+• Career advancement outcomes
+• Professional recognition and awards
+
+Quarterly Review Process:
+• Update project portfolio with new case studies
+• Refresh skills matrix and competency levels
+• Analyze audience engagement and feedback
+• Adjust content strategy based on performance
+• Set new goals and development priorities
+
+This portfolio structure should be customized further based on your specific projects, industry requirements, and career objectives.`;
+
+            document.getElementById('portfolioStructure').textContent = structure;
+            document.getElementById('generatedPortfolio').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPortfolio').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

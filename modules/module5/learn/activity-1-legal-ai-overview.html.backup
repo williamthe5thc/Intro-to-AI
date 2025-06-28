@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: AI Tools in Legal Practice Overview - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        .media-controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .media-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--neutral-light);
+            border: 1px solid var(--neutral-medium);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .media-btn:hover {
+            background: var(--primary-light);
+            color: var(--neutral-white);
+            border-color: var(--primary-blue);
+        }
+        .tool-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .tool-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--accent-red);
+        }
+        .content-section {
+            margin: 2rem 0;
+        }
+        .key-concept {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-red);
+        }
+        .definition-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Learning Activity 1</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/legal-research-comparison.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/legal-tools-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Learning Activity 1: AI Tools in Legal Practice Overview</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Explore the revolutionary AI tools transforming legal practice. Learn how leading firms leverage technology for research, analysis, and client service.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Learning Objectives</h3>
+                <p style="margin-bottom: 1rem;">After completing this activity, you will be able to:</p>
+                <ul class="modern-list">
+                    <li>Identify the major categories of AI tools in legal practice</li>
+                    <li>Evaluate AI legal research platforms and their capabilities</li>
+                    <li>Understand how AI enhances document review and contract analysis</li>
+                    <li>Recognize the benefits and limitations of legal AI tools</li>
+                    <li>Apply best practices for implementing AI in legal workflows</li>
+                </ul>
+            </div>
+
+            <!-- Video Section -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-play-circle"></i>Video: AI Legal Research Tools Overview</h2>
+                
+                <video controls class="video-player">
+                    <source src="../../../multimedia/module5/5.1-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag. Please download the video file to watch it.
+                </video>
+
+                <div class="media-controls">
+                    <a href="../../../multimedia/module5/AI-Implementation-Legal-Tasks.pptx" class="media-btn" download>
+                        <i class="fas fa-download"></i>
+                        Download Presentation
+                    </a>
+                    <a href="../../../multimedia/module5/audio/5.1.1.mp3" class="media-btn">
+                        <i class="fas fa-headphones"></i>
+                        Audio Version
+                    </a>
+                    <a href="../../../multimedia/module5/5.1-script.pdf" class="media-btn">
+                        <i class="fas fa-file-text"></i>
+                        Video Transcript
+                    </a>
+                </div>
+            </div>
+
+            <!-- Key Definitions -->
+            <div class="definition-box">
+                <h3 style="color: #92400e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-book"></i>Key Definitions
+                </h3>
+                <div style="display: grid; gap: 1rem;">
+                    <div>
+                        <strong style="color: #92400e;">Legal AI:</strong> Artificial intelligence technologies specifically designed to assist with legal tasks such as research, document analysis, contract review, and case management.
+                    </div>
+                    <div>
+                        <strong style="color: #92400e;">Predictive Analytics:</strong> AI systems that analyze historical legal data to predict case outcomes, litigation costs, and strategic decisions.
+                    </div>
+                    <div>
+                        <strong style="color: #92400e;">Document Review AI:</strong> Technology that automatically analyzes large volumes of documents for relevance, privilege, and key information in litigation and due diligence.
+                    </div>
+                    <div>
+                        <strong style="color: #92400e;">Legal Research Platforms:</strong> AI-enhanced databases and tools that help lawyers find relevant cases, statutes, and legal precedents more efficiently.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major AI Tool Categories -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i>Major Categories of Legal AI Tools</h2>
+                
+                <div class="tool-comparison">
+                    <div class="tool-card">
+                        <h4 style="color: var(--accent-red); margin-bottom: 1rem;">
+                            <i class="fas fa-search"></i> Legal Research & Analysis
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Westlaw Edge AI</li>
+                            <li style="margin-bottom: 0.5rem;">• LexisNexis+ with AI</li>
+                            <li style="margin-bottom: 0.5rem;">• Bloomberg Law AI</li>
+                            <li style="margin-bottom: 0.5rem;">• Casetext CoCounsel</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium); margin-top: 1rem;">
+                            Enhanced search, case analysis, and legal research automation
+                        </p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4 style="color: var(--accent-red); margin-bottom: 1rem;">
+                            <i class="fas fa-file-contract"></i> Contract Analysis
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Kira Systems</li>
+                            <li style="margin-bottom: 0.5rem;">• eBrevia</li>
+                            <li style="margin-bottom: 0.5rem;">• LawGeex</li>
+                            <li style="margin-bottom: 0.5rem;">• ThoughtRiver</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium); margin-top: 1rem;">
+                            Automated contract review, risk assessment, and clause extraction
+                        </p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4 style="color: var(--accent-red); margin-bottom: 1rem;">
+                            <i class="fas fa-folder-open"></i> Document Review
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Relativity aiR</li>
+                            <li style="margin-bottom: 0.5rem;">• Disco AI</li>
+                            <li style="margin-bottom: 0.5rem;">• Logikcull</li>
+                            <li style="margin-bottom: 0.5rem;">• Everlaw</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium); margin-top: 1rem;">
+                            E-discovery, privilege review, and document classification
+                        </p>
+                    </div>
+
+                    <div class="tool-card">
+                        <h4 style="color: var(--accent-red); margin-bottom: 1rem;">
+                            <i class="fas fa-edit"></i> Legal Writing & Drafting
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Harvey AI</li>
+                            <li style="margin-bottom: 0.5rem;">• Spellbook (Clause)</li>
+                            <li style="margin-bottom: 0.5rem;">• DoNotPay</li>
+                            <li style="margin-bottom: 0.5rem;">• Legal Robot</li>
+                        </ul>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium); margin-top: 1rem;">
+                            Document generation, legal writing assistance, and template creation
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Dive: Legal Research Platforms -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-microscope"></i>Deep Dive: AI-Enhanced Legal Research</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    <div class="key-concept">
+                        <h4 style="color: var(--accent-red); font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-brain"></i> Traditional vs. AI Research
+                        </h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <strong>Traditional Research:</strong>
+                                <ul style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                    <li>Keyword-based searches</li>
+                                    <li>Manual case analysis</li>
+                                    <li>Linear research process</li>
+                                    <li>Time-intensive review</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>AI-Enhanced Research:</strong>
+                                <ul style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                    <li>Natural language queries</li>
+                                    <li>Automated relevance ranking</li>
+                                    <li>Contextual understanding</li>
+                                    <li>Predictive suggestions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="key-concept">
+                        <h4 style="color: var(--accent-red); font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-chart-line"></i> AI Capabilities in Legal Research
+                        </h4>
+                        <ul class="modern-list">
+                            <li><strong>Semantic Search:</strong> Understanding context and intent</li>
+                            <li><strong>Case Law Analysis:</strong> Identifying relevant precedents</li>
+                            <li><strong>Citation Analysis:</strong> Mapping legal authority relationships</li>
+                            <li><strong>Trend Identification:</strong> Spotting emerging legal patterns</li>
+                            <li><strong>Summary Generation:</strong> Creating case briefs automatically</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits and Considerations -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i>Benefits and Considerations</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-green);">
+                        <h4 style="color: #065f46; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-thumbs-up"></i> Key Benefits
+                        </h4>
+                        <ul class="modern-list">
+                            <li><strong>Efficiency:</strong> 70-80% reduction in research time</li>
+                            <li><strong>Comprehensiveness:</strong> Broader coverage of relevant materials</li>
+                            <li><strong>Accuracy:</strong> Reduced human error in document review</li>
+                            <li><strong>Cost Savings:</strong> Lower billable hours for routine tasks</li>
+                            <li><strong>Competitive Advantage:</strong> Faster case preparation</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-orange);">
+                        <h4 style="color: #92400e; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-exclamation-triangle"></i> Important Considerations
+                        </h4>
+                        <ul style="list-style: none; margin: 1rem 0;">
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• <strong>Professional Responsibility:</strong> Lawyer oversight required</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• <strong>Data Security:</strong> Client confidentiality concerns</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• <strong>Quality Control:</strong> AI outputs need verification</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• <strong>Training Requirements:</strong> Staff education necessary</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• <strong>Cost Considerations:</strong> Platform licensing and implementation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Best Practices -->
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i>Implementation Best Practices</h3>
+                <p style="margin-bottom: 1rem;">Successfully integrating AI tools into legal practice requires strategic planning:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Start Small</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Pilot with non-critical projects first</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Train Your Team</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Invest in comprehensive user education</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Establish Workflows</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Create clear processes and quality checks</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Monitor Results</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Track accuracy and efficiency metrics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Study Preview -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-blue);">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-briefcase"></i> Real-World Impact
+                </h3>
+                <p style="margin-bottom: 1rem; color: var(--neutral-dark);">Leading law firms report significant improvements after implementing AI tools:</p>
+                <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                    <li style="margin-bottom: 0.5rem;">• <strong>BigLaw Firm A:</strong> 60% reduction in due diligence time using contract AI</li>
+                    <li style="margin-bottom: 0.5rem;">• <strong>Corporate Legal Dept:</strong> 50% faster regulatory research with AI platforms</li>
+                    <li style="margin-bottom: 0.5rem;">• <strong>Litigation Firm:</strong> 40% improvement in document review accuracy</li>
+                    <li style="margin-bottom: 0.5rem;">• <strong>Solo Practitioner:</strong> Ability to handle 3x more cases with AI assistance</li>
+                </ul>
+            </div>
+
+            <!-- Quick Knowledge Check -->
+            <div style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--accent-red);">
+                <h3 style="color: var(--accent-red); margin-bottom: 1rem;">
+                    <i class="fas fa-question-circle"></i> Quick Knowledge Check
+                </h3>
+                <p style="margin-bottom: 1rem; color: var(--neutral-dark);">Before moving on, ensure you can answer these questions:</p>
+                <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                    <li style="margin-bottom: 0.5rem;">• What are the four major categories of legal AI tools?</li>
+                    <li style="margin-bottom: 0.5rem;">• How does AI-enhanced research differ from traditional legal research?</li>
+                    <li style="margin-bottom: 0.5rem;">• What are three key benefits firms experience with legal AI tools?</li>
+                    <li style="margin-bottom: 0.5rem;">• What professional responsibility considerations apply to AI use?</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-research-platforms.html" class="nav-btn">
+                    Next: Research Platform Comparison
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

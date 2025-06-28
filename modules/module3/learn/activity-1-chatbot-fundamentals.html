@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: Understanding Chatbot Fundamentals - Module 3</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        .media-controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .media-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--neutral-light);
+            border: 1px solid var(--neutral-medium);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--neutral-dark);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .media-btn:hover {
+            background: var(--primary-light);
+            color: var(--neutral-white);
+            border-color: var(--primary-blue);
+        }
+        .diagram-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--neutral-light);
+            border-radius: 12px;
+        }
+        .content-section {
+            margin: 2rem 0;
+        }
+        .key-concept {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .definition-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 3</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Learning Activity 1</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/chatbot-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/chatbot-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Learning Activity 1: Understanding Chatbot Fundamentals</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Explore the foundation of conversational AI and learn how chatbots are transforming professional communication and client services.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Learning Objectives</h3>
+                <p style="margin-bottom: 1rem;">After completing this activity, you will be able to:</p>
+                <ul class="modern-list">
+                    <li>Define what chatbots are and how they function in professional contexts</li>
+                    <li>Identify the key components of chatbot architecture</li>
+                    <li>Distinguish between rule-based and AI-powered chatbots</li>
+                    <li>Recognize applications of chatbots in legal and professional services</li>
+                    <li>Understand the benefits and limitations of chatbot technology</li>
+                </ul>
+            </div>
+
+            <!-- Video Section -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-play-circle"></i>Video: Understanding Chatbot Fundamentals</h2>
+                
+                <video controls class="video-player">
+                    <source src="../../../multimedia/module3/3.1-fundamentals/3.1-Video.mp4" type="video/mp4">
+                    Your browser does not support the video tag. Please download the video file to watch it.
+                </video>
+
+                <div class="media-controls">
+                    <a href="../../../multimedia/module3/3.1-fundamentals/3.1-Understanding-Chatbot-Fundamentals.pptx" class="media-btn" download>
+                        <i class="fas fa-download"></i>
+                        Download Presentation
+                    </a>
+                    <a href="../../../multimedia/module3/audio/3.1.1.mp3" class="media-btn">
+                        <i class="fas fa-headphones"></i>
+                        Audio Version
+                    </a>
+                    <a href="../../../multimedia/module3/3.1-script.pdf" class="media-btn">
+                        <i class="fas fa-file-text"></i>
+                        Video Transcript
+                    </a>
+                </div>
+            </div>
+
+            <!-- Key Definitions -->
+            <div class="definition-box">
+                <h3 style="color: #92400e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-book"></i>Key Definitions
+                </h3>
+                <div style="display: grid; gap: 1rem;">
+                    <div>
+                        <strong style="color: #92400e;">Chatbot:</strong> A computer program designed to simulate conversation with human users, typically through text or voice interactions, often used for customer service, information retrieval, or task automation.
+                    </div>
+                    <div>
+                        <strong style="color: #92400e;">Natural Language Processing (NLP):</strong> The branch of AI that helps computers understand, interpret, and generate human language in a meaningful way.
+                    </div>
+                    <div>
+                        <strong style="color: #92400e;">Rule-Based Chatbot:</strong> A chatbot that follows predetermined rules and decision trees to respond to user inputs, without learning capabilities.
+                    </div>
+                    <div>
+                        <strong style="color: #92400e;">AI-Powered Chatbot:</strong> A chatbot that uses machine learning and AI to understand context, learn from interactions, and provide more sophisticated responses.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chatbot Flow Diagram -->
+            <div class="diagram-container">
+                <h3 style="margin-bottom: 1rem; color: var(--neutral-dark);">How Chatbots Process Information</h3>
+                <img src="../../../multimedia/module3/chatbot-flow-diagram.png" alt="Chatbot Information Processing Flow" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: var(--shadow-md);">
+                <p style="font-size: 0.9rem; color: var(--neutral-medium); margin-top: 0.5rem; font-style: italic;">
+                    Figure 1: The typical flow of information processing in a modern chatbot system
+                </p>
+            </div>
+
+            <!-- Core Concepts -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-cogs"></i>Core Chatbot Components</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div class="key-concept">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.75rem;">
+                            <i class="fas fa-microphone"></i> Input Processing
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark);">
+                            Converts user text or speech into structured data the system can understand and analyze.
+                        </p>
+                    </div>
+                    <div class="key-concept">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.75rem;">
+                            <i class="fas fa-brain"></i> Intent Recognition
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark);">
+                            Determines what the user wants to accomplish based on their message content and context.
+                        </p>
+                    </div>
+                    <div class="key-concept">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.75rem;">
+                            <i class="fas fa-database"></i> Knowledge Base
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark);">
+                            The repository of information, rules, and responses that the chatbot draws from.
+                        </p>
+                    </div>
+                    <div class="key-concept">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.75rem;">
+                            <i class="fas fa-comment"></i> Response Generation
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark);">
+                            Creates appropriate responses based on intent, context, and available information.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Types of Chatbots -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i>Types of Chatbots</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-orange);">
+                        <h4 style="color: #92400e; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-sitemap"></i> Rule-Based Chatbots
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Follow predetermined decision trees</li>
+                            <li style="margin-bottom: 0.5rem;">• Best for simple, predictable interactions</li>
+                            <li style="margin-bottom: 0.5rem;">• Limited flexibility but highly reliable</li>
+                            <li style="margin-bottom: 0.5rem;">• Examples: FAQ bots, appointment schedulers</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-green);">
+                        <h4 style="color: #065f46; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-robot"></i> AI-Powered Chatbots
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Use machine learning and NLP</li>
+                            <li style="margin-bottom: 0.5rem;">• Learn and improve over time</li>
+                            <li style="margin-bottom: 0.5rem;">• Handle complex, contextual conversations</li>
+                            <li style="margin-bottom: 0.5rem;">• Examples: Customer service bots, virtual assistants</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Applications -->
+            <div class="tips-card">
+                <h3><i class="fas fa-briefcase"></i>Professional Applications</h3>
+                <p style="margin-bottom: 1rem;">Chatbots are transforming professional services in multiple ways:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Legal Services</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Initial client screening, document preparation guidance, FAQ responses</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Customer Support</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">24/7 assistance, ticket routing, basic troubleshooting</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Healthcare</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Appointment scheduling, symptom triage, prescription reminders</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">E-commerce</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Product recommendations, order tracking, return processing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits and Limitations -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i>Benefits and Limitations</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--primary-blue);">
+                        <h4 style="color: var(--primary-blue); font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-thumbs-up"></i> Benefits
+                        </h4>
+                        <ul class="modern-list">
+                            <li>24/7 availability for client support</li>
+                            <li>Consistent responses and service quality</li>
+                            <li>Cost reduction for routine inquiries</li>
+                            <li>Scalability during peak demand</li>
+                            <li>Data collection and insights</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid #ef4444;">
+                        <h4 style="color: #dc2626; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-exclamation-triangle"></i> Limitations
+                        </h4>
+                        <ul style="list-style: none; margin: 1rem 0;">
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Limited understanding of complex queries</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Difficulty with emotional or sensitive issues</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Potential for miscommunication</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Need for ongoing maintenance and training</li>
+                            <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Privacy and security considerations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Knowledge Check -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-blue);">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-question-circle"></i> Quick Knowledge Check
+                </h3>
+                <p style="margin-bottom: 1rem; color: var(--neutral-dark);">Before moving on, make sure you can answer these questions:</p>
+                <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                    <li style="margin-bottom: 0.5rem;">• What's the difference between rule-based and AI-powered chatbots?</li>
+                    <li style="margin-bottom: 0.5rem;">• Name three professional applications where chatbots add value</li>
+                    <li style="margin-bottom: 0.5rem;">• What are two key limitations to consider when implementing chatbots?</li>
+                    <li style="margin-bottom: 0.5rem;">• How do chatbots process user input to generate responses?</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-no-code-chatbots.html" class="nav-btn">
+                    Next: No-Code Chatbot Platforms
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

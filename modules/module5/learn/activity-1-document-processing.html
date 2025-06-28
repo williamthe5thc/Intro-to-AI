@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: AI-Powered Document Processing & Analysis - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .tool-comparison {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .tool-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        .workflow-builder {
+            background: var(--neutral-white);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            border-left: 4px solid #22c55e;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .industry-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .example-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        .document-simulator {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .format-support {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .format-badge {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .format-badge:hover {
+            border-color: #8b5cf6;
+            background: #faf5ff;
+        }
+        .roi-calculator {
+            background: #fef3c7;
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .calculator-input {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: var(--neutral-white);
+            border-radius: 6px;
+        }
+        .implementation-guide {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .guide-phase {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        .interactive-demo {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #dc2626;
+        }
+        .demo-result {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Document Processing</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/cross-industry-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/professional-toolkit-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI-Powered Document Processing & Analysis</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Master the latest AI tools that transform static documents into intelligent, searchable, and actionable resources. Learn to process any document format efficiently, extract key insights automatically, and build professional workflows that save time while improving accuracy across your organization.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Document Processing Mastery Goals</h3>
+                <p style="margin-bottom: 1rem;">Develop comprehensive AI document processing capabilities:</p>
+                <ul class="modern-list">
+                    <li>Master leading AI document analysis tools for 2025 and beyond</li>
+                    <li>Implement cross-format document processing workflows (PDF, DOCX, MD, ODT, HTML, etc.)</li>
+                    <li>Build automated extraction and summarization systems for any document type</li>
+                    <li>Create intelligent document conversation and search capabilities</li>
+                    <li>Design professional integration strategies for existing workflows</li>
+                    <li>Establish quality assurance and validation processes for AI-processed content</li>
+                </ul>
+            </div>
+
+            <!-- 2025 Document AI Landscape -->
+            <h2 class="section-title"><i class="fas fa-map"></i>2025 Document AI Tool Landscape</h2>
+
+            <div class="tool-comparison">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-rocket"></i> Leading Document AI Platforms & Capabilities
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The document AI landscape has evolved dramatically in 2025, with powerful tools offering unprecedented capabilities for intelligent document processing and analysis.
+                </p>
+                
+                <!-- DocAnalyzer.ai -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-text"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">DocAnalyzer.ai</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">AI-powered document conversations and analysis</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Capabilities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Multi-format Support:</strong> PDF, DOCX, MD, ODT, HTML, EPUB, RTF, TXT</li>
+                            <li><strong>Intelligent Conversations:</strong> Chat directly with your documents for instant insights</li>
+                            <li><strong>Professional Automation:</strong> Custom agents for workflow optimization</li>
+                            <li><strong>Enterprise Integration:</strong> API access for seamless workflow integration</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Use Cases:</strong> Legal document analysis, research paper processing, business report analysis, content organization and summarization
+                    </div>
+                </div>
+
+                <!-- Adobe Acrobat AI -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">Adobe Acrobat AI Assistant</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Professional PDF processing with contract intelligence</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025 Updates & Features:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Contract Intelligence:</strong> Auto-detects contracts and compares up to 10 versions</li>
+                            <li><strong>Citation System:</strong> Precise clause referencing and legal compliance</li>
+                            <li><strong>E-signature Integration:</strong> Seamless document signing workflows</li>
+                            <li><strong>Advanced OCR:</strong> Superior text recognition for scanned documents</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Use Cases:</strong> Contract management, legal document review, business agreement analysis, compliance documentation
+                    </div>
+                </div>
+
+                <!-- AskYourPDF -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">AskYourPDF</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Conversational PDF analysis and insight extraction</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Strengths:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Interactive Querying:</strong> Ask specific questions about document content</li>
+                            <li><strong>Batch Processing:</strong> Analyze multiple documents simultaneously</li>
+                            <li><strong>Summary Generation:</strong> Automatic executive summaries and key points</li>
+                            <li><strong>Data Extraction:</strong> Pull specific information and data points</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Use Cases:</strong> Research analysis, report summarization, data extraction, academic paper review
+                    </div>
+                </div>
+
+                <!-- ChatPDF -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">ChatPDF</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Simple, fast PDF conversations and analysis</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Features:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Instant Upload:</strong> Quick document processing and analysis</li>
+                            <li><strong>Natural Language:</strong> Ask questions in plain English</li>
+                            <li><strong>Source Citations:</strong> References to specific document sections</li>
+                            <li><strong>Multi-language:</strong> Support for documents in various languages</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Use Cases:</strong> Quick document queries, educational material analysis, training document review, policy understanding
+                    </div>
+                </div>
+
+                <!-- iScanner -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-scanner"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">iScanner AI</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Advanced OCR and document digitization</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Specialized Capabilities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Superior OCR:</strong> High-accuracy text recognition from images and scans</li>
+                            <li><strong>Handwriting Recognition:</strong> Convert handwritten notes to digital text</li>
+                            <li><strong>Multi-language Support:</strong> Over 100 languages supported</li>
+                            <li><strong>Batch Processing:</strong> Process large volumes of scanned documents</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Use Cases:</strong> Document digitization, archive processing, handwritten note conversion, legacy document modernization
+                    </div>
+                </div>
+            </div>
+
+            <!-- Format Support Matrix -->
+            <h2 class="section-title"><i class="fas fa-th-large"></i>Cross-Format Document Processing</h2>
+
+            <div class="document-simulator">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-file-alt"></i> Supported Document Formats & Use Cases
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Modern AI document tools support a comprehensive range of formats, enabling universal document processing capabilities across your organization.
+                </p>
+                
+                <div class="format-support">
+                    <div class="format-badge">
+                        <i class="fas fa-file-pdf" style="color: #dc2626; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>PDF</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Reports, Contracts</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-file-word" style="color: #2563eb; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>DOCX</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Documents, Proposals</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-file-code" style="color: #059669; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>MD</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Technical Docs</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-file-alt" style="color: #d97706; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>ODT</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Open Documents</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-code" style="color: #7c3aed; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>HTML</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Web Content</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-book" style="color: #059669; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>EPUB</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">E-books, Manuals</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-file-text" style="color: #64748b; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>RTF</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Rich Text</span>
+                    </div>
+                    <div class="format-badge">
+                        <i class="fas fa-file" style="color: #374151; margin-bottom: 0.5rem; display: block;"></i>
+                        <strong>TXT</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Plain Text</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> Different formats excel in different contexts. PDFs for final documents, DOCX for collaboration, MD for technical documentation, and HTML for web-based content.
+                </div>
+            </div>
+
+            <!-- Professional Workflow Builder -->
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i>Professional Document Processing Workflows</h2>
+
+            <div class="workflow-builder">
+                <h4 style="color: #22c55e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cogs"></i> Comprehensive Document AI Implementation Workflow
+                </h4>
+                
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div style="flex: 1;">
+                        <strong>Document Intake & Classification</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Automated upload, format detection, and intelligent categorization based on content type and business purpose
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div style="flex: 1;">
+                        <strong>AI-Powered Content Extraction</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            OCR processing, text extraction, table recognition, and metadata capture for comprehensive document understanding
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div style="flex: 1;">
+                        <strong>Intelligent Analysis & Summarization</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Automated summarization, key point extraction, sentiment analysis, and topic identification for actionable insights
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div style="flex: 1;">
+                        <strong>Interactive Querying & Conversation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Natural language questioning, contextual responses, and deep document exploration through conversational AI
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-step">
+                    <div class="step-number">5</div>
+                    <div style="flex: 1;">
+                        <strong>Integration & Action</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Export insights, integrate with business systems, trigger workflows, and enable collaborative document management
+                        </span>
+                    </div>
+                </div>
+                
+                <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-chart-line"></i> Expected Outcomes:</strong> 60-80% time savings on document processing, 95%+ accuracy in information extraction, and seamless integration with existing business workflows.
+                </div>
+            </div>
+
+            <!-- Industry Application Examples -->
+            <h2 class="section-title"><i class="fas fa-industry"></i>Cross-Industry Document Processing Applications</h2>
+
+            <div class="industry-examples">
+                <!-- Healthcare -->
+                <div class="example-card">
+                    <h4 style="color: #059669; margin-bottom: 1rem;">
+                        <i class="fas fa-heartbeat"></i> Healthcare & Medical
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Document Types:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Patient records and medical histories</li>
+                            <li>Research papers and clinical studies</li>
+                            <li>Insurance claims and documentation</li>
+                            <li>Regulatory compliance reports</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact:</strong> Automated patient data extraction, research literature synthesis, and compliance documentation processing with HIPAA-compliant security.
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="example-card">
+                    <h4 style="color: #7c3aed; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Financial Services
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Document Types:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Financial reports and statements</li>
+                            <li>Loan applications and contracts</li>
+                            <li>Investment research and analysis</li>
+                            <li>Regulatory filings and compliance</li>
+                        </ul>
+                    </div>
+                    <div style="background: #faf5ff; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact:</strong> Automated financial analysis, risk assessment documentation, and regulatory compliance monitoring with precise data extraction.
+                    </div>
+                </div>
+
+                <!-- Legal -->
+                <div class="example-card">
+                    <h4 style="color: #dc2626; margin-bottom: 1rem;">
+                        <i class="fas fa-balance-scale"></i> Legal & Compliance
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Document Types:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Contracts and legal agreements</li>
+                            <li>Case law and precedent research</li>
+                            <li>Discovery documents and evidence</li>
+                            <li>Regulatory compliance documentation</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef2f2; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact:</strong> Contract analysis and comparison, legal research acceleration, and automated document review with clause identification.
+                    </div>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="example-card">
+                    <h4 style="color: #2563eb; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Manufacturing & Operations
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Document Types:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Technical specifications and manuals</li>
+                            <li>Quality control reports and data</li>
+                            <li>Safety and compliance documentation</li>
+                            <li>Supplier contracts and agreements</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact:</strong> Technical document analysis, quality data processing, and supply chain documentation management with automated insights.
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="example-card">
+                    <h4 style="color: #d97706; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i> Education & Research
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Document Types:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Academic papers and research publications</li>
+                            <li>Curriculum and course materials</li>
+                            <li>Student assessments and records</li>
+                            <li>Administrative policies and procedures</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact:</strong> Research literature analysis, curriculum optimization, and administrative process automation with educational insight generation.
+                    </div>
+                </div>
+
+                <!-- Marketing -->
+                <div class="example-card">
+                    <h4 style="color: #059669; margin-bottom: 1rem;">
+                        <i class="fas fa-bullhorn"></i> Marketing & Communications
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Document Types:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Market research reports and surveys</li>
+                            <li>Brand guidelines and style documentation</li>
+                            <li>Campaign performance reports</li>
+                            <li>Customer feedback and testimonials</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact:</strong> Market research synthesis, brand consistency analysis, and customer sentiment extraction with actionable marketing insights.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI Calculator -->
+            <h2 class="section-title"><i class="fas fa-calculator"></i>Document Processing ROI Calculator</h2>
+
+            <div class="roi-calculator">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Calculate Your Document Processing Time & Cost Savings
+                </h4>
+                
+                <div class="calculator-input">
+                    <label style="min-width: 200px; font-weight: 600;">Documents processed per week:</label>
+                    <input type="number" id="weeklyDocs" placeholder="50" style="flex: 1; padding: 0.5rem; border: 2px solid #e2e8f0; border-radius: 4px;">
+                </div>
+                
+                <div class="calculator-input">
+                    <label style="min-width: 200px; font-weight: 600;">Average time per document (minutes):</label>
+                    <input type="number" id="timePerDoc" placeholder="30" style="flex: 1; padding: 0.5rem; border: 2px solid #e2e8f0; border-radius: 4px;">
+                </div>
+                
+                <div class="calculator-input">
+                    <label style="min-width: 200px; font-weight: 600;">Hourly rate ($):</label>
+                    <input type="number" id="hourlyRate" placeholder="50" style="flex: 1; padding: 0.5rem; border: 2px solid #e2e8f0; border-radius: 4px;">
+                </div>
+                
+                <div class="calculator-input">
+                    <label style="min-width: 200px; font-weight: 600;">AI time savings (%):</label>
+                    <select id="timeSavings" style="flex: 1; padding: 0.5rem; border: 2px solid #e2e8f0; border-radius: 4px;">
+                        <option value="60">60% (Conservative)</option>
+                        <option value="70" selected>70% (Typical)</option>
+                        <option value="80">80% (Optimized)</option>
+                    </select>
+                </div>
+                
+                <button onclick="calculateROI()" style="background: linear-gradient(135deg, #d97706 0%, #92400e 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-calculator"></i> Calculate Time & Cost Savings
+                </button>
+                
+                <div id="roiResults" style="margin-top: 1rem; padding: 1rem; background: var(--neutral-white); border-radius: 6px; display: none;">
+                    <strong>Your Document Processing Savings:</strong><br>
+                    <div id="savingsDetails" style="margin-top: 0.5rem;"></div>
+                </div>
+            </div>
+
+            <!-- Implementation Guide -->
+            <div class="implementation-guide">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-road"></i> Professional Implementation Roadmap
+                </h4>
+                
+                <div class="guide-phase">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;">Phase 1: Assessment & Planning (Week 1-2)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Audit current document processing workflows and pain points</li>
+                        <li>Identify document types and volumes for AI processing</li>
+                        <li>Evaluate tool options based on format needs and integration requirements</li>
+                        <li>Establish baseline metrics for time and cost measurement</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-phase">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;">Phase 2: Pilot Implementation (Week 3-4)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Select pilot document set and AI tool for initial testing</li>
+                        <li>Configure tools and establish quality assurance processes</li>
+                        <li>Train team members on tool usage and best practices</li>
+                        <li>Process pilot documents and measure results vs. baseline</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-phase">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;">Phase 3: Scale & Optimize (Week 5-8)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Expand processing to additional document types and volumes</li>
+                        <li>Integrate AI tools with existing business systems and workflows</li>
+                        <li>Develop standard operating procedures and quality checkpoints</li>
+                        <li>Measure ROI and optimize processes based on performance data</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-phase">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;">Phase 4: Enterprise Integration (Ongoing)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Deploy across departments and business units</li>
+                        <li>Establish governance and compliance protocols</li>
+                        <li>Provide ongoing training and support for team members</li>
+                        <li>Continuously evaluate new tools and capabilities</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Document Demo -->
+            <h2 class="section-title"><i class="fas fa-play-circle"></i>Interactive Document Processing Demo</h2>
+
+            <div class="interactive-demo">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-magic"></i> Simulate Document AI Processing
+                </h4>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Select Document Type:</label>
+                    <select id="docType" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Choose document type...</option>
+                        <option value="contract">Business Contract</option>
+                        <option value="report">Research Report</option>
+                        <option value="financial">Financial Statement</option>
+                        <option value="medical">Medical Record</option>
+                        <option value="technical">Technical Manual</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Processing Goal:</label>
+                    <select id="processingGoal" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select processing objective...</option>
+                        <option value="summary">Generate Executive Summary</option>
+                        <option value="extract">Extract Key Data Points</option>
+                        <option value="analyze">Analyze and Compare</option>
+                        <option value="qa">Quality Assurance Review</option>
+                        <option value="search">Enable Intelligent Search</option>
+                    </select>
+                </div>
+                
+                <button onclick="simulateProcessing()" style="background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%;">
+                    <i class="fas fa-cogs"></i> Process Document with AI
+                </button>
+                
+                <div id="demoResult" class="demo-result">
+                    <strong style="color: #065f46;">AI Processing Complete!</strong><br><br>
+                    <div id="processingOutput" style="background: #f8fafc; padding: 1rem; border-radius: 6px; margin-top: 0.5rem;"></div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0369a1; margin-bottom: 1rem;">Ready to Master Data Analysis AI?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you understand document processing, let's explore how AI transforms data analysis and business intelligence.</p>
+                <a href="activity-2-data-analysis.html" class="nav-btn">
+                    <i class="fas fa-chart-bar"></i>
+                    Explore Data Analysis AI
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-data-analysis.html" class="nav-btn">
+                    Next: Data Analysis AI
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function calculateROI() {
+            const weeklyDocs = parseInt(document.getElementById('weeklyDocs').value) || 0;
+            const timePerDoc = parseInt(document.getElementById('timePerDoc').value) || 0;
+            const hourlyRate = parseInt(document.getElementById('hourlyRate').value) || 0;
+            const timeSavings = parseInt(document.getElementById('timeSavings').value) || 0;
+            
+            if (weeklyDocs === 0 || timePerDoc === 0 || hourlyRate === 0) {
+                alert('Please fill in all fields to calculate savings.');
+                return;
+            }
+            
+            const weeklyMinutes = weeklyDocs * timePerDoc;
+            const weeklyHours = weeklyMinutes / 60;
+            const weeklyCost = weeklyHours * hourlyRate;
+            
+            const savedMinutes = weeklyMinutes * (timeSavings / 100);
+            const savedHours = savedMinutes / 60;
+            const weeklySavings = savedHours * hourlyRate;
+            
+            const annualSavings = weeklySavings * 52;
+            const savedHoursAnnual = savedHours * 52;
+            
+            document.getElementById('savingsDetails').innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.9rem;">
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong style="color: #059669;">Weekly Savings</strong><br>
+                        ${savedHours.toFixed(1)} hours<br>
+                        $${weeklySavings.toFixed(0)}
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong style="color: #2563eb;">Annual Savings</strong><br>
+                        ${savedHoursAnnual.toFixed(0)} hours<br>
+                        $${annualSavings.toFixed(0)}
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong style="color: #d97706;">Time Efficiency</strong><br>
+                        ${timeSavings}% faster<br>
+                        ${(savedMinutes/weeklyDocs).toFixed(1)} min/doc saved
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('roiResults').style.display = 'block';
+            document.getElementById('roiResults').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function simulateProcessing() {
+            const docType = document.getElementById('docType').value;
+            const goal = document.getElementById('processingGoal').value;
+            
+            if (!docType || !goal) {
+                alert('Please select both document type and processing goal.');
+                return;
+            }
+            
+            const processingExamples = {
+                'contract-summary': {
+                    title: 'Business Contract - Executive Summary',
+                    output: `<strong>Contract Overview:</strong> Service Agreement between Company A and Vendor B
+                    <br><br><strong>Key Terms:</strong>
+                    • Contract Value: $125,000 annually
+                    • Duration: 3 years with 2-year renewal option
+                    • Payment Terms: Net 30 days
+                    • Key Performance Indicators: 99.5% uptime, <2hr response time
+                    <br><br><strong>Risk Factors:</strong> Liability cap at $50K, auto-renewal clause, price escalation 3%/year
+                    <br><br><strong>Action Items:</strong> Legal review of liability terms, negotiate SLA penalties, confirm insurance requirements`
+                },
+                'report-extract': {
+                    title: 'Research Report - Key Data Extraction',
+                    output: `<strong>Executive Summary:</strong> Market growth projected at 15.2% CAGR through 2027
+                    <br><br><strong>Key Statistics:</strong>
+                    • Market Size: $2.8B (2024) → $5.1B (2027)
+                    • Leading Companies: CompanyX (23%), CompanyY (18%), CompanyZ (12%)
+                    • Regional Growth: Asia-Pacific (+22%), North America (+11%), Europe (+8%)
+                    <br><br><strong>Strategic Insights:</strong> AI adoption driving 65% of market expansion, regulatory changes create opportunities in healthcare sector
+                    <br><br><strong>Recommendations:</strong> Focus on AI-enabled solutions, expand in APAC markets, monitor regulatory developments`
+                },
+                'financial-analyze': {
+                    title: 'Financial Statement - Analysis Results',
+                    output: `<strong>Financial Health Score:</strong> 82/100 (Strong)
+                    <br><br><strong>Key Metrics:</strong>
+                    • Revenue Growth: +18.5% YoY
+                    • Profit Margin: 22.3% (industry avg: 15.8%)
+                    • Debt-to-Equity: 0.35 (healthy)
+                    • Current Ratio: 2.1 (strong liquidity)
+                    <br><br><strong>Trends Identified:</strong> Consistent quarterly growth, improving operational efficiency, strong cash position
+                    <br><br><strong>Areas of Focus:</strong> R&D investment up 25%, market expansion strategy showing early returns`
+                },
+                'medical-qa': {
+                    title: 'Medical Record - Quality Assurance Review',
+                    output: `<strong>Compliance Status:</strong> ✅ Fully Compliant with HIPAA standards
+                    <br><br><strong>Document Completeness:</strong>
+                    • Patient Demographics: Complete
+                    • Medical History: Complete  
+                    • Treatment Records: Complete
+                    • Consent Forms: Complete
+                    <br><br><strong>Quality Indicators:</strong> All required signatures present, dates consistent, no missing critical fields
+                    <br><br><strong>Recommendations:</strong> Standard documentation practices maintained, ready for insurance submission`
+                },
+                'technical-search': {
+                    title: 'Technical Manual - Intelligent Search Enabled',
+                    output: `<strong>Search Index Created:</strong> 847 topics, 2,341 procedures, 156 safety protocols
+                    <br><br><strong>Key Sections Mapped:</strong>
+                    • Installation Procedures (Ch. 1-3)
+                    • Operating Instructions (Ch. 4-8) 
+                    • Troubleshooting Guide (Ch. 9-11)
+                    • Safety & Compliance (Ch. 12-13)
+                    <br><br><strong>Smart Features Enabled:</strong> Natural language queries, cross-reference linking, visual diagram search
+                    <br><br><strong>Usage Examples:</strong> "How to reset system?" "Safety requirements for maintenance?" "Troubleshoot error code 404"`
+                }
+            };
+            
+            const key = `${docType}-${goal}`;
+            const result = processingExamples[key] || {
+                title: 'Document Processing Complete',
+                output: `Successfully processed ${docType} document for ${goal}. Key information extracted and organized for immediate use. Processing time: 2.3 seconds. Accuracy: 96.8%.`
+            };
+            
+            document.getElementById('processingOutput').innerHTML = `
+                <h5 style="color: #dc2626; margin-bottom: 1rem;">${result.title}</h5>
+                <div style="line-height: 1.6;">${result.output}</div>
+                <div style="margin-top: 1rem; padding: 1rem; background: #e0f2fe; border-radius: 6px; font-size: 0.9rem;">
+                    <strong>Processing Details:</strong> Analyzed 12 pages in 2.3 seconds • Extracted 23 key data points • 96.8% accuracy • Ready for team collaboration
+                </div>
+            `;
+            
+            document.getElementById('demoResult').style.display = 'block';
+            document.getElementById('demoResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

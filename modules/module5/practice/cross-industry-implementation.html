@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Project: Cross-Industry AI Implementation - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .project-selector {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .industry-option {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .industry-option:hover, .industry-option.selected {
+            border-color: #0891b2;
+            background: #f0f9ff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .industry-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .industry-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+        }
+        .project-framework {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .implementation-phase {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #10b981;
+        }
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .deliverable-tracker {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .deliverable-item {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .deliverable-item:hover {
+            border-color: #8b5cf6;
+            background: #faf5ff;
+        }
+        .deliverable-item.completed {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        .project-builder {
+            background: var(--neutral-white);
+            border: 2px solid #dc2626;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .ai-toolkit-integration {
+            background: #fef3c7;
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .toolkit-component {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #d97706;
+        }
+        .success-metrics {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+        }
+        .project-template {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #64748b;
+            display: none;
+        }
+        .project-template.active {
+            display: block;
+        }
+        .template-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .collaboration-tools {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .tool-integration {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .progress-tracker {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #059669;
+        }
+        .progress-bar {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 20px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Practice Project</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-document-processing.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/professional-toolkit-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Cross-Industry AI Implementation Project</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Apply your complete AI professional toolkit in a comprehensive real-world implementation project. You'll integrate document processing, data analysis, and research systems to solve authentic business challenges while building portfolio-ready case studies that demonstrate your AI expertise across industries.
+            </p>
+
+            <!-- Project Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-rocket"></i>Project Implementation Objectives</h3>
+                <p style="margin-bottom: 1rem;">Build a comprehensive AI implementation that showcases your professional expertise:</p>
+                <ul class="modern-list">
+                    <li>Design and implement a complete AI workflow that integrates all three toolkit components</li>
+                    <li>Solve a real business challenge using professional AI tools and methodologies</li>
+                    <li>Create portfolio-ready documentation and case study materials</li>
+                    <li>Demonstrate measurable business impact and ROI from AI implementation</li>
+                    <li>Build collaborative workflows that scale across teams and organizations</li>
+                    <li>Establish governance and quality assurance frameworks for sustainable AI adoption</li>
+                </ul>
+            </div>
+
+            <!-- Industry Project Selection -->
+            <h2 class="section-title"><i class="fas fa-industry"></i>Select Your Industry Implementation Focus</h2>
+
+            <div class="project-selector">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Choose Your Professional Implementation Context
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Select the industry context that best matches your professional background or career interests. Each option provides a complete implementation framework with specific challenges, tools, and deliverables.
+                </p>
+                
+                <!-- Healthcare -->
+                <div class="industry-option" onclick="selectIndustry('healthcare')">
+                    <div class="industry-header">
+                        <div class="industry-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Healthcare & Medical Services</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Patient data analysis, medical literature research, and operational efficiency optimization</p>
+                        </div>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Project Focus:</strong> Implement AI-powered patient flow optimization system that processes medical records, analyzes operational data, and researches best practices to improve patient outcomes and reduce wait times.
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="industry-option" onclick="selectIndustry('financial')">
+                    <div class="industry-header">
+                        <div class="industry-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Financial Services & Investment</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Market analysis, risk assessment, and regulatory compliance automation</p>
+                        </div>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Project Focus:</strong> Build comprehensive investment analysis system that processes financial documents, analyzes market data, and researches regulatory requirements to support investment decision-making and compliance.
+                    </div>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="industry-option" onclick="selectIndustry('manufacturing')">
+                    <div class="industry-header">
+                        <div class="industry-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Manufacturing & Operations</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Supply chain optimization, quality control, and predictive maintenance</p>
+                        </div>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Project Focus:</strong> Develop supply chain intelligence system that processes vendor contracts, analyzes operational data, and researches market trends to optimize procurement and reduce costs.
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="industry-option" onclick="selectIndustry('education')">
+                    <div class="industry-header">
+                        <div class="industry-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Education & Training</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Student performance analysis, curriculum optimization, and academic research</p>
+                        </div>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Project Focus:</strong> Create student success prediction system that processes academic records, analyzes performance data, and researches educational best practices to improve student outcomes.
+                    </div>
+                </div>
+
+                <!-- Marketing -->
+                <div class="industry-option" onclick="selectIndustry('marketing')">
+                    <div class="industry-header">
+                        <div class="industry-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Marketing & Communications</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Campaign optimization, customer analysis, and competitive intelligence</p>
+                        </div>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Project Focus:</strong> Build marketing intelligence platform that processes campaign documents, analyzes customer data, and researches market trends to optimize marketing ROI and customer engagement.
+                    </div>
+                </div>
+
+                <!-- Legal/Professional Services -->
+                <div class="industry-option" onclick="selectIndustry('legal')">
+                    <div class="industry-header">
+                        <div class="industry-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Legal & Professional Services</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Contract analysis, legal research, and compliance monitoring</p>
+                        </div>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Project Focus:</strong> Implement contract analysis and compliance system that processes legal documents, analyzes risk data, and researches regulatory requirements to support legal decision-making.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Implementation Framework -->
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i>Comprehensive Implementation Framework</h2>
+
+            <div class="project-framework">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cogs"></i> Professional AI Implementation Methodology
+                </h4>
+                
+                <!-- Phase 1 -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Project Planning & Requirements Gathering</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Define scope, stakeholders, and success criteria for your AI implementation</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Business Challenge Definition:</strong> Identify specific problem to solve with measurable impact</li>
+                            <li><strong>Stakeholder Mapping:</strong> Identify all affected parties and decision-makers</li>
+                            <li><strong>Success Criteria:</strong> Define clear, measurable outcomes and KPIs</li>
+                            <li><strong>Resource Assessment:</strong> Evaluate available data, tools, and team capabilities</li>
+                            <li><strong>Risk Analysis:</strong> Identify potential challenges and mitigation strategies</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>Deliverables:</strong> Project charter, stakeholder analysis, success metrics framework, risk assessment document
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">AI Tool Selection & Integration Strategy</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Choose and configure AI tools for document processing, data analysis, and research</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Integration Components:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Document Processing:</strong> Select optimal tools for your document types and volumes</li>
+                            <li><strong>Data Analysis:</strong> Configure analytics platforms for your data sources and objectives</li>
+                            <li><strong>Research Systems:</strong> Set up research workflows for your information needs</li>
+                            <li><strong>Workflow Integration:</strong> Design seamless connections between tools and processes</li>
+                            <li><strong>Quality Assurance:</strong> Establish validation and error-checking protocols</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>Deliverables:</strong> Tool selection matrix, integration architecture, workflow diagrams, QA protocols
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Data Preparation & System Configuration</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Prepare data sources and configure AI systems for optimal performance</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Configuration Tasks:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Data Collection:</strong> Gather and organize relevant documents, datasets, and sources</li>
+                            <li><strong>Data Cleaning:</strong> Standardize formats, remove duplicates, and ensure quality</li>
+                            <li><strong>System Setup:</strong> Configure AI tools with appropriate settings and parameters</li>
+                            <li><strong>Access Controls:</strong> Establish security and permission protocols</li>
+                            <li><strong>Testing Framework:</strong> Create test cases and validation procedures</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>Deliverables:</strong> Clean datasets, configured systems, access documentation, testing procedures
+                    </div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Implementation & Pilot Testing</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Deploy AI systems and conduct thorough testing with real data and scenarios</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Implementation Steps:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Pilot Deployment:</strong> Start with limited scope to validate approach</li>
+                            <li><strong>Performance Testing:</strong> Measure speed, accuracy, and reliability</li>
+                            <li><strong>User Training:</strong> Educate stakeholders on system usage and best practices</li>
+                            <li><strong>Feedback Collection:</strong> Gather input from users and stakeholders</li>
+                            <li><strong>Iterative Improvement:</strong> Refine based on testing results and feedback</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>Deliverables:</strong> Working AI system, test results, user training materials, feedback analysis
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">5</div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Analysis, Documentation & Scaling Strategy</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Measure impact, document results, and plan for organizational scaling</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Analysis & Documentation:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Impact Measurement:</strong> Calculate ROI, time savings, and quality improvements</li>
+                            <li><strong>Case Study Creation:</strong> Document comprehensive implementation story</li>
+                            <li><strong>Best Practices:</strong> Capture lessons learned and optimization strategies</li>
+                            <li><strong>Scaling Plan:</strong> Design approach for broader organizational adoption</li>
+                            <li><strong>Maintenance Strategy:</strong> Establish ongoing support and improvement processes</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>Deliverables:</strong> ROI analysis, portfolio case study, scaling roadmap, maintenance documentation
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Toolkit Integration -->
+            <h2 class="section-title"><i class="fas fa-puzzle-piece"></i>Complete AI Toolkit Integration</h2>
+
+            <div class="ai-toolkit-integration">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-layer-group"></i> Three-Component Professional AI System
+                </h4>
+                
+                <div class="toolkit-component">
+                    <h5 style="color: #d97706; margin-bottom: 0.5rem;"><i class="fas fa-file-text"></i> Document Processing Component</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin: 0.5rem 0;">
+                        <strong>Implementation Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Configure document AI tools for your specific file types and volumes</li>
+                            <li>Establish automated extraction workflows for key information and data points</li>
+                            <li>Create intelligent document conversation systems for stakeholder queries</li>
+                            <li>Implement quality validation and accuracy checking protocols</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="toolkit-component">
+                    <h5 style="color: #d97706; margin-bottom: 0.5rem;"><i class="fas fa-chart-bar"></i> Data Analysis Component</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin: 0.5rem 0;">
+                        <strong>Implementation Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Deploy AI analytics platforms configured for your data sources and objectives</li>
+                            <li>Build automated data preparation and cleaning workflows</li>
+                            <li>Create intelligent dashboards and visualization systems</li>
+                            <li>Establish predictive analytics and trend identification capabilities</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="toolkit-component">
+                    <h5 style="color: #d97706; margin-bottom: 0.5rem;"><i class="fas fa-search"></i> Research Systems Component</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin: 0.5rem 0;">
+                        <strong>Implementation Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Configure AI research platforms for your information and intelligence needs</li>
+                            <li>Establish multi-source information gathering and validation workflows</li>
+                            <li>Create collaborative research environments for team knowledge sharing</li>
+                            <li>Implement ongoing monitoring systems for relevant trends and developments</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-link"></i> Integration Success:</strong> The three components work together to create a comprehensive AI-powered intelligence system that processes documents, analyzes data, and researches information in an integrated workflow that amplifies the impact of each individual component.
+                </div>
+            </div>
+
+            <!-- Project Templates -->
+            <h2 class="section-title"><i class="fas fa-template"></i>Industry-Specific Project Templates</h2>
+
+            <!-- Healthcare Template -->
+            <div id="healthcare-template" class="project-template">
+                <h4 style="color: #059669; margin-bottom: 1.5rem;">
+                    <i class="fas fa-heartbeat"></i> Healthcare AI Implementation Project
+                </h4>
+                
+                <div class="template-section">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;">Project Scope: Patient Flow Optimization System</h5>
+                    <p><strong>Business Challenge:</strong> Emergency department experiencing 25% longer wait times than industry standards, leading to decreased patient satisfaction and potential health risks.</p>
+                    
+                    <p><strong>AI Solution Approach:</strong></p>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li><strong>Document Processing:</strong> Analyze patient records, treatment protocols, and administrative reports</li>
+                        <li><strong>Data Analysis:</strong> Process operational data, patient flow metrics, and staffing patterns</li>
+                        <li><strong>Research Systems:</strong> Review best practices, clinical guidelines, and industry benchmarks</li>
+                    </ul>
+                </div>
+                
+                <div class="template-section">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;">Implementation Timeline</h5>
+                    <ul style="margin: 0;">
+                        <li><strong>Week 1-2:</strong> Stakeholder meetings, data collection, system setup</li>
+                        <li><strong>Week 3-4:</strong> Document processing implementation, baseline analysis</li>
+                        <li><strong>Week 5-6:</strong> Data analysis workflows, predictive modeling</li>
+                        <li><strong>Week 7-8:</strong> Research synthesis, best practice integration</li>
+                        <li><strong>Week 9-10:</strong> Testing, optimization, stakeholder training</li>
+                        <li><strong>Week 11-12:</strong> Documentation, case study creation, scaling plan</li>
+                    </ul>
+                </div>
+                
+                <div class="template-section">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;">Expected Outcomes</h5>
+                    <ul style="margin: 0;">
+                        <li>20% reduction in average patient wait times</li>
+                        <li>15% improvement in patient satisfaction scores</li>
+                        <li>Automated early warning system for capacity issues</li>
+                        <li>Data-driven staffing optimization recommendations</li>
+                        <li>Comprehensive best practices implementation framework</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Financial Template -->
+            <div id="financial-template" class="project-template">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-line"></i> Financial Services AI Implementation Project
+                </h4>
+                
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">Project Scope: Investment Analysis & Risk Assessment System</h5>
+                    <p><strong>Business Challenge:</strong> Manual investment analysis process taking 3-5 days per opportunity, limiting capacity to evaluate emerging opportunities and respond to market changes.</p>
+                    
+                    <p><strong>AI Solution Approach:</strong></p>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li><strong>Document Processing:</strong> Analyze financial statements, contracts, and regulatory filings</li>
+                        <li><strong>Data Analysis:</strong> Process market data, performance metrics, and risk indicators</li>
+                        <li><strong>Research Systems:</strong> Monitor market trends, regulatory changes, and competitive intelligence</li>
+                    </ul>
+                </div>
+                
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">Implementation Timeline</h5>
+                    <ul style="margin: 0;">
+                        <li><strong>Week 1-2:</strong> Compliance review, data security setup, stakeholder alignment</li>
+                        <li><strong>Week 3-4:</strong> Financial document processing workflows</li>
+                        <li><strong>Week 5-6:</strong> Market data analysis and risk modeling</li>
+                        <li><strong>Week 7-8:</strong> Research automation and trend monitoring</li>
+                        <li><strong>Week 9-10:</strong> Integration testing and compliance validation</li>
+                        <li><strong>Week 11-12:</strong> Performance measurement and scaling strategy</li>
+                    </ul>
+                </div>
+                
+                <div class="template-section">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">Expected Outcomes</h5>
+                    <ul style="margin: 0;">
+                        <li>75% reduction in analysis time (3-5 days to <24 hours)</li>
+                        <li>40% increase in investment opportunity evaluation capacity</li>
+                        <li>Real-time risk monitoring and alert systems</li>
+                        <li>Automated regulatory compliance checking</li>
+                        <li>Comprehensive market intelligence dashboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Manufacturing Template -->
+            <div id="manufacturing-template" class="project-template">
+                <h4 style="color: #2563eb; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cogs"></i> Manufacturing AI Implementation Project
+                </h4>
+                
+                <div class="template-section">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;">Project Scope: Supply Chain Intelligence & Optimization System</h5>
+                    <p><strong>Business Challenge:</strong> Supply chain disruptions causing 15% production delays and 12% cost overruns due to reactive rather than predictive management.</p>
+                    
+                    <p><strong>AI Solution Approach:</strong></p>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li><strong>Document Processing:</strong> Analyze supplier contracts, quality reports, and logistics documentation</li>
+                        <li><strong>Data Analysis:</strong> Process procurement data, delivery metrics, and cost analytics</li>
+                        <li><strong>Research Systems:</strong> Monitor market conditions, supplier performance, and industry trends</li>
+                    </ul>
+                </div>
+                
+                <div class="template-section">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;">Implementation Timeline</h5>
+                    <ul style="margin: 0;">
+                        <li><strong>Week 1-2:</strong> Supplier data collection, system integration planning</li>
+                        <li><strong>Week 3-4:</strong> Contract and documentation processing setup</li>
+                        <li><strong>Week 5-6:</strong> Supply chain analytics and performance modeling</li>
+                        <li><strong>Week 7-8:</strong> Market research automation and trend analysis</li>
+                        <li><strong>Week 9-10:</strong> Predictive algorithms and alert systems</li>
+                        <li><strong>Week 11-12:</strong> Optimization recommendations and scaling framework</li>
+                    </ul>
+                </div>
+                
+                <div class="template-section">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;">Expected Outcomes</h5>
+                    <ul style="margin: 0;">
+                        <li>25% reduction in supply chain disruption impact</li>
+                        <li>18% improvement in procurement cost efficiency</li>
+                        <li>Predictive supplier risk assessment system</li>
+                        <li>Automated contract analysis and compliance monitoring</li>
+                        <li>Real-time supply chain intelligence dashboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Success Metrics & Measurement -->
+            <div class="success-metrics">
+                <h4 style="color: #1e40af; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Project Success Measurement Framework
+                </h4>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #059669;">85%</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Average Time Savings Target</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #3b82f6;">$2.5M</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Expected Annual ROI</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">95%</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Accuracy Improvement Goal</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #dc2626;">12 Wks</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Implementation Timeline</div>
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-target"></i> Success Criteria:</strong> Projects achieving 75%+ of target metrics across efficiency, accuracy, and ROI measures are considered successful implementations ready for organizational scaling.
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <h4 style="color: #059669; margin-bottom: 1.5rem;">
+                    <i class="fas fa-tasks"></i> Project Progress Tracker
+                </h4>
+                
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 600;">Overall Project Completion</span>
+                        <span id="overall-progress">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overall-bar" style="width: 0%;"></div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Planning Phase</span>
+                            <span id="planning-progress">0%</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;">
+                            <div class="progress-fill" id="planning-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Implementation</span>
+                            <span id="implementation-progress">0%</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;">
+                            <div class="progress-fill" id="implementation-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Documentation</span>
+                            <span id="documentation-progress">0%</span>
+                        </div>
+                        <div class="progress-bar" style="height: 10px;">
+                            <div class="progress-fill" id="documentation-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="updateProgress()" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-sync-alt"></i> Update Project Progress
+                </button>
+            </div>
+
+            <!-- Deliverable Tracker -->
+            <div class="deliverable-tracker">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-clipboard-check"></i> Project Deliverable Checklist
+                </h4>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>Project Charter & Stakeholder Analysis</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Define project scope, stakeholders, and success criteria</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>AI Tool Configuration & Integration Plan</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Configure document processing, data analysis, and research tools</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>Data Preparation & Quality Assurance</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Clean data sources and establish validation protocols</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>Working AI System Implementation</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Deploy functional AI workflow with all three components</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>Performance Testing & Validation Results</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Comprehensive testing documentation and results analysis</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>ROI Analysis & Business Impact Report</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Quantified benefits and return on investment calculation</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>Portfolio Case Study Documentation</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Professional case study ready for portfolio inclusion</p>
+                </div>
+                
+                <div class="deliverable-item" onclick="toggleDeliverable(this)">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-square" style="color: #8b5cf6;"></i>
+                        <strong>Scaling Strategy & Implementation Roadmap</strong>
+                    </div>
+                    <p style="margin: 0.5rem 0 0 1.5rem; font-size: 0.9rem; color: #6b7280;">Plan for organizational expansion and adoption</p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0369a1; margin-bottom: 1rem;">Ready to Test Your Knowledge?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Complete the comprehensive assessment to validate your professional AI toolkit mastery and earn your competency certification.</p>
+                <a href="../assets/professional-toolkit-quiz.html" class="nav-btn">
+                    <i class="fas fa-certificate"></i>
+                    Take the Assessment
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-3-research-systems.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Research Systems
+                </a>
+                <a href="../assets/professional-toolkit-quiz.html" class="nav-btn">
+                    Next: Assessment
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedIndustryType = '';
+        let completedDeliverables = 0;
+        
+        function selectIndustry(industry) {
+            selectedIndustryType = industry;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.industry-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+            
+            // Hide all templates
+            document.querySelectorAll('.project-template').forEach(template => {
+                template.classList.remove('active');
+            });
+            
+            // Show selected template
+            const templateId = industry + '-template';
+            const template = document.getElementById(templateId);
+            if (template) {
+                template.classList.add('active');
+                template.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function toggleDeliverable(element) {
+            const icon = element.querySelector('i');
+            
+            if (element.classList.contains('completed')) {
+                // Mark as incomplete
+                element.classList.remove('completed');
+                icon.className = 'fas fa-square';
+                completedDeliverables--;
+            } else {
+                // Mark as complete
+                element.classList.add('completed');
+                icon.className = 'fas fa-check-square';
+                completedDeliverables++;
+            }
+            
+            updateProgressBars();
+        }
+        
+        function updateProgress() {
+            // Simulate progress updates
+            const phases = ['planning', 'implementation', 'documentation'];
+            phases.forEach((phase, index) => {
+                const progress = Math.min(100, Math.floor(Math.random() * 40) + (completedDeliverables * 10));
+                document.getElementById(phase + '-progress').textContent = progress + '%';
+                document.getElementById(phase + '-bar').style.width = progress + '%';
+            });
+            
+            updateProgressBars();
+        }
+        
+        function updateProgressBars() {
+            const totalDeliverables = 8;
+            const overallProgress = Math.floor((completedDeliverables / totalDeliverables) * 100);
+            
+            document.getElementById('overall-progress').textContent = overallProgress + '%';
+            document.getElementById('overall-bar').style.width = overallProgress + '%';
+        }
+        
+        // Initialize progress tracking
+        updateProgressBars();
+    </script>
+</body>
+</html>

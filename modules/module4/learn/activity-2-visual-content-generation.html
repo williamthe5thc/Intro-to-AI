@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 2: Visual Content Generation Strategies - Module 4</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .strategy-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .strategy-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .content-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .content-type-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .content-type-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-green);
+        }
+        
+        .workflow-step {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-green);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -12px;
+            top: 1rem;
+            background: var(--accent-green);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        
+        .example-showcase {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .before-example, .after-example {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .before-example {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+        
+        .after-example {
+            background: #f0fdf4;
+            border-color: var(--accent-green);
+        }
+        
+        .tool-specific-tips {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .interactive-generator {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .content-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .selector-btn {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .selector-btn:hover, .selector-btn.active {
+            border-color: var(--primary-blue);
+            background: #f0f9ff;
+            color: var(--primary-blue);
+        }
+        
+        .generated-strategy {
+            background: #f8fafc;
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .best-practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .practice-card {
+            background: rgba(255,255,255,0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .quality-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            margin: 0.25rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .quality-high { background: #d1fae5; color: #065f46; }
+        .quality-medium { background: #fef3c7; color: #92400e; }
+        .quality-basic { background: #fee2e2; color: #dc2626; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 4</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Visual Content Generation</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/tools-comparison-matrix.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/media-creation-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Visual Content Generation Strategies</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Master strategic approaches to creating different types of professional visual content. Learn when and how to use various AI tools for maximum impact and efficiency.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Strategic Content Creation</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>Content Planning:</strong> Strategic approach to visual content creation workflows</div>
+                    <div><strong>Tool Selection:</strong> Matching AI tools to specific content types and quality requirements</div>
+                    <div><strong>Quality Optimization:</strong> Techniques for consistently achieving professional-grade results</div>
+                    <div><strong>Efficiency Workflows:</strong> Streamlined processes for rapid content production</div>
+                </div>
+            </div>
+
+            <!-- Content Type Strategies -->
+            <h2 class="section-title"><i class="fas fa-layer-group"></i>Content Type-Specific Strategies</h2>
+
+            <div class="content-type-grid">
+                <!-- Marketing Graphics -->
+                <div class="content-type-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-bullhorn"></i> Marketing Graphics
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="quality-indicator quality-high">High Impact</div>
+                        <div class="quality-indicator quality-medium">Brand Consistency</div>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                        Eye-catching visuals for campaigns, social media, and promotional materials.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Best Tools:</strong> Canva AI, DALL-E 3, Adobe Firefly
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Key Strategy:</strong> Focus on emotional impact, clear messaging, and brand alignment
+                    </div>
+                </div>
+
+                <!-- Business Presentations -->
+                <div class="content-type-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-presentation"></i> Business Presentations
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="quality-indicator quality-high">Professional</div>
+                        <div class="quality-indicator quality-medium">Data-Focused</div>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                        Clean, professional slides with data visualizations and executive-ready aesthetics.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Best Tools:</strong> Gamma, Beautiful.AI, Tome
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Key Strategy:</strong> Prioritize clarity, hierarchy, and professional credibility
+                    </div>
+                </div>
+
+                <!-- Product Mockups -->
+                <div class="content-type-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-cube"></i> Product Mockups
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="quality-indicator quality-high">Realistic</div>
+                        <div class="quality-indicator quality-medium">Context-Rich</div>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                        Realistic product visualizations in professional environments.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Best Tools:</strong> Midjourney, Stable Diffusion, Adobe Firefly
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Key Strategy:</strong> Emphasize lighting, context, and photorealistic quality
+                    </div>
+                </div>
+
+                <!-- Training Materials -->
+                <div class="content-type-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-chalkboard-teacher"></i> Training Materials
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="quality-indicator quality-medium">Educational</div>
+                        <div class="quality-indicator quality-basic">Accessible</div>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                        Clear, instructional visuals that enhance learning and retention.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Best Tools:</strong> Canva AI, Gamma, Custom Illustrations
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Key Strategy:</strong> Maximize clarity, use consistent visual language
+                    </div>
+                </div>
+
+                <!-- Social Media Content -->
+                <div class="content-type-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-share-alt"></i> Social Media Content
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="quality-indicator quality-high">Engaging</div>
+                        <div class="quality-indicator quality-medium">Platform-Optimized</div>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                        Platform-specific content designed for engagement and sharing.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Best Tools:</strong> Canva AI, DALL-E 3, Platform Templates
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Key Strategy:</strong> Optimize for platform dimensions and audience behavior
+                    </div>
+                </div>
+
+                <!-- Executive Reports -->
+                <div class="content-type-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-chart-bar"></i> Executive Reports
+                    </h4>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="quality-indicator quality-high">Authority</div>
+                        <div class="quality-indicator quality-high">Data-Driven</div>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                        High-level visual reports with sophisticated data presentation.
+                    </p>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Best Tools:</strong> Advanced charting tools, Custom design platforms
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Key Strategy:</strong> Emphasize data integrity and executive-level polish
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Workflow -->
+            <h2 class="section-title"><i class="fas fa-route"></i>Strategic Content Creation Workflow</h2>
+
+            <div class="strategy-card">
+                <h4 style="color: var(--primary-blue); margin-bottom: 1.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> The Professional Content Strategy Process
+                </h4>
+                
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <h5 style="margin-bottom: 0.5rem; color: var(--neutral-dark);">Define Content Purpose & Audience</h5>
+                    <p style="margin: 0; color: var(--neutral-medium);">
+                        Clearly identify the content's goal, target audience, and intended use case. This determines tool selection and quality requirements.
+                    </p>
+                    <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--neutral-light); border-radius: 6px;">
+                        <strong>Key Questions:</strong> Who will see this? What action should it drive? Where will it be used?
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <h5 style="margin-bottom: 0.5rem; color: var(--neutral-dark);">Select Optimal AI Tool</h5>
+                    <p style="margin: 0; color: var(--neutral-medium);">
+                        Match the content type to the most appropriate AI tool based on quality requirements, style needs, and output specifications.
+                    </p>
+                    <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--neutral-light); border-radius: 6px;">
+                        <strong>Decision Matrix:</strong> Quality level × Ease of use × Budget × Timeline
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <h5 style="margin-bottom: 0.5rem; color: var(--neutral-dark);">Develop Strategic Prompt</h5>
+                    <p style="margin: 0; color: var(--neutral-medium);">
+                        Create detailed, strategic prompts that include style requirements, technical specifications, and brand guidelines.
+                    </p>
+                    <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--neutral-light); border-radius: 6px;">
+                        <strong>Components:</strong> Subject + Style + Technical specs + Quality markers + Brand elements
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <h5 style="margin-bottom: 0.5rem; color: var(--neutral-dark);">Generate & Iterate</h5>
+                    <p style="margin: 0; color: var(--neutral-medium);">
+                        Create multiple variations, test different approaches, and refine based on quality assessment and feedback.
+                    </p>
+                    <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--neutral-light); border-radius: 6px;">
+                        <strong>Best Practice:</strong> Generate 3-5 variations, A/B test different styles, document successful prompts
+                    </div>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">5</div>
+                    <h5 style="margin-bottom: 0.5rem; color: var(--neutral-dark);">Quality Review & Optimization</h5>
+                    <p style="margin: 0; color: var(--neutral-medium);">
+                        Evaluate against professional standards, brand guidelines, and intended use case. Make necessary refinements.
+                    </p>
+                    <div style="margin-top: 0.75rem; padding: 0.75rem; background: var(--neutral-light); border-radius: 6px;">
+                        <strong>Checklist:</strong> Brand compliance, technical quality, message clarity, professional polish
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before/After Examples -->
+            <h2 class="section-title"><i class="fas fa-before-after"></i>Strategic Improvement Examples</h2>
+
+            <div class="example-showcase">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-magic"></i> Strategic Approach Comparison
+                </h4>
+                
+                <div class="before-after-grid">
+                    <div class="before-example">
+                        <h5 style="color: #dc2626; margin-bottom: 1rem;">❌ Basic Approach</h5>
+                        <p style="margin-bottom: 1rem;"><strong>Request:</strong> "Make a presentation slide about quarterly sales"</p>
+                        <p style="margin-bottom: 1rem;"><strong>Tool Selection:</strong> Random choice</p>
+                        <p style="margin-bottom: 1rem;"><strong>Quality Check:</strong> Minimal review</p>
+                        <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                            <strong>Result:</strong> Generic, low-impact content that may not serve business needs effectively
+                        </div>
+                    </div>
+                    
+                    <div class="after-example">
+                        <h5 style="color: #065f46; margin-bottom: 1rem;">✅ Strategic Approach</h5>
+                        <p style="margin-bottom: 1rem;"><strong>Analysis:</strong> Executive audience, quarterly board meeting context</p>
+                        <p style="margin-bottom: 1rem;"><strong>Tool Selection:</strong> Gamma for professional presentation quality</p>
+                        <p style="margin-bottom: 1rem;"><strong>Prompt Strategy:</strong> "Executive quarterly sales presentation slide, modern corporate design, data-focused layout with clear hierarchy, professional blue color scheme, clean typography, suitable for boardroom presentation --ar 16:9"</p>
+                        <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                            <strong>Result:</strong> Professional, executive-ready presentation that enhances credibility and drives business decisions
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Strategy Generator -->
+            <h2 class="section-title"><i class="fas fa-cogs"></i>Interactive Strategy Generator</h2>
+
+            <div class="interactive-generator">
+                <h4 style="color: var(--primary-blue); margin-bottom: 1.5rem;">
+                    <i class="fas fa-robot"></i> Generate Your Content Strategy
+                </h4>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">What type of content do you need to create?</label>
+                    <div class="content-selector">
+                        <div class="selector-btn" onclick="selectContentType('marketing')">
+                            <i class="fas fa-bullhorn"></i><br>Marketing Graphics
+                        </div>
+                        <div class="selector-btn" onclick="selectContentType('presentation')">
+                            <i class="fas fa-presentation"></i><br>Business Presentation
+                        </div>
+                        <div class="selector-btn" onclick="selectContentType('social')">
+                            <i class="fas fa-share-alt"></i><br>Social Media
+                        </div>
+                        <div class="selector-btn" onclick="selectContentType('training')">
+                            <i class="fas fa-chalkboard-teacher"></i><br>Training Materials
+                        </div>
+                        <div class="selector-btn" onclick="selectContentType('report')">
+                            <i class="fas fa-chart-bar"></i><br>Executive Report
+                        </div>
+                        <div class="selector-btn" onclick="selectContentType('product')">
+                            <i class="fas fa-cube"></i><br>Product Mockup
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Who is your target audience?</label>
+                    <select id="audienceSelect" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select audience...</option>
+                        <option value="executives">C-Level Executives</option>
+                        <option value="managers">Department Managers</option>
+                        <option value="employees">General Employees</option>
+                        <option value="clients">External Clients</option>
+                        <option value="customers">Customers/Public</option>
+                        <option value="technical">Technical Teams</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">What's your primary goal?</label>
+                    <select id="goalSelect" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select goal...</option>
+                        <option value="inform">Inform/Educate</option>
+                        <option value="persuade">Persuade/Influence</option>
+                        <option value="engage">Engage/Entertain</option>
+                        <option value="instruct">Instruct/Train</option>
+                        <option value="report">Report/Document</option>
+                        <option value="promote">Promote/Market</option>
+                    </select>
+                </div>
+                
+                <button onclick="generateStrategy()" style="background: var(--gradient-primary); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%;">
+                    <i class="fas fa-magic"></i> Generate Strategic Recommendations
+                </button>
+                
+                <div id="strategyResult" class="generated-strategy">
+                    <h5 style="color: var(--primary-blue); margin-bottom: 1rem;">Your Personalized Content Strategy</h5>
+                    <div id="strategyContent"></div>
+                </div>
+            </div>
+
+            <!-- Best Practices Grid -->
+            <h2 class="section-title"><i class="fas fa-star"></i>Professional Best Practices</h2>
+
+            <div class="tips-card">
+                <h3><i class="fas fa-trophy"></i>Excellence in AI Content Creation</h3>
+                <div class="best-practices-grid">
+                    <div class="practice-card">
+                        <strong style="color: var(--accent-green);">Consistency is Key</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Develop style guides and template prompts to ensure brand consistency across all AI-generated content</span>
+                    </div>
+                    <div class="practice-card">
+                        <strong style="color: var(--accent-green);">Quality Over Quantity</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Invest time in perfecting prompts and refining outputs rather than generating large volumes of mediocre content</span>
+                    </div>
+                    <div class="practice-card">
+                        <strong style="color: var(--accent-green);">Know Your Tools</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Each AI tool has unique strengths - match the tool to the task for optimal results</span>
+                    </div>
+                    <div class="practice-card">
+                        <strong style="color: var(--accent-green);">Iterate Intelligently</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Use systematic A/B testing to understand what prompt variations produce the best results</span>
+                    </div>
+                    <div class="practice-card">
+                        <strong style="color: var(--accent-green);">Context Matters</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Always consider where and how the content will be used when developing your generation strategy</span>
+                    </div>
+                    <div class="practice-card">
+                        <strong style="color: var(--accent-green);">Professional Review</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Establish quality checkpoints and approval processes for AI-generated professional content</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool-Specific Tips -->
+            <div class="tool-specific-tips">
+                <h3 style="color: #92400e; font-weight: 700; margin-bottom: 1rem;">
+                    <i class="fas fa-tools"></i> Tool-Specific Success Strategies
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">DALL-E 3 Excellence:</strong><br>
+                        Use detailed photography terminology and specify lighting conditions for photorealistic results
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Gamma Presentations:</strong><br>
+                        Provide clear content hierarchy and specify slide types (title, content, data visualization)
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Midjourney Artistry:</strong><br>
+                        Use artistic style references and specific aspect ratios for compelling creative content
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Canva AI Efficiency:</strong><br>
+                        Leverage templates and brand kits for consistent, professional marketing materials
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Assessment Framework -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-blue);">
+                <h3 style="color: var(--primary-blue); font-weight: 700; margin-bottom: 1rem;">
+                    <i class="fas fa-clipboard-check"></i> Professional Quality Assessment Framework
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Technical Quality</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Resolution, clarity, format compatibility</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Brand Alignment</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Color compliance, style consistency, message clarity</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Professional Polish</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Attention to detail, error-free, business-appropriate</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Audience Appropriateness</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Tone, complexity level, cultural sensitivity</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Effectiveness</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Achieves intended goal, drives desired action</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #e879f9 0%, #c084fc 100%); border-radius: 12px;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">Ready to Master Advanced Techniques?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you understand strategic content creation, it's time to dive deep into prompt engineering mastery.</p>
+                <a href="activity-3-prompt-engineering-media.html" class="nav-btn">
+                    <i class="fas fa-graduation-cap"></i>
+                    Advanced Prompt Engineering
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-media-tools-overview.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Tools Overview
+                </a>
+                <a href="activity-3-prompt-engineering-media.html" class="nav-btn">
+                    Next: Prompt Engineering
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedContentType = '';
+        
+        function selectContentType(type) {
+            selectedContentType = type;
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.selector-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to selected button
+            event.currentTarget.classList.add('active');
+        }
+        
+        function generateStrategy() {
+            const audience = document.getElementById('audienceSelect').value;
+            const goal = document.getElementById('goalSelect').value;
+            
+            if (!selectedContentType || !audience || !goal) {
+                alert('Please complete all fields to generate your strategy.');
+                return;
+            }
+            
+            const strategies = {
+                marketing: {
+                    executives: {
+                        inform: {
+                            tool: 'DALL-E 3 or Adobe Firefly',
+                            approach: 'High-impact executive summary graphics with sophisticated data visualization',
+                            prompt: 'Executive-level marketing infographic, clean corporate design, minimal text, sophisticated color palette, data-focused layout, professional authority'
+                        },
+                        persuade: {
+                            tool: 'Canva AI or Beautiful.AI',
+                            approach: 'Compelling visual narratives with clear value propositions',
+                            prompt: 'Executive persuasion graphic, ROI-focused design, corporate blue palette, clear hierarchy, professional credibility markers'
+                        }
+                    },
+                    customers: {
+                        engage: {
+                            tool: 'Midjourney or DALL-E 3',
+                            approach: 'Emotionally resonant visuals that connect with customer values',
+                            prompt: 'Customer engagement marketing visual, warm approachable aesthetic, lifestyle photography style, emotional connection, professional but friendly'
+                        },
+                        promote: {
+                            tool: 'Canva AI',
+                            approach: 'Eye-catching promotional content optimized for conversion',
+                            prompt: 'Promotional marketing graphic, vibrant engaging colors, clear call-to-action, modern design, customer-focused messaging'
+                        }
+                    }
+                },
+                presentation: {
+                    executives: {
+                        inform: {
+                            tool: 'Gamma or Tome',
+                            approach: 'Data-rich presentations with executive-level sophistication',
+                            prompt: 'Executive presentation slide, clean minimalist design, data visualization focus, corporate color scheme, high credibility aesthetic'
+                        },
+                        report: {
+                            tool: 'Beautiful.AI',
+                            approach: 'Comprehensive reporting with clear insights and recommendations',
+                            prompt: 'Executive report presentation, sophisticated data layout, clear insights hierarchy, professional authority, decision-focused design'
+                        }
+                    },
+                    employees: {
+                        instruct: {
+                            tool: 'Gamma',
+                            approach: 'Clear, instructional content with step-by-step guidance',
+                            prompt: 'Employee training presentation, clear instructional design, accessible color scheme, step-by-step layout, engaging but professional'
+                        }
+                    }
+                }
+                // Add more combinations as needed
+            };
+            
+            const strategy = strategies[selectedContentType]?.[audience]?.[goal];
+            
+            if (strategy) {
+                document.getElementById('strategyContent').innerHTML = `
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="color: var(--accent-green);">Recommended Tool:</strong><br>
+                        ${strategy.tool}
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="color: var(--accent-green);">Strategic Approach:</strong><br>
+                        ${strategy.approach}
+                    </div>
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid var(--primary-blue);">
+                        <strong style="color: var(--primary-blue);">Suggested Prompt Framework:</strong><br>
+                        <em>"${strategy.prompt}"</em>
+                    </div>
+                    <div style="margin-top: 1rem; padding: 1rem; background: var(--neutral-light); border-radius: 6px;">
+                        <strong>Next Steps:</strong><br>
+                        1. Customize this prompt with your specific content details<br>
+                        2. Generate 3-5 variations to compare quality<br>
+                        3. Refine based on your brand guidelines<br>
+                        4. Test with your target audience if possible
+                    </div>
+                `;
+            } else {
+                document.getElementById('strategyContent').innerHTML = `
+                    <div style="padding: 1rem; background: #fef3c7; border-radius: 6px; border-left: 4px solid #f59e0b;">
+                        <strong>Custom Strategy Needed</strong><br>
+                        This specific combination requires a custom approach. Consider:
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with the tool recommendations from Activity 1</li>
+                            <li>Apply the prompt engineering techniques from Activity 3</li>
+                            <li>Test multiple approaches and iterate based on results</li>
+                            <li>Focus on your specific audience needs and brand requirements</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            document.getElementById('strategyResult').style.display = 'block';
+            document.getElementById('strategyResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

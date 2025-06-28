@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Integration Strategy Assessment - Module 8</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #0891b2;
+        }
+        .question-number {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: var(--neutral-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background: #e0f2fe;
+            border-color: #0891b2;
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+        .option.selected {
+            background: #e0f2fe;
+            border-color: #0891b2;
+        }
+        .scenario-question {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .case-study {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid #22c55e;
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #166534;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+        }
+        .mastery-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        .strategic-novice { background: #fee2e2; color: #dc2626; }
+        .developing-strategist { background: #fef3c7; color: #92400e; }
+        .competent-leader { background: #dbeafe; color: #1e40af; }
+        .strategic-expert { background: #d1fae5; color: #065f46; }
+        .implementation-master { background: #ede9fe; color: #5b21b6; }
+        .complexity-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .basic { background: #dbeafe; color: #1e40af; }
+        .intermediate { background: #fef3c7; color: #92400e; }
+        .advanced { background: #fee2e2; color: #dc2626; }
+        .expert { background: #ede9fe; color: #5b21b6; }
+        .roi-calculation {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+        .implementation-matrix {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .strategy-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .strategy-option {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 8</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Integration Assessment</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-ai-readiness-assessment.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/implementation-strategy-builder.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI Integration Strategy Assessment</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Demonstrate your mastery of AI implementation strategy, change management, and ROI measurement. This comprehensive assessment evaluates your ability to design, execute, and optimize organizational AI transformation initiatives.
+            </p>
+
+            <div class="quiz-container">
+
+                <!-- Question 1: Strategic Planning Foundation -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        <span class="complexity-level basic">Foundation</span>
+                        Which component of the SCALE framework should be completed first when beginning an AI implementation initiative?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            Change Management - because employee buy-in is most critical
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            Strategic Assessment - to evaluate organizational readiness and identify opportunities
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            Adoption Planning - to ensure systematic rollout processes
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            Learning Systems - to build foundational capabilities first
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: Readiness Assessment -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        <span class="complexity-level intermediate">Analysis</span>
+                        An organization scores 2.1/5.0 on Technical Infrastructure and 4.2/5.0 on Leadership Commitment in their AI readiness assessment. What should be the primary focus?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            Proceed immediately with AI implementation to leverage strong leadership support
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            Delay implementation until technical infrastructure reaches at least 3.5/5.0
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            Leverage leadership support to accelerate technical infrastructure development while running limited pilots
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            Focus on other dimensions since these two are at opposite extremes
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Change Management Strategy -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        <span class="complexity-level intermediate">Application</span>
+                        In the BRIDGE framework, which element is most critical for sustaining long-term AI adoption?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            Build Awareness - ensuring everyone understands AI capabilities
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            Generate Momentum - creating quick wins and visible successes
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            Embed & Sustain - integrating AI into organizational culture and standard practices
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            Develop Capabilities - building comprehensive skills across the organization
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4: ROI Calculation Scenario -->
+                <div class="question-card">
+                    <div class="scenario-question">
+                        <h4 style="color: #0c4a6e; margin-bottom: 1rem;">
+                            <i class="fas fa-calculator"></i> ROI Calculation Challenge
+                            <span class="complexity-level advanced">Advanced</span>
+                        </h4>
+                        <div class="roi-calculation">
+                            Initial AI Implementation Costs:
+                            • Technology & Software: $150,000
+                            • Training & Development: $75,000
+                            • Implementation Services: $100,000
+                            • Annual Operating Costs: $50,000
+
+                            Annual Benefits (starting Year 1):
+                            • Labor Cost Savings: $200,000
+                            • Revenue Increases: $150,000
+                            • Quality Cost Reductions: $75,000
+                            
+                            Analysis Period: 3 years
+                            Discount Rate: 8%
+                            Benefit Growth Rate: 5% annually
+                        </div>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        What is the approximate 3-year ROI for this AI implementation?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            150-200% (Modest positive return)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            250-300% (Strong positive return)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            350-400% (Excellent return)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            450-500% (Exceptional return)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5: VALUE Framework Application -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        <span class="complexity-level intermediate">Framework</span>
+                        Which VALUE framework dimension would be most appropriate for measuring the success of AI implementation in a customer service department?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            Velocity & Efficiency Gains - focusing on response time improvements
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            User Experience & Satisfaction - measuring both customer and employee experience
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            Economic Returns & Financial Impact - tracking cost savings from automation
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            All dimensions should be measured equally for comprehensive assessment
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: Implementation Strategy Case Study -->
+                <div class="question-card">
+                    <div class="case-study">
+                        <h4 style="color: #7c3aed; margin-bottom: 1rem;">
+                            <i class="fas fa-building"></i> Healthcare System Case Study
+                            <span class="complexity-level expert">Expert Level</span>
+                        </h4>
+                        <p style="margin-bottom: 1rem;">
+                            A 1,200-employee regional healthcare system wants to implement AI for clinical decision support and administrative efficiency. They have strong leadership support but face significant resistance from physicians concerned about patient safety and liability. Current technology infrastructure is adequate but not optimized. Budget allocation is substantial ($2M over 3 years).
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Key Constraints:</strong> Regulatory compliance requirements (HIPAA, FDA), physician autonomy concerns, patient safety mandates, and complex integration with existing electronic health records.
+                        </p>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        What should be the primary focus of the initial implementation strategy?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            Comprehensive system-wide deployment to demonstrate commitment and achieve scale benefits
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            Physician-led pilot programs in non-critical areas with extensive safety validation and peer review
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            Administrative automation first to build confidence before clinical applications
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            Technology infrastructure upgrades before any AI implementation
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7: Risk Mitigation -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">7</span>
+                        <span class="complexity-level advanced">Strategic</span>
+                        Which risk mitigation strategy is most effective for addressing "cognitive overload" resistance in AI adoption?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            Provide comprehensive training materials and expect employees to adapt
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            Implement gradual introduction with micro-learning modules, peer mentoring, and flexible pacing
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            Replace resistant employees with AI-savvy new hires
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            Mandate AI usage and provide incentives for quick adoption
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8: Success Metrics -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">8</span>
+                        <span class="complexity-level intermediate">Measurement</span>
+                        What is the most important leading indicator for predicting long-term AI implementation success?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            Technology adoption rates and system usage statistics
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            Employee engagement scores and change sentiment indicators
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            Immediate productivity improvements and efficiency gains
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            Budget utilization and timeline adherence metrics
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9: Strategic Decision Making -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">9</span>
+                        <span class="complexity-level expert">Leadership</span>
+                        An organization achieves 85% adoption rates and strong productivity gains in their AI pilot, but employee satisfaction scores are declining. What should leadership prioritize?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            Continue expansion based on strong adoption and productivity metrics
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            Pause expansion to investigate and address satisfaction concerns before proceeding
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            Accelerate expansion while implementing parallel employee support programs
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            Reduce AI implementation scope to focus only on high-satisfaction areas
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10: Implementation Strategy Comparison -->
+                <div class="question-card">
+                    <div class="strategy-comparison">
+                        <div class="strategy-option">
+                            <h5 style="color: #0891b2; margin-bottom: 0.5rem;">Strategy A: Big Bang</h5>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>Organization-wide simultaneous deployment</li>
+                                <li>Comprehensive training program</li>
+                                <li>Unified change management</li>
+                                <li>12-month implementation timeline</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-option">
+                            <h5 style="color: #0891b2; margin-bottom: 0.5rem;">Strategy B: Gradual Rollout</h5>
+                            <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                <li>Department-by-department implementation</li>
+                                <li>Lessons learned integration</li>
+                                <li>Tailored change management</li>
+                                <li>24-month implementation timeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">10</span>
+                        <span class="complexity-level expert">Strategic Choice</span>
+                        For a mid-size professional services firm with moderate change management maturity and limited AI experience, which strategy is most appropriate?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            Strategy A - to demonstrate commitment and achieve unified culture change
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            Strategy B - to reduce risk and enable learning-based optimization
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            Hybrid approach combining elements of both strategies
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            Neither - outsource implementation to external consultants
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 11: Organizational Dynamics -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">11</span>
+                        <span class="complexity-level advanced">Systems Thinking</span>
+                        Which factor is most likely to cause AI implementation failure despite having strong technical capabilities and adequate budget?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q11" value="a">
+                            Insufficient AI champion network development
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="b">
+                            Lack of cultural alignment with organizational values and practices
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="c">
+                            Inadequate measurement and feedback systems
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="d">
+                            Competitive pressures and market changes during implementation
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 12: Strategic Integration -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">12</span>
+                        <span class="complexity-level expert">Integration</span>
+                        What is the most important characteristic of a successful AI implementation strategy that integrates readiness assessment, change management, and ROI measurement?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q12" value="a">
+                            Sequential execution of each component with clear gates and milestones
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="b">
+                            Iterative integration with continuous feedback loops and adaptive optimization
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="c">
+                            Parallel implementation of all components to accelerate timeline
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="d">
+                            Prioritization of technical implementation over people and process considerations
+                        </label>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-rocket"></i>
+                    Submit AI Integration Assessment
+                </button>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/implementation-strategy-builder.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Strategy Builder
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Implementation Discussion
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // Strategic Assessment comes first in SCALE
+                q2: 'c', // Leverage leadership support for infrastructure while piloting
+                q3: 'c', // Embed & Sustain is critical for long-term adoption
+                q4: 'c', // 350-400% ROI calculation
+                q5: 'd', // All VALUE dimensions should be measured
+                q6: 'b', // Physician-led pilots with safety validation
+                q7: 'b', // Gradual introduction with support systems
+                q8: 'b', // Employee engagement is key leading indicator
+                q9: 'b', // Address satisfaction concerns before expansion
+                q10: 'b', // Gradual rollout for moderate maturity organization
+                q11: 'b', // Cultural alignment is most critical
+                q12: 'b'  // Iterative integration with feedback loops
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / total) * 100);
+            let masteryLevel = '';
+            let message = '';
+            let encouragement = '';
+
+            if (percentage >= 90) {
+                masteryLevel = 'implementation-master';
+                message = 'AI Implementation Master!';
+                encouragement = 'Exceptional! You have demonstrated mastery-level understanding of AI implementation strategy, change management, and ROI measurement. You\'re prepared to lead large-scale AI transformation initiatives and guide organizations through complex implementation challenges.';
+            } else if (percentage >= 80) {
+                masteryLevel = 'strategic-expert';
+                message = 'Strategic Implementation Expert';
+                encouragement = 'Outstanding! You have expert-level strategic thinking capabilities and can design comprehensive AI implementation strategies. You understand the integration of technical, people, and business considerations required for success.';
+            } else if (percentage >= 70) {
+                masteryLevel = 'competent-leader';
+                message = 'Competent Implementation Leader';
+                encouragement = 'Strong performance! You understand core implementation principles and can lead AI initiatives effectively. Focus on advanced strategic integration and complex organizational dynamics to reach expert level.';
+            } else if (percentage >= 60) {
+                masteryLevel = 'developing-strategist';
+                message = 'Developing Implementation Strategist';
+                encouragement = 'Good progress! You grasp fundamental implementation concepts but need more practice with strategic integration and change management. Review the SCALE and BRIDGE frameworks and practice with case studies.';
+            } else {
+                masteryLevel = 'strategic-novice';
+                message = 'Strategic Implementation Novice';
+                encouragement = 'Focus on building foundational knowledge in AI readiness assessment, change management, and ROI measurement. Review all Module 8 learning activities and practice with the implementation strategy builder.';
+            }
+
+            document.getElementById('score').innerHTML = `
+                ${message}<br>
+                <span style="font-size: 1.2rem;">${score}/${total} correct (${percentage}%)</span><br>
+                <span class="mastery-level ${masteryLevel}">
+                    ${masteryLevel.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                </span>
+            `;
+            
+            document.getElementById('feedback').innerHTML = `
+                <p style="margin-bottom: 1rem;">${encouragement}</p>
+                
+                <h4 style="color: #166534; margin-bottom: 0.5rem;">Your AI Implementation Leadership Profile:</h4>
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>Strategic Planning:</strong> ${score >= 10 ? 'Advanced' : score >= 8 ? 'Proficient' : score >= 6 ? 'Developing' : 'Basic'}<br>
+                    <strong>Change Management:</strong> ${score >= 9 ? 'Expert' : score >= 7 ? 'Competent' : score >= 5 ? 'Learning' : 'Novice'}<br>
+                    <strong>Implementation Execution:</strong> ${score >= 11 ? 'Master' : score >= 8 ? 'Leader' : score >= 6 ? 'Contributor' : 'Learner'}<br>
+                    <strong>ROI & Measurement:</strong> ${percentage >= 80 ? 'Advanced Analytics' : percentage >= 60 ? 'Competent Measurement' : 'Basic Understanding'}
+                </div>
+                
+                <h4 style="color: #166534; margin-bottom: 0.5rem;">Recommended Development Actions:</h4>
+                <ul style="margin-left: 1rem;">
+                    ${percentage >= 80 
+                        ? '<li>Lead AI transformation initiatives in your organization</li><li>Mentor others in implementation strategy and change management</li><li>Contribute to industry best practices and thought leadership</li><li>Pursue advanced AI strategy and governance roles</li>' 
+                        : percentage >= 70 
+                            ? '<li>Apply your knowledge to real implementation projects</li><li>Practice advanced strategic integration concepts</li><li>Develop expertise in organizational change dynamics</li><li>Build experience with complex ROI modeling</li>' 
+                            : '<li>Complete additional practice with the implementation strategy builder</li><li>Review case studies and real-world implementation examples</li><li>Practice change management scenarios and frameworks</li><li>Build competency in ROI calculation and measurement</li>'
+                    }
+                </ul>
+                
+                <div style="background: #e0f2fe; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                    <strong><i class="fas fa-rocket"></i> Leadership Insight:</strong> 
+                    Successful AI implementation requires masterful integration of technical strategy, human psychology, and business value creation. Excellence comes from understanding that AI transformation is fundamentally about organizational evolution, not just technology adoption.
+                </div>
+            `;
+            
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

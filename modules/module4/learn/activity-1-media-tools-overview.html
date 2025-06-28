@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: AI Media Creation Tools Overview - Module 4</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .tool-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+        }
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--neutral-dark);
+        }
+        .tool-category {
+            background: var(--gradient-accent);
+            color: var(--neutral-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: var(--neutral-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .comparison-table th {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--neutral-light);
+        }
+        .comparison-table tr:hover {
+            background: var(--neutral-light);
+        }
+        .rating {
+            display: flex;
+            gap: 0.25rem;
+        }
+        .star {
+            color: #fbbf24;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 4</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Learning Activity 1</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/tools-comparison-matrix.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/media-creation-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Learning Activity 1: AI Media Creation Tools Overview</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Explore the landscape of AI-powered media creation tools and learn how to select the right tools for your professional needs.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Learning Objectives</h3>
+                <p style="margin-bottom: 1rem;">After completing this activity, you will be able to:</p>
+                <ul class="modern-list">
+                    <li>Identify major categories of AI media creation tools</li>
+                    <li>Compare features and capabilities of leading platforms</li>
+                    <li>Evaluate tools based on professional requirements and use cases</li>
+                    <li>Understand pricing models and accessibility considerations</li>
+                    <li>Select appropriate tools for specific media creation tasks</li>
+                </ul>
+            </div>
+
+            <!-- Tool Categories -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i>AI Media Tool Categories</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    
+                    <!-- Image Generation -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon" style="background: var(--gradient-primary);">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div>
+                                <div class="tool-name">Image Generation</div>
+                                <div class="tool-category">Visual Content</div>
+                            </div>
+                        </div>
+                        <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                            Create original images, illustrations, and graphics from text descriptions.
+                        </p>
+                        <div style="background: var(--neutral-light); padding: 1rem; border-radius: 8px;">
+                            <strong>Key Tools:</strong> DALL-E 3, Midjourney, Stable Diffusion, Adobe Firefly
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <strong>Best For:</strong> Marketing graphics, illustrations, concept art, social media content
+                        </div>
+                    </div>
+
+                    <!-- Video Creation -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div>
+                                <div class="tool-name">Video Generation</div>
+                                <div class="tool-category">Dynamic Media</div>
+                            </div>
+                        </div>
+                        <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                            Generate videos, animations, and motion graphics with AI assistance.
+                        </p>
+                        <div style="background: var(--neutral-light); padding: 1rem; border-radius: 8px;">
+                            <strong>Key Tools:</strong> RunwayML, Synthesia, Luma AI, Pika Labs
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <strong>Best For:</strong> Training videos, presentations, social media content, explainers
+                        </div>
+                    </div>
+
+                    <!-- Presentation Tools -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                                <i class="fas fa-presentation"></i>
+                            </div>
+                            <div>
+                                <div class="tool-name">Presentation AI</div>
+                                <div class="tool-category">Business Tools</div>
+                            </div>
+                        </div>
+                        <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                            Create professional presentations with AI-powered design and content generation.
+                        </p>
+                        <div style="background: var(--neutral-light); padding: 1rem; border-radius: 8px;">
+                            <strong>Key Tools:</strong> Gamma, Beautiful.AI, Tome, Canva AI
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <strong>Best For:</strong> Business presentations, pitches, reports, educational content
+                        </div>
+                    </div>
+
+                    <!-- Design & Graphics -->
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon" style="background: var(--gradient-accent);">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <div class="tool-name">Design & Graphics</div>
+                                <div class="tool-category">Creative Suite</div>
+                            </div>
+                        </div>
+                        <p style="margin-bottom: 1rem; color: var(--neutral-medium);">
+                            Design professional graphics, layouts, and brand materials with AI assistance.
+                        </p>
+                        <div style="background: var(--neutral-light); padding: 1rem; border-radius: 8px;">
+                            <strong>Key Tools:</strong> Canva AI, Adobe Creative Cloud AI, Figma AI
+                        </div>
+                        <div style="margin-top: 0.75rem;">
+                            <strong>Best For:</strong> Logos, brochures, infographics, brand assets, web design
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tool Comparison -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i>Popular Tool Comparison</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Category</th>
+                            <th>Ease of Use</th>
+                            <th>Quality</th>
+                            <th>Pricing</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>DALL-E 3</strong></td>
+                            <td>Image Generation</td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★★</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★★</span>
+                                </div>
+                            </td>
+                            <td>$20/month</td>
+                            <td>High-quality realistic images</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Midjourney</strong></td>
+                            <td>Image Generation</td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★☆</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★★</span>
+                                </div>
+                            </td>
+                            <td>$10-60/month</td>
+                            <td>Artistic and creative visuals</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gamma</strong></td>
+                            <td>Presentations</td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★★</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★☆</span>
+                                </div>
+                            </td>
+                            <td>Free-$20/month</td>
+                            <td>Quick professional presentations</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RunwayML</strong></td>
+                            <td>Video Generation</td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★☆☆</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★☆</span>
+                                </div>
+                            </td>
+                            <td>$15-95/month</td>
+                            <td>Video editing and generation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Canva AI</strong></td>
+                            <td>Design & Graphics</td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★★</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★☆</span>
+                                </div>
+                            </td>
+                            <td>Free-$15/month</td>
+                            <td>General design and marketing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Synthesia</strong></td>
+                            <td>Video Creation</td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★☆</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <span class="star">★★★★☆</span>
+                                </div>
+                            </td>
+                            <td>$30-90/month</td>
+                            <td>AI avatar presentations</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Selection Criteria -->
+            <div class="tips-card">
+                <h3><i class="fas fa-checklist"></i>Tool Selection Criteria</h3>
+                <p style="margin-bottom: 1rem;">Consider these factors when choosing AI media tools for your professional needs:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Quality Requirements</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Output resolution, style consistency, professional standards</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Ease of Use</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Learning curve, interface design, template availability</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Integration Needs</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Workflow compatibility, file formats, collaboration features</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Budget & Licensing</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Subscription costs, usage limits, commercial rights</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Use Cases -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i>Professional Use Cases</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 1.5rem 0;">
+                    <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--primary-blue);">
+                        <h4 style="color: var(--primary-blue); font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-chart-line"></i> Marketing & Sales
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Social media graphics and campaigns</li>
+                            <li style="margin-bottom: 0.5rem;">• Product mockups and demonstrations</li>
+                            <li style="margin-bottom: 0.5rem;">• Sales presentation materials</li>
+                            <li style="margin-bottom: 0.5rem;">• Brochures and marketing collateral</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-green);">
+                        <h4 style="color: #065f46; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-graduation-cap"></i> Training & Education
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Instructional video content</li>
+                            <li style="margin-bottom: 0.5rem;">• Interactive learning materials</li>
+                            <li style="margin-bottom: 0.5rem;">• Course presentations and slides</li>
+                            <li style="margin-bottom: 0.5rem;">• Visual aids and infographics</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-orange);">
+                        <h4 style="color: #92400e; font-weight: 700; margin-bottom: 1rem;">
+                            <i class="fas fa-handshake"></i> Client Services
+                        </h4>
+                        <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                            <li style="margin-bottom: 0.5rem;">• Professional proposals and reports</li>
+                            <li style="margin-bottom: 0.5rem;">• Client presentation materials</li>
+                            <li style="margin-bottom: 0.5rem;">• Visual project updates</li>
+                            <li style="margin-bottom: 0.5rem;">• Custom branded content</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-blue);">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-key"></i> Key Takeaways
+                </h3>
+                <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                    <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Different AI tools excel in different media types - choose based on your specific needs</li>
+                    <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Consider both quality requirements and ease of use for your team</li>
+                    <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Budget for multiple tools to cover different content creation needs</li>
+                    <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Start with user-friendly tools before advancing to more complex platforms</li>
+                    <li style="margin-bottom: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.7); border-radius: 6px;">• Always verify licensing and commercial usage rights for professional work</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-visual-content-generation.html" class="nav-btn">
+                    Next: Visual Content Generation
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

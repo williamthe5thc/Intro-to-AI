@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: Chatbot Implementation Case Study - Module 3</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .scenario-card {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .task-section {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            border: 2px solid var(--neutral-light);
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .task-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+        }
+        
+        .task-content {
+            padding: 1.5rem;
+        }
+        
+        .consideration-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .deliverable-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .deliverable-card {
+            background: var(--neutral-white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .deliverable-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--neutral-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .rubric-table th {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .rubric-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--neutral-light);
+        }
+        
+        .rubric-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 3</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Practice Activity</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chatbot-fundamentals.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/chatbot-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Chatbot Implementation Case Study</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Apply your knowledge of chatbot fundamentals, no-code platforms, and legal/ethical considerations to design and evaluate a comprehensive chatbot implementation strategy.
+            </p>
+
+            <!-- Practice Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Practice Objectives</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>Duration:</strong> 45-60 minutes</div>
+                    <div><strong>Format:</strong> Individual case analysis</div>
+                    <div><strong>Submission:</strong> Written report + presentation</div>
+                    <div><strong>Assessment:</strong> Comprehensive rubric</div>
+                </div>
+            </div>
+
+            <!-- Case Scenario -->
+            <div class="scenario-card">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-briefcase"></i>Case Scenario: Peterson & Associates Law Firm
+                </h3>
+                <div style="background: rgba(255,255,255,0.8); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                    <p style="margin-bottom: 1rem;"><strong>Firm Background:</strong> Peterson & Associates is a mid-sized law firm (25 attorneys) specializing in corporate law, employment law, and intellectual property. They receive approximately 200 initial client inquiries per month through their website.</p>
+                    
+                    <p style="margin-bottom: 1rem;"><strong>Current Challenge:</strong> The firm is overwhelmed with initial client intake calls and website inquiries. Many potential clients abandon the process due to long response times (averaging 48-72 hours). The managing partner wants to implement a chatbot to improve response times and capture more qualified leads.</p>
+                    
+                    <p style="margin-bottom: 1rem;"><strong>Key Stakeholders:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li><strong>Sarah Peterson</strong> - Managing Partner (wants efficiency but concerned about ethics)</li>
+                        <li><strong>Michael Chen</strong> - IT Director (advocates for advanced AI solutions)</li>
+                        <li><strong>Dr. Lisa Martinez</strong> - Ethics Committee Chair (prioritizes compliance)</li>
+                        <li><strong>James Wilson</strong> - Client Relations Manager (wants better client experience)</li>
+                    </ul>
+                    
+                    <p><strong>Your Role:</strong> You are a legal technology consultant hired to evaluate chatbot options and provide implementation recommendations that balance efficiency, ethics, and legal compliance.</p>
+                </div>
+            </div>
+
+            <!-- Task Sections -->
+            <h2 class="section-title"><i class="fas fa-tasks"></i>Case Analysis Tasks</h2>
+
+            <!-- Task 1 -->
+            <div class="task-section">
+                <div class="task-header">
+                    <i class="fas fa-search"></i> Task 1: Needs Assessment & Use Case Definition
+                </div>
+                <div class="task-content">
+                    <h4 style="margin-bottom: 1rem;">Analyze the firm's requirements and define appropriate chatbot use cases.</h4>
+                    
+                    <div class="consideration-box">
+                        <strong>Consider:</strong> What specific tasks should the chatbot handle? What should it avoid? How does this align with the firm's practice areas and client types?
+                    </div>
+                    
+                    <h5 style="color: var(--primary-blue); margin: 1rem 0 0.5rem 0;">Your Analysis Should Include:</h5>
+                    <ul class="modern-list">
+                        <li>Identification of 3-5 specific chatbot use cases appropriate for this firm</li>
+                        <li>Clear boundaries of what the chatbot should NOT do</li>
+                        <li>Analysis of how different practice areas might benefit differently</li>
+                        <li>Consideration of client demographics and technology comfort levels</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-section">
+                <div class="task-header">
+                    <i class="fas fa-tools"></i> Task 2: Platform Evaluation
+                </div>
+                <div class="task-content">
+                    <h4 style="margin-bottom: 1rem;">Evaluate and compare no-code chatbot platforms for this specific implementation.</h4>
+                    
+                    <div class="consideration-box">
+                        <strong>Consider:</strong> Which platforms best meet the firm's needs? What are the key evaluation criteria? How do costs compare to benefits?
+                    </div>
+                    
+                    <h5 style="color: var(--primary-blue); margin: 1rem 0 0.5rem 0;">Your Evaluation Should Include:</h5>
+                    <ul class="modern-list">
+                        <li>Comparison of at least 3 no-code chatbot platforms</li>
+                        <li>Evaluation criteria matrix (features, cost, security, compliance)</li>
+                        <li>Recommendation with clear justification</li>
+                        <li>Implementation timeline and resource requirements</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-section">
+                <div class="task-header">
+                    <i class="fas fa-balance-scale"></i> Task 3: Legal & Ethical Compliance Analysis
+                </div>
+                <div class="task-content">
+                    <h4 style="margin-bottom: 1rem;">Address legal and ethical considerations for the proposed chatbot implementation.</h4>
+                    
+                    <div class="consideration-box">
+                        <strong>Consider:</strong> How will you ensure compliance with professional ethics rules? What disclaimers and safeguards are needed? How will you protect client confidentiality?
+                    </div>
+                    
+                    <h5 style="color: var(--primary-blue); margin: 1rem 0 0.5rem 0;">Your Compliance Analysis Should Include:</h5>
+                    <ul class="modern-list">
+                        <li>Identification of relevant ethics rules and potential violations</li>
+                        <li>Required disclaimers and user notifications</li>
+                        <li>Data security and confidentiality measures</li>
+                        <li>Ongoing monitoring and compliance procedures</li>
+                        <li>Risk mitigation strategies for identified concerns</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="task-section">
+                <div class="task-header">
+                    <i class="fas fa-presentation"></i> Task 4: Stakeholder Presentation
+                </div>
+                <div class="task-content">
+                    <h4 style="margin-bottom: 1rem;">Prepare recommendations for presentation to firm leadership.</h4>
+                    
+                    <div class="consideration-box">
+                        <strong>Consider:</strong> How will you address each stakeholder's concerns? What implementation approach will gain buy-in? How will you measure success?
+                    </div>
+                    
+                    <h5 style="color: var(--primary-blue); margin: 1rem 0 0.5rem 0;">Your Presentation Should Include:</h5>
+                    <ul class="modern-list">
+                        <li>Executive summary with clear recommendations</li>
+                        <li>Addressing specific stakeholder concerns</li>
+                        <li>Implementation roadmap with phases and milestones</li>
+                        <li>Budget analysis and ROI projections</li>
+                        <li>Success metrics and monitoring plan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Deliverables -->
+            <h2 class="section-title"><i class="fas fa-clipboard-list"></i>Required Deliverables</h2>
+            
+            <div class="deliverable-grid">
+                <div class="deliverable-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;"><i class="fas fa-file-alt"></i> Written Report</h4>
+                    <p style="margin-bottom: 1rem;">5-7 page comprehensive analysis covering all four tasks with supporting research and citations.</p>
+                    <ul style="font-size: 0.9rem; color: #6b7280;">
+                        <li>Executive summary</li>
+                        <li>Detailed task analyses</li>
+                        <li>Platform comparison matrix</li>
+                        <li>Compliance checklist</li>
+                        <li>Implementation timeline</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;"><i class="fas fa-presentation"></i> Slide Presentation</h4>
+                    <p style="margin-bottom: 1rem;">10-12 slide presentation suitable for firm partners and stakeholders.</p>
+                    <ul style="font-size: 0.9rem; color: #6b7280;">
+                        <li>Problem statement</li>
+                        <li>Recommended solution</li>
+                        <li>Platform comparison</li>
+                        <li>Compliance measures</li>
+                        <li>Implementation plan</li>
+                        <li>Budget and ROI</li>
+                    </ul>
+                </div>
+                
+                <div class="deliverable-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i> Compliance Framework</h4>
+                    <p style="margin-bottom: 1rem;">Detailed compliance checklist and monitoring procedures.</p>
+                    <ul style="font-size: 0.9rem; color: #6b7280;">
+                        <li>Pre-launch checklist</li>
+                        <li>Ongoing monitoring</li>
+                        <li>Staff training plan</li>
+                        <li>Client disclosure templates</li>
+                        <li>Incident response plan</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Evaluation Rubric -->
+            <h2 class="section-title"><i class="fas fa-clipboard-check"></i>Evaluation Rubric</h2>
+            
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Excellent (4)</th>
+                        <th>Good (3)</th>
+                        <th>Satisfactory (2)</th>
+                        <th>Needs Improvement (1)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Needs Assessment</strong></td>
+                        <td>Comprehensive analysis with innovative insights</td>
+                        <td>Thorough analysis of most key factors</td>
+                        <td>Basic analysis covering main points</td>
+                        <td>Incomplete or superficial analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Platform Evaluation</strong></td>
+                        <td>Detailed comparison with clear methodology</td>
+                        <td>Good comparison with justification</td>
+                        <td>Basic comparison of platforms</td>
+                        <td>Limited or unclear comparison</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal/Ethical Analysis</strong></td>
+                        <td>Sophisticated understanding of all issues</td>
+                        <td>Good grasp of major legal/ethical concerns</td>
+                        <td>Basic understanding of key issues</td>
+                        <td>Minimal or incorrect legal analysis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Implementation Plan</strong></td>
+                        <td>Realistic, detailed, and well-sequenced</td>
+                        <td>Good plan with clear phases</td>
+                        <td>Basic plan with some details</td>
+                        <td>Vague or unrealistic plan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional Presentation</strong></td>
+                        <td>Polished, engaging, and persuasive</td>
+                        <td>Well-organized and professional</td>
+                        <td>Clear and adequately presented</td>
+                        <td>Poor organization or presentation</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Resources and Tips -->
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i>Success Tips</h3>
+                <ul class="modern-list">
+                    <li><strong>Research Real Platforms:</strong> Investigate actual no-code chatbot services for accurate comparisons</li>
+                    <li><strong>Cite Ethics Rules:</strong> Reference specific ABA Model Rules and state bar guidance</li>
+                    <li><strong>Think Like a Consultant:</strong> Consider practical implementation challenges and costs</li>
+                    <li><strong>Address All Stakeholders:</strong> Show how your solution meets different stakeholder needs</li>
+                    <li><strong>Be Specific:</strong> Provide concrete examples and actionable recommendations</li>
+                    <li><strong>Consider Edge Cases:</strong> Think about what could go wrong and how to prevent it</li>
+                </ul>
+            </div>
+
+            <!-- Submission Instructions -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px;">
+                <h3 style="color: #065f46; margin-bottom: 1rem;">Ready to Submit Your Analysis?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Upload your completed report, presentation, and compliance framework to demonstrate your mastery of chatbot implementation principles.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../assets/chatbot-quiz.html" class="nav-btn">
+                        <i class="fas fa-question-circle"></i>
+                        Take Quiz Next
+                    </a>
+                    <a href="../assets/discussion.html" class="nav-btn secondary">
+                        <i class="fas fa-comments"></i>
+                        Join Discussion
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-3-legal-ethical-implications.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Legal & Ethics
+                </a>
+                <a href="../assets/chatbot-quiz.html" class="nav-btn">
+                    Next: Assessment Quiz
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

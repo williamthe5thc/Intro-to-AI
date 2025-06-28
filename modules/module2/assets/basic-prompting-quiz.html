@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Prompting Knowledge Check Quiz - Module 2</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-blue);
+        }
+        .question-number {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background: #e0e7ff;
+            border-color: var(--primary-light);
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+        .option.selected {
+            background: #dbeafe;
+            border-color: var(--primary-blue);
+        }
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-green);
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 2</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Quiz</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-prompting-basics.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompting-activity.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Basic Prompting Knowledge Check Quiz</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Test your understanding of prompt engineering fundamentals. This quiz covers key concepts from Module 2's learning activities.
+            </p>
+
+            <div class="quiz-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        What is the primary purpose of the CLEAR framework in prompt engineering?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            To make prompts shorter and more concise
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            To provide a structured approach for creating effective professional prompts
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            To ensure all prompts use technical language
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            To limit the AI's response options
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        In zero-shot prompting, what does "zero-shot" refer to?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            The AI gets zero attempts to respond
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            The prompt contains zero examples or demonstrations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            The response should be zero words long
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            The prompt uses zero context
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        Which element of the CLEAR framework helps the AI understand the professional setting?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            Length
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            Examples
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            Context
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            Role
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        What is the main advantage of few-shot prompting over zero-shot prompting?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            It's faster to write
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            It provides examples that guide the AI toward the desired output format and style
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            It uses fewer words
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            It works with all types of AI models
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        When crafting prompts for professional use, which practice is most important?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            Using as many technical terms as possible
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            Being specific about context, audience, and desired format
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            Keeping prompts as short as possible
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            Avoiding any examples or context
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        What does "iterating" mean in the context of prompt engineering?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            Writing one perfect prompt the first time
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            Refining and improving prompts based on the AI's responses
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            Using the same prompt repeatedly
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            Copying prompts from other sources
+                        </label>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-check"></i>
+                    Submit Quiz
+                </button>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/prompting-activity.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Practice Activity
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Discussion Forum
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // CLEAR framework provides structured approach
+                q2: 'b', // Zero-shot means no examples
+                q3: 'c', // Context provides professional setting
+                q4: 'b', // Few-shot provides examples
+                q5: 'b', // Being specific is most important
+                q6: 'b'  // Iterating means refining prompts
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+            let feedback = [];
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / total) * 100);
+            let message = '';
+            let encouragement = '';
+
+            if (percentage >= 85) {
+                message = 'Excellent!';
+                encouragement = 'You have a strong understanding of basic prompting principles. You\'re ready to apply these skills in professional settings.';
+            } else if (percentage >= 70) {
+                message = 'Good work!';
+                encouragement = 'You understand most of the key concepts. Review the learning activities to strengthen your knowledge before moving to advanced topics.';
+            } else if (percentage >= 60) {
+                message = 'Fair understanding';
+                encouragement = 'You\'ve grasped some important concepts. We recommend reviewing the learning activities and trying the practice exercises again.';
+            } else {
+                message = 'More practice needed';
+                encouragement = 'Take time to review the learning activities in this module. Focus on the CLEAR framework and the differences between zero-shot and few-shot prompting.';
+            }
+
+            document.getElementById('score').innerHTML = `${message}<br><span style="font-size: 1.2rem;">${score}/${total} correct (${percentage}%)</span>`;
+            document.getElementById('feedback').innerHTML = encouragement;
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

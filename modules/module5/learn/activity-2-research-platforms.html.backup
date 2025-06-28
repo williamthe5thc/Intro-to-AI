@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 2: Legal Research Platform Comparison - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        .platform-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .platform-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-blue);
+        }
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .platform-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .feature-box {
+            background: var(--neutral-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Learning Activity 2</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/legal-research-comparison.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/legal-tools-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Learning Activity 2: Legal Research Platform Comparison</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Compare and evaluate the leading AI-powered legal research platforms. Learn to make informed decisions about which tools best serve your practice needs.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Learning Objectives</h3>
+                <p style="margin-bottom: 1rem;">After completing this activity, you will be able to:</p>
+                <ul class="modern-list">
+                    <li>Compare the features and capabilities of major legal research platforms</li>
+                    <li>Evaluate AI enhancements in legal research tools</li>
+                    <li>Assess the strengths and weaknesses of different platforms</li>
+                    <li>Make informed platform selection decisions for your practice</li>
+                    <li>Understand pricing models and implementation considerations</li>
+                </ul>
+            </div>
+
+            <!-- Video Section -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-play-circle"></i>Video: Legal Research Platform Deep Dive</h2>
+                
+                <video controls class="video-player">
+                    <source src="../../../multimedia/module5/5.2-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag. Please download the video file to watch it.
+                </video>
+
+                <div class="media-controls">
+                    <a href="../../../multimedia/module5/Legal-Research-Platform-Comparison.pptx" class="media-btn" download>
+                        <i class="fas fa-download"></i>
+                        Download Comparison Chart
+                    </a>
+                    <a href="../../../multimedia/module5/audio/5.2.1.mp3" class="media-btn">
+                        <i class="fas fa-headphones"></i>
+                        Audio Version
+                    </a>
+                </div>
+            </div>
+
+            <!-- Platform Comparison -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i>Major Legal Research Platforms</h2>
+                
+                <div class="platform-comparison">
+                    <!-- Westlaw Edge -->
+                    <div class="platform-card" style="border-left-color: #1e3a8a;">
+                        <div class="platform-header">
+                            <div class="platform-logo" style="background: #1e3a8a;">WE</div>
+                            <div>
+                                <h4 style="margin: 0; color: #1e3a8a;">Westlaw Edge</h4>
+                                <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Thomson Reuters</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-box">
+                                <i class="fas fa-robot" style="color: #1e3a8a; font-size: 1.5rem;"></i>
+                                <h5>AI Features</h5>
+                                <p style="font-size: 0.8rem;">WestSearch Plus, Edge AI Assistant</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fas fa-database" style="color: #1e3a8a; font-size: 1.5rem;"></i>
+                                <h5>Coverage</h5>
+                                <p style="font-size: 0.8rem;">Comprehensive US law database</p>
+                            </div>
+                        </div>
+
+                        <div class="pros-cons">
+                            <div>
+                                <h5 style="color: #059669;">Strengths</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Excellent AI search capabilities</li>
+                                    <li>Comprehensive coverage</li>
+                                    <li>Strong citator (KeyCite)</li>
+                                    <li>Intuitive interface</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: #dc2626;">Considerations</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Premium pricing</li>
+                                    <li>Learning curve for AI features</li>
+                                    <li>US-focused content</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <strong>Best For:</strong> Large firms, complex litigation, comprehensive research needs
+                        </div>
+                    </div>
+
+                    <!-- LexisNexis+ -->
+                    <div class="platform-card" style="border-left-color: #dc2626;">
+                        <div class="platform-header">
+                            <div class="platform-logo" style="background: #dc2626;">L+</div>
+                            <div>
+                                <h4 style="margin: 0; color: #dc2626;">LexisNexis+</h4>
+                                <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">LexisNexis</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-box">
+                                <i class="fas fa-brain" style="color: #dc2626; font-size: 1.5rem;"></i>
+                                <h5>AI Features</h5>
+                                <p style="font-size: 0.8rem;">Lexis+ AI, Context & Analysis</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fas fa-globe" style="color: #dc2626; font-size: 1.5rem;"></i>
+                                <h5>Coverage</h5>
+                                <p style="font-size: 0.8rem;">Global legal content</p>
+                            </div>
+                        </div>
+
+                        <div class="pros-cons">
+                            <div>
+                                <h5 style="color: #059669;">Strengths</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Strong international coverage</li>
+                                    <li>Excellent news and business content</li>
+                                    <li>Powerful analytics tools</li>
+                                    <li>Good value proposition</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: #dc2626;">Considerations</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Interface can be complex</li>
+                                    <li>AI features still developing</li>
+                                    <li>Search syntax learning curve</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <strong>Best For:</strong> International firms, corporate legal departments, news research
+                        </div>
+                    </div>
+
+                    <!-- Bloomberg Law -->
+                    <div class="platform-card" style="border-left-color: #7c3aed;">
+                        <div class="platform-header">
+                            <div class="platform-logo" style="background: #7c3aed;">BL</div>
+                            <div>
+                                <h4 style="margin: 0; color: #7c3aed;">Bloomberg Law</h4>
+                                <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Bloomberg</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-box">
+                                <i class="fas fa-chart-line" style="color: #7c3aed; font-size: 1.5rem;"></i>
+                                <h5>AI Features</h5>
+                                <p style="font-size: 0.8rem;">Points of Law AI, Smart Search</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fas fa-building" style="color: #7c3aed; font-size: 1.5rem;"></i>
+                                <h5>Focus</h5>
+                                <p style="font-size: 0.8rem;">Business law, transactions</p>
+                            </div>
+                        </div>
+
+                        <div class="pros-cons">
+                            <div>
+                                <h5 style="color: #059669;">Strengths</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Excellent business law coverage</li>
+                                    <li>Strong transactional tools</li>
+                                    <li>Great practical guidance</li>
+                                    <li>Competitive pricing</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: #dc2626;">Considerations</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Narrower litigation coverage</li>
+                                    <li>Newer AI capabilities</li>
+                                    <li>Limited international content</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <strong>Best For:</strong> Corporate counsel, transactional practices, business law focus
+                        </div>
+                    </div>
+
+                    <!-- Casetext CoCounsel -->
+                    <div class="platform-card" style="border-left-color: #059669;">
+                        <div class="platform-header">
+                            <div class="platform-logo" style="background: #059669;">CC</div>
+                            <div>
+                                <h4 style="margin: 0; color: #059669;">CoCounsel</h4>
+                                <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Casetext (Thomson Reuters)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-box">
+                                <i class="fas fa-magic" style="color: #059669; font-size: 1.5rem;"></i>
+                                <h5>AI Features</h5>
+                                <p style="font-size: 0.8rem;">GPT-4 powered legal AI</p>
+                            </div>
+                            <div class="feature-box">
+                                <i class="fas fa-zap" style="color: #059669; font-size: 1.5rem;"></i>
+                                <h5>Innovation</h5>
+                                <p style="font-size: 0.8rem;">Cutting-edge AI capabilities</p>
+                            </div>
+                        </div>
+
+                        <div class="pros-cons">
+                            <div>
+                                <h5 style="color: #059669;">Strengths</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Most advanced AI features</li>
+                                    <li>Natural language interaction</li>
+                                    <li>Document review capabilities</li>
+                                    <li>Innovative approach</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: #dc2626;">Considerations</h5>
+                                <ul style="font-size: 0.9rem;">
+                                    <li>Newer platform</li>
+                                    <li>Limited traditional features</li>
+                                    <li>Requires AI familiarity</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                            <strong>Best For:</strong> AI-forward practices, document review, innovative research approaches
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selection Criteria -->
+            <div class="tips-card">
+                <h3><i class="fas fa-checklist"></i>Platform Selection Criteria</h3>
+                <p style="margin-bottom: 1rem;">Consider these factors when choosing a legal research platform:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Practice Area Coverage</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Does the platform excel in your specialty?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">AI Capabilities</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How advanced are the AI features?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Cost vs. Value</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What's the return on investment?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">User Experience</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How intuitive is the interface?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Integration</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Does it work with your existing tools?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Support & Training</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What resources are available?</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Feature Comparison -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-robot"></i>AI Feature Comparison</h2>
+                
+                <div style="overflow-x: auto; margin: 1.5rem 0;">
+                    <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+                        <thead>
+                            <tr style="background: var(--gradient-primary); color: white;">
+                                <th style="padding: 1rem; text-align: left;">Feature</th>
+                                <th style="padding: 1rem; text-align: center;">Westlaw Edge</th>
+                                <th style="padding: 1rem; text-align: center;">LexisNexis+</th>
+                                <th style="padding: 1rem; text-align: center;">Bloomberg Law</th>
+                                <th style="padding: 1rem; text-align: center;">CoCounsel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e5e7eb;">
+                                <td style="padding: 1rem; font-weight: 600;">Natural Language Search</td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check-double" style="color: #059669;"></i></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e7eb;">
+                                <td style="padding: 1rem; font-weight: 600;">Document Summarization</td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-minus" style="color: #fbbf24;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check-double" style="color: #059669;"></i></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e7eb;">
+                                <td style="padding: 1rem; font-weight: 600;">Predictive Analytics</td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-minus" style="color: #fbbf24;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-minus" style="color: #fbbf24;"></i></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e5e7eb;">
+                                <td style="padding: 1rem; font-weight: 600;">Conversational Interface</td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-minus" style="color: #fbbf24;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-minus" style="color: #fbbf24;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-minus" style="color: #fbbf24;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check-double" style="color: #059669;"></i></td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem; font-weight: 600;">Auto-Citation Generation</td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                                <td style="padding: 1rem; text-align: center;"><i class="fas fa-check" style="color: #059669;"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
+                    <i class="fas fa-check-double" style="color: #059669;"></i> Excellent &nbsp;&nbsp;
+                    <i class="fas fa-check" style="color: #059669;"></i> Good &nbsp;&nbsp;
+                    <i class="fas fa-minus" style="color: #fbbf24;"></i> Limited/Developing
+                </p>
+            </div>
+
+            <!-- Implementation Considerations -->
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--accent-orange);">
+                <h3 style="color: #92400e; margin-bottom: 1rem;">
+                    <i class="fas fa-tools"></i> Implementation Considerations
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Trial Periods</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Most platforms offer free trials - use them!</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">User Training</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Plan for onboarding and ongoing education</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Migration Strategy</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Consider data migration and workflow changes</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Cost Management</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Understand pricing models and usage patterns</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Assessment -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-blue);">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-question-circle"></i> Quick Platform Assessment
+                </h3>
+                <p style="margin-bottom: 1rem; color: var(--neutral-dark);">Test your understanding of platform selection:</p>
+                <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                    <li style="margin-bottom: 0.5rem;">• Which platform would you recommend for a solo practitioner focused on business law?</li>
+                    <li style="margin-bottom: 0.5rem;">• What are the key AI advantages of CoCounsel over traditional platforms?</li>
+                    <li style="margin-bottom: 0.5rem;">• How would you evaluate the cost-benefit of implementing AI-enhanced research?</li>
+                    <li style="margin-bottom: 0.5rem;">• What questions should you ask during a platform trial period?</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-legal-ai-overview.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: AI Tools Overview
+                </a>
+                <a href="activity-3-implementation-strategies.html" class="nav-btn">
+                    Next: Implementation Strategies
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

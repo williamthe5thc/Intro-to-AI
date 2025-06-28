@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: AI Implementation Strategy Builder - Module 8</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .strategy-builder {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .builder-step {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #0891b2;
+            transition: all 0.3s ease;
+        }
+        .builder-step.completed {
+            border-left-color: #22c55e;
+            background: #f0fdf4;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .step-number.completed {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .input-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .progress-tracker {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+            position: sticky;
+            top: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .generated-strategy {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: none;
+        }
+        .strategy-section {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22c55e;
+        }
+        .milestone-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .milestone-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .milestone-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-2px);
+        }
+        .risk-assessment {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .success-factors {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .resource-allocation {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .validation-checklist {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+        }
+        .scenario-selector {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .scenario-card:hover, .scenario-card.selected {
+            border-color: #8b5cf6;
+            background: white;
+        }
+        .export-options {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        .export-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.25rem;
+            transition: all 0.2s ease;
+        }
+        .export-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 8</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Strategy Builder</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-ai-readiness-assessment.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/integration-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Progress Tracker -->
+            <div class="progress-tracker">
+                <h4 style="color: #7c3aed; margin-bottom: 1rem;">
+                    <i class="fas fa-chart-line"></i> Implementation Strategy Progress
+                </h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText" style="margin: 0; color: #6b7280; font-size: 0.9rem;">Complete all sections to generate your strategy</p>
+            </div>
+
+            <h1 class="page-title">AI Implementation Strategy Builder</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Create a comprehensive, customized AI implementation strategy that integrates readiness assessment, change management, and ROI measurement into a cohesive action plan. This interactive tool guides you through building a professional-grade implementation roadmap.
+            </p>
+
+            <!-- Practice Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Strategic Integration Practice</h3>
+                <p style="margin-bottom: 1rem;">Apply your Module 8 knowledge to build a complete implementation strategy:</p>
+                <ul class="modern-list">
+                    <li>Integrate readiness assessment insights with strategic planning decisions</li>
+                    <li>Design change management approaches tailored to organizational context</li>
+                    <li>Establish measurement frameworks that track progress and demonstrate value</li>
+                    <li>Create actionable roadmaps with realistic timelines and resource requirements</li>
+                    <li>Develop risk mitigation strategies and contingency planning approaches</li>
+                </ul>
+            </div>
+
+            <!-- Scenario Selection -->
+            <div class="scenario-selector">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-building"></i> Choose Your Implementation Scenario
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Select a realistic scenario that matches your organization's context. This will customize the strategy builder with relevant industry-specific considerations and challenges.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div class="scenario-card" onclick="selectScenario('midsize-professional')">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">
+                            <i class="fas fa-briefcase"></i> Mid-Size Professional Services Firm
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                            <strong>Context:</strong> 200-employee consulting firm looking to enhance client service delivery and operational efficiency
+                        </p>
+                        <p style="font-size: 0.8rem; color: #6b7280;">
+                            <strong>Key Challenges:</strong> Client expectations, billable hour optimization, knowledge management, competitive differentiation
+                        </p>
+                    </div>
+                    
+                    <div class="scenario-card" onclick="selectScenario('healthcare-system')">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">
+                            <i class="fas fa-hospital"></i> Regional Healthcare System
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                            <strong>Context:</strong> 1,500-employee hospital network implementing AI for clinical decision support and administrative efficiency
+                        </p>
+                        <p style="font-size: 0.8rem; color: #6b7280;">
+                            <strong>Key Challenges:</strong> Patient safety, regulatory compliance, physician adoption, cost pressures
+                        </p>
+                    </div>
+                    
+                    <div class="scenario-card" onclick="selectScenario('financial-institution')">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">
+                            <i class="fas fa-university"></i> Community Financial Institution
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                            <strong>Context:</strong> 800-employee regional bank implementing AI for customer service, risk management, and operational efficiency
+                        </p>
+                        <p style="font-size: 0.8rem; color: #6b7280;">
+                            <strong>Key Challenges:</strong> Regulatory compliance, customer trust, employee adaptation, competitive pressure
+                        </p>
+                    </div>
+                    
+                    <div class="scenario-card" onclick="selectScenario('manufacturing-company')">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">
+                            <i class="fas fa-industry"></i> Manufacturing Company
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+                            <strong>Context:</strong> 500-employee manufacturer implementing AI for quality control, predictive maintenance, and supply chain optimization
+                        </p>
+                        <p style="font-size: 0.8rem; color: #6b7280;">
+                            <strong>Key Challenges:</strong> Production continuity, worker safety, quality standards, cost optimization
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="selectedScenario" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.9); border-radius: 6px;">
+                    <strong style="color: #7c3aed;">Selected Scenario:</strong> <span id="scenarioName"></span>
+                </div>
+            </div>
+
+            <!-- Strategy Builder Steps -->
+            <div class="strategy-builder">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cogs"></i> Comprehensive Strategy Development Process
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Complete each section to build your customized AI implementation strategy. The tool will integrate your inputs across all dimensions to create a cohesive, actionable plan.
+                </p>
+
+                <!-- Step 1: Organizational Assessment -->
+                <div class="builder-step" id="step1">
+                    <div class="step-header">
+                        <div class="step-number" id="step1Number">1</div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Organizational Assessment & Context</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Define organizational context and current state</p>
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Organization Size:</label>
+                            <select id="orgSize" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select size...</option>
+                                <option value="small">Small (1-100 employees)</option>
+                                <option value="medium">Medium (101-500 employees)</option>
+                                <option value="large">Large (501-2,000 employees)</option>
+                                <option value="enterprise">Enterprise (2,000+ employees)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current AI Maturity:</label>
+                            <select id="aiMaturity" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select maturity...</option>
+                                <option value="none">No AI experience</option>
+                                <option value="exploring">Exploring AI possibilities</option>
+                                <option value="piloting">Running pilot programs</option>
+                                <option value="implementing">Active implementation</option>
+                                <option value="scaling">Scaling successful initiatives</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Leadership Support:</label>
+                            <select id="leadership" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select level...</option>
+                                <option value="limited">Limited interest</option>
+                                <option value="moderate">Moderate support</option>
+                                <option value="strong">Strong commitment</option>
+                                <option value="champion">Executive championship</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Budget Allocation:</label>
+                            <select id="budget" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select range...</option>
+                                <option value="limited">Limited ($10K-$50K)</option>
+                                <option value="moderate">Moderate ($50K-$250K)</option>
+                                <option value="substantial">Substantial ($250K-$1M)</option>
+                                <option value="significant">Significant ($1M+)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Strategic Objectives -->
+                <div class="builder-step" id="step2">
+                    <div class="step-header">
+                        <div class="step-number" id="step2Number">2</div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Strategic Objectives & Priorities</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Define primary goals and success criteria</p>
+                        </div>
+                    </div>
+                    
+                    <div class="input-section">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Business Objectives (select up to 3):</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="cost-reduction"> Cost Reduction
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="revenue-growth"> Revenue Growth
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="efficiency"> Operational Efficiency
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="quality"> Quality Improvement
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="innovation"> Innovation & Agility
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="experience"> Customer Experience
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid" style="margin-top: 1rem;">
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Implementation Timeline:</label>
+                            <select id="timeline" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select timeline...</option>
+                                <option value="rapid">Rapid (3-6 months)</option>
+                                <option value="standard">Standard (6-12 months)</option>
+                                <option value="gradual">Gradual (12-18 months)</option>
+                                <option value="extended">Extended (18+ months)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">ROI Expectations:</label>
+                            <select id="roiExpectation" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select expectation...</option>
+                                <option value="conservative">Conservative (100-200%)</option>
+                                <option value="moderate">Moderate (200-300%)</option>
+                                <option value="aggressive">Aggressive (300-500%)</option>
+                                <option value="breakthrough">Breakthrough (500%+)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Risk Assessment -->
+                <div class="builder-step" id="step3">
+                    <div class="step-header">
+                        <div class="step-number" id="step3Number">3</div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Risk Assessment & Mitigation</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Identify challenges and develop mitigation strategies</p>
+                        </div>
+                    </div>
+                    
+                    <div class="input-section">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Risk Factors (select all that apply):</label>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="resistance"> Employee Resistance
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="skills"> Skill Gaps
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="technology"> Technology Integration
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="budget"> Budget Constraints
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="timeline"> Timeline Pressures
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" onchange="updateProgress()" value="quality"> Quality Concerns
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-section" style="margin-top: 1rem;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Change Management Approach:</label>
+                        <select id="changeApproach" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                            <option value="">Select approach...</option>
+                            <option value="gradual">Gradual introduction with extensive support</option>
+                            <option value="pilot">Pilot programs with champion networks</option>
+                            <option value="phased">Phased rollout across departments</option>
+                            <option value="comprehensive">Comprehensive organization-wide launch</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 4: Implementation Planning -->
+                <div class="builder-step" id="step4">
+                    <div class="step-header">
+                        <div class="step-number" id="step4Number">4</div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Implementation Planning & Resources</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Define execution approach and resource requirements</p>
+                        </div>
+                    </div>
+                    
+                    <div class="input-grid">
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Implementation Team Size:</label>
+                            <select id="teamSize" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select size...</option>
+                                <option value="minimal">Minimal (2-3 people)</option>
+                                <option value="small">Small (4-6 people)</option>
+                                <option value="medium">Medium (7-12 people)</option>
+                                <option value="large">Large (13+ people)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Training Strategy:</label>
+                            <select id="trainingStrategy" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select strategy...</option>
+                                <option value="basic">Basic awareness training</option>
+                                <option value="role-specific">Role-specific skill development</option>
+                                <option value="comprehensive">Comprehensive competency program</option>
+                                <option value="certification">Certification and mastery tracks</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Success Measurement:</label>
+                            <select id="measurement" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select approach...</option>
+                                <option value="basic">Basic KPI tracking</option>
+                                <option value="balanced">Balanced scorecard approach</option>
+                                <option value="comprehensive">Comprehensive VALUE framework</option>
+                                <option value="advanced">Advanced analytics and optimization</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-section">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Technology Approach:</label>
+                            <select id="techApproach" onchange="updateProgress()" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select approach...</option>
+                                <option value="existing">Leverage existing tools</option>
+                                <option value="selective">Selective new tool adoption</option>
+                                <option value="platform">Comprehensive AI platform</option>
+                                <option value="custom">Custom solution development</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generate Strategy Button -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button onclick="generateStrategy()" style="background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); color: white; border: none; padding: 1.5rem 3rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">
+                        <i class="fas fa-magic"></i> Generate Complete Implementation Strategy
+                    </button>
+                </div>
+            </div>
+
+            <!-- Generated Strategy Display -->
+            <div id="generatedStrategy" class="generated-strategy">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h2 style="color: #166534; margin-bottom: 0.5rem;">
+                        <i class="fas fa-rocket"></i> Your AI Implementation Strategy
+                    </h2>
+                    <p style="color: #374151; margin: 0;">Comprehensive roadmap tailored to your organizational context</p>
+                </div>
+                
+                <div id="strategyContent">
+                    <!-- Strategy content will be generated here -->
+                </div>
+                
+                <div class="export-options">
+                    <h4 style="color: #166534; margin-bottom: 1rem;">Export Your Strategy</h4>
+                    <button class="export-btn" onclick="exportStrategy('pdf')">
+                        <i class="fas fa-file-pdf"></i> Export as PDF
+                    </button>
+                    <button class="export-btn" onclick="exportStrategy('word')">
+                        <i class="fas fa-file-word"></i> Export as Word
+                    </button>
+                    <button class="export-btn" onclick="exportStrategy('print')">
+                        <i class="fas fa-print"></i> Print Strategy
+                    </button>
+                    <button class="export-btn" onclick="shareStrategy()">
+                        <i class="fas fa-share"></i> Share with Team
+                    </button>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0c4a6e; margin-bottom: 1rem;">Ready to Test Your Knowledge?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Complete the Module 8 assessment to validate your AI implementation expertise and demonstrate your strategic planning capabilities.</p>
+                <a href="../assets/integration-quiz.html" class="nav-btn">
+                    <i class="fas fa-question-circle"></i>
+                    Take Implementation Quiz
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-3-roi-measurement-frameworks.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: ROI Measurement
+                </a>
+                <a href="../assets/integration-quiz.html" class="nav-btn">
+                    Next: Assessment
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedScenarioData = null;
+        let currentProgress = 0;
+        
+        function selectScenario(scenarioId) {
+            // Remove selection from all cards
+            document.querySelectorAll('.scenario-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            event.currentTarget.classList.add('selected');
+            
+            // Store scenario data
+            selectedScenarioData = {
+                id: scenarioId,
+                name: event.currentTarget.querySelector('h5').textContent.trim()
+            };
+            
+            // Show selected scenario
+            document.getElementById('selectedScenario').style.display = 'block';
+            document.getElementById('scenarioName').textContent = selectedScenarioData.name;
+            
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const totalFields = 16; // Total number of required fields
+            let completedFields = 0;
+            
+            // Check scenario selection
+            if (selectedScenarioData) completedFields++;
+            
+            // Check Step 1 fields
+            if (document.getElementById('orgSize').value) completedFields++;
+            if (document.getElementById('aiMaturity').value) completedFields++;
+            if (document.getElementById('leadership').value) completedFields++;
+            if (document.getElementById('budget').value) completedFields++;
+            
+            // Check Step 2 fields
+            const objectives = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            if (objectives > 0) completedFields++;
+            if (document.getElementById('timeline').value) completedFields++;
+            if (document.getElementById('roiExpectation').value) completedFields++;
+            
+            // Check Step 3 fields
+            const risks = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            if (risks > 0) completedFields++;
+            if (document.getElementById('changeApproach').value) completedFields++;
+            
+            // Check Step 4 fields
+            if (document.getElementById('teamSize').value) completedFields++;
+            if (document.getElementById('trainingStrategy').value) completedFields++;
+            if (document.getElementById('measurement').value) completedFields++;
+            if (document.getElementById('techApproach').value) completedFields++;
+            
+            currentProgress = (completedFields / totalFields) * 100;
+            
+            // Update progress bar
+            document.getElementById('progressFill').style.width = currentProgress + '%';
+            
+            // Update progress text
+            if (currentProgress === 100) {
+                document.getElementById('progressText').textContent = 'Ready to generate your implementation strategy!';
+                document.getElementById('progressText').style.color = '#22c55e';
+            } else {
+                document.getElementById('progressText').textContent = `${Math.round(currentProgress)}% complete - ${totalFields - completedFields} fields remaining`;
+                document.getElementById('progressText').style.color = '#6b7280';
+            }
+            
+            // Update step completion status
+            updateStepStatus();
+        }
+        
+        function updateStepStatus() {
+            // Step 1 completion
+            const step1Complete = document.getElementById('orgSize').value && 
+                                 document.getElementById('aiMaturity').value && 
+                                 document.getElementById('leadership').value && 
+                                 document.getElementById('budget').value;
+            
+            if (step1Complete) {
+                document.getElementById('step1').classList.add('completed');
+                document.getElementById('step1Number').classList.add('completed');
+            }
+            
+            // Step 2 completion
+            const step2Complete = document.querySelectorAll('input[type="checkbox"]:checked').length > 0 && 
+                                 document.getElementById('timeline').value && 
+                                 document.getElementById('roiExpectation').value;
+            
+            if (step2Complete) {
+                document.getElementById('step2').classList.add('completed');
+                document.getElementById('step2Number').classList.add('completed');
+            }
+            
+            // Step 3 completion
+            const step3Complete = document.querySelectorAll('input[type="checkbox"]:checked').length > 0 && 
+                                 document.getElementById('changeApproach').value;
+            
+            if (step3Complete) {
+                document.getElementById('step3').classList.add('completed');
+                document.getElementById('step3Number').classList.add('completed');
+            }
+            
+            // Step 4 completion
+            const step4Complete = document.getElementById('teamSize').value && 
+                                 document.getElementById('trainingStrategy').value && 
+                                 document.getElementById('measurement').value && 
+                                 document.getElementById('techApproach').value;
+            
+            if (step4Complete) {
+                document.getElementById('step4').classList.add('completed');
+                document.getElementById('step4Number').classList.add('completed');
+            }
+        }
+        
+        function generateStrategy() {
+            if (currentProgress < 100) {
+                alert('Please complete all sections before generating your strategy.');
+                return;
+            }
+            
+            const strategyData = collectStrategyData();
+            const strategy = buildComprehensiveStrategy(strategyData);
+            
+            document.getElementById('strategyContent').innerHTML = strategy;
+            document.getElementById('generatedStrategy').style.display = 'block';
+            
+            // Scroll to strategy
+            document.getElementById('generatedStrategy').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function collectStrategyData() {
+            return {
+                scenario: selectedScenarioData,
+                orgSize: document.getElementById('orgSize').value,
+                aiMaturity: document.getElementById('aiMaturity').value,
+                leadership: document.getElementById('leadership').value,
+                budget: document.getElementById('budget').value,
+                objectives: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value),
+                timeline: document.getElementById('timeline').value,
+                roiExpectation: document.getElementById('roiExpectation').value,
+                risks: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value),
+                changeApproach: document.getElementById('changeApproach').value,
+                teamSize: document.getElementById('teamSize').value,
+                trainingStrategy: document.getElementById('trainingStrategy').value,
+                measurement: document.getElementById('measurement').value,
+                techApproach: document.getElementById('techApproach').value
+            };
+        }
+        
+        function buildComprehensiveStrategy(data) {
+            return `
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-bullseye"></i> Executive Summary
+                    </h3>
+                    <p>This comprehensive AI implementation strategy has been developed for ${data.scenario.name}, taking into account your organization's ${data.orgSize} size, ${data.aiMaturity} AI maturity level, and ${data.leadership} leadership support. The strategy focuses on ${data.objectives.length > 0 ? data.objectives.join(', ') : 'operational improvement'} with a ${data.timeline} implementation timeline targeting ${data.roiExpectation} ROI expectations.</p>
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Strategic Objectives & Success Metrics
+                    </h3>
+                    ${generateObjectivesSection(data)}
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-road"></i> Implementation Roadmap
+                    </h3>
+                    ${generateRoadmapSection(data)}
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-users-cog"></i> Change Management Strategy
+                    </h3>
+                    ${generateChangeManagementSection(data)}
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-shield-alt"></i> Risk Mitigation Plan
+                    </h3>
+                    ${generateRiskMitigationSection(data)}
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-dollar-sign"></i> Resource Requirements & Budget
+                    </h3>
+                    ${generateResourceSection(data)}
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-bar"></i> Measurement & Optimization Framework
+                    </h3>
+                    ${generateMeasurementSection(data)}
+                </div>
+                
+                <div class="strategy-section">
+                    <h3 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-calendar-alt"></i> Next Steps & Action Items
+                    </h3>
+                    ${generateNextStepsSection(data)}
+                </div>
+            `;
+        }
+        
+        function generateObjectivesSection(data) {
+            const objectiveDetails = {
+                'cost-reduction': 'Achieve significant cost savings through process automation and efficiency improvements',
+                'revenue-growth': 'Drive revenue increases through enhanced capabilities and new service offerings',
+                'efficiency': 'Optimize operational processes and resource utilization',
+                'quality': 'Improve output quality and reduce error rates',
+                'innovation': 'Accelerate innovation and increase organizational agility',
+                'experience': 'Enhance customer and employee experience through AI-powered improvements'
+            };
+            
+            let objectives = '<ul>';
+            data.objectives.forEach(obj => {
+                objectives += `<li><strong>${obj.replace('-', ' ').toUpperCase()}:</strong> ${objectiveDetails[obj]}</li>`;
+            });
+            objectives += '</ul>';
+            
+            return `
+                <p><strong>Primary Strategic Objectives:</strong></p>
+                ${objectives}
+                <p><strong>Success Timeline:</strong> ${data.timeline.charAt(0).toUpperCase() + data.timeline.slice(1)} implementation with ${data.roiExpectation} ROI expectations</p>
+            `;
+        }
+        
+        function generateRoadmapSection(data) {
+            const timelines = {
+                rapid: {
+                    phase1: 'Month 1',
+                    phase2: 'Month 2-3',
+                    phase3: 'Month 4-5',
+                    phase4: 'Month 6'
+                },
+                standard: {
+                    phase1: 'Month 1-2',
+                    phase2: 'Month 3-5',
+                    phase3: 'Month 6-9',
+                    phase4: 'Month 10-12'
+                },
+                gradual: {
+                    phase1: 'Month 1-3',
+                    phase2: 'Month 4-8',
+                    phase3: 'Month 9-15',
+                    phase4: 'Month 16-18'
+                },
+                extended: {
+                    phase1: 'Month 1-4',
+                    phase2: 'Month 5-12',
+                    phase3: 'Month 13-20',
+                    phase4: 'Month 21-24'
+                }
+            };
+            
+            const timeline = timelines[data.timeline] || timelines.standard;
+            
+            return `
+                <div class="milestone-timeline">
+                    <div class="milestone-card">
+                        <h5 style="color: #22c55e; margin-bottom: 0.5rem;">Phase 1: Foundation</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>${timeline.phase1}</strong></p>
+                        <ul style="font-size: 0.8rem; text-align: left;">
+                            <li>Team formation and governance</li>
+                            <li>Baseline assessment</li>
+                            <li>Initial training programs</li>
+                            <li>Pilot selection</li>
+                        </ul>
+                    </div>
+                    <div class="milestone-card">
+                        <h5 style="color: #22c55e; margin-bottom: 0.5rem;">Phase 2: Pilot & Learn</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>${timeline.phase2}</strong></p>
+                        <ul style="font-size: 0.8rem; text-align: left;">
+                            <li>Pilot implementation</li>
+                            <li>Feedback collection</li>
+                            <li>Process refinement</li>
+                            <li>Champion development</li>
+                        </ul>
+                    </div>
+                    <div class="milestone-card">
+                        <h5 style="color: #22c55e; margin-bottom: 0.5rem;">Phase 3: Scale & Optimize</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>${timeline.phase3}</strong></p>
+                        <ul style="font-size: 0.8rem; text-align: left;">
+                            <li>Broader deployment</li>
+                            <li>Optimization cycles</li>
+                            <li>Advanced training</li>
+                            <li>ROI validation</li>
+                        </ul>
+                    </div>
+                    <div class="milestone-card">
+                        <h5 style="color: #22c55e; margin-bottom: 0.5rem;">Phase 4: Embed & Sustain</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>${timeline.phase4}</strong></p>
+                        <ul style="font-size: 0.8rem; text-align: left;">
+                            <li>Full organization adoption</li>
+                            <li>Cultural integration</li>
+                            <li>Continuous improvement</li>
+                            <li>Next-phase planning</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateChangeManagementSection(data) {
+            const approaches = {
+                gradual: 'Gradual Introduction Strategy: Slow, methodical rollout with extensive support systems and ample time for adaptation',
+                pilot: 'Pilot Program Strategy: Selective implementation with champion networks driving adoption across the organization',
+                phased: 'Phased Rollout Strategy: Systematic deployment across departments with lessons learned integration',
+                comprehensive: 'Comprehensive Launch Strategy: Organization-wide implementation with intensive support and acceleration'
+            };
+            
+            return `
+                <p><strong>Primary Approach:</strong> ${approaches[data.changeApproach]}</p>
+                <p><strong>Leadership Engagement:</strong> Leverage ${data.leadership} leadership support through regular communication, visible participation, and resource commitment.</p>
+                <p><strong>Training Strategy:</strong> Implement ${data.trainingStrategy} to build organizational capabilities and confidence.</p>
+                <p><strong>Communication Plan:</strong> Regular updates, success stories, feedback collection, and transparent progress reporting.</p>
+            `;
+        }
+        
+        function generateRiskMitigationSection(data) {
+            const riskMitigations = {
+                resistance: 'Employee Resistance: Address through clear communication, involvement in planning, job security assurances, and demonstration of benefits',
+                skills: 'Skill Gaps: Mitigate through comprehensive training programs, external expertise, gradual skill building, and mentoring systems',
+                technology: 'Technology Integration: Manage through pilot testing, phased rollouts, technical support, and vendor partnerships',
+                budget: 'Budget Constraints: Address through phased implementation, ROI demonstration, cost optimization, and executive sponsorship',
+                timeline: 'Timeline Pressures: Manage through realistic planning, milestone tracking, resource flexibility, and stakeholder communication',
+                quality: 'Quality Concerns: Mitigate through validation processes, quality controls, monitoring systems, and continuous improvement'
+            };
+            
+            let risks = '<ul>';
+            data.risks.forEach(risk => {
+                if (riskMitigations[risk]) {
+                    risks += `<li><strong>${risk.toUpperCase()}:</strong> ${riskMitigations[risk]}</li>`;
+                }
+            });
+            risks += '</ul>';
+            
+            return risks;
+        }
+        
+        function generateResourceSection(data) {
+            const budgetRanges = {
+                limited: '$10K-$50K',
+                moderate: '$50K-$250K', 
+                substantial: '$250K-$1M',
+                significant: '$1M+'
+            };
+            
+            const teamSizes = {
+                minimal: '2-3 dedicated team members',
+                small: '4-6 dedicated team members',
+                medium: '7-12 dedicated team members',
+                large: '13+ dedicated team members'
+            };
+            
+            return `
+                <p><strong>Budget Allocation:</strong> ${budgetRanges[data.budget]} allocated across technology, training, implementation, and ongoing operations</p>
+                <p><strong>Team Structure:</strong> ${teamSizes[data.teamSize]} with executive sponsorship and cross-functional representation</p>
+                <p><strong>Technology Investment:</strong> ${data.techApproach.charAt(0).toUpperCase() + data.techApproach.slice(1)} approach to technology selection and deployment</p>
+                <p><strong>External Support:</strong> Consider consulting, training, and vendor support based on internal capabilities and timeline requirements</p>
+            `;
+        }
+        
+        function generateMeasurementSection(data) {
+            const measurements = {
+                basic: 'Basic KPI Tracking: Essential metrics monitoring with manual reporting and simple dashboards',
+                balanced: 'Balanced Scorecard: Multi-dimensional tracking including financial, operational, customer, and learning perspectives',
+                comprehensive: 'VALUE Framework: Velocity, Accuracy, Learning, User experience, and Economic returns measurement',
+                advanced: 'Advanced Analytics: Predictive modeling, real-time optimization, and AI-powered insights'
+            };
+            
+            return `
+                <p><strong>Measurement Approach:</strong> ${measurements[data.measurement]}</p>
+                <p><strong>Key Performance Indicators:</strong></p>
+                <ul>
+                    <li>Adoption rates and user engagement metrics</li>
+                    <li>Efficiency improvements and time savings</li>
+                    <li>Quality enhancements and error reduction</li>
+                    <li>Financial impact and ROI achievement</li>
+                    <li>Employee satisfaction and experience scores</li>
+                </ul>
+                <p><strong>Reporting Frequency:</strong> Weekly progress updates, monthly detailed analysis, quarterly comprehensive reviews</p>
+            `;
+        }
+        
+        function generateNextStepsSection(data) {
+            return `
+                <div class="validation-checklist">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">Immediate Action Items (Next 30 days):</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Secure final executive approval and resource commitment
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Form implementation team and assign roles
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Complete detailed baseline assessment
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Select and engage pilot participants
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Develop communication plan and materials
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Establish measurement infrastructure
+                    </div>
+                    
+                    <h5 style="color: #166534; margin: 1.5rem 0 1rem;">Strategic Priorities (Next 90 days):</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Launch pilot programs with selected groups
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Implement training and development programs
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Begin regular measurement and reporting
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Establish feedback collection and improvement processes
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox"> Plan broader rollout based on pilot learnings
+                    </div>
+                </div>
+            `;
+        }
+        
+        function exportStrategy(format) {
+            alert(`Strategy export to ${format.toUpperCase()} would be implemented in a production system. This is a demonstration of the functionality.`);
+        }
+        
+        function shareStrategy() {
+            alert('Strategy sharing functionality would be implemented in a production system. This is a demonstration of the capability.');
+        }
+    </script>
+</body>
+</html>

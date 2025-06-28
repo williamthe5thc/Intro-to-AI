@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 2: Professional Workflow Builder - Module 6</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .workflow-builder {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .step-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .step-builder.active {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .step-content {
+            display: none;
+            margin-top: 1rem;
+        }
+        .step-content.show {
+            display: block;
+        }
+        .template-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .template-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .template-card:hover {
+            border-color: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .template-card.selected {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+        .template-icon {
+            font-size: 2rem;
+            color: #22c55e;
+            margin-bottom: 0.5rem;
+        }
+        .technique-integration {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .technique-toggle {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .technique-toggle:hover {
+            border-color: #22c55e;
+        }
+        .technique-toggle.active {
+            border-color: #22c55e;
+            background: #f0fdf4;
+            color: #166534;
+        }
+        .workflow-preview {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .generated-workflow {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .workflow-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #22c55e;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+        .integration-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .basic { background: #fef3c7; color: #92400e; }
+        .intermediate { background: #dbeafe; color: #1e40af; }
+        .advanced { background: #d1fae5; color: #065f46; }
+        .expert { background: #ede9fe; color: #5b21b6; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 6</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Workflow Builder</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chain-of-thought.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/advanced-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Professional Workflow Builder</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Design comprehensive AI workflows that integrate chain-of-thought reasoning, expert personas, and multi-step processes. Build enterprise-grade automation for your most complex business challenges.
+            </p>
+
+            <!-- Builder Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-cogs"></i>Workflow Integration Mastery</h3>
+                <p style="margin-bottom: 1rem;">Create sophisticated workflows that combine all advanced prompting techniques:</p>
+                <ul class="modern-list">
+                    <li>Design multi-step workflows with integrated chain-of-thought reasoning</li>
+                    <li>Apply different expert personas at each workflow stage</li>
+                    <li>Build quality control checkpoints and validation steps</li>
+                    <li>Create reusable workflow templates for complex business processes</li>
+                    <li>Test and optimize workflows for consistency and professional reliability</li>
+                </ul>
+            </div>
+
+            <!-- Workflow Template Selection -->
+            <h2 class="section-title"><i class="fas fa-sitemap"></i>Select Your Workflow Foundation</h2>
+
+            <div class="workflow-builder">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-puzzle-piece"></i> Professional Workflow Templates
+                </h4>
+                
+                <div class="template-selector">
+                    <div class="template-card" onclick="selectTemplate('strategic-analysis')">
+                        <div class="template-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Strategic Analysis</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Multi-perspective business analysis with recommendations</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="integration-level expert">Expert Level</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" onclick="selectTemplate('risk-assessment')">
+                        <div class="template-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Risk Assessment</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Comprehensive risk evaluation and mitigation planning</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="integration-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" onclick="selectTemplate('market-research')">
+                        <div class="template-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Market Research</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Industry analysis and opportunity assessment</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="integration-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" onclick="selectTemplate('process-optimization')">
+                        <div class="template-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Process Optimization</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Business process analysis and improvement</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="integration-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" onclick="selectTemplate('investment-analysis')">
+                        <div class="template-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Investment Analysis</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Financial evaluation and ROI modeling</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="integration-level expert">Expert Level</span>
+                        </div>
+                    </div>
+                    
+                    <div class="template-card" onclick="selectTemplate('custom')">
+                        <div class="template-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">Custom Workflow</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Build from scratch for unique requirements</div>
+                        <div style="margin-top: 0.5rem;">
+                            <span class="integration-level expert">Expert Level</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Configuration -->
+            <div id="workflowConfig" style="display: none;">
+                <h2 class="section-title"><i class="fas fa-wrench"></i>Configure Your Workflow</h2>
+                
+                <!-- Step 1: Business Context -->
+                <div class="step-builder active" onclick="toggleStep(1)">
+                    <div class="step-header">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="step-number">1</div>
+                            <h4 style="margin: 0;">Business Context & Objectives</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="step-content show">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Industry/Business Context:</label>
+                                <input type="text" id="industryContext" placeholder="e.g., SaaS, Healthcare, Manufacturing" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Company Size/Stage:</label>
+                                <select id="companySize" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                    <option value="">Select size...</option>
+                                    <option value="startup">Startup (1-50 employees)</option>
+                                    <option value="small">Small Business (50-200 employees)</option>
+                                    <option value="medium">Medium Enterprise (200-1000 employees)</option>
+                                    <option value="large">Large Enterprise (1000+ employees)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Specific Business Challenge:</label>
+                            <textarea id="businessChallenge" placeholder="Describe the complex business challenge this workflow should address..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Stakeholder:</label>
+                                <select id="primaryStakeholder" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                    <option value="">Select stakeholder...</option>
+                                    <option value="executive">Executive Leadership</option>
+                                    <option value="board">Board of Directors</option>
+                                    <option value="investors">Investors/VCs</option>
+                                    <option value="managers">Department Managers</option>
+                                    <option value="team">Project Team</option>
+                                    <option value="clients">External Clients</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Expected Deliverable:</label>
+                                <input type="text" id="expectedDeliverable" placeholder="e.g., Strategic plan, Risk assessment, Investment memo" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Advanced Techniques -->
+                <div class="step-builder" onclick="toggleStep(2)">
+                    <div class="step-header">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="step-number">2</div>
+                            <h4 style="margin: 0;">Advanced Technique Integration</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="step-content">
+                        <p style="margin-bottom: 1rem; color: #6b7280;">Select which advanced techniques to integrate into your workflow:</p>
+                        <div class="technique-integration">
+                            <div class="technique-toggle" onclick="toggleTechnique('chain-of-thought')">
+                                <i class="fas fa-link"></i><br>
+                                <strong>Chain-of-Thought</strong><br>
+                                <span style="font-size: 0.8rem;">Step-by-step reasoning</span>
+                            </div>
+                            <div class="technique-toggle" onclick="toggleTechnique('multi-persona')">
+                                <i class="fas fa-users"></i><br>
+                                <strong>Multi-Persona</strong><br>
+                                <span style="font-size: 0.8rem;">Different experts per step</span>
+                            </div>
+                            <div class="technique-toggle" onclick="toggleTechnique('validation')">
+                                <i class="fas fa-check-double"></i><br>
+                                <strong>Validation Steps</strong><br>
+                                <span style="font-size: 0.8rem;">Quality checkpoints</span>
+                            </div>
+                            <div class="technique-toggle" onclick="toggleTechnique('examples')">
+                                <i class="fas fa-lightbulb"></i><br>
+                                <strong>Examples</strong><br>
+                                <span style="font-size: 0.8rem;">Concrete demonstrations</span>
+                            </div>
+                            <div class="technique-toggle" onclick="toggleTechnique('frameworks')">
+                                <i class="fas fa-th"></i><br>
+                                <strong>Frameworks</strong><br>
+                                <span style="font-size: 0.8rem;">Structured methodologies</span>
+                            </div>
+                            <div class="technique-toggle" onclick="toggleTechnique('scenarios')">
+                                <i class="fas fa-route"></i><br>
+                                <strong>Scenario Planning</strong><br>
+                                <span style="font-size: 0.8rem;">Multiple outcome paths</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Quality Standards -->
+                <div class="step-builder" onclick="toggleStep(3)">
+                    <div class="step-header">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="step-number">3</div>
+                            <h4 style="margin: 0;">Quality Standards & Output Format</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="step-content">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Quality Level:</label>
+                                <select id="qualityLevel" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                    <option value="">Select quality level...</option>
+                                    <option value="executive">Executive/Board Ready</option>
+                                    <option value="professional">Professional Business Standard</option>
+                                    <option value="detailed">Detailed Technical Analysis</option>
+                                    <option value="comprehensive">Comprehensive Research Quality</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Output Length:</label>
+                                <select id="outputLength" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                    <option value="">Select length...</option>
+                                    <option value="executive">Executive Summary (1-2 pages)</option>
+                                    <option value="standard">Standard Report (3-5 pages)</option>
+                                    <option value="detailed">Detailed Analysis (5-10 pages)</option>
+                                    <option value="comprehensive">Comprehensive Study (10+ pages)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Success Criteria:</label>
+                            <textarea id="successCriteria" placeholder="Define what success looks like for this workflow output..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Generate Workflow -->
+                <div class="step-builder" onclick="toggleStep(4)">
+                    <div class="step-header">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <div class="step-number">4</div>
+                            <h4 style="margin: 0;">Generate & Review Workflow</h4>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="step-content">
+                        <button onclick="generateWorkflow()" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 1rem;">
+                            <i class="fas fa-magic"></i> Generate Professional Workflow
+                        </button>
+                        
+                        <div class="workflow-stats" id="workflowStats" style="display: none;">
+                            <div class="stat-item">
+                                <div class="stat-value" id="stepCount">0</div>
+                                <div class="stat-label">Workflow Steps</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="techniqueCount">0</div>
+                                <div class="stat-label">Advanced Techniques</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="personaCount">0</div>
+                                <div class="stat-label">Expert Personas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="qualityScore">0</div>
+                                <div class="stat-label">Quality Score</div>
+                            </div>
+                        </div>
+                        
+                        <div id="workflowOutput" class="generated-workflow">
+                            <strong style="color: #065f46;">Your Professional AI Workflow:</strong><br><br>
+                            <div id="workflowText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; font-family: monospace; white-space: pre-wrap; border: 2px solid #e2e8f0; max-height: 500px; overflow-y: auto;"></div>
+                            
+                            <div style="margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                                    <strong><i class="fas fa-play"></i> Execution Tips:</strong>
+                                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                        <li>Run each step sequentially in separate AI conversations</li>
+                                        <li>Copy outputs from previous steps as inputs</li>
+                                        <li>Validate results at each quality checkpoint</li>
+                                        <li>Save this workflow as a template for similar projects</li>
+                                    </ul>
+                                </div>
+                                <div style="background: #e0f2fe; padding: 1rem; border-radius: 6px;">
+                                    <strong><i class="fas fa-chart-bar"></i> Optimization Opportunities:</strong>
+                                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                        <li>A/B test different persona configurations</li>
+                                        <li>Measure output quality against success criteria</li>
+                                        <li>Refine prompts based on initial results</li>
+                                        <li>Document successful modifications for future use</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Templates Library -->
+            <div class="tips-card">
+                <h3><i class="fas fa-library"></i>Enterprise Workflow Applications</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Strategic Planning Cycles</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Annual planning, competitive analysis, market entry strategies with multi-stakeholder perspectives</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Investment Decision Frameworks</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Due diligence, financial modeling, risk assessment with expert financial analysis</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Crisis Management Protocols</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Incident response, stakeholder communication, recovery planning with scenario analysis</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Product Development Pipelines</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Market research, feature prioritization, launch planning with cross-functional expertise</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration Best Practices -->
+            <div style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #8b5cf6;">
+                <h3 style="color: #5b21b6; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-graduation-cap"></i>Advanced Integration Best Practices
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #5b21b6;">Persona Transitions</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Smoothly transition between expert personas while maintaining workflow continuity</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #5b21b6;">Context Preservation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Ensure critical context and insights carry forward through each workflow step</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #5b21b6;">Quality Validation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Build systematic quality checks that validate both content and reasoning</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #5b21b6;">Iterative Refinement</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Create feedback loops that allow workflow improvement based on results</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px;">
+                <h3 style="color: #166534; margin-bottom: 1rem;">Ready to Test Your Mastery?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">You've built sophisticated workflows combining all advanced techniques. Now demonstrate your expertise with the comprehensive assessment.</p>
+                <a href="../assets/advanced-prompting-quiz.html" class="nav-btn">
+                    <i class="fas fa-brain"></i>
+                    Take Mastery Assessment
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="prompt-optimization-lab.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Optimization Lab
+                </a>
+                <a href="../assets/advanced-prompting-quiz.html" class="nav-btn">
+                    Next: Mastery Quiz
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedTemplate = '';
+        let selectedTechniques = new Set();
+        
+        function selectTemplate(template) {
+            selectedTemplate = template;
+            
+            // Remove selected class from all templates
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked template
+            event.currentTarget.classList.add('selected');
+            
+            // Show workflow configuration
+            document.getElementById('workflowConfig').style.display = 'block';
+            document.getElementById('workflowConfig').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function toggleStep(stepNumber) {
+            const stepBuilder = event.currentTarget;
+            const content = stepBuilder.querySelector('.step-content');
+            const icon = stepBuilder.querySelector('.fa-chevron-down, .fa-chevron-up');
+            
+            // Toggle active state
+            stepBuilder.classList.toggle('active');
+            
+            // Toggle content visibility
+            content.classList.toggle('show');
+            
+            // Toggle icon
+            if (content.classList.contains('show')) {
+                icon.className = 'fas fa-chevron-up';
+            } else {
+                icon.className = 'fas fa-chevron-down';
+            }
+        }
+        
+        function toggleTechnique(technique) {
+            const element = event.currentTarget;
+            
+            if (selectedTechniques.has(technique)) {
+                selectedTechniques.delete(technique);
+                element.classList.remove('active');
+            } else {
+                selectedTechniques.add(technique);
+                element.classList.add('active');
+            }
+        }
+        
+        function generateWorkflow() {
+            // Validate required fields
+            const industryContext = document.getElementById('industryContext').value;
+            const businessChallenge = document.getElementById('businessChallenge').value;
+            const primaryStakeholder = document.getElementById('primaryStakeholder').value;
+            const expectedDeliverable = document.getElementById('expectedDeliverable').value;
+            
+            if (!selectedTemplate || !industryContext || !businessChallenge || !primaryStakeholder || !expectedDeliverable) {
+                alert('Please complete all required fields before generating the workflow.');
+                return;
+            }
+            
+            const workflow = buildWorkflow();
+            
+            // Update statistics
+            const stepCount = (workflow.match(/\*\*STEP \d+:/g) || []).length;
+            const techniqueCount = selectedTechniques.size;
+            const personaCount = (workflow.match(/You are a|Act as a|Shift to a/g) || []).length;
+            const qualityScore = Math.min(100, (stepCount * 10) + (techniqueCount * 15) + (personaCount * 10));
+            
+            document.getElementById('stepCount').textContent = stepCount;
+            document.getElementById('techniqueCount').textContent = techniqueCount;
+            document.getElementById('personaCount').textContent = personaCount;
+            document.getElementById('qualityScore').textContent = qualityScore;
+            
+            document.getElementById('workflowText').textContent = workflow;
+            document.getElementById('workflowStats').style.display = 'grid';
+            document.getElementById('workflowOutput').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('workflowOutput').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function buildWorkflow() {
+            const industryContext = document.getElementById('industryContext').value;
+            const companySize = document.getElementById('companySize').value;
+            const businessChallenge = document.getElementById('businessChallenge').value;
+            const primaryStakeholder = document.getElementById('primaryStakeholder').value;
+            const expectedDeliverable = document.getElementById('expectedDeliverable').value;
+            const qualityLevel = document.getElementById('qualityLevel').value;
+            const outputLength = document.getElementById('outputLength').value;
+            const successCriteria = document.getElementById('successCriteria').value;
+            
+            let workflow = `**PROFESSIONAL AI WORKFLOW: ${selectedTemplate.toUpperCase().replace(/-/g, ' ')}**
+
+Business Context: ${industryContext} | ${companySize} company
+Challenge: ${businessChallenge}
+Deliverable: ${expectedDeliverable} for ${primaryStakeholder}
+Quality Standard: ${qualityLevel}
+Output Length: ${outputLength}
+
+`;
+
+            // Add template-specific workflow steps
+            if (selectedTemplate === 'strategic-analysis') {
+                workflow += buildStrategicAnalysisWorkflow();
+            } else if (selectedTemplate === 'risk-assessment') {
+                workflow += buildRiskAssessmentWorkflow();
+            } else if (selectedTemplate === 'market-research') {
+                workflow += buildMarketResearchWorkflow();
+            } else if (selectedTemplate === 'process-optimization') {
+                workflow += buildProcessOptimizationWorkflow();
+            } else if (selectedTemplate === 'investment-analysis') {
+                workflow += buildInvestmentAnalysisWorkflow();
+            } else {
+                workflow += buildCustomWorkflow();
+            }
+            
+            // Add success criteria if provided
+            if (successCriteria) {
+                workflow += `\n\n**SUCCESS VALIDATION:**\n${successCriteria}\n\nEnsure each step contributes to these success criteria and validate outputs accordingly.`;
+            }
+            
+            return workflow;
+        }
+        
+        function buildStrategicAnalysisWorkflow() {
+            let workflow = `**STEP 1: Strategic Context Analysis**\n`;
+            
+            if (selectedTechniques.has('multi-persona')) {
+                workflow += `You are a senior strategy consultant with 15+ years of experience in ${document.getElementById('industryContext').value}. You've led strategic initiatives for ${document.getElementById('companySize').value} companies and have deep expertise in strategic planning frameworks.\n\n`;
+            }
+            
+            workflow += `Analyze the strategic context of this challenge:\n"${document.getElementById('businessChallenge').value}"\n\n`;
+            
+            if (selectedTechniques.has('chain-of-thought')) {
+                workflow += `Think through this systematically:\n1. Current strategic position assessment\n2. Market and competitive dynamics\n3. Internal capabilities and constraints\n4. Strategic options identification\n5. Initial strategic direction insights\n\n`;
+            }
+            
+            if (selectedTechniques.has('frameworks')) {
+                workflow += `Apply strategic frameworks: SWOT analysis, Porter's Five Forces, Value Chain Analysis, and Strategic Canvas.\n\n`;
+            }
+            
+            workflow += `**STEP 2: Multi-Perspective Analysis**\n`;
+            
+            if (selectedTechniques.has('multi-persona')) {
+                workflow += `Now shift to a financial analyst perspective with expertise in ${document.getElementById('industryContext').value} economics. `;
+            }
+            
+            workflow += `Evaluate the financial and operational implications:\n`;
+            
+            if (selectedTechniques.has('chain-of-thought')) {
+                workflow += `- Financial impact analysis (revenue, costs, investments)\n- Resource requirement assessment\n- Timeline and milestone considerations\n- Risk-adjusted financial projections\n- ROI and value creation potential\n\n`;
+            }
+            
+            workflow += `**STEP 3: Implementation Strategy Design**\n`;
+            
+            if (selectedTechniques.has('multi-persona')) {
+                workflow += `Act as an implementation expert who specializes in organizational change and strategic execution. `;
+            }
+            
+            workflow += `Design the implementation approach:\n`;
+            
+            if (selectedTechniques.has('scenarios')) {
+                workflow += `- Develop 3 implementation scenarios (conservative, moderate, aggressive)\n- Identify critical success factors for each\n- Plan change management and stakeholder engagement\n- Design monitoring and adjustment mechanisms\n\n`;
+            }
+            
+            if (selectedTechniques.has('validation')) {
+                workflow += `**VALIDATION CHECKPOINT:**\nReview all analysis for consistency, completeness, and strategic alignment. Ensure recommendations are actionable and measurable.\n\n`;
+            }
+            
+            workflow += `**STEP 4: Executive Recommendation Package**\n`;
+            workflow += `Synthesize all analysis into ${document.getElementById('expectedDeliverable').value} format suitable for ${document.getElementById('primaryStakeholder').value}:\n\n`;
+            workflow += `- Executive summary with key insights\n- Strategic recommendations with clear rationale\n- Implementation roadmap with timeline\n- Resource requirements and success metrics\n- Risk assessment and mitigation strategies`;
+            
+            return workflow;
+        }
+        
+        function buildRiskAssessmentWorkflow() {
+            return `**STEP 1: Risk Identification & Categorization**\nComprehensive risk assessment...\n\n**STEP 2: Risk Analysis & Quantification**\nImpact and probability evaluation...\n\n**STEP 3: Mitigation Strategy Development**\nRisk treatment and control measures...\n\n**STEP 4: Monitoring & Response Planning**\nOngoing risk management framework...`;
+        }
+        
+        function buildMarketResearchWorkflow() {
+            return `**STEP 1: Market Scope & Methodology**\nResearch framework design...\n\n**STEP 2: Primary & Secondary Research**\nData collection and analysis...\n\n**STEP 3: Competitive Intelligence**\nCompetitor analysis and positioning...\n\n**STEP 4: Market Insights & Opportunities**\nFindings synthesis and recommendations...`;
+        }
+        
+        function buildProcessOptimizationWorkflow() {
+            return `**STEP 1: Current State Process Mapping**\nAs-is process documentation...\n\n**STEP 2: Bottleneck & Inefficiency Analysis**\nProblem identification and root cause analysis...\n\n**STEP 3: Future State Design**\nOptimized process design...\n\n**STEP 4: Implementation & Change Management**\nTransition planning and execution...`;
+        }
+        
+        function buildInvestmentAnalysisWorkflow() {
+            return `**STEP 1: Investment Thesis Development**\nOpportunity assessment and rationale...\n\n**STEP 2: Financial Modeling & Valuation**\nDCF, comparables, and scenario analysis...\n\n**STEP 3: Risk Assessment & Due Diligence**\nComprehensive risk evaluation...\n\n**STEP 4: Investment Recommendation**\nGo/no-go decision with supporting analysis...`;
+        }
+        
+        function buildCustomWorkflow() {
+            return `**STEP 1: Problem Definition & Scoping**\nCustom analysis framework...\n\n**STEP 2: Analysis & Evaluation**\nSystematic investigation...\n\n**STEP 3: Solution Development**\nStrategic recommendations...\n\n**STEP 4: Implementation Planning**\nExecution roadmap and next steps...`;
+        }
+    </script>
+</body>
+</html>

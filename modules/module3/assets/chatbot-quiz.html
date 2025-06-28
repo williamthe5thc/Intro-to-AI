@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Knowledge Check Quiz - Module 3</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            border: 2px solid var(--neutral-light);
+            padding: 2rem;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .question-number {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .option {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .option:hover {
+            background: #f1f5f9;
+            border-color: var(--primary-blue);
+            transform: translateX(4px);
+        }
+        
+        .option.selected {
+            background: #dbeafe;
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        .option.correct {
+            background: #dcfce7;
+            border-color: var(--accent-green);
+            color: #166534;
+        }
+        
+        .option.incorrect {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+        
+        .option-letter {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .explanation {
+            background: #fef7ff;
+            border-left: 4px solid #8b5cf6;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+            display: none;
+        }
+        
+        .explanation.show {
+            display: block;
+        }
+        
+        .quiz-progress {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border: 2px solid var(--neutral-light);
+        }
+        
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        
+        .progress-fill {
+            background: var(--gradient-primary);
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .quiz-results {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            display: none;
+        }
+        
+        .score-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #065f46;
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .quiz-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .quiz-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 3</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Chatbot Quiz</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chatbot-fundamentals.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/chatbot-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <div class="quiz-container">
+                <h1 class="page-title">Chatbot Knowledge Check Quiz</h1>
+                
+                <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; text-align: center;">
+                    Test your understanding of chatbot fundamentals, implementation strategies, and legal/ethical considerations in professional practice.
+                </p>
+
+                <!-- Quiz Overview -->
+                <div class="objectives-card">
+                    <h3><i class="fas fa-info-circle"></i>Quiz Information</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div><strong>Questions:</strong> 8 multiple choice</div>
+                        <div><strong>Time Limit:</strong> No time limit</div>
+                        <div><strong>Attempts:</strong> Multiple attempts allowed</div>
+                        <div><strong>Passing Score:</strong> 75% (6/8 correct)</div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracker -->
+                <div class="quiz-progress">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 600;">Progress</span>
+                        <span id="progress-text">0 of 8 answered</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Quiz Questions -->
+                <div id="quiz-questions">
+                    <!-- Question 1 -->
+                    <div class="question-card" data-question="1">
+                        <div class="question-number">1</div>
+                        <div class="question-text">
+                            What is the primary purpose of a chatbot in a legal practice setting?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>To provide legal advice to clients automatically</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>To handle initial client inquiries and basic information gathering</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>To replace attorneys in routine legal tasks</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>To file legal documents with courts automatically</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: B</strong><br>
+                            Chatbots in legal practice should primarily handle initial client inquiries and basic information gathering, not provide legal advice or replace attorney functions. This ensures compliance with professional ethics rules.
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-card" data-question="2">
+                        <div class="question-number">2</div>
+                        <div class="question-text">
+                            Which of the following is a key advantage of no-code chatbot platforms for law firms?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>They require extensive programming knowledge</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>They allow rapid deployment without technical expertise</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>They automatically ensure legal compliance</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>They eliminate all security concerns</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: B</strong><br>
+                            No-code platforms allow law firms to deploy chatbots quickly without requiring programming skills, making AI technology more accessible to legal professionals.
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-card" data-question="3">
+                        <div class="question-text">
+                            According to professional ethics rules, what must a law firm do when implementing a chatbot?
+                        </div>
+                        <div class="question-number">3</div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>Nothing special - chatbots are exempt from ethics rules</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>Clearly disclose the chatbot's limitations and non-advisory nature</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>Only use chatbots for marketing purposes</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>Ensure the chatbot can provide legal advice</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: B</strong><br>
+                            Professional responsibility requires clear disclosure about chatbot limitations and ensuring clients understand they are not receiving legal advice from an AI system.
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="question-card" data-question="4">
+                        <div class="question-number">4</div>
+                        <div class="question-text">
+                            What is a major risk associated with chatbot conversations containing client information?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>They might be too efficient</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>They could violate attorney-client privilege protections</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>They are always more expensive than human staff</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>They provide too much legal knowledge</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: B</strong><br>
+                            Chatbot conversations may not be protected under traditional attorney-client privilege, creating potential confidentiality risks that must be carefully managed.
+                        </div>
+                    </div>
+
+                    <!-- Question 5 -->
+                    <div class="question-card" data-question="5">
+                        <div class="question-number">5</div>
+                        <div class="question-text">
+                            Which ABA Model Rule is most directly relevant to chatbot implementation in law firms?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>Rule 1.1 (Competence) - understanding the technology</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>Rule 3.1 (Meritorious Claims)</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>Rule 7.3 (Solicitation)</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>Rule 8.4 (Professional Responsibility)</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: A</strong><br>
+                            Rule 1.1 (Competence) requires attorneys to understand the technology they use, including AI chatbots, and their limitations and capabilities.
+                        </div>
+                    </div>
+
+                    <!-- Question 6 -->
+                    <div class="question-card" data-question="6">
+                        <div class="question-number">6</div>
+                        <div class="question-text">
+                            What should a chatbot do if a user asks for specific legal advice?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>Provide the legal advice immediately</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>Refer the user to speak with a qualified attorney</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>Ignore the question completely</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>Provide a disclaimer and then give the advice</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: B</strong><br>
+                            Chatbots should redirect requests for legal advice to qualified attorneys to avoid unauthorized practice of law and ensure clients receive appropriate professional guidance.
+                        </div>
+                    </div>
+
+                    <!-- Question 7 -->
+                    <div class="question-card" data-question="7">
+                        <div class="question-number">7</div>
+                        <div class="question-text">
+                            When evaluating no-code chatbot platforms, which factor is MOST critical for law firms?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>The lowest possible cost</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>The most advanced AI features</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>Security and compliance capabilities</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>Integration with social media platforms</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: C</strong><br>
+                            Security and compliance capabilities are most critical for law firms due to confidentiality requirements and professional responsibility obligations.
+                        </div>
+                    </div>
+
+                    <!-- Question 8 -->
+                    <div class="question-card" data-question="8">
+                        <div class="question-number">8</div>
+                        <div class="question-text">
+                            What is the best practice for ongoing chatbot management in a law firm?
+                        </div>
+                        <div class="option-group">
+                            <div class="option" data-option="a">
+                                <div class="option-letter">A</div>
+                                <span>Set up the chatbot once and let it run automatically</span>
+                            </div>
+                            <div class="option" data-option="b">
+                                <div class="option-letter">B</div>
+                                <span>Regular monitoring, updates, and staff training</span>
+                            </div>
+                            <div class="option" data-option="c">
+                                <div class="option-letter">C</div>
+                                <span>Only check the chatbot when problems are reported</span>
+                            </div>
+                            <div class="option" data-option="d">
+                                <div class="option-letter">D</div>
+                                <span>Replace the chatbot annually with new technology</span>
+                            </div>
+                        </div>
+                        <div class="explanation">
+                            <strong>Correct Answer: B</strong><br>
+                            Ongoing monitoring, regular updates, and continuous staff training ensure the chatbot remains compliant, effective, and aligned with firm policies.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Actions -->
+                <div class="quiz-actions">
+                    <button class="quiz-btn" id="check-answers" onclick="checkAnswers()">
+                        <i class="fas fa-check"></i>
+                        Check Answers
+                    </button>
+                    <button class="quiz-btn" id="reset-quiz" onclick="resetQuiz()" style="background: #6b7280;">
+                        <i class="fas fa-redo"></i>
+                        Reset Quiz
+                    </button>
+                </div>
+
+                <!-- Quiz Results -->
+                <div class="quiz-results" id="quiz-results">
+                    <div class="score-display" id="score-display">0%</div>
+                    <h3 style="color: #065f46; margin-bottom: 1rem;">Quiz Complete!</h3>
+                    <p id="result-message" style="color: #374151; margin-bottom: 1.5rem;"></p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="../assets/discussion.html" class="nav-btn">
+                            <i class="fas fa-comments"></i>
+                            Join Discussion
+                        </a>
+                        <a href="../../module4/welcome.html" class="nav-btn secondary">
+                            <i class="fas fa-arrow-right"></i>
+                            Next Module
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <a href="../practice/chatbot-implementation.html" class="nav-btn secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous: Practice
+                    </a>
+                    <a href="discussion.html" class="nav-btn">
+                        Next: Discussion
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const quizData = {
+            1: 'b', 2: 'b', 3: 'b', 4: 'b', 5: 'a', 6: 'b', 7: 'c', 8: 'b'
+        };
+
+        let selectedAnswers = {};
+        let quizCompleted = false;
+
+        // Handle option selection
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const questionCard = this.closest('.question-card');
+                const questionNum = questionCard.dataset.question;
+                const selectedOption = this.dataset.option;
+
+                // Remove previous selection
+                questionCard.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+
+                // Add selection to current option
+                this.classList.add('selected');
+                selectedAnswers[questionNum] = selectedOption;
+
+                updateProgress();
+            });
+        });
+
+        function updateProgress() {
+            const totalQuestions = Object.keys(quizData).length;
+            const answeredQuestions = Object.keys(selectedAnswers).length;
+            const progressPercent = (answeredQuestions / totalQuestions) * 100;
+
+            document.getElementById('progress-fill').style.width = progressPercent + '%';
+            document.getElementById('progress-text').textContent = `${answeredQuestions} of ${totalQuestions} answered`;
+        }
+
+        function checkAnswers() {
+            if (Object.keys(selectedAnswers).length < Object.keys(quizData).length) {
+                alert('Please answer all questions before checking your answers.');
+                return;
+            }
+
+            let correctCount = 0;
+            const totalQuestions = Object.keys(quizData).length;
+
+            // Check each answer and show results
+            Object.keys(quizData).forEach(questionNum => {
+                const questionCard = document.querySelector(`[data-question="${questionNum}"]`);
+                const correctAnswer = quizData[questionNum];
+                const selectedAnswer = selectedAnswers[questionNum];
+
+                // Show explanation
+                const explanation = questionCard.querySelector('.explanation');
+                explanation.classList.add('show');
+
+                // Mark options as correct/incorrect
+                questionCard.querySelectorAll('.option').forEach(option => {
+                    const optionLetter = option.dataset.option;
+                    if (optionLetter === correctAnswer) {
+                        option.classList.add('correct');
+                    } else if (optionLetter === selectedAnswer && selectedAnswer !== correctAnswer) {
+                        option.classList.add('incorrect');
+                    }
+                });
+
+                if (selectedAnswer === correctAnswer) {
+                    correctCount++;
+                }
+            });
+
+            // Show results
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+            document.getElementById('score-display').textContent = percentage + '%';
+            
+            let resultMessage = '';
+            if (percentage >= 75) {
+                resultMessage = `Excellent work! You scored ${correctCount}/${totalQuestions} (${percentage}%). You've demonstrated a strong understanding of chatbot implementation in legal practice.`;
+            } else {
+                resultMessage = `You scored ${correctCount}/${totalQuestions} (${percentage}%). Review the explanations and consider retaking the quiz to improve your understanding.`;
+            }
+            
+            document.getElementById('result-message').textContent = resultMessage;
+            document.getElementById('quiz-results').style.display = 'block';
+
+            // Disable check button
+            document.getElementById('check-answers').disabled = true;
+            quizCompleted = true;
+
+            // Scroll to results
+            document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            selectedAnswers = {};
+            quizCompleted = false;
+
+            // Reset all visual elements
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            document.querySelectorAll('.explanation').forEach(explanation => {
+                explanation.classList.remove('show');
+            });
+
+            document.getElementById('quiz-results').style.display = 'none';
+            document.getElementById('check-answers').disabled = false;
+
+            updateProgress();
+
+            // Scroll to top of quiz
+            document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

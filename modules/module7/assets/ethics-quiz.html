@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ethics Knowledge Assessment - Module 7</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+        }
+        .question-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: var(--neutral-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background: #f3e8ff;
+            border-color: #a855f7;
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+        .option.selected {
+            background: #f3e8ff;
+            border-color: #8b5cf6;
+        }
+        .scenario-question {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .ethical-dilemma {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .prompt-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .prompt-example {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-green);
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+        }
+        .mastery-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        .novice { background: #fee2e2; color: #dc2626; }
+        .developing { background: #fef3c7; color: #92400e; }
+        .proficient { background: #dbeafe; color: #1e40af; }
+        .advanced { background: #d1fae5; color: #065f46; }
+        .expert { background: #ede9fe; color: #5b21b6; }
+        .risk-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .risk-high { background: #fee2e2; color: #dc2626; }
+        .risk-critical { background: #fdf2f8; color: #9d174d; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 7</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Ethics Assessment</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-ethics-blueprint.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/ethics-scenarios.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI Ethics Knowledge Assessment</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Demonstrate your mastery of professional AI ethics principles, ethical decision-making frameworks, and responsible implementation strategies. This comprehensive assessment measures your ability to navigate complex ethical challenges in professional AI applications.
+            </p>
+
+            <div class="quiz-container">
+
+                <!-- Question 1: Core Ethical Principles -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        Which of the Six Pillars of Professional AI Ethics is most critical when using AI for client-facing recommendations?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            Societal Benefit - considering broader social impact
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            Professional Accountability - taking responsibility for AI-assisted outputs
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            Professional Competence - maintaining expertise standards
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            Privacy & Confidentiality - protecting sensitive information
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: DECIDE Framework -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        In the DECIDE framework for ethical decision-making, what is the most important aspect of the "Establish Evaluation Criteria" step?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            Identifying the fastest and most cost-effective solution
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            Determining which ethical principles, professional standards, and legal requirements apply to the situation
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            Focusing only on organizational policies and procedures
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            Prioritizing stakeholder preferences regardless of ethical implications
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Stakeholder Analysis -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        When conducting a stakeholder impact assessment for AI implementation, which approach demonstrates the most comprehensive ethical thinking?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            Focus primarily on immediate stakeholders like clients and employees
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            Consider all affected parties including vulnerable populations and long-term societal impacts
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            Prioritize stakeholders based on their financial value to the organization
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            Limit analysis to stakeholders who explicitly provide feedback
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4: Professional Healthcare Scenario -->
+                <div class="question-card">
+                    <div class="scenario-question">
+                        <h4 style="color: #7c3aed; margin-bottom: 1rem;">
+                            <i class="fas fa-heartbeat"></i> Healthcare Ethics Scenario
+                            <span class="risk-level risk-critical">Critical Risk</span>
+                        </h4>
+                        <p style="margin-bottom: 1rem;">
+                            A radiologist uses AI to analyze medical images. The AI suggests a diagnosis that conflicts with the radiologist's clinical judgment. Hospital policy encourages following AI recommendations to improve efficiency, but the radiologist believes the AI missed subtle signs of a serious condition.
+                        </p>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        What should guide the radiologist's decision in this ethical dilemma?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            Hospital policy and efficiency metrics should take precedence
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            The "do no harm" principle and professional medical judgment should override AI recommendations when patient safety is at stake
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            Always defer to AI because it has statistical advantages
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            Split the difference by ordering additional tests without changing the diagnosis
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5: Bias and Fairness -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        Which approach is most effective for detecting and addressing algorithmic bias in AI systems used for hiring decisions?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            Trust that the AI vendor has tested for bias during development
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            Regularly audit outcomes across different demographic groups and adjust algorithms when disparate impacts are identified
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            Use multiple AI systems and compare their results
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            Focus only on legal compliance rather than ethical fairness
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: Ethical Advanced Prompting -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        When integrating ethical considerations into advanced prompting techniques, what is the most important principle?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            Add ethical considerations only at the end of the prompt
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            Embed ethical checkpoints throughout the reasoning process, not as an afterthought
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            Focus on technical optimization and ignore ethical considerations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            Use generic ethical language without specific professional context
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7: Professional Standards Integration -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">7</span>
+                        How should professional AI ethics frameworks be customized for different industries?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            Use identical ethical frameworks across all industries
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            Integrate industry-specific professional codes, regulatory requirements, and stakeholder considerations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            Focus only on legal compliance without ethical considerations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            Let individual professionals develop their own standards
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8: Transparency and Disclosure -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">8</span>
+                        When is disclosure of AI assistance most critical in professional settings?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            Only when specifically asked by clients or stakeholders
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            When AI assistance is material to the work product and affects decisions or recommendations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            Never, as it might reduce confidence in professional expertise
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            Only for high-risk decisions, not routine tasks
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9: Ethical Prompt Comparison -->
+                <div class="question-card">
+                    <div class="prompt-comparison">
+                        <div>
+                            <h5 style="color: #dc2626; margin-bottom: 0.5rem;">Prompt A:</h5>
+                            <div class="prompt-example">
+                                "Analyze this client's financial situation and recommend the best investment strategy."
+                            </div>
+                        </div>
+                        <div>
+                            <h5 style="color: #065f46; margin-bottom: 0.5rem;">Prompt B:</h5>
+                            <div class="prompt-example">
+                                "You are a fiduciary financial advisor. Analyze this client's financial situation with these ethical considerations: 1) Ensure recommendations serve client's best interest 2) Disclose any potential conflicts 3) Assess suitability for client's risk profile 4) Consider fees and costs impact 5) Provide transparent rationale. Recommend investment strategy that prioritizes client welfare over commission potential."
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">9</span>
+                        What makes Prompt B more ethically sound than Prompt A for professional financial advice?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            It's longer and more detailed
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            It explicitly embeds fiduciary duty, conflict disclosure, and client-first principles into the analysis framework
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            It uses more professional terminology
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            It focuses on investment strategy optimization
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10: Implementation and Monitoring -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">10</span>
+                        What is the most important element of ongoing ethical AI monitoring in professional practice?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            Checking that AI outputs match expectations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            Systematically assessing outcomes for bias, fairness, and unintended consequences across different stakeholder groups
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            Ensuring AI usage increases efficiency and reduces costs
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            Documenting AI usage for legal compliance only
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 11: Professional Risk Assessment -->
+                <div class="question-card">
+                    <div class="ethical-dilemma">
+                        <h5 style="color: #dc2626; margin-bottom: 1rem;">
+                            <i class="fas fa-exclamation-triangle"></i> Legal Ethics Dilemma
+                            <span class="risk-level risk-high">High Risk</span>
+                        </h5>
+                        <p style="margin-bottom: 1rem;">
+                            An attorney wants to use an AI legal research tool that requires uploading case documents to a cloud service. The service provider's terms allow them to use anonymized data to improve their AI models. The case involves highly sensitive trade secrets.
+                        </p>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">11</span>
+                        What is the most ethical approach to this situation?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q11" value="a">
+                            Use the AI tool since the data will be anonymized
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="b">
+                            Obtain informed client consent after explaining risks, or use alternative research methods if consent cannot be obtained
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="c">
+                            Use the tool without disclosure since it provides competitive advantage
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="d">
+                            Only upload non-sensitive documents to the AI service
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 12: Ethical Leadership -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">12</span>
+                        What is the most important characteristic of ethical AI leadership in professional organizations?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q12" value="a">
+                            Maximizing AI adoption to gain competitive advantages
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="b">
+                            Creating systematic frameworks that integrate ethical considerations into all AI applications while fostering responsible innovation
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="c">
+                            Delegating ethical decisions to legal or compliance departments
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="d">
+                            Avoiding AI use entirely to prevent ethical complications
+                        </label>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-shield-alt"></i>
+                    Submit Ethics Assessment
+                </button>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/ethics-scenarios.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Ethics Scenarios
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Ethics Discussion
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // Professional Accountability for client-facing recommendations
+                q2: 'b', // Determining applicable ethical principles and standards
+                q3: 'b', // Consider all affected parties including vulnerable populations
+                q4: 'b', // "Do no harm" and professional judgment override AI
+                q5: 'b', // Regular auditing for bias across demographic groups
+                q6: 'b', // Embed ethical checkpoints throughout reasoning
+                q7: 'b', // Integrate industry-specific codes and requirements
+                q8: 'b', // Disclose when AI assistance is material to work product
+                q9: 'b', // Embeds fiduciary duty and client-first principles
+                q10: 'b', // Systematic assessment for bias and unintended consequences
+                q11: 'b', // Obtain informed consent or use alternatives
+                q12: 'b'  // Create systematic ethical frameworks
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / total) * 100);
+            let masteryLevel = '';
+            let message = '';
+            let encouragement = '';
+
+            if (percentage >= 90) {
+                masteryLevel = 'expert';
+                message = 'Ethical AI Expert!';
+                encouragement = 'Outstanding! You have demonstrated expert-level understanding of professional AI ethics. You\'re prepared to lead ethical AI initiatives, develop organizational policies, and mentor others in responsible AI practices.';
+            } else if (percentage >= 80) {
+                masteryLevel = 'advanced';
+                message = 'Advanced Ethical Proficiency';
+                encouragement = 'Excellent work! You have strong mastery of AI ethics principles and can apply them effectively in professional settings. Review any missed areas to further refine your expertise.';
+            } else if (percentage >= 70) {
+                masteryLevel = 'proficient';
+                message = 'Proficient Ethical Understanding';
+                encouragement = 'Good progress! You understand core AI ethics concepts and can apply them in most professional situations. Focus on practicing complex ethical scenarios and decision-making frameworks.';
+            } else if (percentage >= 60) {
+                masteryLevel = 'developing';
+                message = 'Developing Ethical Awareness';
+                encouragement = 'You\'re building solid ethical foundations. We recommend reviewing the Six Pillars framework and practicing with the DECIDE model before implementing AI in high-stakes professional situations.';
+            } else {
+                masteryLevel = 'novice';
+                message = 'Ethical Foundation Building Needed';
+                encouragement = 'Focus on mastering the fundamental ethical principles first. Review Module 7\'s learning activities, practice with the case study scenarios, and develop your professional ethics framework.';
+            }
+
+            document.getElementById('score').innerHTML = `
+                ${message}<br>
+                <span style="font-size: 1.2rem;">${score}/${total} correct (${percentage}%)</span><br>
+                <span class="mastery-level ${masteryLevel}">
+                    ${masteryLevel.charAt(0).toUpperCase() + masteryLevel.slice(1)} Level
+                </span>
+            `;
+            
+            document.getElementById('feedback').innerHTML = `
+                <p style="margin-bottom: 1rem;">${encouragement}</p>
+                
+                <h4 style="color: #065f46; margin-bottom: 0.5rem;">Your Professional AI Ethics Journey:</h4>
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>Ethical Competency:</strong> ${score} out of ${total} core principles mastered<br>
+                    <strong>Professional Readiness:</strong> ${masteryLevel.charAt(0).toUpperCase() + masteryLevel.slice(1)} level<br>
+                    <strong>Ready for:</strong> ${
+                        percentage >= 80 
+                            ? 'Leading ethical AI initiatives and developing organizational policies' 
+                            : percentage >= 70 
+                                ? 'Implementing ethical AI frameworks with guidance' 
+                                : 'Continued learning and supervised practice'
+                    }
+                </div>
+                
+                <h4 style="color: #065f46; margin-bottom: 0.5rem;">Recommended Next Actions:</h4>
+                <ul style="margin-left: 1rem;">
+                    ${percentage >= 80 
+                        ? '<li>Share your expertise in the discussion forum</li><li>Develop ethical AI policies for your organization</li><li>Mentor colleagues in ethical AI practices</li><li>Lead by example in professional AI implementation</li>' 
+                        : percentage >= 70 
+                            ? '<li>Practice with additional ethical scenarios</li><li>Engage in the discussion forum to learn from peers</li><li>Apply ethical frameworks to your specific professional context</li><li>Seek feedback on your ethical decision-making</li>' 
+                            : '<li>Review the Six Pillars of Professional AI Ethics</li><li>Practice with the DECIDE framework</li><li>Work through the case study scenarios</li><li>Build your professional ethics framework</li>'
+                    }
+                </ul>
+                
+                <div style="background: #e0f2fe; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                    <strong><i class="fas fa-lightbulb"></i> Key Insight:</strong> 
+                    Professional AI ethics isn't about perfection—it's about systematic thinking, transparent decision-making, and continuous improvement in service of stakeholder welfare and professional integrity.
+                </div>
+            `;
+            
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

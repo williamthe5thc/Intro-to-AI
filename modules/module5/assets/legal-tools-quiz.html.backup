@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal AI Tools Knowledge Check Quiz - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--accent-red);
+        }
+        .question-number {
+            background: var(--gradient-secondary);
+            color: var(--neutral-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background: #fef2f2;
+            border-color: var(--accent-red);
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+        .option.selected {
+            background: #fee2e2;
+            border-color: var(--accent-red);
+        }
+        .submit-btn {
+            background: var(--gradient-secondary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-green);
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Quiz</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-legal-ai-overview.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/legal-research-comparison.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Legal AI Tools Knowledge Check Quiz</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Test your understanding of AI tools in legal practice. This quiz covers key concepts from Module 5's learning activities and covers platform selection, implementation, and professional responsibility.
+            </p>
+
+            <div class="quiz-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        What is the primary advantage of AI-enhanced legal research platforms over traditional keyword-based systems?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            They are always more cost-effective
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            They can understand natural language queries and context
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            They eliminate the need for lawyer oversight
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            They provide guaranteed accurate results
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        Which professional responsibility rule is MOST directly implicated when lawyers use AI tools for legal research?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            Rule 1.1 (Competence) - Understanding the technology and its limitations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            Rule 7.3 (Advertising) - How to market AI capabilities
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            Rule 3.1 (Meritorious Claims) - Filing frivolous lawsuits
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            Rule 8.4 (Professional Responsibility) - Misconduct
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        According to the module content, which legal research platform is particularly strong for international and corporate legal departments?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            Westlaw Edge
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            LexisNexis+
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            Bloomberg Law
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            CoCounsel
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        What is a key consideration when implementing AI document review tools in a law firm?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            AI tools can completely replace human document review
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            Quality control and human oversight remain essential
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            Client permission is never required for AI use
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            All AI tools provide the same level of accuracy
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        Which factor is LEAST important when selecting an AI legal research platform for a solo practitioner?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            Cost and return on investment
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            User interface and ease of use
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            Integration with large firm case management systems
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            Quality of customer support and training
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        What is the most significant reported benefit of implementing AI legal research tools?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            Complete elimination of research costs
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            70-80% reduction in research time while maintaining accuracy
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            Automatic compliance with all professional responsibility rules
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            Guaranteed wins in all legal cases
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">7</span>
+                        Which AI legal tool category is specifically designed for analyzing and extracting information from contracts?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            Legal research platforms
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            Contract analysis tools (like Kira Systems and LawGeex)
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            Document review platforms
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            Legal writing assistants
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">8</span>
+                        What should be the first step in implementing AI tools in a law firm?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            Purchase the most expensive platform available
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            Start with a small pilot program on non-critical projects
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            Replace all existing research methods immediately
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            Train all staff simultaneously on multiple platforms
+                        </label>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-check"></i>
+                    Submit Quiz
+                </button>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/legal-research-comparison.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Practice Activity
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Discussion Forum
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // Natural language queries and context
+                q2: 'a', // Rule 1.1 Competence
+                q3: 'b', // LexisNexis+ for international
+                q4: 'b', // Quality control and human oversight
+                q5: 'c', // Large firm case management integration least important for solo
+                q6: 'b', // 70-80% reduction in research time
+                q7: 'b', // Contract analysis tools
+                q8: 'b'  // Start with pilot program
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+            let feedback = [];
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / total) * 100);
+            let message = '';
+            let encouragement = '';
+
+            if (percentage >= 85) {
+                message = 'Outstanding!';
+                encouragement = 'You have excellent understanding of AI tools in legal practice. You\'re well-prepared to evaluate and implement these technologies in professional settings. Consider sharing your insights in the discussion forum!';
+            } else if (percentage >= 70) {
+                message = 'Strong Performance!';
+                encouragement = 'You understand most key concepts about legal AI tools. Review the learning activities to strengthen areas where you had questions, particularly around professional responsibility and implementation strategies.';
+            } else if (percentage >= 60) {
+                message = 'Good Foundation';
+                encouragement = 'You\'re building solid knowledge about legal AI tools. Focus on reviewing the platform comparison materials and best practices for implementation. The practice activity will help reinforce these concepts.';
+            } else {
+                message = 'Additional Study Recommended';
+                encouragement = 'Take time to review the learning activities, especially the sections on professional responsibility, platform selection criteria, and implementation best practices. Consider discussing questions with classmates in the forum.';
+            }
+
+            document.getElementById('score').innerHTML = `${message}<br><span style="font-size: 1.2rem;">${score}/${total} correct (${percentage}%)</span>`;
+            document.getElementById('feedback').innerHTML = encouragement;
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

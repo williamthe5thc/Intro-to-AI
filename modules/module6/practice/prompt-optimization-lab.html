@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 1: Prompt Optimization Laboratory - Module 6</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .lab-container {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .experiment-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #0891b2;
+        }
+        .prompt-tester {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .version-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .prompt-version {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .prompt-version.baseline {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .prompt-version.optimized {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+        .optimization-score {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .score-poor { background: #fee2e2; color: #dc2626; }
+        .score-fair { background: #fef3c7; color: #92400e; }
+        .score-good { background: #dbeafe; color: #1e40af; }
+        .score-excellent { background: #d1fae5; color: #065f46; }
+        .interactive-optimizer {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        .optimization-step {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #0891b2;
+        }
+        .results-display {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .technique-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .technique-option {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .technique-option:hover {
+            border-color: #0891b2;
+            background: #f0f9ff;
+        }
+        .technique-option.selected {
+            border-color: #0891b2;
+            background: #f0f9ff;
+            color: #0c4a6e;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0891b2;
+        }
+        .metric-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 6</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Optimization Lab</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chain-of-thought.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/advanced-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Prompt Optimization Laboratory</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Transform amateur prompts into expert-level instructions through systematic optimization. Practice the iterative refinement process that separates professional AI practitioners from casual users.
+            </p>
+
+            <!-- Lab Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-flask"></i>Laboratory Objectives</h3>
+                <p style="margin-bottom: 1rem;">Master the systematic optimization of professional prompts:</p>
+                <ul class="modern-list">
+                    <li>Analyze prompt weaknesses using professional evaluation criteria</li>
+                    <li>Apply advanced techniques to improve prompt performance and consistency</li>
+                    <li>Conduct A/B testing to measure optimization effectiveness</li>
+                    <li>Develop optimization frameworks for different business contexts</li>
+                    <li>Build a library of high-performing prompt templates for professional use</li>
+                </ul>
+            </div>
+
+            <!-- Optimization Framework -->
+            <h2 class="section-title"><i class="fas fa-microscope"></i>The Professional Optimization Framework</h2>
+
+            <div class="lab-container">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-line"></i> The OPTIMIZE Method
+                </h4>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">O</strong>bjective: Define clear success criteria<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What exactly should the AI accomplish?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">P</strong>ersona: Add appropriate expert context<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What expertise should the AI embody?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">T</strong>ask: Structure with clear steps<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How should the AI approach the work?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">I</strong>nstructions: Specify format and style<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What should the output look like?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">M</strong>easure: Define quality standards<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How will we evaluate success?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">I</strong>terate: Test and refine systematically<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How can we improve performance?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Z</strong>ero-in: Achieve consistent excellence<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Lock in reliable, professional results</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">E</strong>xample: Provide demonstrations<br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Show the AI what excellence looks like</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optimization Experiments -->
+            <h2 class="section-title"><i class="fas fa-beaker"></i>Optimization Experiments</h2>
+
+            <!-- Experiment 1: Business Analysis -->
+            <div class="experiment-card">
+                <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                    <i class="fas fa-experiment"></i> Experiment 1: Business Analysis Optimization
+                </h4>
+                <p style="margin-bottom: 1rem; color: #374151;">Transform a basic business question into a sophisticated analytical framework.</p>
+                
+                <div class="version-comparison">
+                    <div class="prompt-version baseline">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">❌ Baseline Version</h5>
+                        <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; font-family: monospace; margin-bottom: 1rem;">
+"Should we expand into the European market?"
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">2/10</div>
+                                <div class="metric-label">Specificity</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">1/10</div>
+                                <div class="metric-label">Structure</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">1/10</div>
+                                <div class="metric-label">Context</div>
+                            </div>
+                        </div>
+                        <span class="optimization-score score-poor">Poor Quality</span>
+                    </div>
+                    
+                    <div class="prompt-version optimized">
+                        <h5 style="color: #065f46; margin-bottom: 0.5rem;">✅ Optimized Version</h5>
+                        <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; font-family: monospace; margin-bottom: 1rem; font-size: 0.9rem;">
+You are a senior strategy consultant with expertise in international expansion for SaaS companies. Our company is a B2B productivity software platform with $15M ARR, primarily serving US mid-market clients.
+
+Analyze our European expansion opportunity using this framework:
+
+1. Market Analysis
+   - Assess EU market size and growth for our category
+   - Identify key competitors and their market positioning
+   - Evaluate regulatory requirements (GDPR, data residency)
+
+2. Strategic Fit Assessment
+   - How well does our product align with European needs?
+   - What localization requirements would we face?
+   - How does this align with our 3-year growth strategy?
+
+3. Financial Modeling
+   - Estimate investment requirements for Year 1-3
+   - Project potential revenue and customer acquisition
+   - Calculate ROI and break-even timeline
+
+4. Risk Analysis
+   - What are the major implementation risks?
+   - How would this impact our existing US operations?
+   - What contingency plans should we prepare?
+
+5. Go/No-Go Recommendation
+   - Clear recommendation with supporting rationale
+   - If "go," outline optimal entry strategy and timeline
+   - Define success metrics and key milestones
+
+Format as executive summary suitable for board presentation.
+                        </div>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value">9/10</div>
+                                <div class="metric-label">Specificity</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">10/10</div>
+                                <div class="metric-label">Structure</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">9/10</div>
+                                <div class="metric-label">Context</div>
+                            </div>
+                        </div>
+                        <span class="optimization-score score-excellent">Excellent Quality</span>
+                    </div>
+                </div>
+                
+                <div style="background: #fef3c7; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                    <strong>Optimization Techniques Applied:</strong>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li>Added expert persona (senior strategy consultant)</li>
+                        <li>Provided specific company context ($15M ARR SaaS)</li>
+                        <li>Structured analysis with clear framework</li>
+                        <li>Specified output format (executive summary for board)</li>
+                        <li>Included comprehensive evaluation criteria</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Experiment 2: Content Creation -->
+            <div class="experiment-card">
+                <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                    <i class="fas fa-experiment"></i> Experiment 2: Content Marketing Optimization
+                </h4>
+                <p style="margin-bottom: 1rem; color: #374151;">Elevate generic content requests into strategic marketing frameworks.</p>
+                
+                <div class="version-comparison">
+                    <div class="prompt-version baseline">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">❌ Baseline Version</h5>
+                        <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; font-family: monospace; margin-bottom: 1rem;">
+"Write a blog post about AI tools for small businesses."
+                        </div>
+                        <span class="optimization-score score-poor">Generic Output Expected</span>
+                    </div>
+                    
+                    <div class="prompt-version optimized">
+                        <h5 style="color: #065f46; margin-bottom: 0.5rem;">✅ Optimized Version</h5>
+                        <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; font-family: monospace; margin-bottom: 1rem; font-size: 0.9rem;">
+You are a content marketing strategist who specializes in B2B technology content for small business audiences. You've helped SaaS companies generate 50M+ organic impressions and drive qualified leads through strategic content.
+
+Create a comprehensive blog post strategy:
+
+**Target Audience:** Small business owners (10-50 employees) who are AI-curious but not technical, primarily in service industries, budget-conscious, time-constrained.
+
+**Content Objective:** Generate qualified leads for our AI consulting services while establishing thought leadership.
+
+**Blog Post Framework:**
+1. Hook: Start with a relatable small business challenge that AI can solve
+2. Problem Context: Pain points small businesses face without AI assistance
+3. Solution Framework: 5 specific AI tools with clear ROI potential
+4. Implementation Guide: Step-by-step approach for non-technical users
+5. Success Stories: 2-3 brief case studies with quantified results
+6. Next Steps: Clear call-to-action for further engagement
+
+**Content Requirements:**
+- 1,500-2,000 words optimized for SEO (primary keyword: "AI tools for small business")
+- Conversational but authoritative tone
+- Include practical examples and real-world applications
+- End with compelling CTA for free AI readiness assessment
+
+**Success Metrics to Address:**
+- How readers can measure ROI from AI implementation
+- Timeline expectations for seeing results
+- Investment levels required for different tools
+
+Please create the full blog post following this strategic framework.
+                        </div>
+                        <span class="optimization-score score-excellent">Strategic, Targeted Output</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Prompt Optimizer -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Interactive Prompt Optimizer</h2>
+
+            <div class="interactive-optimizer">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-wrench"></i> Optimize Your Professional Prompt
+                </h4>
+                
+                <div class="optimization-step">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">1. Enter your current prompt:</label>
+                    <textarea id="currentPrompt" placeholder="Paste your existing prompt here..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="optimization-step">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">2. Select optimization techniques to apply:</label>
+                    <div class="technique-selector">
+                        <div class="technique-option" onclick="toggleTechnique('persona')">
+                            <i class="fas fa-user-tie"></i><br>Expert Persona
+                        </div>
+                        <div class="technique-option" onclick="toggleTechnique('context')">
+                            <i class="fas fa-info-circle"></i><br>Rich Context
+                        </div>
+                        <div class="technique-option" onclick="toggleTechnique('structure')">
+                            <i class="fas fa-list-ol"></i><br>Clear Structure
+                        </div>
+                        <div class="technique-option" onclick="toggleTechnique('examples')">
+                            <i class="fas fa-lightbulb"></i><br>Examples
+                        </div>
+                        <div class="technique-option" onclick="toggleTechnique('format')">
+                            <i class="fas fa-file-alt"></i><br>Output Format
+                        </div>
+                        <div class="technique-option" onclick="toggleTechnique('chain')">
+                            <i class="fas fa-link"></i><br>Chain-of-Thought
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="optimization-step">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">3. Provide context for optimization:</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <input type="text" id="businessContext" placeholder="Business context/industry" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <input type="text" id="targetAudience" placeholder="Target audience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                    </div>
+                </div>
+                
+                <div class="optimization-step">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">4. Desired output characteristics:</label>
+                    <input type="text" id="outputGoals" placeholder="e.g., Executive-ready, technical depth, actionable recommendations" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <button onclick="optimizePrompt()" style="background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Optimized Prompt
+                </button>
+                
+                <div id="optimizationResults" class="results-display">
+                    <strong style="color: #065f46;">Your Optimized Professional Prompt:</strong><br><br>
+                    <div id="optimizedPromptText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; font-family: monospace; white-space: pre-wrap; border: 2px solid #e2e8f0;"></div>
+                    
+                    <div style="margin-top: 1rem;">
+                        <h5 style="color: #065f46; margin-bottom: 0.5rem;">Optimization Summary:</h5>
+                        <div id="optimizationSummary" style="background: #fef3c7; padding: 1rem; border-radius: 6px;"></div>
+                    </div>
+                    
+                    <div style="margin-top: 1rem;">
+                        <h5 style="color: #065f46; margin-bottom: 0.5rem;">Testing Recommendations:</h5>
+                        <div style="background: #e0f2fe; padding: 1rem; border-radius: 6px;">
+                            <ul style="margin: 0; padding-left: 1rem;">
+                                <li>Test this optimized prompt with 3-5 different inputs</li>
+                                <li>Compare outputs with your original prompt</li>
+                                <li>Measure improvement in specificity, relevance, and actionability</li>
+                                <li>Save successful optimizations as templates</li>
+                                <li>Continue iterating based on results</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optimization Checklist -->
+            <div class="tips-card">
+                <h3><i class="fas fa-clipboard-check"></i>Professional Prompt Optimization Checklist</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Context & Persona</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">✓ Expert role defined<br>✓ Industry context provided<br>✓ Relevant experience specified</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Task Structure</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">✓ Clear objective stated<br>✓ Step-by-step breakdown<br>✓ Success criteria defined</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Output Specifications</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">✓ Format requirements<br>✓ Audience considerations<br>✓ Length/depth guidance</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Quality Controls</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">✓ Examples provided<br>✓ Quality standards<br>✓ Validation criteria</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A/B Testing Framework -->
+            <div style="background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #9333ea;">
+                <h3 style="color: #581c87; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-chart-bar"></i>Professional A/B Testing Protocol
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Baseline Testing</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Test original prompt with 5 different inputs to establish performance baseline</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Single Variable Changes</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Change one element at a time (persona, structure, examples) to isolate impact</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Quality Metrics</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Measure relevance, specificity, actionability, and professional appropriateness</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Statistical Significance</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Test multiple iterations to ensure consistent improvement over baseline</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0c4a6e; margin-bottom: 1rem;">Ready for Workflow Integration?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Apply your optimization skills to build sophisticated professional workflows that combine all advanced techniques.</p>
+                <a href="professional-workflow-builder.html" class="nav-btn">
+                    <i class="fas fa-project-diagram"></i>
+                    Build Professional Workflows
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-3-multi-step-workflows.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Multi-Step Workflows
+                </a>
+                <a href="professional-workflow-builder.html" class="nav-btn">
+                    Next: Workflow Builder
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedTechniques = new Set();
+        
+        function toggleTechnique(technique) {
+            const element = event.currentTarget;
+            
+            if (selectedTechniques.has(technique)) {
+                selectedTechniques.delete(technique);
+                element.classList.remove('selected');
+            } else {
+                selectedTechniques.add(technique);
+                element.classList.add('selected');
+            }
+        }
+        
+        function optimizePrompt() {
+            const currentPrompt = document.getElementById('currentPrompt').value;
+            const businessContext = document.getElementById('businessContext').value;
+            const targetAudience = document.getElementById('targetAudience').value;
+            const outputGoals = document.getElementById('outputGoals').value;
+            
+            if (!currentPrompt || selectedTechniques.size === 0) {
+                alert('Please enter a prompt and select at least one optimization technique.');
+                return;
+            }
+            
+            let optimizedPrompt = '';
+            let optimizations = [];
+            
+            // Add persona if selected
+            if (selectedTechniques.has('persona')) {
+                optimizedPrompt += `You are a senior professional with extensive experience in ${businessContext || 'your industry'}. You have a track record of delivering high-quality work for ${targetAudience || 'executive audiences'} and understand both strategic and operational challenges.\n\n`;
+                optimizations.push('Added expert persona with relevant experience');
+            }
+            
+            // Add context if selected
+            if (selectedTechniques.has('context')) {
+                optimizedPrompt += `Business Context: Working in ${businessContext || 'a professional environment'} with the goal of ${outputGoals || 'delivering actionable insights'}. The output will be used by ${targetAudience || 'decision-makers'} to inform important business decisions.\n\n`;
+                optimizations.push('Enhanced business context and stakeholder information');
+            }
+            
+            // Add structure if selected
+            if (selectedTechniques.has('structure')) {
+                optimizedPrompt += `Please approach this systematically:\n\n1. Analysis & Assessment\n2. Key Insights & Findings\n3. Recommendations & Next Steps\n4. Implementation Considerations\n\n`;
+                optimizations.push('Added clear structural framework');
+            }
+            
+            // Add the original prompt with improvements
+            optimizedPrompt += `Task: ${currentPrompt}\n\n`;
+            
+            // Add chain-of-thought if selected
+            if (selectedTechniques.has('chain')) {
+                optimizedPrompt += `Please think through this step-by-step, showing your reasoning process and how you arrive at your conclusions.\n\n`;
+                optimizations.push('Integrated chain-of-thought reasoning');
+            }
+            
+            // Add examples if selected
+            if (selectedTechniques.has('examples')) {
+                optimizedPrompt += `When providing recommendations, include specific examples and concrete details that ${targetAudience || 'stakeholders'} can act upon immediately.\n\n`;
+                optimizations.push('Requested specific examples and actionable details');
+            }
+            
+            // Add format if selected
+            if (selectedTechniques.has('format')) {
+                optimizedPrompt += `Format Requirements:\n- Present findings in a professional, ${outputGoals || 'business-appropriate'} format\n- Use clear headings and logical organization\n- Include an executive summary if the response is lengthy\n- Ensure the content is appropriate for ${targetAudience || 'professional audiences'}\n\n`;
+                optimizations.push('Specified professional output format and structure');
+            }
+            
+            optimizedPrompt += `Success Criteria: The response should be comprehensive, actionable, and immediately useful for ${businessContext || 'business'} decision-making.`;
+            
+            document.getElementById('optimizedPromptText').textContent = optimizedPrompt;
+            document.getElementById('optimizationSummary').innerHTML = `
+                <strong>Applied ${optimizations.length} optimization techniques:</strong><br>
+                ${optimizations.map(opt => `• ${opt}`).join('<br>')}
+                <br><br>
+                <strong>Estimated improvement:</strong> ${optimizations.length * 15}% increase in output quality and relevance
+            `;
+            document.getElementById('optimizationResults').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('optimizationResults').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

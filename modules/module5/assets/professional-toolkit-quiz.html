@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional AI Toolkit Competency Assessment - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .quiz-intro {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #0891b2;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .question-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: var(--neutral-white);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-category {
+            font-size: 0.8rem;
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            line-height: 1.4;
+        }
+        .option:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+        .option.selected {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+        .option-text {
+            flex: 1;
+        }
+        .submit-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            border-left: 4px solid #22c55e;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #22c55e;
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .category-score {
+            background: rgba(255,255,255,0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .quiz-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: var(--neutral-white);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Assessment</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-document-processing.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/cross-industry-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Professional AI Toolkit Competency Assessment</h1>
+            
+            <div class="quiz-container">
+                <div class="quiz-intro">
+                    <h3 style="color: #0c4a6e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-certificate"></i>
+                        Demonstrate Your Professional AI Toolkit Mastery
+                    </h3>
+                    <p style="margin-bottom: 1rem; color: #374151;">
+                        This comprehensive assessment evaluates your understanding of AI-powered document processing, data analysis, and research systems across industries. Test your knowledge of tool selection, implementation strategies, and professional best practices.
+                    </p>
+                    
+                    <div class="quiz-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Questions</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">20</div>
+                            <div class="stat-label">Minutes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Categories</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">85%</div>
+                            <div class="stat-label">Pass Score</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong>Assessment Categories:</strong>
+                        Tool Selection & Application (25%) • Implementation Strategy (25%) • Ethics & Governance (25%) • Industry Application (25%)
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <!-- Question 1: Tool Selection -->
+                <div class="question-card">
+                    <div class="question-category">Tool Selection & Application</div>
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        <div>Which document AI tool would be MOST appropriate for a healthcare organization needing to process patient intake forms, insurance documents, and medical research papers across multiple formats?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            <div class="option-text">ChatPDF only, since it handles PDFs which are most common in healthcare</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            <div class="option-text">DocAnalyzer.ai, due to its multi-format support (PDF, DOCX, MD, ODT, HTML) and professional automation capabilities</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            <div class="option-text">Adobe Acrobat AI, since it's specifically designed for healthcare compliance</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            <div class="option-text">iScanner AI, because OCR is the primary need in healthcare</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: Data Analysis -->
+                <div class="question-card">
+                    <div class="question-category">Tool Selection & Application</div>
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        <div>A manufacturing company wants to implement AI for analyzing production data, quality control metrics, and supply chain information. What is the most important factor in their tool selection?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            <div class="option-text">Choosing the cheapest available option to minimize costs</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            <div class="option-text">Integration capabilities with existing ERP systems and data sources</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            <div class="option-text">Using only cloud-based solutions for maximum flexibility</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            <div class="option-text">Selecting tools that require no training for immediate deployment</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Implementation Strategy -->
+                <div class="question-card">
+                    <div class="question-category">Implementation Strategy</div>
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        <div>According to professional AI implementation best practices, what should be the first step when introducing AI document processing tools to a legal or financial services firm?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            <div class="option-text">Immediately replace all existing document review processes</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            <div class="option-text">Conduct a pilot program with non-critical documents and establish baseline metrics</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            <div class="option-text">Purchase enterprise licenses for the entire organization</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            <div class="option-text">Train all staff simultaneously on multiple AI platforms</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4: ROI Calculation -->
+                <div class="question-card">
+                    <div class="question-category">Implementation Strategy</div>
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        <div>A professional services firm processes 100 documents per week, spending 45 minutes per document at $75/hour. With AI achieving 70% time savings, what would be their annual cost savings?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            <div class="option-text">$136,500 annually</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            <div class="option-text">$195,000 annually</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            <div class="option-text">$97,500 annually</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            <div class="option-text">$58,500 annually</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5: Ethics & Governance -->
+                <div class="question-card">
+                    <div class="question-category">Ethics & Governance</div>
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        <div>When implementing AI tools for processing sensitive business documents, what is the MOST critical governance consideration?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            <div class="option-text">Ensuring AI tools are used only by senior employees</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            <div class="option-text">Data privacy, security compliance, and establishing clear quality assurance protocols</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            <div class="option-text">Choosing only free AI tools to avoid vendor relationships</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            <div class="option-text">Processing all documents manually first as backup</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: Research Tools -->
+                <div class="question-card">
+                    <div class="question-category">Tool Selection & Application</div>
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        <div>Which combination of AI research tools would be most effective for a marketing team conducting comprehensive market analysis and competitive intelligence?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            <div class="option-text">Only Perplexity AI for all research needs</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            <div class="option-text">Consensus for academic research, Perplexity AI for market trends, and Sembly AI for competitive analysis</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            <div class="option-text">Traditional Google search supplemented by ChatGPT</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            <div class="option-text">Excel AI tools for all analysis and research</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7: Quality Assurance -->
+                <div class="question-card">
+                    <div class="question-category">Ethics & Governance</div>
+                    <div class="question-title">
+                        <span class="question-number">7</span>
+                        <div>What is the recommended approach for quality assurance when using AI for professional document analysis?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            <div class="option-text">Trust AI outputs completely since they're more accurate than humans</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            <div class="option-text">Implement human oversight, validation checkpoints, and accuracy measurement systems</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            <div class="option-text">Only spot-check documents randomly once per month</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            <div class="option-text">Use multiple AI tools simultaneously and choose the majority result</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8: Cross-Industry Application -->
+                <div class="question-card">
+                    <div class="question-category">Industry Application</div>
+                    <div class="question-title">
+                        <span class="question-number">8</span>
+                        <div>Which statement best describes how AI document processing applications differ across industries?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            <div class="option-text">All industries use identical AI tools and processes with no variation</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            <div class="option-text">Core AI capabilities are universal, but implementation varies based on document types, compliance requirements, and industry-specific workflows</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            <div class="option-text">Each industry requires completely different AI technologies with no overlap</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            <div class="option-text">Only technology companies can effectively implement AI document processing</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9: Workflow Integration -->
+                <div class="question-card">
+                    <div class="question-category">Implementation Strategy</div>
+                    <div class="question-title">
+                        <span class="question-number">9</span>
+                        <div>What is the most effective approach for integrating AI data analysis tools with existing business workflows?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            <div class="option-text">Replace all existing tools immediately to force adoption</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            <div class="option-text">Identify integration points, provide API connectivity, and ensure seamless data flow between systems</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            <div class="option-text">Use AI tools in complete isolation from existing systems</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            <div class="option-text">Wait for vendors to provide perfect integration before starting</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10: Team Training -->
+                <div class="question-card">
+                    <div class="question-category">Implementation Strategy</div>
+                    <div class="question-title">
+                        <span class="question-number">10</span>
+                        <div>Which training approach is most effective for successful AI tool adoption across professional teams?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            <div class="option-text">One-time training session covering all available tools</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            <div class="option-text">Progressive skill building with hands-on practice, ongoing support, and regular update sessions</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            <div class="option-text">Self-directed learning only with no formal training</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            <div class="option-text">Training only for managers who will then train their teams</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 11: Bias Detection -->
+                <div class="question-card">
+                    <div class="question-category">Ethics & Governance</div>
+                    <div class="question-title">
+                        <span class="question-number">11</span>
+                        <div>How should organizations address potential bias in AI-powered research and analysis tools?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q11" value="a">
+                            <div class="option-text">Assume AI tools are inherently unbiased and don't require monitoring</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="b">
+                            <div class="option-text">Implement diverse data sources, regular bias auditing, and human oversight with diverse perspectives</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="c">
+                            <div class="option-text">Only use AI tools from large technology companies to ensure bias-free results</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="d">
+                            <div class="option-text">Avoid AI tools entirely if there's any possibility of bias</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 12: Multi-Format Processing -->
+                <div class="question-card">
+                    <div class="question-category">Industry Application</div>
+                    <div class="question-title">
+                        <span class="question-number">12</span>
+                        <div>A consulting firm needs to process client documents in PDF, DOCX, HTML, and markdown formats. What is the primary advantage of using a multi-format AI processing solution?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q12" value="a">
+                            <div class="option-text">It's always cheaper than using specialized single-format tools</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="b">
+                            <div class="option-text">Unified workflow, consistent analysis quality, and reduced training requirements across document types</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="c">
+                            <div class="option-text">Multi-format tools are guaranteed to be more accurate</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="d">
+                            <div class="option-text">It eliminates the need for human document review entirely</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 13: Scaling Strategies -->
+                <div class="question-card">
+                    <div class="question-category">Implementation Strategy</div>
+                    <div class="question-title">
+                        <span class="question-number">13</span>
+                        <div>What is the most important consideration when scaling AI implementation from a department pilot to organization-wide deployment?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q13" value="a">
+                            <div class="option-text">Immediately deploying to all departments simultaneously for fairness</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="b">
+                            <div class="option-text">Establishing governance frameworks, standardized processes, and change management protocols while measuring success metrics</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="c">
+                            <div class="option-text">Purchasing the maximum number of licenses available</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q13" value="d">
+                            <div class="option-text">Keeping the pilot implementation exactly the same without modification</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 14: Compliance Considerations -->
+                <div class="question-card">
+                    <div class="question-category">Ethics & Governance</div>
+                    <div class="question-title">
+                        <span class="question-number">14</span>
+                        <div>Which compliance consideration is MOST critical when implementing AI document processing in regulated industries like healthcare or finance?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q14" value="a">
+                            <div class="option-text">Ensuring the AI vendor has the lowest cost structure</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="b">
+                            <div class="option-text">Data residency, encryption, audit trails, and regulatory compliance certifications (HIPAA, SOX, GDPR, etc.)</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="c">
+                            <div class="option-text">Using only open-source AI tools to avoid vendor lock-in</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q14" value="d">
+                            <div class="option-text">Processing all sensitive data on personal devices for security</div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 15: Future-Proofing -->
+                <div class="question-card">
+                    <div class="question-category">Industry Application</div>
+                    <div class="question-title">
+                        <span class="question-number">15</span>
+                        <div>What strategy best ensures long-term success with professional AI toolkit implementation across diverse industries?</div>
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q15" value="a">
+                            <div class="option-text">Committing to a single AI vendor for all needs to ensure consistency</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="b">
+                            <div class="option-text">Building adaptable frameworks, maintaining technology flexibility, and fostering continuous learning culture</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="c">
+                            <div class="option-text">Waiting for AI technology to mature completely before implementation</div>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q15" value="d">
+                            <div class="option-text">Focusing only on the most advanced AI tools regardless of business needs</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <h3 style="color: #065f46; margin-bottom: 1rem;">Ready to Submit Your Assessment?</h3>
+                    <p style="color: #374151; margin-bottom: 1rem;">
+                        Review your answers above, then click submit to receive your professional AI toolkit competency score and detailed feedback.
+                    </p>
+                    <button class="submit-btn" onclick="submitQuiz()" id="submitBtn">
+                        <i class="fas fa-check-circle"></i>
+                        Submit Assessment
+                    </button>
+                </div>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="score-breakdown" id="scoreBreakdown"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/cross-industry-implementation.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Practice Project
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Discussion Forum
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Track progress
+        function updateProgress() {
+            const totalQuestions = 15;
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progress = (answeredQuestions / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            // Enable submit button when all questions answered
+            const submitBtn = document.getElementById('submitBtn');
+            if (answeredQuestions === totalQuestions) {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.6';
+            }
+        }
+
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+                
+                updateProgress();
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // DocAnalyzer.ai for multi-format support
+                q2: 'b', // Integration capabilities
+                q3: 'b', // Pilot program first
+                q4: 'a', // $136,500 annually (100 docs × 0.75 hr × 0.7 savings × 52 weeks × $75/hr)
+                q5: 'b', // Data privacy and security compliance
+                q6: 'b', // Combination of specialized research tools
+                q7: 'b', // Human oversight and validation
+                q8: 'b', // Universal capabilities, varied implementation
+                q9: 'b', // API connectivity and seamless data flow
+                q10: 'b', // Progressive skill building
+                q11: 'b', // Diverse sources and bias auditing
+                q12: 'b', // Unified workflow and consistency
+                q13: 'b', // Governance frameworks and change management
+                q14: 'b', // Regulatory compliance certifications
+                q15: 'b'  // Adaptable frameworks and continuous learning
+            };
+
+            const categories = {
+                'Tool Selection & Application': ['q1', 'q2', 'q6', 'q12'],
+                'Implementation Strategy': ['q3', 'q4', 'q9', 'q10', 'q13'],
+                'Ethics & Governance': ['q5', 'q7', 'q11', 'q14'],
+                'Industry Application': ['q8', 'q15']
+            };
+
+            let totalScore = 0;
+            let categoryScores = {};
+            
+            // Calculate scores by category
+            Object.keys(categories).forEach(category => {
+                let categoryScore = 0;
+                categories[category].forEach(question => {
+                    const selected = document.querySelector(`input[name="${question}"]:checked`);
+                    if (selected && selected.value === answers[question]) {
+                        categoryScore++;
+                        totalScore++;
+                    }
+                });
+                categoryScores[category] = {
+                    score: categoryScore,
+                    total: categories[category].length,
+                    percentage: Math.round((categoryScore / categories[category].length) * 100)
+                };
+            });
+
+            const overallPercentage = Math.round((totalScore / 15) * 100);
+            
+            // Generate feedback
+            let message = '';
+            let encouragement = '';
+            let certificateLevel = '';
+
+            if (overallPercentage >= 90) {
+                message = 'Expert Level Achievement!';
+                certificateLevel = 'AI Toolkit Expert';
+                encouragement = 'Outstanding mastery of professional AI tools! You demonstrate expert-level understanding of implementation strategies, governance, and cross-industry applications. You\'re ready to lead AI transformation initiatives and mentor others in your organization.';
+            } else if (overallPercentage >= 85) {
+                message = 'Proficient Professional!';
+                certificateLevel = 'AI Toolkit Professional';
+                encouragement = 'Excellent competency in professional AI tools! You understand key concepts and best practices. Focus on the areas where you scored lower to achieve expert level. Consider sharing your knowledge in the discussion forum.';
+            } else if (overallPercentage >= 70) {
+                message = 'Developing Competency';
+                certificateLevel = 'AI Toolkit Practitioner';
+                encouragement = 'Good foundation in AI toolkit concepts! You grasp most fundamentals but should focus on strengthening implementation strategies and governance practices. Review the learning activities and practice project for deeper understanding.';
+            } else if (overallPercentage >= 60) {
+                message = 'Foundation Building';
+                certificateLevel = 'AI Toolkit Learner';
+                encouragement = 'You\'re building important AI knowledge! Focus on the core learning activities, especially tool selection criteria and implementation best practices. The hands-on practice project will help solidify these concepts.';
+            } else {
+                message = 'Additional Study Recommended';
+                certificateLevel = 'Additional Study Needed';
+                encouragement = 'This assessment indicates you should review the module content more thoroughly. Focus on understanding the different AI tool categories, implementation strategies, and professional best practices. Consider retaking after additional study.';
+            }
+
+            // Display results
+            document.getElementById('score').innerHTML = `
+                ${message}<br>
+                <span style="font-size: 1.4rem;">${totalScore}/15 correct (${overallPercentage}%)</span><br>
+                <span style="font-size: 1rem; color: #065f46; background: rgba(255,255,255,0.8); padding: 0.5rem 1rem; border-radius: 20px; margin-top: 1rem; display: inline-block;">${certificateLevel}</span>
+            `;
+
+            // Display category breakdown
+            let breakdownHTML = '';
+            Object.keys(categoryScores).forEach(category => {
+                const data = categoryScores[category];
+                const color = data.percentage >= 75 ? '#059669' : data.percentage >= 60 ? '#d97706' : '#dc2626';
+                breakdownHTML += `
+                    <div class="category-score">
+                        <div style="font-size: 1.2rem; font-weight: 600; color: ${color};">${data.score}/${data.total}</div>
+                        <div style="font-size: 0.9rem; margin: 0.25rem 0;">${category}</div>
+                        <div style="font-size: 0.8rem; color: #6b7280;">${data.percentage}%</div>
+                    </div>
+                `;
+            });
+            document.getElementById('scoreBreakdown').innerHTML = breakdownHTML;
+
+            document.getElementById('feedback').innerHTML = encouragement;
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>

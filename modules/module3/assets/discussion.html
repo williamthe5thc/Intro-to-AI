@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion: Chatbots and Legal Ethics - Module 3</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .discussion-prompt {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .discussion-question {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            border: 2px solid var(--neutral-light);
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .question-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+        }
+        
+        .question-content {
+            padding: 1.5rem;
+        }
+        
+        .post-form {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            border: 2px solid var(--neutral-light);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .discussion-posts {
+            margin: 2rem 0;
+        }
+        
+        .post-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            border: 2px solid var(--neutral-light);
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .post-header {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--neutral-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .post-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        
+        .post-date {
+            color: var(--neutral-medium);
+            font-size: 0.9rem;
+        }
+        
+        .post-content {
+            padding: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .post-actions {
+            padding: 1rem 1.5rem;
+            background: #f8fafc;
+            border-top: 1px solid var(--neutral-light);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--neutral-medium);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .action-btn:hover {
+            background: #e2e8f0;
+            color: var(--primary-blue);
+        }
+        
+        .guidelines-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #1e40af;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .reply-form {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .reply-form.show {
+            display: block;
+        }
+        
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 3</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Discussion Forum</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chatbot-fundamentals.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/chatbot-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="chatbot-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <div class="discussion-container">
+                <h1 class="page-title">Discussion: Chatbots and Legal Ethics</h1>
+                
+                <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem; text-align: center;">
+                    Engage with your peers to explore the complex ethical and practical considerations of implementing AI chatbots in legal practice.
+                </p>
+
+                <!-- Discussion Guidelines -->
+                <div class="guidelines-card">
+                    <h3 style="color: #1e40af; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-compass"></i>Discussion Guidelines
+                    </h3>
+                    <ul class="modern-list">
+                        <li><strong>Professional Tone:</strong> Maintain a respectful, professional discussion environment</li>
+                        <li><strong>Evidence-Based:</strong> Support your arguments with references to ethics rules, case law, or industry practices</li>
+                        <li><strong>Practical Focus:</strong> Consider real-world implementation challenges and solutions</li>
+                        <li><strong>Peer Engagement:</strong> Respond thoughtfully to at least two classmates' posts</li>
+                        <li><strong>Critical Thinking:</strong> Challenge assumptions respectfully and explore different perspectives</li>
+                    </ul>
+                </div>
+
+                <!-- Discussion Prompt -->
+                <div class="discussion-prompt">
+                    <h3 style="color: #7c3aed; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-lightbulb"></i>Discussion Topic: The Ethics Dilemma
+                    </h3>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6;">
+                        You're consulting for a law firm that wants to implement a chatbot for client intake. The managing partner says: <em>"We want the chatbot to be as helpful as possible - it should answer basic legal questions and even provide preliminary advice to save attorney time and help more clients afford our services."</em>
+                    </p>
+                    <p style="margin-bottom: 1.5rem; font-weight: 600; color: #7c3aed;">
+                        How do you respond? What are the competing interests, ethical considerations, and practical solutions?
+                    </p>
+                </div>
+
+                <!-- Discussion Questions -->
+                <div class="discussion-question">
+                    <div class="question-header">
+                        <i class="fas fa-question-circle"></i> Consider These Questions in Your Response
+                    </div>
+                    <div class="question-content">
+                        <ol class="modern-list">
+                            <li><strong>Professional Responsibility:</strong> Which ABA Model Rules are implicated by the partner's request? How do you balance helpfulness with compliance?</li>
+                            <li><strong>Access to Justice:</strong> How might chatbots improve or hinder access to legal services? Can technology democratize legal help while maintaining professional standards?</li>
+                            <li><strong>Risk Management:</strong> What specific risks does the partner's approach create? How would you mitigate these risks while still achieving the firm's goals?</li>
+                            <li><strong>Implementation Strategy:</strong> What alternative approaches would you recommend that balance efficiency, helpfulness, and ethical compliance?</li>
+                            <li><strong>Future Considerations:</strong> How might evolving AI capabilities change this ethical analysis? What precedents are we setting?</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Post Form -->
+                <div class="post-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--neutral-dark);"><i class="fas fa-edit"></i> Share Your Perspective</h3>
+                    <form id="discussion-form">
+                        <div class="form-group">
+                            <label class="form-label" for="author-name">Your Name</label>
+                            <input type="text" id="author-name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="post-content">Your Response</label>
+                            <textarea id="post-content" class="form-input form-textarea" placeholder="Share your thoughts on the ethical considerations... Be sure to address specific ABA Model Rules and practical implementation strategies." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="position-title">Professional Role (Optional)</label>
+                            <input type="text" id="position-title" class="form-input" placeholder="e.g., Attorney, Paralegal, Law Student, IT Professional">
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Post Response
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Discussion Posts -->
+                <div class="discussion-posts">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--neutral-dark);"><i class="fas fa-comments"></i> Student Responses</h3>
+
+                    <!-- Sample Post 1 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div>
+                                <span class="post-author">Sarah Martinez</span>
+                                <span style="color: var(--neutral-medium); margin-left: 0.5rem;">• Corporate Attorney</span>
+                            </div>
+                            <span class="post-date">2 days ago</span>
+                        </div>
+                        <div class="post-content">
+                            <p>The managing partner's request raises immediate red flags under Rule 5.5 (Unauthorized Practice of Law). While the intention to increase access to legal services is admirable, providing "preliminary advice" through a chatbot could constitute the unauthorized practice of law, especially if clients reasonably believe they're receiving professional legal guidance.</p>
+                            
+                            <p>However, I think there's a middle ground. The firm could implement a chatbot that:</p>
+                            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                                <li>Provides clear disclaimers about its limitations</li>
+                                <li>Offers general legal information (not advice)</li>
+                                <li>Facilitates efficient intake processes</li>
+                                <li>Routes clients to appropriate attorneys for actual advice</li>
+                            </ul>
+                            
+                            <p>Under Rule 1.1 (Competence), the firm must also ensure they understand the technology's limitations and maintain appropriate oversight. The key is transparency and appropriate boundaries.</p>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn" onclick="toggleReply(this)">
+                                <i class="fas fa-reply"></i> Reply
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-thumbs-up"></i> Helpful (3)
+                            </button>
+                        </div>
+                        <div class="reply-form">
+                            <textarea class="form-input form-textarea" placeholder="Reply to Sarah's post..."></textarea>
+                            <div style="margin-top: 1rem;">
+                                <button class="submit-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Post Reply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Post 2 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div>
+                                <span class="post-author">Michael Chen</span>
+                                <span style="color: var(--neutral-medium); margin-left: 0.5rem;">• Legal Technology Consultant</span>
+                            </div>
+                            <span class="post-date">1 day ago</span>
+                        </div>
+                        <div class="post-content">
+                            <p>From a technology perspective, I agree with Sarah's concerns, but I'd add that the technical implementation matters enormously. Even with good intentions, poorly designed chatbots can create unintended attorney-client relationships or give the impression of legal advice when none is intended.</p>
+                            
+                            <p>Some technical safeguards I'd recommend:</p>
+                            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                                <li>Prominent, repeated disclaimers throughout the conversation</li>
+                                <li>Automatic session timeouts to prevent extended "consultation-like" interactions</li>
+                                <li>Clear visual design that distinguishes the chatbot from attorney communications</li>
+                                <li>Escalation protocols when users ask for advice</li>
+                            </ul>
+                            
+                            <p>Rule 1.6 (Confidentiality) is also crucial here. The firm needs robust data protection measures because even intake conversations may contain privileged information. GDPR and state privacy laws add additional compliance layers.</p>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn" onclick="toggleReply(this)">
+                                <i class="fas fa-reply"></i> Reply
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-thumbs-up"></i> Helpful (2)
+                            </button>
+                        </div>
+                        <div class="reply-form">
+                            <textarea class="form-input form-textarea" placeholder="Reply to Michael's post..."></textarea>
+                            <div style="margin-top: 1rem;">
+                                <button class="submit-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Post Reply</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Post 3 -->
+                    <div class="post-card">
+                        <div class="post-header">
+                            <div>
+                                <span class="post-author">Dr. Lisa Johnson</span>
+                                <span style="color: var(--neutral-medium); margin-left: 0.5rem;">• Legal Ethics Professor</span>
+                            </div>
+                            <span class="post-date">12 hours ago</span>
+                        </div>
+                        <div class="post-content">
+                            <p>Both previous posts raise excellent points. I'd like to add a broader perspective on access to justice. The partner's concern about affordability is valid - legal services are often inaccessible to middle-income individuals who don't qualify for legal aid but can't afford traditional representation.</p>
+                            
+                            <p>However, the solution isn't to lower professional standards. Instead, consider:</p>
+                            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                                <li><strong>Tiered Service Models:</strong> Chatbots for triage, paralegals for document prep, attorneys for advice</li>
+                                <li><strong>Educational Focus:</strong> Help clients understand when they need legal help vs. self-help resources</li>
+                                <li><strong>Transparent Pricing:</strong> Use intake data to provide accurate cost estimates</li>
+                            </ul>
+                            
+                            <p>The long-term risk of the partner's approach is erosion of public trust. If chatbots provide poor "advice" or create false expectations, it hurts the entire profession. Rule 8.4 reminds us that our conduct affects the profession's integrity.</p>
+                        </div>
+                        <div class="post-actions">
+                            <button class="action-btn" onclick="toggleReply(this)">
+                                <i class="fas fa-reply"></i> Reply
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-thumbs-up"></i> Helpful (5)
+                            </button>
+                        </div>
+                        <div class="reply-form">
+                            <textarea class="form-input form-textarea" placeholder="Reply to Dr. Johnson's post..."></textarea>
+                            <div style="margin-top: 1rem;">
+                                <button class="submit-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Post Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Participation Reminder -->
+                <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px;">
+                    <h3 style="color: #92400e; margin-bottom: 1rem;">Continue the Conversation</h3>
+                    <p style="color: #374151; margin-bottom: 1.5rem;">Remember to respond to at least two classmates' posts with thoughtful, substantive contributions that advance the discussion.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="../../module4/welcome.html" class="nav-btn">
+                            <i class="fas fa-arrow-right"></i>
+                            Continue to Module 4
+                        </a>
+                        <a href="../welcome.html" class="nav-btn secondary">
+                            <i class="fas fa-undo"></i>
+                            Module Overview
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <a href="chatbot-quiz.html" class="nav-btn secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Previous: Quiz
+                    </a>
+                    <a href="../../module4/welcome.html" class="nav-btn">
+                        Next Module: Media Creation
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('discussion-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const authorName = document.getElementById('author-name').value;
+            const postContent = document.getElementById('post-content').value;
+            const positionTitle = document.getElementById('position-title').value;
+            
+            if (authorName && postContent) {
+                // Create new post element
+                const newPost = createPostElement(authorName, positionTitle, postContent);
+                
+                // Add to posts container
+                const postsContainer = document.querySelector('.discussion-posts');
+                postsContainer.appendChild(newPost);
+                
+                // Reset form
+                this.reset();
+                
+                // Show success message
+                alert('Your post has been added to the discussion!');
+                
+                // Scroll to new post
+                newPost.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        function createPostElement(author, title, content) {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post-card';
+            
+            const currentDate = new Date().toLocaleDateString();
+            const titleDisplay = title ? `• ${title}` : '';
+            
+            postDiv.innerHTML = `
+                <div class="post-header">
+                    <div>
+                        <span class="post-author">${author}</span>
+                        <span style="color: var(--neutral-medium); margin-left: 0.5rem;">${titleDisplay}</span>
+                    </div>
+                    <span class="post-date">Just now</span>
+                </div>
+                <div class="post-content">
+                    <p>${content.replace(/\n/g, '</p><p>')}</p>
+                </div>
+                <div class="post-actions">
+                    <button class="action-btn" onclick="toggleReply(this)">
+                        <i class="fas fa-reply"></i> Reply
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-thumbs-up"></i> Helpful (0)
+                    </button>
+                </div>
+                <div class="reply-form">
+                    <textarea class="form-input form-textarea" placeholder="Reply to ${author}'s post..."></textarea>
+                    <div style="margin-top: 1rem;">
+                        <button class="submit-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Post Reply</button>
+                    </div>
+                </div>
+            `;
+            
+            return postDiv;
+        }
+
+        function toggleReply(button) {
+            const postCard = button.closest('.post-card');
+            const replyForm = postCard.querySelector('.reply-form');
+            
+            if (replyForm.classList.contains('show')) {
+                replyForm.classList.remove('show');
+                button.innerHTML = '<i class="fas fa-reply"></i> Reply';
+            } else {
+                replyForm.classList.add('show');
+                button.innerHTML = '<i class="fas fa-times"></i> Cancel';
+                replyForm.querySelector('textarea').focus();
+            }
+        }
+    </script>
+</body>
+</html>

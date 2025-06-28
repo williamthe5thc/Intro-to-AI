@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion: Shaping the Future of Professional AI Practice - Module 9</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-container {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #3b82f6;
+        }
+        .discussion-prompt {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .prompt-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #0891b2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .prompt-category:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: #f8fafc;
+        }
+        .community-guidelines {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .guideline-item {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        .topic-explorer {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .topic-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .topic-card:hover {
+            border-color: #8b5cf6;
+            background: #faf5ff;
+            transform: translateY(-2px);
+        }
+        .networking-hub {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .networking-section {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .thought-leadership {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .leadership-opportunity {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .contribution-framework {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .contribution-type {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .interactive-post {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #10b981;
+        }
+        .post-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-post {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .discussion-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        .future-vision {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .vision-element {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 9</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Discussion Forum</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-future-trends-analysis.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/career-development-planner.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="future-readiness-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Discussion: Shaping the Future of Professional AI Practice</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Join fellow professionals in exploring the future of AI in the workplace. Share insights, ask questions, collaborate on solutions, and build lasting professional relationships as we collectively shape the AI-enhanced future of work.
+            </p>
+
+            <!-- Discussion Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-users"></i>Community Discussion Objectives</h3>
+                <p style="margin-bottom: 1rem;">Engage in meaningful professional dialogue about the future of AI practice:</p>
+                <ul class="modern-list">
+                    <li>Share diverse perspectives on AI's impact across different industries and roles</li>
+                    <li>Collaborate on solutions to common AI implementation challenges</li>
+                    <li>Build professional networks with like-minded AI practitioners and leaders</li>
+                    <li>Explore emerging trends and their implications for career development</li>
+                    <li>Contribute to collective wisdom about responsible AI adoption and best practices</li>
+                    <li>Develop thought leadership through substantive professional discourse</li>
+                </ul>
+            </div>
+
+            <!-- Discussion Statistics -->
+            <div class="discussion-stats">
+                <div class="stat-card">
+                    <h4 style="color: #3b82f6; margin-bottom: 0.5rem;"><i class="fas fa-users"></i> Active Members</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: #1d4ed8;">1,247</div>
+                    <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">AI Professionals Engaged</p>
+                </div>
+                <div class="stat-card">
+                    <h4 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-comments"></i> Discussions</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: #059669;">3,891</div>
+                    <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Professional Conversations</p>
+                </div>
+                <div class="stat-card">
+                    <h4 style="color: #f59e0b; margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> Insights</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: #d97706;">567</div>
+                    <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Breakthrough Ideas Shared</p>
+                </div>
+                <div class="stat-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;"><i class="fas fa-network-wired"></i> Connections</h4>
+                    <div style="font-size: 2rem; font-weight: 700; color: #7c3aed;">2,134</div>
+                    <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Professional Networks Formed</p>
+                </div>
+            </div>
+
+            <!-- Featured Discussion Prompts -->
+            <h2 class="section-title"><i class="fas fa-fire"></i>Featured Discussion Prompts</h2>
+
+            <div class="discussion-prompt">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-question-circle"></i> Strategic Discussion Topics for AI Professionals
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Explore these thought-provoking topics that shape the future of professional AI practice. Click on any topic to contribute your perspective and engage with fellow professionals.
+                </p>
+                
+                <div class="prompt-category" onclick="expandPrompt('trends')">
+                    <h5 style="color: #0891b2; margin-bottom: 0.5rem;"><i class="fas fa-chart-line"></i> Future AI Trends & Professional Impact</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">What AI developments will most significantly impact your profession in the next 5 years?</p>
+                </div>
+                
+                <div class="prompt-category" onclick="expandPrompt('ethics')">
+                    <h5 style="color: #0891b2; margin-bottom: 0.5rem;"><i class="fas fa-balance-scale"></i> Ethical AI Leadership & Responsibility</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">How can professionals ensure ethical AI implementation while driving innovation and efficiency?</p>
+                </div>
+                
+                <div class="prompt-category" onclick="expandPrompt('skills')">
+                    <h5 style="color: #0891b2; margin-bottom: 0.5rem;"><i class="fas fa-brain"></i> Essential Skills for AI-Enhanced Careers</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">What skills should professionals prioritize to remain valuable in an AI-augmented workplace?</p>
+                </div>
+                
+                <div class="prompt-category" onclick="expandPrompt('transformation')">
+                    <h5 style="color: #0891b2; margin-bottom: 0.5rem;"><i class="fas fa-sync"></i> Organizational AI Transformation Strategies</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Share your experiences and best practices for leading successful AI adoption in organizations.</p>
+                </div>
+                
+                <div class="prompt-category" onclick="expandPrompt('innovation')">
+                    <h5 style="color: #0891b2; margin-bottom: 0.5rem;"><i class="fas fa-rocket"></i> AI Innovation & Creative Applications</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">What innovative AI applications have you discovered or developed in your professional practice?</p>
+                </div>
+
+                <div id="prompt-details" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="prompt-content"></div>
+                </div>
+            </div>
+
+            <!-- Topic Explorer -->
+            <div class="topic-explorer">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Industry-Specific AI Discussion Topics
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Connect with professionals in your industry or explore cross-industry AI applications through focused discussion topics.
+                </p>
+                
+                <div class="topic-grid">
+                    <div class="topic-card" onclick="exploreTopic('healthcare')">
+                        <h5><i class="fas fa-heartbeat"></i> Healthcare & Life Sciences</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI in patient care, medical diagnostics, drug discovery, and healthcare administration</p>
+                        <span style="color: #8b5cf6; font-weight: 600;">347 discussions</span>
+                    </div>
+                    <div class="topic-card" onclick="exploreTopic('finance')">
+                        <h5><i class="fas fa-chart-line"></i> Finance & Banking</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI in risk management, trading, customer service, and regulatory compliance</p>
+                        <span style="color: #8b5cf6; font-weight: 600;">412 discussions</span>
+                    </div>
+                    <div class="topic-card" onclick="exploreTopic('education')">
+                        <h5><i class="fas fa-graduation-cap"></i> Education & Training</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI in personalized learning, assessment, curriculum development, and administrative efficiency</p>
+                        <span style="color: #8b5cf6; font-weight: 600;">289 discussions</span>
+                    </div>
+                    <div class="topic-card" onclick="exploreTopic('legal')">
+                        <h5><i class="fas fa-gavel"></i> Legal & Compliance</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI in document review, legal research, contract analysis, and compliance monitoring</p>
+                        <span style="color: #8b5cf6; font-weight: 600;">198 discussions</span>
+                    </div>
+                    <div class="topic-card" onclick="exploreTopic('marketing')">
+                        <h5><i class="fas fa-bullhorn"></i> Marketing & Communications</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI in content creation, customer segmentation, campaign optimization, and brand management</p>
+                        <span style="color: #8b5cf6; font-weight: 600;">523 discussions</span>
+                    </div>
+                    <div class="topic-card" onclick="exploreTopic('manufacturing')">
+                        <h5><i class="fas fa-cogs"></i> Manufacturing & Operations</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI in predictive maintenance, quality control, supply chain optimization, and safety management</p>
+                        <span style="color: #8b5cf6; font-weight: 600;">234 discussions</span>
+                    </div>
+                </div>
+
+                <div id="topic-details" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="topic-content"></div>
+                </div>
+            </div>
+
+            <!-- Professional Networking Hub -->
+            <div class="networking-hub">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-handshake"></i> Professional Networking & Collaboration Hub
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Build meaningful professional relationships and collaborative partnerships through shared AI interests and expertise.
+                </p>
+                
+                <div class="networking-section">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-users"></i> Find Your AI Professional Tribe</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Role-Based Groups:</strong> Connect with professionals in similar roles across different industries</li>
+                        <li><strong>Industry Communities:</strong> Join industry-specific AI discussion groups and working committees</li>
+                        <li><strong>Skill Development Cohorts:</strong> Form study groups for advancing specific AI competencies</li>
+                        <li><strong>Regional Networks:</strong> Connect with local AI professionals for in-person collaboration</li>
+                    </ul>
+                </div>
+                
+                <div class="networking-section">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-project-diagram"></i> Collaboration Opportunities</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Project Partnerships:</strong> Find collaborators for AI implementation projects and research</li>
+                        <li><strong>Mentorship Matching:</strong> Connect with mentors or mentees for AI career development</li>
+                        <li><strong>Cross-Industry Learning:</strong> Partner with professionals from different sectors for knowledge exchange</li>
+                        <li><strong>Thought Leadership Teams:</strong> Form groups for developing AI best practices and industry standards</li>
+                    </ul>
+                </div>
+                
+                <div class="networking-section">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-calendar"></i> Community Events & Initiatives</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Monthly Virtual Meetups:</strong> Regular discussion sessions on trending AI topics</li>
+                        <li><strong>Industry Case Study Sessions:</strong> Deep dives into successful AI implementations</li>
+                        <li><strong>Skills Workshops:</strong> Collaborative learning sessions on advanced AI techniques</li>
+                        <li><strong>Innovation Challenges:</strong> Team-based competitions for creative AI problem-solving</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Thought Leadership Opportunities -->
+            <div class="thought-leadership">
+                <h4 style="color: #1d4ed8; margin-bottom: 1.5rem;">
+                    <i class="fas fa-star"></i> Thought Leadership & Industry Influence Opportunities
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Establish yourself as a recognized expert and influential voice in AI professional practice through community leadership and content contribution.
+                </p>
+                
+                <div class="leadership-opportunity">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-microphone"></i> Content Creation & Speaking</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Expert Blog Contributions:</strong> Share insights through featured articles and case studies</li>
+                        <li><strong>Webinar Leadership:</strong> Lead educational sessions on specialized AI topics</li>
+                        <li><strong>Podcast Participation:</strong> Contribute to AI professional development podcast series</li>
+                        <li><strong>Conference Speaking:</strong> Present at virtual and in-person AI professional events</li>
+                    </ul>
+                </div>
+                
+                <div class="leadership-opportunity">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i> Community Leadership Roles</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Discussion Moderators:</strong> Guide and facilitate high-quality professional discussions</li>
+                        <li><strong>Topic Champions:</strong> Lead specialized interest groups and working committees</li>
+                        <li><strong>Mentorship Coordinators:</strong> Organize and oversee professional development programs</li>
+                        <li><strong>Best Practice Curators:</strong> Collect and organize community knowledge and resources</li>
+                    </ul>
+                </div>
+                
+                <div class="leadership-opportunity">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-cogs"></i> Innovation & Research Leadership</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Research Collaborations:</strong> Lead community research projects on AI professional practices</li>
+                        <li><strong>Standards Development:</strong> Contribute to industry AI adoption standards and frameworks</li>
+                        <li><strong>Innovation Labs:</strong> Organize experimental projects and proof-of-concept initiatives</li>
+                        <li><strong>Cross-Industry Initiatives:</strong> Bridge sectors for comprehensive AI professional development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Community Contribution Framework -->
+            <div class="contribution-framework">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-heart"></i> Community Contribution & Value Creation Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Maximize your impact and create lasting value for the AI professional community through diverse contribution opportunities.
+                </p>
+                
+                <div class="contribution-type">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-share"></i> Knowledge Sharing & Education</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Success Stories:</strong> Share detailed case studies of successful AI implementations</li>
+                        <li><strong>Lessons Learned:</strong> Document challenges, failures, and recovery strategies</li>
+                        <li><strong>Tools & Resources:</strong> Recommend and review AI tools, platforms, and methodologies</li>
+                        <li><strong>Training Content:</strong> Create tutorials, guides, and educational materials</li>
+                    </ul>
+                </div>
+                
+                <div class="contribution-type">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-question-circle"></i> Problem-Solving & Support</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Expert Advice:</strong> Provide guidance to professionals facing AI implementation challenges</li>
+                        <li><strong>Technical Support:</strong> Help troubleshoot AI tool and process issues</li>
+                        <li><strong>Career Guidance:</strong> Mentor others in AI career development and transition strategies</li>
+                        <li><strong>Strategic Consultation:</strong> Offer insights on AI adoption strategies and organizational change</li>
+                    </ul>
+                </div>
+                
+                <div class="contribution-type">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Innovation & Future Vision</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Trend Analysis:</strong> Share insights on emerging AI trends and their professional implications</li>
+                        <li><strong>Creative Applications:</strong> Propose novel AI use cases and innovative implementations</li>
+                        <li><strong>Future Scenarios:</strong> Contribute to strategic planning and scenario development discussions</li>
+                        <li><strong>Cross-Industry Insights:</strong> Bridge knowledge between different professional sectors</li>
+                    </ul>
+                </div>
+                
+                <div class="contribution-type">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-users-cog"></i> Community Building & Culture</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Welcome New Members:</strong> Help onboard new professionals into the AI community</li>
+                        <li><strong>Facilitate Connections:</strong> Introduce professionals with complementary interests and needs</li>
+                        <li><strong>Organize Events:</strong> Plan and execute community learning and networking events</li>
+                        <li><strong>Promote Inclusivity:</strong> Ensure diverse voices and perspectives are heard and valued</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Discussion Post Creator -->
+            <h2 class="section-title"><i class="fas fa-edit"></i>Share Your Professional AI Insights</h2>
+
+            <div class="interactive-post">
+                <h4 style="color: #10b981; margin-bottom: 1.5rem;">
+                    <i class="fas fa-plus-circle"></i> Create a Thoughtful Discussion Post
+                </h4>
+                
+                <div class="post-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Discussion Topic Focus:</label>
+                    <select id="discussionTopic" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select primary topic</option>
+                        <option value="trends">Future AI Trends & Professional Impact</option>
+                        <option value="implementation">AI Implementation Strategies & Best Practices</option>
+                        <option value="skills">Professional Skill Development & Career Planning</option>
+                        <option value="ethics">Ethical AI Leadership & Responsible Innovation</option>
+                        <option value="transformation">Organizational Change & Cultural Transformation</option>
+                        <option value="innovation">Creative AI Applications & Problem-Solving</option>
+                        <option value="networking">Professional Networking & Collaboration</option>
+                        <option value="challenges">Overcoming AI Adoption Challenges</option>
+                    </select>
+                </div>
+                
+                <div class="post-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Professional Context:</label>
+                    <input type="text" id="professionalContext" placeholder="e.g., Senior Marketing Manager in Healthcare Technology" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="post-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key Insight or Question:</label>
+                    <textarea id="keyInsight" placeholder="Share your main insight, question, or perspective that you'd like to discuss with the community..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 120px;"></textarea>
+                </div>
+                
+                <div class="post-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Supporting Experience or Evidence:</label>
+                    <textarea id="supportingEvidence" placeholder="Describe relevant experience, data, case studies, or examples that support your perspective..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="post-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">What you hope to learn or discuss:</label>
+                    <textarea id="discussionGoals" placeholder="What specific insights, feedback, or collaboration are you seeking from the community?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="post-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Engagement Preferences:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="advice"> Seeking advice and guidance
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="collaboration"> Open to collaboration opportunities
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="networking"> Interested in professional networking
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="sharing"> Willing to share resources and knowledge
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="mentoring"> Available for mentoring or coaching
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="learning"> Seeking learning opportunities
+                        </label>
+                    </div>
+                </div>
+                
+                <button onclick="generateDiscussionPost()" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-comments"></i> Create Professional Discussion Post
+                </button>
+                
+                <div id="generatedPost" class="generated-post">
+                    <strong style="color: #065f46;">Your Professional Discussion Post:</strong><br><br>
+                    <div id="postContent" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-star"></i> Engagement Tips for Maximum Impact:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Respond thoughtfully to comments and engage in meaningful dialogue</li>
+                            <li>Share relevant resources and links that add value to the discussion</li>
+                            <li>Ask follow-up questions to deepen the conversation and learning</li>
+                            <li>Connect with interesting contributors to expand your professional network</li>
+                            <li>Follow up with concrete actions or resources based on the discussion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Vision Collective -->
+            <div class="future-vision">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-eye"></i> Collective Vision: The Future of Professional AI Practice
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Join us in creating a shared vision for how AI will transform professional practice across all industries. Your contributions help shape the future we're building together.
+                </p>
+                
+                <div class="vision-element">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;"><i class="fas fa-users"></i> Collective Wisdom & Shared Learning</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">A global community where professionals from all industries collaborate to maximize AI benefits while preserving human value and dignity. Together we accelerate learning, reduce implementation risks, and create more equitable access to AI advantages.</p>
+                </div>
+                
+                <div class="vision-element">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;"><i class="fas fa-balance-scale"></i> Ethical AI Innovation & Responsible Leadership</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Professionals leading by example in responsible AI development and deployment, establishing industry standards that prioritize human welfare, fairness, and transparency. Our community becomes a beacon for ethical AI practice across all sectors.</p>
+                </div>
+                
+                <div class="vision-element">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;"><i class="fas fa-rocket"></i> Career Transformation & Professional Excellence</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Every professional empowered with AI capabilities that enhance their expertise, creativity, and impact. We create pathways for career advancement that leverage AI as a multiplier of human potential rather than a replacement for human judgment.</p>
+                </div>
+                
+                <div class="vision-element">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;"><i class="fas fa-globe"></i> Cross-Industry Collaboration & Knowledge Transfer</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Breaking down silos between industries and functions to accelerate AI adoption through shared learning. Healthcare innovations inform financial services, manufacturing insights enhance education, and every sector benefits from collective intelligence.</p>
+                </div>
+                
+                <div class="vision-element">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;"><i class="fas fa-heart"></i> Human-Centered Technology Integration</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">AI implementations that amplify human capabilities, enhance job satisfaction, and create more meaningful work experiences. Technology serves humanity, not the reverse, with professionals leading the design of human-centered AI systems.</p>
+                </div>
+            </div>
+
+            <!-- Community Guidelines -->
+            <div class="community-guidelines">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-handshake"></i> Professional Community Guidelines
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Our community thrives on mutual respect, professional excellence, and collaborative learning. These guidelines ensure productive and valuable discussions for all participants.
+                </p>
+                
+                <div class="guideline-item">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-star"></i> Professional Excellence & Respect</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Maintain professional standards in all interactions. Treat all members with respect regardless of experience level, industry, or viewpoint. Focus on constructive dialogue and learning.</p>
+                </div>
+                
+                <div class="guideline-item">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> Value-Added Contributions</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Share insights, experiences, and knowledge that benefit the community. Support claims with evidence. Ask thoughtful questions that advance understanding and discussion quality.</p>
+                </div>
+                
+                <div class="guideline-item">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-users"></i> Inclusive & Collaborative Environment</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Welcome diverse perspectives and professional backgrounds. Help create an environment where all members feel comfortable contributing and learning. Foster collaboration over competition.</p>
+                </div>
+                
+                <div class="guideline-item">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-shield-alt"></i> Privacy & Professional Confidentiality</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Respect privacy and confidentiality requirements. Share experiences and insights without revealing proprietary information or client details. Maintain professional discretion in all discussions.</p>
+                </div>
+                
+                <div class="guideline-item">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-graduation-cap"></i> Continuous Learning & Growth Mindset</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Approach discussions with curiosity and openness to learning. Share both successes and failures as learning opportunities. Support others' professional development and skill building.</p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0369a1; margin-bottom: 1rem;">Ready to Begin Your AI Leadership Journey?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">You've completed Module 9! Continue to the capstone project where you'll apply everything you've learned to create your professional AI portfolio.</p>
+                <a href="../../module10/welcome.html" class="nav-btn">
+                    <i class="fas fa-graduation-cap"></i>
+                    Continue to Module 10: Capstone Project
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="future-readiness-quiz.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Future Readiness Quiz
+                </a>
+                <a href="../../module10/welcome.html" class="nav-btn">
+                    Next: Module 10 Capstone
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function expandPrompt(prompt) {
+            const detailsDiv = document.getElementById('prompt-details');
+            const contentDiv = document.getElementById('prompt-content');
+            
+            const promptContent = {
+                trends: {
+                    title: 'Future AI Trends & Professional Impact Discussion',
+                    content: `
+                    <strong>Key Discussion Questions:</strong>
+                    • Which AI developments do you see having the most significant impact on your profession?
+                    • How are you preparing for emerging AI capabilities in your industry?
+                    • What timeline do you predict for major AI adoption milestones in your field?
+                    • Which current AI limitations, when solved, would most transform your work?
+                    
+                    <strong>Share Your Perspective:</strong>
+                    • Industry-specific trend analysis and implications
+                    • Personal experiences with emerging AI tools and technologies
+                    • Predictions based on current development trajectories
+                    • Cross-industry insights and pattern recognition
+                    
+                    <strong>Community Learning Goals:</strong>
+                    • Build collective intelligence about AI development directions
+                    • Identify common patterns across different industries
+                    • Help professionals prepare for upcoming changes
+                    • Create early warning systems for significant shifts`
+                },
+                ethics: {
+                    title: 'Ethical AI Leadership & Responsibility Discussion',
+                    content: `
+                    <strong>Core Ethical Challenges:</strong>
+                    • How do you balance AI efficiency gains with job displacement concerns?
+                    • What frameworks do you use for making ethical AI implementation decisions?
+                    • How do you address bias and fairness in AI systems within your organization?
+                    • What role should professionals play in shaping AI governance and regulation?
+                    
+                    <strong>Practical Dilemmas:</strong>
+                    • Real-world situations where ethics and business objectives conflict
+                    • Strategies for building ethical considerations into AI adoption processes
+                    • Approaches for educating stakeholders about responsible AI practices
+                    • Methods for measuring and monitoring ethical AI implementation
+                    
+                    <strong>Leadership Opportunities:</strong>
+                    • How to become an ethical AI champion within your organization
+                    • Building consensus around responsible AI adoption principles
+                    • Influencing industry standards and best practices
+                    • Creating accountability mechanisms for AI decisions`
+                },
+                skills: {
+                    title: 'Essential Skills for AI-Enhanced Careers Discussion',
+                    content: `
+                    <strong>Critical Skill Categories:</strong>
+                    • Which technical AI skills are most valuable for your profession?
+                    • What human skills become more important in an AI-augmented workplace?
+                    • How do you prioritize skill development with limited time and resources?
+                    • Which learning approaches have been most effective for building AI competency?
+                    
+                    <strong>Career Development Strategies:</strong>
+                    • Balancing current job performance with future skill building
+                    • Finding opportunities to practice and apply new AI skills
+                    • Building credibility and recognition for AI expertise
+                    • Transitioning from traditional roles to AI-enhanced positions
+                    
+                    <strong>Learning and Development:</strong>
+                    • Most effective AI learning resources and platforms
+                    • Strategies for staying current with rapidly evolving AI tools
+                    • Building portfolio evidence of AI competency
+                    • Creating internal advocacy for AI skill development programs`
+                },
+                transformation: {
+                    title: 'Organizational AI Transformation Strategies Discussion',
+                    content: `
+                    <strong>Transformation Leadership:</strong>
+                    • What strategies have been most effective for leading AI adoption?
+                    • How do you build stakeholder buy-in for AI transformation initiatives?
+                    • What are the biggest obstacles to organizational AI adoption?
+                    • How do you measure success in AI transformation projects?
+                    
+                    <strong>Change Management:</strong>
+                    • Approaches for addressing resistance to AI adoption
+                    • Methods for managing the cultural shift toward AI integration
+                    • Communication strategies for different stakeholder groups
+                    • Building AI champions and advocates throughout the organization
+                    
+                    <strong>Implementation Insights:</strong>
+                    • Lessons learned from successful and failed AI initiatives
+                    • Best practices for pilot project design and scaling
+                    • Resource allocation and investment strategies
+                    • Timeline planning and milestone setting for transformation projects`
+                },
+                innovation: {
+                    title: 'AI Innovation & Creative Applications Discussion',
+                    content: `
+                    <strong>Creative AI Applications:</strong>
+                    • What innovative AI use cases have you discovered or developed?
+                    • How do you identify opportunities for novel AI applications?
+                    • What unconventional AI implementations have surprised you with their effectiveness?
+                    • How do you foster innovation and experimentation with AI in your organization?
+                    
+                    <strong>Innovation Process:</strong>
+                    • Methods for brainstorming and ideating AI solutions
+                    • Approaches for testing and validating innovative AI concepts
+                    • Building business cases for experimental AI projects
+                    • Scaling successful innovations across larger organizations
+                    
+                    <strong>Cross-Industry Inspiration:</strong>
+                    • AI innovations from other industries that could apply to your field
+                    • Collaborative opportunities for cross-sector AI development
+                    • Knowledge transfer mechanisms for sharing innovative practices
+                    • Future innovation directions and breakthrough possibilities`
+                }
+            };
+            
+            if (promptContent[prompt]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #0891b2; margin-bottom: 1rem;">${promptContent[prompt].title}</h5>
+                    <div style="white-space: pre-line;">${promptContent[prompt].content}</div>
+                `;
+                detailsDiv.style.display = 'block';
+            }
+        }
+        
+        function exploreTopic(topic) {
+            const detailsDiv = document.getElementById('topic-details');
+            const contentDiv = document.getElementById('topic-content');
+            
+            const topicContent = {
+                healthcare: {
+                    title: 'AI in Healthcare & Life Sciences - Professional Community',
+                    content: `
+                    <strong>Active Discussion Threads:</strong>
+                    • AI-assisted diagnostics: Implementation challenges and success stories
+                    • Electronic health record optimization and clinical workflow integration
+                    • Personalized treatment protocols and patient care enhancement
+                    • Medical research acceleration and drug discovery applications
+                    
+                    <strong>Professional Roles Represented:</strong>
+                    • Healthcare administrators and IT professionals
+                    • Clinical practitioners and medical specialists
+                    • Medical researchers and pharmaceutical professionals
+                    • Health technology vendors and consultants
+                    
+                    <strong>Current Hot Topics:</strong>
+                    • Regulatory compliance for AI medical devices
+                    • Patient privacy and data security in AI implementations
+                    • Training healthcare staff on AI tools and systems
+                    • Measuring ROI and clinical outcomes from AI investments`
+                },
+                finance: {
+                    title: 'AI in Finance & Banking - Professional Community',
+                    content: `
+                    <strong>Key Discussion Areas:</strong>
+                    • Algorithmic trading and investment strategy optimization
+                    • Risk management and fraud detection system enhancement
+                    • Customer service automation and personalization
+                    • Regulatory technology and compliance automation
+                    
+                    <strong>Professional Network:</strong>
+                    • Financial analysts and portfolio managers
+                    • Risk management and compliance professionals
+                    • Banking operations and customer service leaders
+                    • Fintech developers and technology integrators
+                    
+                    <strong>Trending Topics:</strong>
+                    • AI explainability requirements for financial decisions
+                    • Integration of AI with existing banking infrastructure
+                    • Customer acceptance and trust in AI-driven financial services
+                    • Competitive differentiation through AI capabilities`
+                },
+                education: {
+                    title: 'AI in Education & Training - Professional Community',
+                    content: `
+                    <strong>Educational Innovation Areas:</strong>
+                    • Personalized learning platform development and optimization
+                    • Automated assessment and feedback system implementation
+                    • Curriculum design and adaptive learning pathway creation
+                    • Student support services and engagement enhancement
+                    
+                    <strong>Educator Network:</strong>
+                    • K-12 teachers and educational administrators
+                    • Higher education faculty and staff
+                    • Corporate training and development professionals
+                    • Educational technology specialists and researchers
+                    
+                    <strong>Key Discussions:</strong>
+                    • Balancing AI assistance with critical thinking development
+                    • Ensuring equitable access to AI-enhanced educational tools
+                    • Professional development for educators in AI integration
+                    • Measuring learning outcomes and educational effectiveness`
+                },
+                legal: {
+                    title: 'AI in Legal & Compliance - Professional Community',
+                    content: `
+                    <strong>Legal AI Applications:</strong>
+                    • Document review and contract analysis automation
+                    • Legal research and case law discovery optimization
+                    • Compliance monitoring and regulatory reporting
+                    • Client communication and case management enhancement
+                    
+                    <strong>Legal Professional Network:</strong>
+                    • Practicing attorneys and legal counsel
+                    • Compliance officers and regulatory specialists
+                    • Legal technology administrators and paralegals
+                    • Law firm management and operations professionals
+                    
+                    <strong>Practice Area Discussions:</strong>
+                    • Ethical considerations for AI in legal practice
+                    • Client confidentiality and data security requirements
+                    • AI tool accuracy and liability implications
+                    • Professional responsibility and AI-assisted legal work`
+                },
+                marketing: {
+                    title: 'AI in Marketing & Communications - Professional Community',
+                    content: `
+                    <strong>Marketing AI Innovations:</strong>
+                    • Content creation and campaign development automation
+                    • Customer segmentation and targeting optimization
+                    • Performance analytics and attribution modeling
+                    • Brand management and reputation monitoring
+                    
+                    <strong>Marketing Professional Network:</strong>
+                    • Digital marketing specialists and campaign managers
+                    • Brand managers and communications directors
+                    • Marketing analytics and data science professionals
+                    • Creative directors and content strategists
+                    
+                    <strong>Industry Conversations:</strong>
+                    • Maintaining authentic brand voice with AI-generated content
+                    • Privacy regulations and AI-driven marketing compliance
+                    • Cross-channel integration and omnichannel optimization
+                    • Measuring AI impact on customer engagement and conversion`
+                },
+                manufacturing: {
+                    title: 'AI in Manufacturing & Operations - Professional Community',
+                    content: `
+                    <strong>Manufacturing AI Applications:</strong>
+                    • Predictive maintenance and equipment optimization
+                    • Quality control and defect detection automation
+                    • Supply chain management and inventory optimization
+                    • Production planning and workflow efficiency
+                    
+                    <strong>Operations Professional Network:</strong>
+                    • Plant managers and operations directors
+                    • Quality assurance and process improvement specialists
+                    • Supply chain and logistics professionals
+                    • Manufacturing engineers and technical specialists
+                    
+                    <strong>Operational Excellence Topics:</strong>
+                    • Integrating AI with existing manufacturing systems
+                    • Workforce training and safety considerations
+                    • ROI measurement and performance optimization
+                    • Scaling AI implementations across multiple facilities`
+                }
+            };
+            
+            if (topicContent[topic]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">${topicContent[topic].title}</h5>
+                    <div style="white-space: pre-line;">${topicContent[topic].content}</div>
+                `;
+                detailsDiv.style.display = 'block';
+            }
+        }
+        
+        function generateDiscussionPost() {
+            const discussionTopic = document.getElementById('discussionTopic').value;
+            const professionalContext = document.getElementById('professionalContext').value;
+            const keyInsight = document.getElementById('keyInsight').value;
+            const supportingEvidence = document.getElementById('supportingEvidence').value;
+            const discussionGoals = document.getElementById('discussionGoals').value;
+            
+            // Get selected engagement preferences
+            const engagementCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const engagementPreferences = Array.from(engagementCheckboxes).map(cb => cb.value);
+            
+            if (!discussionTopic || !professionalContext || !keyInsight) {
+                alert('Please fill in at least the discussion topic, professional context, and key insight.');
+                return;
+            }
+            
+            const topicTitles = {
+                'trends': 'Future AI Trends & Professional Impact',
+                'implementation': 'AI Implementation Strategies & Best Practices',
+                'skills': 'Professional Skill Development & Career Planning',
+                'ethics': 'Ethical AI Leadership & Responsible Innovation',
+                'transformation': 'Organizational Change & Cultural Transformation',
+                'innovation': 'Creative AI Applications & Problem-Solving',
+                'networking': 'Professional Networking & Collaboration',
+                'challenges': 'Overcoming AI Adoption Challenges'
+            };
+            
+            let post = `PROFESSIONAL AI DISCUSSION POST
+Topic: ${topicTitles[discussionTopic] || discussionTopic}
+
+👋 INTRODUCTION
+Professional Context: ${professionalContext}
+
+🎯 KEY INSIGHT/QUESTION
+${keyInsight}
+
+📊 SUPPORTING EXPERIENCE & EVIDENCE
+${supportingEvidence || 'Looking forward to learning from community experiences and insights.'}
+
+🤝 WHAT I'M SEEKING FROM THIS DISCUSSION
+${discussionGoals || 'Interested in diverse perspectives and collaborative learning.'}
+
+💼 ENGAGEMENT PREFERENCES
+${engagementPreferences.length > 0 ? 
+    engagementPreferences.map(pref => {
+        const prefLabels = {
+            'advice': '💡 Seeking advice and guidance',
+            'collaboration': '🤝 Open to collaboration opportunities', 
+            'networking': '🌐 Interested in professional networking',
+            'sharing': '📚 Willing to share resources and knowledge',
+            'mentoring': '🎓 Available for mentoring or coaching',
+            'learning': '📖 Seeking learning opportunities'
+        };
+        return prefLabels[pref] || pref;
+    }).join('\n') : 
+    '🗣️ Open to all forms of professional engagement and discussion'
+}
+
+---
+
+Looking forward to a productive discussion and learning from the diverse expertise in our professional AI community! Please share your thoughts, experiences, and insights.
+
+#AIprofessionals #FutureOfWork #ProfessionalDevelopment #AILeadership`;
+
+            document.getElementById('postContent').textContent = post;
+            document.getElementById('generatedPost').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPost').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

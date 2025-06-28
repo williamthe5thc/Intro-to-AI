@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 1: AI Media Tools Comparison Matrix - Module 4</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .matrix-container {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        .criteria-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .evaluation-form {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 0.5rem;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--neutral-light);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+        .rating-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .rating-option {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--neutral-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--neutral-white);
+        }
+        .rating-option:hover {
+            border-color: var(--primary-blue);
+            background: #f0f9ff;
+        }
+        .rating-option.selected {
+            border-color: var(--primary-blue);
+            background: var(--primary-blue);
+            color: var(--neutral-white);
+        }
+        .tool-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .comparison-card {
+            border: 2px solid var(--neutral-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            background: var(--neutral-white);
+        }
+        .save-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 4</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Practice 1</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-media-tools-overview.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/media-creation-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Practice 1: AI Media Tools Comparison Matrix</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Create a comprehensive comparison matrix to evaluate AI media creation tools for your specific professional needs and use cases.
+            </p>
+
+            <!-- Assignment Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-clipboard-list"></i>Assignment Overview</h3>
+                <p style="margin-bottom: 1rem;">This hands-on activity will help you systematically evaluate AI media tools:</p>
+                <ul class="modern-list">
+                    <li>Select 3-4 AI media creation tools from different categories</li>
+                    <li>Evaluate each tool across multiple criteria relevant to your profession</li>
+                    <li>Create a comparison matrix with ratings and justifications</li>
+                    <li>Provide recommendations based on specific use cases</li>
+                    <li>Submit your completed matrix for peer review and feedback</li>
+                </ul>
+            </div>
+
+            <!-- Evaluation Criteria -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-star"></i>Evaluation Criteria</h2>
+                
+                <div class="criteria-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-gem"></i> Quality & Output Standards
+                    </h4>
+                    <p style="margin-bottom: 1rem;">Assess the professional quality of generated content:</p>
+                    <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                        <li style="margin-bottom: 0.5rem;">• Resolution and visual clarity</li>
+                        <li style="margin-bottom: 0.5rem;">• Consistency across generations</li>
+                        <li style="margin-bottom: 0.5rem;">• Professional appearance and polish</li>
+                        <li style="margin-bottom: 0.5rem;">• Adherence to brand guidelines</li>
+                    </ul>
+                </div>
+
+                <div class="criteria-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-user-friendly"></i> Ease of Use & Learning Curve
+                    </h4>
+                    <p style="margin-bottom: 1rem;">Evaluate user experience and accessibility:</p>
+                    <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                        <li style="margin-bottom: 0.5rem;">• Interface design and navigation</li>
+                        <li style="margin-bottom: 0.5rem;">• Time to first successful output</li>
+                        <li style="margin-bottom: 0.5rem;">• Available tutorials and documentation</li>
+                        <li style="margin-bottom: 0.5rem;">• Prompt complexity requirements</li>
+                    </ul>
+                </div>
+
+                <div class="criteria-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Features & Capabilities
+                    </h4>
+                    <p style="margin-bottom: 1rem;">Review functional capabilities and flexibility:</p>
+                    <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                        <li style="margin-bottom: 0.5rem;">• Range of output formats and styles</li>
+                        <li style="margin-bottom: 0.5rem;">• Customization and editing options</li>
+                        <li style="margin-bottom: 0.5rem;">• Batch processing capabilities</li>
+                        <li style="margin-bottom: 0.5rem;">• Integration with other tools</li>
+                    </ul>
+                </div>
+
+                <div class="criteria-card">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                        <i class="fas fa-dollar-sign"></i> Pricing & Value
+                    </h4>
+                    <p style="margin-bottom: 1rem;">Analyze cost-effectiveness for professional use:</p>
+                    <ul style="list-style: none; margin: 0; color: var(--neutral-dark);">
+                        <li style="margin-bottom: 0.5rem;">• Subscription tiers and pricing models</li>
+                        <li style="margin-bottom: 0.5rem;">• Usage limits and overage costs</li>
+                        <li style="margin-bottom: 0.5rem;">• Commercial licensing terms</li>
+                        <li style="margin-bottom: 0.5rem;">• ROI for time savings and quality improvement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Comparison Tool -->
+            <div class="matrix-container">
+                <h3 style="color: var(--neutral-dark); margin-bottom: 1.5rem;">
+                    <i class="fas fa-table"></i> Interactive Comparison Matrix
+                </h3>
+                
+                <div class="tool-comparison" id="comparison-grid">
+                    <!-- Tool 1 -->
+                    <div class="comparison-card">
+                        <div class="form-group">
+                            <label class="form-label">Tool Name</label>
+                            <input type="text" class="form-input" placeholder="e.g., DALL-E 3" id="tool1-name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" id="tool1-category">
+                                <option value="">Select Category</option>
+                                <option value="image">Image Generation</option>
+                                <option value="video">Video Creation</option>
+                                <option value="presentation">Presentations</option>
+                                <option value="design">Design & Graphics</option>
+                                <option value="audio">Audio/Voice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Quality Rating (1-5)</label>
+                            <div class="rating-selector">
+                                <div class="rating-option" data-rating="1">1</div>
+                                <div class="rating-option" data-rating="2">2</div>
+                                <div class="rating-option" data-rating="3">3</div>
+                                <div class="rating-option" data-rating="4">4</div>
+                                <div class="rating-option" data-rating="5">5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ease of Use Rating (1-5)</label>
+                            <div class="rating-selector">
+                                <div class="rating-option" data-rating="1">1</div>
+                                <div class="rating-option" data-rating="2">2</div>
+                                <div class="rating-option" data-rating="3">3</div>
+                                <div class="rating-option" data-rating="4">4</div>
+                                <div class="rating-option" data-rating="5">5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Monthly Cost ($)</label>
+                            <input type="number" class="form-input" placeholder="e.g., 20" id="tool1-cost">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Key Strengths</label>
+                            <textarea class="form-textarea" rows="3" placeholder="List the main advantages of this tool..." id="tool1-strengths"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Limitations</label>
+                            <textarea class="form-textarea" rows="3" placeholder="Note any drawbacks or limitations..." id="tool1-limitations"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Tool 2 -->
+                    <div class="comparison-card">
+                        <div class="form-group">
+                            <label class="form-label">Tool Name</label>
+                            <input type="text" class="form-input" placeholder="e.g., Gamma" id="tool2-name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" id="tool2-category">
+                                <option value="">Select Category</option>
+                                <option value="image">Image Generation</option>
+                                <option value="video">Video Creation</option>
+                                <option value="presentation">Presentations</option>
+                                <option value="design">Design & Graphics</option>
+                                <option value="audio">Audio/Voice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Quality Rating (1-5)</label>
+                            <div class="rating-selector">
+                                <div class="rating-option" data-rating="1">1</div>
+                                <div class="rating-option" data-rating="2">2</div>
+                                <div class="rating-option" data-rating="3">3</div>
+                                <div class="rating-option" data-rating="4">4</div>
+                                <div class="rating-option" data-rating="5">5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ease of Use Rating (1-5)</label>
+                            <div class="rating-selector">
+                                <div class="rating-option" data-rating="1">1</div>
+                                <div class="rating-option" data-rating="2">2</div>
+                                <div class="rating-option" data-rating="3">3</div>
+                                <div class="rating-option" data-rating="4">4</div>
+                                <div class="rating-option" data-rating="5">5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Monthly Cost ($)</label>
+                            <input type="number" class="form-input" placeholder="e.g., 15" id="tool2-cost">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Key Strengths</label>
+                            <textarea class="form-textarea" rows="3" placeholder="List the main advantages of this tool..." id="tool2-strengths"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Limitations</label>
+                            <textarea class="form-textarea" rows="3" placeholder="Note any drawbacks or limitations..." id="tool2-limitations"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Tool 3 -->
+                    <div class="comparison-card">
+                        <div class="form-group">
+                            <label class="form-label">Tool Name</label>
+                            <input type="text" class="form-input" placeholder="e.g., RunwayML" id="tool3-name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" id="tool3-category">
+                                <option value="">Select Category</option>
+                                <option value="image">Image Generation</option>
+                                <option value="video">Video Creation</option>
+                                <option value="presentation">Presentations</option>
+                                <option value="design">Design & Graphics</option>
+                                <option value="audio">Audio/Voice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Quality Rating (1-5)</label>
+                            <div class="rating-selector">
+                                <div class="rating-option" data-rating="1">1</div>
+                                <div class="rating-option" data-rating="2">2</div>
+                                <div class="rating-option" data-rating="3">3</div>
+                                <div class="rating-option" data-rating="4">4</div>
+                                <div class="rating-option" data-rating="5">5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Ease of Use Rating (1-5)</label>
+                            <div class="rating-selector">
+                                <div class="rating-option" data-rating="1">1</div>
+                                <div class="rating-option" data-rating="2">2</div>
+                                <div class="rating-option" data-rating="3">3</div>
+                                <div class="rating-option" data-rating="4">4</div>
+                                <div class="rating-option" data-rating="5">5</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Monthly Cost ($)</label>
+                            <input type="number" class="form-input" placeholder="e.g., 25" id="tool3-cost">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Key Strengths</label>
+                            <textarea class="form-textarea" rows="3" placeholder="List the main advantages of this tool..." id="tool3-strengths"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Limitations</label>
+                            <textarea class="form-textarea" rows="3" placeholder="Note any drawbacks or limitations..." id="tool3-limitations"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations Section -->
+                <div class="evaluation-form">
+                    <h4 style="color: var(--neutral-dark); margin-bottom: 1rem;">
+                        <i class="fas fa-thumbs-up"></i> Your Recommendations
+                    </h4>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Best Tool for Quick Tasks</label>
+                        <textarea class="form-textarea" rows="2" placeholder="Which tool would you recommend for quick, everyday content creation tasks and why?" id="quick-tasks"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Best Tool for High-Quality Projects</label>
+                        <textarea class="form-textarea" rows="2" placeholder="Which tool would you recommend for high-stakes, professional projects and why?" id="quality-projects"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Most Cost-Effective Option</label>
+                        <textarea class="form-textarea" rows="2" placeholder="Which tool provides the best value for money considering your professional needs?" id="cost-effective"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Overall Recommendation for Your Profession</label>
+                        <textarea class="form-textarea" rows="4" placeholder="Based on your evaluation, which tool(s) would you recommend for someone in your profession and why? Consider specific use cases and workflow integration." id="overall-recommendation"></textarea>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="save-btn" onclick="generateSummary()">
+                        <i class="fas fa-save"></i>
+                        Generate Summary Report
+                    </button>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="tips-card">
+                <h3><i class="fas fa-info-circle"></i>Assignment Instructions</h3>
+                <ul class="modern-list">
+                    <li><strong>Research Phase:</strong> Test at least 3 AI media tools from the Learning Activity recommendations</li>
+                    <li><strong>Evaluation:</strong> Use each tool for a small test project relevant to your profession</li>
+                    <li><strong>Documentation:</strong> Fill out the comparison matrix with detailed, specific observations</li>
+                    <li><strong>Analysis:</strong> Provide thoughtful recommendations based on different use case scenarios</li>
+                    <li><strong>Submission:</strong> Generate and save your summary report for peer review discussion</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-1-media-tools-overview.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Tools Overview
+                </a>
+                <a href="media-creation-portfolio.html" class="nav-btn">
+                    Next: Media Portfolio
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Rating selector functionality
+        document.querySelectorAll('.rating-selector').forEach(selector => {
+            const options = selector.querySelectorAll('.rating-option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options in this group
+                    options.forEach(opt => opt.classList.remove('selected'));
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                });
+            });
+        });
+
+        function generateSummary() {
+            // Collect all form data
+            const tool1Name = document.getElementById('tool1-name').value || 'Tool 1';
+            const tool2Name = document.getElementById('tool2-name').value || 'Tool 2';
+            const tool3Name = document.getElementById('tool3-name').value || 'Tool 3';
+            
+            const quickTasks = document.getElementById('quick-tasks').value;
+            const qualityProjects = document.getElementById('quality-projects').value;
+            const costEffective = document.getElementById('cost-effective').value;
+            const overallRec = document.getElementById('overall-recommendation').value;
+
+            // Create summary popup
+            const summary = `
+AI Media Tools Comparison Summary
+
+Tools Evaluated:
+• ${tool1Name}
+• ${tool2Name}  
+• ${tool3Name}
+
+Recommendations:
+- Quick Tasks: ${quickTasks || 'Not specified'}
+- High-Quality Projects: ${qualityProjects || 'Not specified'}
+- Most Cost-Effective: ${costEffective || 'Not specified'}
+- Overall Recommendation: ${overallRec || 'Not specified'}
+
+This comparison matrix has been saved for your reference and can be shared in the discussion forum.
+            `;
+
+            alert(summary);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: Future AI Trends Analysis & Career Impact Assessment - Module 9</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .trends-framework {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .trend-category {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #0891b2;
+            transition: all 0.3s ease;
+        }
+        .trend-category:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .trend-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .trend-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+        }
+        .impact-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .impact-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .impact-card:hover {
+            border-color: #0891b2;
+            transform: translateY(-2px);
+        }
+        .scenario-analyzer {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .scenario-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .scenario-card:hover {
+            border-color: #8b5cf6;
+            background: #faf5ff;
+        }
+        .scenario-card.selected {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        .interactive-analyzer {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #0891b2;
+        }
+        .analyzer-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-analysis {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .timeline-explorer {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .timeline-phase {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #f59e0b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .timeline-phase:hover {
+            background: #fef3c7;
+            transform: translateX(5px);
+        }
+        .career-pathways {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .pathway-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .pathway-card:hover {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        .pathway-card.selected {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .disruption-radar {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .radar-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .preparedness-assessment {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .assessment-dimension {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 9</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Future Trends Analysis</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/career-development-planner.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/future-readiness-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Future AI Trends Analysis & Career Impact Assessment</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Develop strategic foresight by analyzing emerging AI trends and assessing their potential impact on your career and industry. Learn to identify opportunities, anticipate challenges, and position yourself advantageously in the evolving professional landscape.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Future Analysis Mastery Objectives</h3>
+                <p style="margin-bottom: 1rem;">Master strategic AI trend analysis and career impact assessment:</p>
+                <ul class="modern-list">
+                    <li>Analyze emerging AI trends using systematic forecasting methodologies</li>
+                    <li>Assess potential career and industry impacts across multiple time horizons</li>
+                    <li>Identify strategic opportunities and competitive advantages in AI advancement</li>
+                    <li>Develop scenario-based planning for professional development and career navigation</li>
+                    <li>Create actionable strategies for positioning yourself advantageously in the AI future</li>
+                </ul>
+            </div>
+
+            <!-- The TREND Framework for AI Future Analysis -->
+            <h2 class="section-title"><i class="fas fa-chart-line"></i>The TREND Framework for Strategic AI Analysis</h2>
+
+            <div class="trends-framework">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-telescope"></i> Comprehensive AI Trend Analysis Methodology
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The TREND framework provides a systematic approach to analyzing Technology advancement, Regulatory evolution, Economic impact, Network effects, and Disruption patterns in AI development.
+                </p>
+                
+                <!-- Technology Advancement -->
+                <div class="trend-category">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Technology Advancement Analysis</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Assess technological capabilities, performance improvements, and emerging AI architectures</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Technology Trends (2025-2030):</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Multimodal AI Integration:</strong> Seamless text, image, audio, and video processing in unified systems</li>
+                            <li><strong>AI Agent Ecosystems:</strong> Autonomous agents working collaboratively on complex professional tasks</li>
+                            <li><strong>Real-time Learning Systems:</strong> AI that adapts and improves continuously during professional use</li>
+                            <li><strong>Quantum-AI Hybrid Computing:</strong> Enhanced problem-solving capabilities for complex optimization</li>
+                            <li><strong>Neuromorphic Processing:</strong> Energy-efficient AI systems mimicking brain architecture</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Impact:</strong> These advances will enable AI to handle increasingly complex professional tasks, requiring workers to focus on higher-level strategic thinking, creativity, and human-centered problem-solving.
+                    </div>
+                </div>
+
+                <!-- Regulatory Evolution -->
+                <div class="trend-category">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Regulatory Evolution Patterns</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Track policy development, compliance requirements, and governance frameworks</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Emerging Regulatory Themes:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Algorithmic Transparency:</strong> Requirements for explainable AI in professional decision-making</li>
+                            <li><strong>Data Governance Standards:</strong> Stricter controls on data use, storage, and cross-border transfer</li>
+                            <li><strong>Professional Liability Frameworks:</strong> Clear accountability for AI-assisted professional decisions</li>
+                            <li><strong>Skills Certification Requirements:</strong> Formal AI competency standards for regulated professions</li>
+                            <li><strong>Ethical AI Mandates:</strong> Required bias testing and fairness audits in professional applications</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Opportunity:</strong> Professionals who understand both AI capabilities and regulatory requirements will become invaluable as organizations navigate compliance challenges.
+                    </div>
+                </div>
+
+                <!-- Economic Impact -->
+                <div class="trend-category">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Economic Impact Modeling</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Analyze market dynamics, investment flows, and economic transformation patterns</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Economic Transformation Indicators:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Productivity Acceleration:</strong> 25-40% efficiency gains in knowledge work by 2028</li>
+                            <li><strong>New Market Creation:</strong> AI-native industries generating $2+ trillion in new economic value</li>
+                            <li><strong>Investment Reallocation:</strong> 60% of enterprise IT budgets directed toward AI integration</li>
+                            <li><strong>Skill Premium Evolution:</strong> Premium wages for AI-fluent professionals across all industries</li>
+                            <li><strong>Geographic Restructuring:</strong> AI hubs emerging beyond traditional tech centers</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Strategic Implication:</strong> Early adopters and AI-skilled professionals will capture disproportionate value as economic transformation accelerates.
+                    </div>
+                </div>
+
+                <!-- Network Effects -->
+                <div class="trend-category">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Network Effects & Ecosystem Development</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Understand interconnected AI systems and collaborative ecosystems</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Network Evolution Patterns:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>AI Model Specialization:</strong> Industry-specific AI systems with deep domain expertise</li>
+                            <li><strong>Cross-Platform Integration:</strong> Seamless AI workflows spanning multiple professional tools</li>
+                            <li><strong>Collaborative Intelligence Networks:</strong> Human-AI teams working across organizational boundaries</li>
+                            <li><strong>Knowledge Ecosystem Emergence:</strong> AI systems that share learning and insights</li>
+                            <li><strong>Global AI Workforce Integration:</strong> Professionals collaborating with AI across time zones</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Advantage:</strong> Understanding network effects allows professionals to position themselves at key connection points in AI ecosystems.
+                    </div>
+                </div>
+
+                <!-- Disruption Patterns -->
+                <div class="trend-category">
+                    <div class="trend-header">
+                        <div class="trend-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Disruption Pattern Recognition</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Identify transformation patterns and anticipate industry disruption cycles</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Disruption Mechanisms:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Workflow Reimagination:</strong> Complete process redesign around AI capabilities rather than incremental improvement</li>
+                            <li><strong>Value Chain Compression:</strong> AI eliminating traditional intermediary roles and functions</li>
+                            <li><strong>Expertise Democratization:</strong> AI making specialized knowledge accessible to broader audiences</li>
+                            <li><strong>Speed-to-Insight Acceleration:</strong> Real-time analysis replacing traditional research and planning cycles</li>
+                            <li><strong>Personalization at Scale:</strong> Mass customization in professional services and products</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Adaptation Strategy:</strong> Professionals who anticipate disruption patterns can proactively develop skills and positions that complement rather than compete with AI.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Industry-Specific Impact Analysis -->
+            <h2 class="section-title"><i class="fas fa-industry"></i>Industry-Specific AI Impact Assessment</h2>
+
+            <div class="impact-matrix">
+                <!-- Healthcare -->
+                <div class="impact-card">
+                    <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                        <i class="fas fa-heartbeat"></i> Healthcare & Life Sciences
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025-2027 Transformations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>AI-assisted diagnostics becoming standard practice</li>
+                            <li>Personalized treatment plan optimization</li>
+                            <li>Automated administrative workflow management</li>
+                            <li>Predictive health monitoring and intervention</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Evolution:</strong> Healthcare professionals will focus on patient interaction, complex case management, and AI-human collaboration rather than routine analysis and documentation.
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="impact-card">
+                    <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Financial Services
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025-2027 Transformations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Real-time risk assessment and portfolio optimization</li>
+                            <li>Automated compliance monitoring and reporting</li>
+                            <li>Personalized financial planning at scale</li>
+                            <li>Algorithmic trading strategy development</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Evolution:</strong> Financial professionals will emphasize relationship building, strategic advisory services, and complex problem-solving requiring human judgment and empathy.
+                    </div>
+                </div>
+
+                <!-- Legal Services -->
+                <div class="impact-card">
+                    <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                        <i class="fas fa-gavel"></i> Legal Services
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025-2027 Transformations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Automated document review and contract analysis</li>
+                            <li>AI-powered legal research and precedent discovery</li>
+                            <li>Predictive case outcome modeling</li>
+                            <li>Streamlined regulatory compliance monitoring</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Evolution:</strong> Legal professionals will focus on strategy development, client counseling, negotiation, and complex legal reasoning requiring contextual understanding.
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="impact-card">
+                    <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i> Education & Training
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025-2027 Transformations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Personalized learning path optimization</li>
+                            <li>AI-generated educational content and assessments</li>
+                            <li>Real-time learning analytics and intervention</li>
+                            <li>Automated administrative and grading tasks</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Evolution:</strong> Educators will emphasize mentoring, creativity facilitation, emotional support, and developing critical thinking skills that complement AI capabilities.
+                    </div>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="impact-card">
+                    <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Manufacturing & Operations
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025-2027 Transformations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Predictive maintenance and quality control</li>
+                            <li>AI-optimized supply chain management</li>
+                            <li>Automated production planning and scheduling</li>
+                            <li>Real-time performance monitoring and adjustment</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Evolution:</strong> Manufacturing professionals will focus on system optimization, innovation leadership, human-machine collaboration, and strategic decision-making.
+                    </div>
+                </div>
+
+                <!-- Marketing & Communications -->
+                <div class="impact-card">
+                    <h4 style="color: #0891b2; margin-bottom: 1rem;">
+                        <i class="fas fa-bullhorn"></i> Marketing & Communications
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>2025-2027 Transformations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>AI-generated content at scale with brand consistency</li>
+                            <li>Real-time audience sentiment analysis and response</li>
+                            <li>Predictive campaign performance optimization</li>
+                            <li>Automated A/B testing and content personalization</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Career Evolution:</strong> Marketing professionals will emphasize brand strategy, authentic relationship building, creative direction, and complex audience psychology understanding.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario-Based Future Planning -->
+            <h2 class="section-title"><i class="fas fa-crystal-ball"></i>Scenario-Based Future Planning</h2>
+
+            <div class="scenario-analyzer">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-map"></i> Professional Future Scenario Explorer
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Explore different AI advancement scenarios and their implications for professional development. Select scenarios to analyze their potential impact on your career path.
+                </p>
+                
+                <div class="scenario-grid">
+                    <div class="scenario-card" onclick="selectScenario('accelerated')">
+                        <h5><i class="fas fa-rocket"></i> Accelerated Adoption</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI capabilities advance and adopt faster than expected, with breakthrough achievements by 2027</p>
+                    </div>
+                    <div class="scenario-card" onclick="selectScenario('steady')">
+                        <h5><i class="fas fa-chart-line"></i> Steady Progress</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI development follows current projections with consistent, predictable advancement</p>
+                    </div>
+                    <div class="scenario-card" onclick="selectScenario('fragmented')">
+                        <h5><i class="fas fa-puzzle-piece"></i> Fragmented Evolution</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">AI advances unevenly across industries and regions, creating diverse adoption patterns</p>
+                    </div>
+                    <div class="scenario-card" onclick="selectScenario('constrained')">
+                        <h5><i class="fas fa-shield-alt"></i> Constrained Development</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Regulatory, ethical, or technical challenges slow AI advancement and adoption</p>
+                    </div>
+                </div>
+
+                <div id="scenario-analysis" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="scenario-content"></div>
+                </div>
+            </div>
+
+            <!-- AI Evolution Timeline Explorer -->
+            <div class="timeline-explorer">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-clock"></i> Interactive AI Evolution Timeline
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Explore the projected timeline of AI advancement and its professional implications across different phases of development.
+                </p>
+                
+                <div class="timeline-phase" onclick="explorePhase('2025-2027')">
+                    <h5><i class="fas fa-play"></i> 2025-2027: Integration Era</h5>
+                    <p style="font-size: 0.9rem; margin: 0;">Widespread AI tool adoption, basic automation, early workflow integration</p>
+                </div>
+                
+                <div class="timeline-phase" onclick="explorePhase('2027-2030')">
+                    <h5><i class="fas fa-sync"></i> 2027-2030: Transformation Era</h5>
+                    <p style="font-size: 0.9rem; margin: 0;">AI-native workflows, significant role evolution, advanced human-AI collaboration</p>
+                </div>
+                
+                <div class="timeline-phase" onclick="explorePhase('2030-2035')">
+                    <h5><i class="fas fa-lightbulb"></i> 2030-2035: Innovation Era</h5>
+                    <p style="font-size: 0.9rem; margin: 0;">AI-human partnerships create new industries, focus on uniquely human capabilities</p>
+                </div>
+                
+                <div class="timeline-phase" onclick="explorePhase('2035+')">
+                    <h5><i class="fas fa-infinity"></i> 2035+: Synthesis Era</h5>
+                    <p style="font-size: 0.9rem; margin: 0;">Seamless AI integration, emphasis on wisdom, emotional intelligence, complex problem-solving</p>
+                </div>
+
+                <div id="phase-details" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="phase-content"></div>
+                </div>
+            </div>
+
+            <!-- Career Pathway Impact Analysis -->
+            <div class="career-pathways">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-route"></i> AI-Era Career Pathway Analysis
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Analyze how different career pathways will evolve in the AI era. Select pathways to understand their transformation and opportunity profiles.
+                </p>
+                
+                <div class="pathway-grid">
+                    <div class="pathway-card" onclick="selectPathway('augmentation')">
+                        <h5><i class="fas fa-user-plus"></i> AI Augmentation Specialist</h5>
+                        <p style="font-size: 0.9rem;">Optimize human-AI collaboration in existing roles</p>
+                    </div>
+                    <div class="pathway-card" onclick="selectPathway('strategy')">
+                        <h5><i class="fas fa-chess"></i> AI Strategy Leader</h5>
+                        <p style="font-size: 0.9rem;">Drive organizational AI transformation initiatives</p>
+                    </div>
+                    <div class="pathway-card" onclick="selectPathway('innovation')">
+                        <h5><i class="fas fa-lightbulb"></i> Human-Centric Innovation Leader</h5>
+                        <p style="font-size: 0.9rem;">Create AI solutions that enhance human potential</p>
+                    </div>
+                    <div class="pathway-card" onclick="selectPathway('ethics')">
+                        <h5><i class="fas fa-shield-alt"></i> AI Ethics & Governance Expert</h5>
+                        <p style="font-size: 0.9rem;">Ensure responsible AI development and deployment</p>
+                    </div>
+                    <div class="pathway-card" onclick="selectPathway('interface')">
+                        <h5><i class="fas fa-exchange-alt"></i> AI-Human Interface Designer</h5>
+                        <p style="font-size: 0.9rem;">Design optimal interactions between humans and AI</p>
+                    </div>
+                    <div class="pathway-card" onclick="selectPathway('translator')">
+                        <h5><i class="fas fa-language"></i> Cross-Domain AI Translator</h5>
+                        <p style="font-size: 0.9rem;">Bridge AI capabilities with diverse industry applications</p>
+                    </div>
+                </div>
+
+                <div id="pathway-analysis" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="pathway-content"></div>
+                </div>
+            </div>
+
+            <!-- Disruption Radar -->
+            <div class="disruption-radar">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-radar"></i> Professional Disruption Radar
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Monitor key indicators of AI-driven disruption across different professional domains and prepare adaptive strategies.
+                </p>
+                
+                <div class="radar-category">
+                    <h5 style="color: #dc2626; margin-bottom: 1rem;"><i class="fas fa-robot"></i> Automation Acceleration Indicators</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Task Complexity Advancement:</strong> AI handling increasingly sophisticated cognitive tasks</li>
+                        <li><strong>Error Rate Improvement:</strong> AI systems achieving human-level or better accuracy</li>
+                        <li><strong>Speed Enhancement:</strong> AI completing tasks 10-100x faster than human baselines</li>
+                        <li><strong>Cost Effectiveness:</strong> AI solutions becoming significantly cheaper than human labor</li>
+                    </ul>
+                </div>
+                
+                <div class="radar-category">
+                    <h5 style="color: #dc2626; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Market Transformation Signals</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Investment Flow Shifts:</strong> Capital moving toward AI-native companies and solutions</li>
+                        <li><strong>Customer Expectation Evolution:</strong> Demand for AI-enhanced service levels</li>
+                        <li><strong>Competitive Advantage Migration:</strong> AI capabilities becoming primary differentiators</li>
+                        <li><strong>Ecosystem Reconfiguration:</strong> New partnerships and business models emerging</li>
+                    </ul>
+                </div>
+                
+                <div class="radar-category">
+                    <h5 style="color: #dc2626; margin-bottom: 1rem;"><i class="fas fa-users"></i> Workforce Evolution Indicators</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Skill Demand Shifts:</strong> Premium on AI collaboration and uniquely human capabilities</li>
+                        <li><strong>Role Redefinition:</strong> Traditional job descriptions evolving to include AI interaction</li>
+                        <li><strong>Career Path Changes:</strong> New advancement opportunities requiring AI fluency</li>
+                        <li><strong>Training Priority Updates:</strong> Organizations investing heavily in AI skill development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Career Impact Analyzer -->
+            <h2 class="section-title"><i class="fas fa-calculator"></i>Personal Career Impact Analyzer</h2>
+
+            <div class="interactive-analyzer">
+                <h4 style="color: #0891b2; margin-bottom: 1.5rem;">
+                    <i class="fas fa-crosshairs"></i> Analyze AI Impact on Your Career Path
+                </h4>
+                
+                <div class="analyzer-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Current Industry & Role:</label>
+                    <input type="text" id="currentRole" placeholder="e.g., Senior Marketing Manager in Healthcare" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="analyzer-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Career Timeline Horizon:</label>
+                    <select id="timeHorizon" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select timeline</option>
+                        <option value="2-3">Next 2-3 years (short-term adaptation)</option>
+                        <option value="5-7">Next 5-7 years (medium-term positioning)</option>
+                        <option value="10+">Next 10+ years (long-term transformation)</option>
+                    </select>
+                </div>
+                
+                <div class="analyzer-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current AI Experience Level:</label>
+                    <select id="aiExperience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select experience level</option>
+                        <option value="beginner">Beginner (learning fundamentals)</option>
+                        <option value="intermediate">Intermediate (applying basic tools)</option>
+                        <option value="advanced">Advanced (optimizing workflows)</option>
+                        <option value="expert">Expert (leading AI initiatives)</option>
+                    </select>
+                </div>
+                
+                <div class="analyzer-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Career Goals:</label>
+                    <textarea id="careerGoals" placeholder="What are your main professional aspirations? (e.g., leadership roles, expertise recognition, career transition)" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="analyzer-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key Professional Concerns:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="automation"> Job automation risk
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="skills"> Skill obsolescence
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="competition"> Increased competition
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="learning"> Learning curve challenges
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="ethics"> Ethical considerations
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="change"> Organizational change
+                        </label>
+                    </div>
+                </div>
+                
+                <button onclick="generateCareerAnalysis()" style="background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-chart-bar"></i> Generate Comprehensive Career Impact Analysis
+                </button>
+                
+                <div id="generatedAnalysis" class="generated-analysis">
+                    <strong style="color: #065f46;">Your Personalized AI Career Impact Analysis:</strong><br><br>
+                    <div id="analysisContent" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-compass"></i> Strategic Next Steps:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Begin with the highest-priority skill development identified in your analysis</li>
+                            <li>Connect with professionals already working in your target AI-enhanced roles</li>
+                            <li>Start small pilot projects to build experience and demonstrate value</li>
+                            <li>Document your AI learning journey for portfolio and networking purposes</li>
+                            <li>Stay engaged with industry AI developments through targeted learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Preparedness Assessment -->
+            <div class="preparedness-assessment">
+                <h4 style="color: #1d4ed8; margin-bottom: 1.5rem;">
+                    <i class="fas fa-clipboard-check"></i> Future Preparedness Self-Assessment
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Evaluate your current readiness across key dimensions of AI-era professional success.
+                </p>
+                
+                <div class="assessment-dimension">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-brain"></i> AI Technical Competency</h5>
+                    <p style="margin-bottom: 1rem;">Rate your current capabilities: 1 (Beginner) to 5 (Expert)</p>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Advanced prompting and AI communication</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>AI tool integration and workflow optimization</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>AI ethics and bias awareness</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                </div>
+                
+                <div class="assessment-dimension">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Strategic Thinking & Innovation</h5>
+                    <p style="margin-bottom: 1rem;">Rate your current capabilities: 1 (Developing) to 5 (Exceptional)</p>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Complex problem-solving and systems thinking</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Creative ideation and innovation leadership</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Strategic foresight and trend analysis</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                </div>
+                
+                <div class="assessment-dimension">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-users"></i> Human-Centered Leadership</h5>
+                    <p style="margin-bottom: 1rem;">Rate your current capabilities: 1 (Developing) to 5 (Exceptional)</p>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Emotional intelligence and empathy</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Change leadership and stakeholder management</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; align-items: center;">
+                        <span>Cross-cultural and interdisciplinary collaboration</span>
+                        <input type="range" min="1" max="5" value="3" style="width: 100%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0369a1; margin-bottom: 1rem;">Ready to Develop Your Adaptation Strategy?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you understand future AI trends and their impact, learn how to build continuous learning systems and professional adaptation strategies.</p>
+                <a href="activity-2-professional-adaptation-strategies.html" class="nav-btn">
+                    <i class="fas fa-sync"></i>
+                    Build Adaptation Strategies
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-professional-adaptation-strategies.html" class="nav-btn">
+                    Next: Adaptation Strategies
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function selectScenario(scenario) {
+            const scenarios = document.querySelectorAll('.scenario-card');
+            scenarios.forEach(s => s.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            
+            const analysisDiv = document.getElementById('scenario-analysis');
+            const contentDiv = document.getElementById('scenario-content');
+            
+            const scenarioContent = {
+                accelerated: {
+                    title: 'Accelerated Adoption Scenario Analysis',
+                    content: `
+                    <strong>Timeline Acceleration:</strong> Major AI breakthroughs occur 2-3 years ahead of current projections
+                    
+                    <strong>Professional Implications:</strong>
+                    • Rapid skill obsolescence requiring aggressive reskilling
+                    • First-mover advantages for early AI adopters become massive
+                    • Traditional career ladders compressed into 2-3 year cycles
+                    • Emergency demand for AI literacy across all professions
+                    
+                    <strong>Opportunity Strategy:</strong>
+                    • Focus on immediate, intensive AI skill development
+                    • Build portfolio of AI-enhanced projects quickly
+                    • Position for leadership roles in AI transformation
+                    • Develop expertise in managing rapid change
+                    
+                    <strong>Risk Mitigation:</strong>
+                    • Avoid over-specialization in specific AI tools
+                    • Maintain strong foundational skills in human-centered work
+                    • Build adaptive learning capabilities
+                    • Cultivate broad professional networks for rapid pivoting`
+                },
+                steady: {
+                    title: 'Steady Progress Scenario Analysis',
+                    content: `
+                    <strong>Timeline Progression:</strong> AI development follows current industry projections with predictable milestones
+                    
+                    <strong>Professional Implications:</strong>
+                    • Measured skill development with clear learning pathways
+                    • Gradual role evolution allowing for planned adaptation
+                    • Balanced investment in AI and traditional competencies
+                    • Sustainable professional development timeline
+                    
+                    <strong>Opportunity Strategy:</strong>
+                    • Build systematic AI competency development plan
+                    • Focus on becoming bridge between traditional and AI-enhanced work
+                    • Develop expertise in AI implementation and change management
+                    • Create thought leadership content and professional recognition
+                    
+                    <strong>Risk Mitigation:</strong>
+                    • Monitor for acceleration signals that might disrupt timeline
+                    • Maintain flexibility to speed up development if needed
+                    • Build relationships with faster-moving professionals and organizations
+                    • Keep backup plans for multiple advancement scenarios`
+                },
+                fragmented: {
+                    title: 'Fragmented Evolution Scenario Analysis',
+                    content: `
+                    <strong>Timeline Variation:</strong> AI advancement occurs unevenly across industries, regions, and applications
+                    
+                    <strong>Professional Implications:</strong>
+                    • Industry-specific AI maturity levels create opportunities for cross-pollination
+                    • Geographic and organizational AI divides create arbitrage opportunities
+                    • Specialized expertise in AI implementation becomes premium skill
+                    • Professional mobility increases in value
+                    
+                    <strong>Opportunity Strategy:</strong>
+                    • Develop expertise in AI implementation across different contexts
+                    • Build bridges between advanced and developing AI ecosystems
+                    • Position as consultant/advisor for AI adoption
+                    • Cultivate global and cross-industry professional networks
+                    
+                    <strong>Risk Mitigation:</strong>
+                    • Avoid getting trapped in slow-adopting organizations or regions
+                    • Maintain awareness of AI leaders across multiple industries
+                    • Build portable skills that transfer across contexts
+                    • Develop remote work and digital collaboration capabilities`
+                },
+                constrained: {
+                    title: 'Constrained Development Scenario Analysis',
+                    content: `
+                    <strong>Timeline Deceleration:</strong> AI progress slows due to regulatory, ethical, or technical barriers
+                    
+                    <strong>Professional Implications:</strong>
+                    • Extended timeline for AI adoption provides more adaptation time
+                    • Premium on professionals who understand constraints and solutions
+                    • Human-centered skills maintain value longer than expected
+                    • Expertise in responsible AI becomes critical differentiator
+                    
+                    <strong>Opportunity Strategy:</strong>
+                    • Develop deep expertise in AI ethics, governance, and responsible implementation
+                    • Focus on sustainable AI adoption and change management
+                    • Build reputation as thoughtful, measured AI professional
+                    • Maintain and advance traditional professional competencies
+                    
+                    <strong>Risk Mitigation:</strong>
+                    • Stay prepared for potential breakthrough acceleration
+                    • Maintain AI technical competency even if adoption is slow
+                    • Build expertise in constraint navigation and solution development
+                    • Avoid complacency about future AI impact`
+                }
+            };
+            
+            if (scenarioContent[scenario]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">${scenarioContent[scenario].title}</h5>
+                    <div style="white-space: pre-line;">${scenarioContent[scenario].content}</div>
+                `;
+                analysisDiv.style.display = 'block';
+            }
+        }
+        
+        function explorePhase(phase) {
+            const detailsDiv = document.getElementById('phase-details');
+            const contentDiv = document.getElementById('phase-content');
+            
+            const phaseContent = {
+                '2025-2027': {
+                    title: '2025-2027: Integration Era Deep Dive',
+                    content: `
+                    <strong>Key Characteristics:</strong>
+                    • AI tools become standard in most professional workflows
+                    • Basic automation of routine cognitive tasks
+                    • Early human-AI collaboration patterns emerge
+                    • Learning curve period for most professionals
+                    
+                    <strong>Professional Development Priorities:</strong>
+                    • Master fundamental AI interaction and prompting skills
+                    • Identify automation opportunities in current role
+                    • Build comfort with AI-assisted decision making
+                    • Develop basic AI ethics and quality assurance capabilities
+                    
+                    <strong>Career Positioning Strategies:</strong>
+                    • Become the "AI champion" in your current organization
+                    • Document efficiency gains and value creation from AI use
+                    • Help colleagues adapt to AI-enhanced workflows
+                    • Build portfolio of successful AI implementation projects
+                    
+                    <strong>Skill Investment Focus:</strong>
+                    • Advanced prompting and AI communication
+                    • AI tool evaluation and integration
+                    • Change management and training delivery
+                    • Data literacy and analysis enhancement`
+                },
+                '2027-2030': {
+                    title: '2027-2030: Transformation Era Deep Dive',
+                    content: `
+                    <strong>Key Characteristics:</strong>
+                    • AI-native workflows replace traditional processes
+                    • Significant role redefinition across industries
+                    • Advanced human-AI collaboration becomes norm
+                    • AI capabilities approach human-level in many domains
+                    
+                    <strong>Professional Development Priorities:</strong>
+                    • Master complex AI orchestration and system design
+                    • Develop expertise in AI strategy and implementation leadership
+                    • Build capabilities in AI ethics and governance
+                    • Focus on uniquely human value creation
+                    
+                    <strong>Career Positioning Strategies:</strong>
+                    • Position for leadership roles in AI-transformed organizations
+                    • Develop reputation as AI transformation expert
+                    • Build thought leadership in your industry's AI evolution
+                    • Create consulting or advisory opportunities
+                    
+                    <strong>Skill Investment Focus:</strong>
+                    • Strategic AI planning and implementation
+                    • Human-AI interface design and optimization
+                    • Emotional intelligence and complex relationship management
+                    • Innovation leadership and creative problem-solving`
+                },
+                '2030-2035': {
+                    title: '2030-2035: Innovation Era Deep Dive',
+                    content: `
+                    <strong>Key Characteristics:</strong>
+                    • AI-human partnerships create entirely new industries
+                    • Premium on creativity, empathy, and complex reasoning
+                    • AI handles most routine cognitive and analytical tasks
+                    • Focus shifts to wisdom, judgment, and relationship building
+                    
+                    <strong>Professional Development Priorities:</strong>
+                    • Master interdisciplinary thinking and synthesis
+                    • Develop expertise in human psychology and motivation
+                    • Build capabilities in ethical leadership and decision-making
+                    • Focus on wisdom acquisition and contextual understanding
+                    
+                    <strong>Career Positioning Strategies:</strong>
+                    • Position as bridge between AI capabilities and human needs
+                    • Develop expertise in emerging human-AI collaborative fields
+                    • Build reputation for ethical leadership and sound judgment
+                    • Create new professional categories and standards
+                    
+                    <strong>Skill Investment Focus:</strong>
+                    • Philosophical and ethical reasoning
+                    • Cross-cultural and interdisciplinary collaboration
+                    • Complex systems thinking and pattern recognition
+                    • Mentoring and human development capabilities`
+                },
+                '2035+': {
+                    title: '2035+: Synthesis Era Deep Dive',
+                    content: `
+                    <strong>Key Characteristics:</strong>
+                    • Seamless integration between human and AI capabilities
+                    • Work focused on meaning, purpose, and human flourishing
+                    • AI handles technical execution while humans provide direction
+                    • Professional value derived from wisdom and authentic connection
+                    
+                    <strong>Professional Development Priorities:</strong>
+                    • Master wisdom acquisition and application
+                    • Develop deep expertise in human motivation and fulfillment
+                    • Build capabilities in meaning-making and purpose alignment
+                    • Focus on authentic relationship building and community development
+                    
+                    <strong>Career Positioning Strategies:</strong>
+                    • Position as wisdom keeper and mentor for emerging professionals
+                    • Develop expertise in human potential and flourishing
+                    • Build reputation for authentic leadership and community building
+                    • Create legacy through knowledge transfer and human development
+                    
+                    <strong>Skill Investment Focus:</strong>
+                    • Contemplative and reflective practices
+                    • Deep listening and empathetic communication
+                    • Community building and collective intelligence
+                    • Spiritual and philosophical exploration`
+                }
+            };
+            
+            if (phaseContent[phase]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;">${phaseContent[phase].title}</h5>
+                    <div style="white-space: pre-line;">${phaseContent[phase].content}</div>
+                `;
+                detailsDiv.style.display = 'block';
+            }
+        }
+        
+        function selectPathway(pathway) {
+            const pathways = document.querySelectorAll('.pathway-card');
+            pathways.forEach(p => p.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            
+            const analysisDiv = document.getElementById('pathway-analysis');
+            const contentDiv = document.getElementById('pathway-content');
+            
+            const pathwayContent = {
+                augmentation: {
+                    title: 'AI Augmentation Specialist Career Path',
+                    content: `
+                    <strong>Role Evolution:</strong> Transform existing professional roles through strategic AI integration
+                    
+                    <strong>Core Responsibilities:</strong>
+                    • Identify and implement AI enhancement opportunities in current workflows
+                    • Train colleagues in AI tool adoption and best practices
+                    • Optimize human-AI collaboration for maximum effectiveness
+                    • Measure and demonstrate value creation from AI augmentation
+                    
+                    <strong>Key Skills Required:</strong>
+                    • Advanced AI tool proficiency across multiple platforms
+                    • Change management and training capabilities
+                    • Performance measurement and optimization
+                    • Communication and stakeholder management
+                    
+                    <strong>Career Progression:</strong>
+                    Year 1-2: Master AI tools in current role, document improvements
+                    Year 3-5: Lead AI adoption initiatives, train others, measure ROI
+                    Year 5+: Senior AI integration roles, consulting opportunities
+                    
+                    <strong>Compensation Impact:</strong> 15-30% salary premium for demonstrated AI augmentation expertise`
+                },
+                strategy: {
+                    title: 'AI Strategy Leader Career Path',
+                    content: `
+                    <strong>Role Evolution:</strong> Drive organizational AI transformation and strategic implementation
+                    
+                    <strong>Core Responsibilities:</strong>
+                    • Develop comprehensive AI adoption strategies for organizations
+                    • Lead cross-functional AI implementation initiatives
+                    • Evaluate and select AI technologies and vendor partnerships
+                    • Build AI governance frameworks and risk management protocols
+                    
+                    <strong>Key Skills Required:</strong>
+                    • Strategic planning and business development
+                    • Technology evaluation and vendor management
+                    • Project management and cross-functional leadership
+                    • Risk assessment and compliance expertise
+                    
+                    <strong>Career Progression:</strong>
+                    Year 1-2: Build AI strategy expertise, lead pilot projects
+                    Year 3-5: Senior strategy roles, major transformation leadership
+                    Year 5+: C-suite AI strategy positions, board advisory roles
+                    
+                    <strong>Compensation Impact:</strong> 25-50% salary premium for proven AI strategy leadership`
+                },
+                innovation: {
+                    title: 'Human-Centric Innovation Leader Career Path',
+                    content: `
+                    <strong>Role Evolution:</strong> Create AI solutions that amplify human potential and creativity
+                    
+                    <strong>Core Responsibilities:</strong>
+                    • Design AI applications that enhance rather than replace human capabilities
+                    • Lead human-centered design for AI implementations
+                    • Develop innovative AI use cases that solve complex human problems
+                    • Build bridges between technical AI capabilities and human needs
+                    
+                    <strong>Key Skills Required:</strong>
+                    • Design thinking and human-centered design
+                    • Creative problem-solving and innovation management
+                    • Psychology and human behavior understanding
+                    • Technical AI literacy and application development
+                    
+                    <strong>Career Progression:</strong>
+                    Year 1-2: Develop human-AI design expertise, create innovative applications
+                    Year 3-5: Lead innovation teams, develop new AI-human paradigms
+                    Year 5+: Chief Innovation Officer roles, industry thought leadership
+                    
+                    <strong>Compensation Impact:</strong> 20-40% salary premium for demonstrated innovation leadership`
+                },
+                ethics: {
+                    title: 'AI Ethics & Governance Expert Career Path',
+                    content: `
+                    <strong>Role Evolution:</strong> Ensure responsible AI development and deployment across organizations
+                    
+                    <strong>Core Responsibilities:</strong>
+                    • Develop AI ethics frameworks and governance policies
+                    • Conduct bias audits and fairness assessments
+                    • Lead stakeholder engagement on AI ethical considerations
+                    • Build compliance protocols for AI regulatory requirements
+                    
+                    <strong>Key Skills Required:</strong>
+                    • Ethics and moral philosophy background
+                    • Legal and regulatory compliance expertise
+                    • Stakeholder engagement and communication
+                    • Technical understanding of AI bias and fairness
+                    
+                    <strong>Career Progression:</strong>
+                    Year 1-2: Build AI ethics expertise, develop governance frameworks
+                    Year 3-5: Lead enterprise ethics programs, industry standard setting
+                    Year 5+: Chief Ethics Officer roles, regulatory advisory positions
+                    
+                    <strong>Compensation Impact:</strong> 20-35% salary premium for AI ethics and governance expertise`
+                },
+                interface: {
+                    title: 'AI-Human Interface Designer Career Path',
+                    content: `
+                    <strong>Role Evolution:</strong> Design optimal interactions between humans and AI systems
+                    
+                    <strong>Core Responsibilities:</strong>
+                    • Design user experiences for AI-powered applications
+                    • Optimize human-AI interaction patterns and workflows
+                    • Research and develop new interface paradigms for AI systems
+                    • Test and refine AI system usability and adoption
+                    
+                    <strong>Key Skills Required:</strong>
+                    • User experience design and research
+                    • Human-computer interaction expertise
+                    • Cognitive psychology and behavioral design
+                    • AI system architecture understanding
+                    
+                    <strong>Career Progression:</strong>
+                    Year 1-2: Specialize in AI interface design, build portfolio
+                    Year 3-5: Lead UX teams for AI products, develop design standards
+                    Year 5+: Chief Design Officer roles, AI interface consultancy
+                    
+                    <strong>Compensation Impact:</strong> 15-30% salary premium for AI interface design expertise`
+                },
+                translator: {
+                    title: 'Cross-Domain AI Translator Career Path',
+                    content: `
+                    <strong>Role Evolution:</strong> Bridge AI capabilities with diverse industry applications
+                    
+                    <strong>Core Responsibilities:</strong>
+                    • Translate AI capabilities into industry-specific applications
+                    • Facilitate knowledge transfer between AI experts and domain professionals
+                    • Develop industry-specific AI implementation methodologies
+                    • Build partnerships between AI companies and traditional industries
+                    
+                    <strong>Key Skills Required:</strong>
+                    • Deep domain expertise in specific industries
+                    • Technical AI understanding and application knowledge
+                    • Communication and translation capabilities
+                    • Business development and partnership building
+                    
+                    <strong>Career Progression:</strong>
+                    Year 1-2: Develop AI application expertise in chosen domain
+                    Year 3-5: Lead cross-industry AI implementations, build networks
+                    Year 5+: Strategic advisor roles, industry transformation leadership
+                    
+                    <strong>Compensation Impact:</strong> 25-45% salary premium for cross-domain AI translation expertise`
+                }
+            };
+            
+            if (pathwayContent[pathway]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #10b981; margin-bottom: 1rem;">${pathwayContent[pathway].title}</h5>
+                    <div style="white-space: pre-line;">${pathwayContent[pathway].content}</div>
+                `;
+                analysisDiv.style.display = 'block';
+            }
+        }
+        
+        function generateCareerAnalysis() {
+            const currentRole = document.getElementById('currentRole').value;
+            const timeHorizon = document.getElementById('timeHorizon').value;
+            const aiExperience = document.getElementById('aiExperience').value;
+            const careerGoals = document.getElementById('careerGoals').value;
+            
+            // Get selected concerns
+            const concernCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const concerns = Array.from(concernCheckboxes).map(cb => cb.value);
+            
+            if (!currentRole || !timeHorizon || !aiExperience) {
+                alert('Please fill in at least the current role, time horizon, and AI experience fields.');
+                return;
+            }
+            
+            const timeHorizonText = {
+                '2-3': 'Next 2-3 years (short-term adaptation)',
+                '5-7': 'Next 5-7 years (medium-term positioning)',
+                '10+': 'Next 10+ years (long-term transformation)'
+            };
+            
+            const experienceText = {
+                'beginner': 'Beginner (learning fundamentals)',
+                'intermediate': 'Intermediate (applying basic tools)',
+                'advanced': 'Advanced (optimizing workflows)',
+                'expert': 'Expert (leading AI initiatives)'
+            };
+            
+            let analysis = `COMPREHENSIVE AI CAREER IMPACT ANALYSIS
+${currentRole.toUpperCase()} | ${timeHorizonText[timeHorizon] || timeHorizon}
+
+=== CURRENT POSITION ASSESSMENT ===
+
+AI Experience Level: ${experienceText[aiExperience] || aiExperience}
+Professional Focus: ${currentRole}
+Career Timeline: ${timeHorizonText[timeHorizon] || timeHorizon}
+Primary Concerns: ${concerns.join(', ') || 'None specified'}
+
+=== AI IMPACT FORECAST FOR YOUR ROLE ===
+
+${timeHorizon === '2-3' ? `SHORT-TERM IMPACT (2025-2027):
+• Basic AI tool integration becomes standard in your field
+• 20-30% of routine tasks become AI-assisted or automated
+• New role responsibilities emerge around AI oversight and optimization
+• Competitive advantage for early adopters in your industry
+• Training and adaptation period with learning curve challenges
+
+IMMEDIATE ACTION PRIORITIES:
+• Master fundamental AI tools relevant to your specific role
+• Identify and pilot AI applications in your current responsibilities
+• Document efficiency gains and value creation from AI use
+• Position yourself as AI champion within your organization
+• Build portfolio of successful AI-enhanced projects` : ''}
+
+${timeHorizon === '5-7' ? `MEDIUM-TERM IMPACT (2025-2030):
+• Significant workflow transformation with AI-native processes
+• 40-60% of traditional tasks become AI-enhanced or eliminated
+• New senior roles emerge requiring AI strategy and implementation skills
+• Industry-wide adoption creates new competitive dynamics
+• Premium compensation for professionals with proven AI expertise
+
+STRATEGIC POSITIONING PRIORITIES:
+• Develop advanced AI implementation and optimization capabilities
+• Build expertise in AI strategy, governance, and change management
+• Establish thought leadership and professional recognition in AI applications
+• Create consulting or advisory opportunities in your field
+• Prepare for leadership roles in AI-transformed organizations` : ''}
+
+${timeHorizon === '10+' ? `LONG-TERM TRANSFORMATION (2025-2035+):
+• Complete industry transformation with AI-human collaboration as norm
+• 60-80% of current tasks handled by AI, focus shifts to uniquely human value
+• New professional categories emerge that don't exist today
+• Career success tied to wisdom, creativity, and relationship-building
+• Premium on professionals who can bridge AI capabilities with human needs
+
+TRANSFORMATION LEADERSHIP PRIORITIES:
+• Master interdisciplinary thinking and complex problem-solving
+• Develop expertise in human psychology, ethics, and relationship building
+• Build reputation for wisdom, judgment, and authentic leadership
+• Create new professional standards and practices for AI-human collaboration
+• Position for senior leadership roles in post-transformation economy` : ''}
+
+=== OPPORTUNITY ANALYSIS ===
+
+Primary Career Opportunities:
+${aiExperience === 'beginner' ? `• AI Augmentation Specialist: Transform current role through strategic AI integration
+• Internal AI Champion: Lead adoption initiatives within your organization
+• AI Literacy Trainer: Help colleagues adapt to AI-enhanced workflows
+• Process Optimization Expert: Identify and implement AI efficiency improvements` : ''}
+
+${aiExperience === 'intermediate' ? `• AI Implementation Manager: Lead cross-functional AI adoption projects
+• AI Strategy Consultant: Advise organizations on AI transformation
+• Human-AI Interface Designer: Optimize collaboration between humans and AI
+• AI Ethics Specialist: Develop governance frameworks and responsible practices` : ''}
+
+${aiExperience === 'advanced' ? `• AI Transformation Leader: Drive enterprise-wide AI adoption strategies
+• Cross-Domain AI Translator: Bridge AI capabilities with industry applications
+• AI Innovation Director: Create new AI-human collaborative paradigms
+• AI Governance Expert: Build industry standards and ethical frameworks` : ''}
+
+${aiExperience === 'expert' ? `• Chief AI Officer: Lead organizational AI strategy at executive level
+• AI Industry Thought Leader: Shape industry standards and best practices
+• AI-Human Collaboration Pioneer: Define new models of professional work
+• AI Ecosystem Developer: Build partnerships and collaborative networks` : ''}
+
+=== RISK MITIGATION STRATEGIES ===
+
+Identified Concerns & Mitigation Approaches:
+${concerns.includes('automation') ? `• Automation Risk: Focus on complementary skills that enhance rather than compete with AI
+  - Develop expertise in areas requiring human judgment, creativity, and empathy
+  - Position for roles that oversee and optimize AI systems
+  - Build portfolio of irreplaceable human-centered value creation` : ''}
+
+${concerns.includes('skills') ? `• Skill Obsolescence: Establish continuous learning systems and adaptive capabilities
+  - Develop meta-learning skills for rapid adaptation to new technologies
+  - Build broad, transferable competencies rather than narrow technical specialization
+  - Maintain network of professionals and mentors for ongoing development` : ''}
+
+${concerns.includes('competition') ? `• Increased Competition: Create unique value propositions through AI expertise combination
+  - Combine domain expertise with AI fluency for rare skill combination
+  - Develop reputation for quality and results in AI-enhanced work
+  - Build professional network and thought leadership for market differentiation` : ''}
+
+${concerns.includes('learning') ? `• Learning Curve Challenges: Create structured, manageable learning pathways
+  - Start with basic tools and build complexity gradually
+  - Find mentors and learning communities for support and guidance
+  - Focus on practical application rather than theoretical understanding` : ''}
+
+${concerns.includes('ethics') ? `• Ethical Considerations: Develop expertise in responsible AI practices
+  - Build knowledge of AI bias, fairness, and transparency issues
+  - Establish personal ethical framework for AI use in your profession
+  - Become advocate for responsible AI adoption in your organization` : ''}
+
+${concerns.includes('change') ? `• Organizational Change: Position as change leader and adaptation facilitator
+  - Develop change management and stakeholder engagement skills
+  - Build coalition of AI adoption supporters within organization
+  - Create systematic approach to managing AI transformation challenges` : ''}
+
+=== COMPETITIVE ADVANTAGE DEVELOPMENT ===
+
+Unique Positioning Strategies:
+• ${currentRole} + AI Expertise = Rare and valuable professional combination
+• Industry domain knowledge + AI implementation = Strategic advantage
+• Human-centered skills + AI efficiency = Irreplaceable value proposition
+• Professional network + AI thought leadership = Career acceleration platform
+
+Skill Investment Priorities:
+${timeHorizon === '2-3' ? `1. Advanced AI tool mastery in your specific professional domain
+2. Change management and training delivery capabilities
+3. Performance measurement and ROI demonstration
+4. Professional communication and stakeholder management` : ''}
+
+${timeHorizon === '5-7' ? `1. AI strategy development and implementation leadership
+2. Cross-functional collaboration and project management
+3. Thought leadership and professional recognition building
+4. Innovation and creative problem-solving enhancement` : ''}
+
+${timeHorizon === '10+' ? `1. Interdisciplinary thinking and complex systems understanding
+2. Emotional intelligence and relationship building mastery
+3. Ethical reasoning and wisdom development
+4. Community building and mentoring capabilities` : ''}
+
+=== IMPLEMENTATION ROADMAP ===
+
+Next 90 Days:
+• Identify 3-5 specific AI applications most relevant to your current role
+• Complete advanced training in your highest-priority AI tool
+• Begin documenting AI use cases and value creation in your work
+• Connect with 10+ professionals who are successfully using AI in your field
+• Start building portfolio of AI-enhanced projects and outcomes
+
+Next 12 Months:
+• ${careerGoals || 'Advance toward identified career goals through strategic AI positioning'}
+• Establish reputation as AI-savvy professional within your organization
+• Complete major AI implementation project with measurable business impact
+• Begin sharing knowledge through writing, speaking, or training others
+• Build professional network of AI practitioners and thought leaders
+
+Next 3-5 Years:
+• Position for leadership role in AI-transformed version of your industry
+• Develop expertise area that combines your domain knowledge with AI capabilities
+• Create thought leadership content and professional recognition
+• Build consulting or advisory opportunities based on proven AI expertise
+• Prepare for senior roles that didn't exist when you started this journey
+
+This analysis provides a foundation for strategic career planning in the AI era. Regularly reassess and adjust based on actual AI advancement pace and industry evolution.`;
+
+            document.getElementById('analysisContent').textContent = analysis;
+            document.getElementById('generatedAnalysis').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedAnalysis').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

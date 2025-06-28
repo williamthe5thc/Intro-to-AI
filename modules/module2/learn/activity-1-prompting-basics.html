@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: Prompting Basics - Module 2</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .video-container {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .segment-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            border: 2px solid var(--neutral-light);
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .segment-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+        }
+        
+        .segment-content {
+            padding: 1.5rem;
+        }
+        
+        .framework-highlight {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .resource-card {
+            background: var(--neutral-white);
+            border: 1px solid var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        
+        .resource-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .resource-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 2</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Prompting Basics</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompting-activity.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/basic-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Learning Activity 1: Prompting Basics Video</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                This foundational video introduces you to the art and science of effective prompting for AI systems in professional contexts.
+            </p>
+
+            <!-- Learning Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-compass"></i>Learning Overview</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>Content Type:</strong> Interactive Video Tutorial</div>
+                    <div><strong>Duration:</strong> 18 minutes</div>
+                    <div><strong>Includes:</strong> Live demonstrations and practice examples</div>
+                </div>
+            </div>
+
+            <!-- Video Content Section -->
+            <div class="video-container">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-play-circle"></i> Prompting Fundamentals Masterclass
+                </h3>
+                <video controls class="video-player">
+                    <source src="../../../multimedia/module2/2.1-prompting-basics.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="color: var(--neutral-medium); margin-top: 1rem; font-size: 0.9rem;">
+                    Master the fundamentals of professional AI prompting with practical demonstrations
+                </p>
+            </div>
+
+            <!-- Video Segments -->
+            <h2 class="section-title"><i class="fas fa-list"></i>Video Segments</h2>
+
+            <!-- Segment 1 -->
+            <div class="segment-card">
+                <div class="segment-header">
+                    <i class="fas fa-play"></i> Segment 1: What Makes a Good Prompt? (5 minutes)
+                </div>
+                <div class="segment-content">
+                    <ul class="modern-list">
+                        <li>The difference between casual conversation and effective prompting</li>
+                        <li>Common prompting mistakes professionals make</li>
+                        <li>The anatomy of a well-structured prompt</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Segment 2 -->
+            <div class="segment-card">
+                <div class="segment-header">
+                    <i class="fas fa-star"></i> Segment 2: The CLEAR Framework (8 minutes)
+                </div>
+                <div class="segment-content">
+                    <p style="margin-bottom: 1rem;">Learn our proven framework for professional prompting:</p>
+                    <div class="framework-highlight">
+                        <ul class="modern-list">
+                            <li><strong>C</strong>ontext: Setting the professional scenario</li>
+                            <li><strong>L</strong>ength: Specifying desired output length</li>
+                            <li><strong>E</strong>xamples: Providing relevant samples</li>
+                            <li><strong>A</strong>udience: Defining your target audience</li>
+                            <li><strong>R</strong>ole: Establishing the AI's perspective</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segment 3 -->
+            <div class="segment-card">
+                <div class="segment-header">
+                    <i class="fas fa-magic"></i> Segment 3: Before and After Examples (5 minutes)
+                </div>
+                <div class="segment-content">
+                    <p style="margin-bottom: 1rem;">See real workplace prompts transformed using CLEAR:</p>
+                    <ul class="modern-list">
+                        <li>Email drafting prompts</li>
+                        <li>Report summarization requests</li>
+                        <li>Meeting agenda creation</li>
+                        <li>Data analysis instructions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i>Key Takeaways</h3>
+                <ol class="modern-list">
+                    <li><strong>Specificity beats generality</strong> - Vague prompts yield vague results</li>
+                    <li><strong>Context is king</strong> - The more relevant context you provide, the better the output</li>
+                    <li><strong>Iteration is normal</strong> - Professional prompting often requires refinement</li>
+                    <li><strong>Role-playing works</strong> - Asking AI to adopt specific professional roles improves results</li>
+                </ol>
+            </div>
+
+            <!-- Multimedia Resources -->
+            <h2 class="section-title"><i class="fas fa-download"></i>Multimedia Resources</h2>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h4>PowerPoint Presentation</h4>
+                    <p style="font-size: 0.9rem; color: var(--neutral-medium); margin: 0.5rem 0;">
+                        Complete slide deck with frameworks and examples
+                    </p>
+                    <a href="../../../multimedia/module2/2.1-The-Fundamentals-of-Prompt-Engineering.pptx" target="_blank" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h4>Audio Segments</h4>
+                    <p style="font-size: 0.9rem; color: var(--neutral-medium); margin: 0.5rem 0;">
+                        Listen on-the-go with segmented audio files
+                    </p>
+                    <a href="../../../multimedia/module2/audio/2.1.1.mp3" target="_blank" style="color: var(--primary-blue); text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-play"></i> Audio Segment 1
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4>Quick Reference</h4>
+                    <p style="font-size: 0.9rem; color: var(--neutral-medium); margin: 0.5rem 0;">
+                        CLEAR Framework cheat sheet and templates
+                    </p>
+                    <span style="color: var(--neutral-medium); font-size: 0.8rem;">Available in course materials</span>
+                </div>
+            </div>
+
+            <!-- Practice Opportunity -->
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--accent-orange);">
+                <h3 style="color: #92400e; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-keyboard"></i>
+                    Practice Opportunity
+                </h3>
+                <p style="color: #374151; margin-bottom: 1rem;">
+                    Pause the video at the designated practice points to try prompting techniques yourself before seeing the solutions. This active learning approach helps reinforce the concepts.
+                </p>
+                <p style="font-size: 0.9rem; color: #6b7280;">
+                    <strong>Tip:</strong> Keep a notepad ready to practice writing prompts during the video segments.
+                </p>
+            </div>
+
+            <!-- Next Steps -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px;">
+                <h3 style="color: #065f46; margin-bottom: 1rem;">Ready for Specialized Techniques?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">
+                    Apply what you've learned about the CLEAR framework as we explore zero-shot and few-shot prompting strategies.
+                </p>
+                <a href="zero-shot-prompting.html" class="nav-btn">
+                    <i class="fas fa-arrow-right"></i>
+                    Continue to Zero-Shot Prompting
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="zero-shot-prompting.html" class="nav-btn">
+                    Next: Zero-Shot Prompting
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

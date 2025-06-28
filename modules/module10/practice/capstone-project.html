@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project: AI Implementation Case Study - Module 10</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .capstone-framework {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .implementation-phase {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+        .implementation-phase:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .phase-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+        .project-tracker {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .milestone-tracker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .milestone-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .milestone-card:hover {
+            border-color: #10b981;
+            transform: translateY(-2px);
+        }
+        .milestone-card.completed {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+        .deliverable-checklist {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .checklist-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+        .portfolio-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-portfolio {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .success-metrics {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .metric-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .metric-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+        .reflection-journal {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px solid #64748b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .journal-entry {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #64748b;
+        }
+        .final-presentation {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .presentation-element {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 10</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Capstone Project</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-portfolio-foundation.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/capstone-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Capstone Project: AI Implementation Case Study</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Execute your comprehensive capstone project where you apply everything you've learned to solve a real-world professional challenge using AI. This is your opportunity to create a showcase project that demonstrates competency, delivers business value, and advances your career through documented expertise and measurable impact.
+            </p>
+
+            <!-- Project Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-rocket"></i>Capstone Project Objectives</h3>
+                <p style="margin-bottom: 1rem;">Your capstone project will demonstrate mastery across all course competencies:</p>
+                <ul class="modern-list">
+                    <li>Execute a complete AI implementation from problem definition to measurable results</li>
+                    <li>Apply advanced prompting, ethical frameworks, and professional best practices</li>
+                    <li>Demonstrate stakeholder engagement, change management, and leadership capabilities</li>
+                    <li>Create comprehensive documentation that showcases professional competency</li>
+                    <li>Deliver quantified business value and organizational impact</li>
+                    <li>Build a portfolio-worthy case study for career advancement and thought leadership</li>
+                </ul>
+            </div>
+
+            <!-- The EXECUTE Framework for Capstone Implementation -->
+            <h2 class="section-title"><i class="fas fa-cogs"></i>The EXECUTE Framework for Capstone Implementation</h2>
+
+            <div class="capstone-framework">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Systematic Capstone Project Implementation
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The EXECUTE framework ensures your capstone project is Engaging, eXemplary, Ethical, Comprehensive, Useful, Transferable, and Evaluated systematically for maximum professional impact.
+                </p>
+                
+                <!-- Engaging -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Engaging Stakeholder Collaboration</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Build authentic partnerships and maintain momentum throughout implementation</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Engagement Strategies:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Stakeholder Mapping:</strong> Identify all affected parties and their interests</li>
+                            <li><strong>Communication Plan:</strong> Regular updates, feedback sessions, and celebration milestones</li>
+                            <li><strong>Collaborative Design:</strong> Include stakeholders in solution development and refinement</li>
+                            <li><strong>Change Champions:</strong> Cultivate advocates who support adoption and expansion</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Indicator:</strong> Stakeholders are enthusiastic about the project, provide constructive feedback, and actively participate in implementation and testing phases.
+                    </div>
+                </div>
+
+                <!-- eXemplary -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">eXemplary Technical Excellence</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Deliver solutions that set new standards for quality and innovation</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Excellence Criteria:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Best Practice Application:</strong> Use proven methodologies from all course modules</li>
+                            <li><strong>Innovation Factor:</strong> Implement creative solutions that address unique challenges</li>
+                            <li><strong>Quality Assurance:</strong> Rigorous testing, validation, and performance optimization</li>
+                            <li><strong>Professional Standards:</strong> Documentation, code quality, and implementation rigor</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Excellence Benchmark:</strong> Your solution should be sophisticated enough to serve as a model for others while remaining practical and maintainable.
+                    </div>
+                </div>
+
+                <!-- Ethical -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Ethical AI Implementation</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Integrate responsible AI practices throughout the project lifecycle</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Ethical Framework:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Bias Assessment:</strong> Test for and mitigate potential discriminatory outcomes</li>
+                            <li><strong>Transparency:</strong> Clear explanation of AI decision-making processes</li>
+                            <li><strong>Privacy Protection:</strong> Safeguard sensitive information and user data</li>
+                            <li><strong>Accountability:</strong> Establish clear responsibility and oversight mechanisms</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Ethical Leadership:</strong> Your project should demonstrate how AI can be implemented responsibly, serving as a model for ethical practice in your organization.
+                    </div>
+                </div>
+
+                <!-- Comprehensive -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Comprehensive Solution Development</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Address all aspects of implementation from technical to organizational</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Comprehensive Components:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Technical Implementation:</strong> Robust AI solution with proper integration</li>
+                            <li><strong>User Experience:</strong> Intuitive interfaces and streamlined workflows</li>
+                            <li><strong>Training & Support:</strong> Comprehensive user education and ongoing assistance</li>
+                            <li><strong>Change Management:</strong> Organizational adaptation and culture integration</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Holistic Approach:</strong> Consider technical, human, and organizational factors to ensure sustainable, long-term success and adoption.
+                    </div>
+                </div>
+
+                <!-- Useful -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Useful Business Value Creation</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Deliver measurable improvements that matter to stakeholders</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Value Dimensions:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Operational Efficiency:</strong> Time savings, cost reduction, process optimization</li>
+                            <li><strong>Quality Enhancement:</strong> Accuracy improvements, error reduction, consistency</li>
+                            <li><strong>Strategic Advantage:</strong> Competitive differentiation, innovation capability</li>
+                            <li><strong>User Satisfaction:</strong> Improved experience, reduced frustration, enhanced capability</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Value Validation:</strong> Every feature and component should solve a real problem or create genuine value for identifiable stakeholders.
+                    </div>
+                </div>
+
+                <!-- Transferable -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Transferable Knowledge & Methodology</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Create reusable frameworks and shareable insights</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Transferability Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Replicable Framework:</strong> Step-by-step methodology others can follow</li>
+                            <li><strong>Best Practices Guide:</strong> Lessons learned and implementation recommendations</li>
+                            <li><strong>Template Library:</strong> Reusable tools, checklists, and assessment frameworks</li>
+                            <li><strong>Training Materials:</strong> Knowledge transfer resources for scaling</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Knowledge Multiplication:</strong> Your capstone should enable others to achieve similar results, demonstrating leadership and thought leadership capabilities.
+                    </div>
+                </div>
+
+                <!-- Evaluated -->
+                <div class="implementation-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Evaluated Results & Continuous Improvement</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Measure success systematically and plan for ongoing optimization</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Evaluation Framework:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Baseline Measurements:</strong> Pre-implementation performance documentation</li>
+                            <li><strong>Success Metrics:</strong> Quantified improvements and impact assessment</li>
+                            <li><strong>Stakeholder Feedback:</strong> Qualitative insights and satisfaction surveys</li>
+                            <li><strong>Improvement Roadmap:</strong> Future enhancement and scaling opportunities</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Measurement Discipline:</strong> Rigorous evaluation demonstrates professionalism and provides compelling evidence for portfolio and career advancement.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Project Tracker -->
+            <h2 class="section-title"><i class="fas fa-tasks"></i>Capstone Project Milestone Tracker</h2>
+
+            <div class="project-tracker">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-calendar-check"></i> Implementation Progress Tracking
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Track your progress through each phase of capstone implementation. Click milestones as you complete them to monitor advancement and maintain momentum.
+                </p>
+                
+                <div class="milestone-tracker">
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-play-circle" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Project Initiation</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Stakeholder alignment & planning</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-search" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Discovery Phase</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Requirements & baseline analysis</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-code" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Development</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">AI solution implementation</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-test-tube" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Testing & Validation</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Quality assurance & optimization</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-rocket" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Deployment</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Launch & user training</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-chart-bar" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Results Analysis</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Impact measurement & evaluation</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-file-alt" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Documentation</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Portfolio case study creation</p>
+                    </div>
+                    <div class="milestone-card" onclick="toggleMilestone(this)">
+                        <i class="fas fa-presentation" style="font-size: 2rem; color: #10b981; margin-bottom: 0.5rem;"></i>
+                        <h5>Presentation</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Stakeholder showcase & sharing</p>
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-info-circle"></i> Progress Tracking Benefits:</strong>
+                    Visual progress tracking maintains motivation, helps identify bottlenecks early, provides evidence of systematic approach, and creates accountability for consistent advancement.
+                </div>
+            </div>
+
+            <!-- Comprehensive Deliverable Checklist -->
+            <div class="deliverable-checklist">
+                <h4 style="color: #1d4ed8; margin-bottom: 1.5rem;">
+                    <i class="fas fa-clipboard-check"></i> Capstone Project Deliverable Checklist
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Ensure your capstone project meets professional standards across all required deliverable categories. Complete each section systematically for maximum impact.
+                </p>
+                
+                <div class="checklist-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-cogs"></i> Technical Deliverables</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="ai-solution">
+                        <label for="ai-solution">Functional AI solution addressing identified business challenge</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="integration">
+                        <label for="integration">Proper integration with existing systems and workflows</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="performance">
+                        <label for="performance">Performance benchmarks and optimization documentation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="testing">
+                        <label for="testing">Comprehensive testing results and quality assurance validation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="user-guide">
+                        <label for="user-guide">User documentation and implementation guidelines</label>
+                    </div>
+                </div>
+                
+                <div class="checklist-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-briefcase"></i> Business Deliverables</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="executive-summary">
+                        <label for="executive-summary">Executive summary with ROI analysis and business impact</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="stakeholder-presentation">
+                        <label for="stakeholder-presentation">Stakeholder presentation with key findings and recommendations</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="process-improvement">
+                        <label for="process-improvement">Process improvement documentation and workflow optimization</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="cost-benefit">
+                        <label for="cost-benefit">Cost-benefit analysis with quantified value creation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="scaling-plan">
+                        <label for="scaling-plan">Scaling recommendations and implementation roadmap</label>
+                    </div>
+                </div>
+                
+                <div class="checklist-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-star"></i> Portfolio Deliverables</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="case-study">
+                        <label for="case-study">Comprehensive case study with visual documentation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="project-summary">
+                        <label for="project-summary">Professional project summary for portfolio inclusion</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="lessons-learned">
+                        <label for="lessons-learned">Lessons learned document with best practices and insights</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="thought-leadership">
+                        <label for="thought-leadership">Thought leadership content for professional sharing</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="presentation-materials">
+                        <label for="presentation-materials">Professional presentation materials for multiple audiences</label>
+                    </div>
+                </div>
+                
+                <div class="checklist-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i> Ethical & Governance Deliverables</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="ethical-assessment">
+                        <label for="ethical-assessment">Ethical impact assessment and bias evaluation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="privacy-protection">
+                        <label for="privacy-protection">Privacy protection measures and data security documentation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="transparency">
+                        <label for="transparency">AI decision-making transparency and explainability documentation</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="governance-framework">
+                        <label for="governance-framework">Governance framework and accountability measures</label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" id="compliance">
+                        <label for="compliance">Regulatory compliance verification and documentation</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Metrics Dashboard -->
+            <div class="success-metrics">
+                <h4 style="color: #be185d; margin-bottom: 1.5rem;">
+                    <i class="fas fa-dashboard"></i> Capstone Success Metrics Dashboard
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Track multiple dimensions of capstone project success to demonstrate comprehensive impact and professional competency development.
+                </p>
+                
+                <div class="metric-dashboard">
+                    <div class="metric-card">
+                        <h5 style="color: #ec4899; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Business Impact</h5>
+                        <div style="font-size: 0.9rem;">
+                            <strong>Efficiency Gains:</strong><br>
+                            ___% time savings<br>
+                            $_____ cost reduction<br><br>
+                            <strong>Quality Improvements:</strong><br>
+                            ___% error reduction<br>
+                            ___% accuracy increase
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h5 style="color: #ec4899; margin-bottom: 1rem;"><i class="fas fa-users"></i> Stakeholder Value</h5>
+                        <div style="font-size: 0.9rem;">
+                            <strong>User Satisfaction:</strong><br>
+                            ___/10 average rating<br>
+                            ___% adoption rate<br><br>
+                            <strong>Engagement:</strong><br>
+                            ___ active users<br>
+                            ___% daily usage
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h5 style="color: #ec4899; margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Professional Growth</h5>
+                        <div style="font-size: 0.9rem;">
+                            <strong>Skills Demonstrated:</strong><br>
+                            ___ competencies shown<br>
+                            ___ frameworks applied<br><br>
+                            <strong>Recognition:</strong><br>
+                            ___ stakeholder testimonials<br>
+                            ___ advancement opportunities
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <h5 style="color: #ec4899; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Innovation Impact</h5>
+                        <div style="font-size: 0.9rem;">
+                            <strong>Technical Innovation:</strong><br>
+                            ___ novel approaches<br>
+                            ___ best practices created<br><br>
+                            <strong>Knowledge Transfer:</strong><br>
+                            ___ people trained<br>
+                            ___ processes improved
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-target"></i> Success Measurement Strategy:</strong>
+                    Establish baseline measurements before project start, track metrics weekly during implementation, conduct stakeholder surveys at key milestones, and document both quantitative results and qualitative insights for comprehensive impact assessment.
+                </div>
+            </div>
+
+            <!-- Interactive Portfolio Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Capstone Portfolio Integration Builder</h2>
+
+            <div class="portfolio-builder">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-star"></i> Transform Your Capstone into Portfolio Gold
+                </h4>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Capstone Project Title:</label>
+                    <input type="text" id="capstoneTitle" placeholder="e.g., AI-Enhanced Customer Experience Optimization Platform" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Business Challenge Solved:</label>
+                    <textarea id="challengeSolved" placeholder="Describe the specific business problem your capstone project addressed..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Most Impressive Results Achieved:</label>
+                    <textarea id="impressiveResults" placeholder="Quantify your most compelling outcomes and impact..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Unique Contribution/Innovation:</label>
+                    <textarea id="uniqueContribution" placeholder="What did you specifically contribute that was innovative or exceptional?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key Skills/Competencies Demonstrated:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="advanced-prompting"> Advanced Prompting
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="ai-ethics"> AI Ethics & Governance
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="stakeholder-management"> Stakeholder Management
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="change-management"> Change Management
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="project-leadership"> Project Leadership
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="technical-integration"> Technical Integration
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Target Portfolio Audience:</label>
+                    <select id="portfolioAudience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select target audience</option>
+                        <option value="employers">Potential Employers (Job Applications)</option>
+                        <option value="promotion">Current Employer (Promotion/Recognition)</option>
+                        <option value="clients">Prospective Clients (Consulting)</option>
+                        <option value="peers">Industry Peers (Thought Leadership)</option>
+                        <option value="investors">Investors/Partners (Business Development)</option>
+                    </select>
+                </div>
+                
+                <button onclick="generatePortfolioIntegration()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Portfolio Integration Strategy
+                </button>
+                
+                <div id="generatedPortfolio" class="generated-portfolio">
+                    <strong style="color: #065f46;">Your Capstone Portfolio Integration Plan:</strong><br><br>
+                    <div id="portfolioIntegrationContent" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Portfolio Optimization Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Create multiple formats: one-page summary, detailed case study, presentation deck</li>
+                            <li>Include visual elements: before/after charts, process diagrams, testimonial quotes</li>
+                            <li>Tailor messaging for each target audience while maintaining core narrative</li>
+                            <li>Update regularly with ongoing results and expanded impact</li>
+                            <li>Practice presenting your capstone story in 30 seconds, 2 minutes, and 10 minutes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Reflection Journal -->
+            <div class="reflection-journal">
+                <h4 style="color: #475569; margin-bottom: 1.5rem;">
+                    <i class="fas fa-journal-whills"></i> Capstone Professional Reflection Journal
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Document your capstone journey with structured reflection that captures insights, challenges, growth, and lessons learned for personal development and professional storytelling.
+                </p>
+                
+                <div class="journal-entry">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Key Insights Gained</h5>
+                    <textarea placeholder="What are the most important insights you've gained about AI implementation, stakeholder management, or professional leadership?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="journal-entry">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-mountain"></i> Challenges Overcome</h5>
+                    <textarea placeholder="Describe the most significant challenges you faced and how you overcame them. What problem-solving approaches proved most effective?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="journal-entry">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Personal Growth Areas</h5>
+                    <textarea placeholder="How have you grown professionally during this capstone project? What new capabilities or confidence have you developed?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="journal-entry">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-road"></i> Future Applications</h5>
+                    <textarea placeholder="How will you apply what you've learned to future projects and career opportunities? What's your AI implementation roadmap?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+            </div>
+
+            <!-- Final Presentation Framework -->
+            <div class="final-presentation">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-presentation"></i> Capstone Final Presentation Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Structure your capstone final presentation to maximize impact, demonstrate competency, and create lasting professional impression with stakeholders and evaluators.
+                </p>
+                
+                <div class="presentation-element">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-rocket"></i> Opening Impact (2 minutes)</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Hook:</strong> Compelling business problem statement with quantified impact</li>
+                        <li><strong>Promise:</strong> Clear value proposition and what audience will learn</li>
+                        <li><strong>Preview:</strong> Brief roadmap of presentation flow and key outcomes</li>
+                        <li><strong>Credibility:</strong> Your role and unique qualifications for this project</li>
+                    </ul>
+                </div>
+                
+                <div class="presentation-element">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-search"></i> Challenge Deep Dive (3 minutes)</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Context:</strong> Business environment and organizational challenges</li>
+                        <li><strong>Stakeholder Impact:</strong> Who was affected and how (human element)</li>
+                        <li><strong>Quantified Problem:</strong> Specific metrics showing scale and urgency</li>
+                        <li><strong>Previous Attempts:</strong> What had been tried and why it didn't work</li>
+                    </ul>
+                </div>
+                
+                <div class="presentation-element">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-cogs"></i> Solution Demonstration (5 minutes)</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Strategic Approach:</strong> Your unique methodology and framework</li>
+                        <li><strong>Live Demo:</strong> Interactive walkthrough of AI solution in action</li>
+                        <li><strong>Technical Innovation:</strong> Unique aspects and creative problem-solving</li>
+                        <li><strong>Implementation Process:</strong> How you managed stakeholders and change</li>
+                    </ul>
+                </div>
+                
+                <div class="presentation-element">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Results & Impact (4 minutes)</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Quantified Outcomes:</strong> Before/after metrics with visual comparisons</li>
+                        <li><strong>Stakeholder Testimonials:</strong> User feedback and satisfaction evidence</li>
+                        <li><strong>Business Value:</strong> ROI calculation and organizational benefits</li>
+                        <li><strong>Unexpected Benefits:</strong> Positive outcomes beyond original scope</li>
+                    </ul>
+                </div>
+                
+                <div class="presentation-element">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-arrow-right"></i> Future Vision & Scaling (3 minutes)</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Lessons Learned:</strong> Key insights and best practices developed</li>
+                        <li><strong>Scaling Strategy:</strong> How success can be replicated and expanded</li>
+                        <li><strong>Industry Impact:</strong> Broader implications for your field</li>
+                        <li><strong>Personal Growth:</strong> Professional development and career advancement</li>
+                    </ul>
+                </div>
+                
+                <div class="presentation-element">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-handshake"></i> Closing & Call-to-Action (3 minutes)</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Key Takeaways:</strong> Three main insights audience should remember</li>
+                        <li><strong>Next Steps:</strong> Clear recommendations and action items</li>
+                        <li><strong>Collaboration Invitation:</strong> How others can build on your work</li>
+                        <li><strong>Contact & Resources:</strong> How to access materials and continue dialogue</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Ready for Your Final Assessment?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Complete your capstone implementation and move to the comprehensive final assessment that validates your AI professional competency across all course modules.</p>
+                <a href="../assets/capstone-quiz.html" class="nav-btn">
+                    <i class="fas fa-graduation-cap"></i>
+                    Take Final Assessment
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-3-documentation-strategy.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Documentation Strategy
+                </a>
+                <a href="../assets/capstone-quiz.html" class="nav-btn">
+                    Next: Final Assessment
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleMilestone(element) {
+            element.classList.toggle('completed');
+            
+            // Count completed milestones
+            const completed = document.querySelectorAll('.milestone-card.completed').length;
+            const total = document.querySelectorAll('.milestone-card').length;
+            
+            // You could add progress tracking or celebration here
+            if (completed === total) {
+                alert('🎉 Congratulations! You\'ve completed all capstone milestones. Ready for final presentation!');
+            }
+        }
+        
+        function generatePortfolioIntegration() {
+            const title = document.getElementById('capstoneTitle').value;
+            const challenge = document.getElementById('challengeSolved').value;
+            const results = document.getElementById('impressiveResults').value;
+            const contribution = document.getElementById('uniqueContribution').value;
+            const audience = document.getElementById('portfolioAudience').value;
+            
+            // Get selected skills
+            const skillCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const skills = Array.from(skillCheckboxes).map(cb => cb.value);
+            
+            if (!title || !challenge || !results || !audience) {
+                alert('Please fill in at least the project title, challenge, results, and target audience fields.');
+                return;
+            }
+            
+            const audienceMapping = {
+                employers: 'Potential Employers (Job Search)',
+                promotion: 'Current Employer (Promotion/Recognition)',
+                clients: 'Prospective Clients (Consulting)',
+                peers: 'Industry Peers (Thought Leadership)',
+                investors: 'Investors/Partners (Business Development)'
+            };
+            
+            const skillMapping = {
+                'advanced-prompting': 'Advanced AI Prompting & Communication',
+                'ai-ethics': 'AI Ethics & Governance Frameworks',
+                'stakeholder-management': 'Stakeholder Engagement & Management',
+                'change-management': 'Change Management & Adoption',
+                'project-leadership': 'Project Leadership & Innovation',
+                'technical-integration': 'Technical Integration & Implementation'
+            };
+            
+            let portfolioStrategy = `CAPSTONE PORTFOLIO INTEGRATION STRATEGY
+${title.toUpperCase()}
+
+=== PORTFOLIO POSITIONING ===
+
+Target Audience: ${audienceMapping[audience] || audience}
+Core Value Proposition: Demonstrates comprehensive AI implementation capability with measurable business impact and professional leadership
+
+Compelling Narrative Elements:
+• Challenge: ${challenge.substring(0, 100)}...
+• Innovation: ${contribution.substring(0, 100)}...
+• Results: ${results.substring(0, 100)}...
+
+=== SKILL COMPETENCY SHOWCASE ===
+
+Demonstrated Competencies:
+${skills.map(skill => `• ${skillMapping[skill] || skill}`).join('\n')}
+
+Professional Capabilities Highlighted:
+• End-to-end AI project management and delivery
+• Stakeholder engagement and change leadership
+• Technical implementation with business acumen
+• Ethical AI practices and governance
+• Quantified business impact and ROI generation
+• Knowledge transfer and organizational improvement
+
+=== AUDIENCE-SPECIFIC MESSAGING ===
+
+${audience === 'employers' ? `POTENTIAL EMPLOYER FOCUS:
+Primary Message: "Proven AI implementation leader with documented success in driving measurable business outcomes"
+
+Key Portfolio Elements:
+• Executive summary emphasizing leadership and business impact
+• Technical competency matrix showing breadth of AI skills
+• Quantified results with industry-relevant metrics
+• Stakeholder testimonials and professional references
+• Clear demonstration of transferable skills and adaptability
+
+Portfolio Formats:
+• One-page professional summary for initial screening
+• Detailed case study for in-depth technical interviews
+• Presentation deck for final round discussions
+• LinkedIn profile integration for ongoing professional visibility` : ''}
+
+${audience === 'promotion' ? `INTERNAL PROMOTION FOCUS:
+Primary Message: "Strategic AI champion ready for expanded leadership and organizational impact"
+
+Key Portfolio Elements:
+• Comprehensive business impact analysis and ROI documentation
+• Leadership evidence through stakeholder management and change adoption
+• Innovation showcase demonstrating forward-thinking and problem-solving
+• Organizational influence through knowledge transfer and best practices
+• Future vision and scaling strategy for continued organizational value
+
+Portfolio Formats:
+• Executive briefing document for leadership review
+• Detailed project documentation for performance evaluation
+• Strategic presentation for promotion committee
+• Peer recognition and testimonial compilation` : ''}
+
+${audience === 'clients' ? `CLIENT DEVELOPMENT FOCUS:
+Primary Message: "Experienced AI consultant with proven methodology and demonstrated client value"
+
+Key Portfolio Elements:
+• Client-centric case study emphasizing service delivery and value creation
+• Methodology framework showing replicable approach and best practices
+• Results portfolio demonstrating consistent client success and satisfaction
+• Thought leadership content establishing industry expertise and credibility
+• Transparent process documentation building trust and confidence
+
+Portfolio Formats:
+• Client-ready case study with confidentiality considerations
+• Consulting methodology overview and service description
+• Results-focused presentation for business development
+• Professional website portfolio section for ongoing marketing` : ''}
+
+${audience === 'peers' ? `INDUSTRY PEER FOCUS:
+Primary Message: "AI thought leader contributing innovative approaches and industry advancement"
+
+Key Portfolio Elements:
+• Methodology innovation and creative problem-solving showcase
+• Industry insight and trend analysis demonstrating thought leadership
+• Best practices framework contributing to professional community
+• Conference-ready presentation materials for speaking opportunities
+• Collaborative approach emphasizing knowledge sharing and peer learning
+
+Portfolio Formats:
+• Conference presentation and speaking materials
+• Industry publication article and thought leadership content
+• Professional association contribution and community engagement
+• Peer networking materials and collaboration proposals` : ''}
+
+${audience === 'investors' ? `INVESTOR/PARTNER FOCUS:
+Primary Message: "Strategic AI leader with business acumen and scaling expertise for organizational transformation"
+
+Key Portfolio Elements:
+• Business case development and strategic impact analysis
+• Market opportunity assessment and competitive advantage creation
+• Scaling strategy and organizational transformation capability
+• Risk management and governance framework demonstration
+• Financial impact and ROI generation with growth potential
+
+Portfolio Formats:
+• Executive business case and strategic overview
+• Financial impact analysis and market opportunity assessment
+• Strategic partnership proposal and collaboration framework
+• Board-level presentation materials for executive engagement` : ''}
+
+=== CONTENT DEVELOPMENT STRATEGY ===
+
+Core Documentation Elements:
+
+1. Executive Summary (All Audiences)
+   • 30-second elevator pitch highlighting unique value
+   • Quantified business impact and ROI demonstration
+   • Professional differentiation and competitive advantage
+   • Clear next steps and engagement opportunities
+
+2. Detailed Case Study
+   • Challenge definition with business context and stakeholder impact
+   • Solution approach with methodology and innovation highlights
+   • Implementation journey with change management and leadership
+   • Results analysis with comprehensive impact measurement
+   • Lessons learned and best practices for knowledge transfer
+
+3. Visual Documentation
+   • Professional infographics showing before/after comparisons
+   • Process flow diagrams and implementation methodology
+   • Dashboard screenshots and performance metrics visualization
+   • Stakeholder testimonials and success story compilation
+
+4. Supporting Materials
+   • Technical documentation and implementation guides
+   • Training materials and knowledge transfer resources
+   • Thought leadership content and industry analysis
+   • Professional presentation decks for multiple contexts
+
+=== PORTFOLIO OPTIMIZATION FRAMEWORK ===
+
+Format Variations:
+• One-Page Summary: Elevator pitch and key metrics for quick review
+• Detailed Case Study: Comprehensive documentation for thorough evaluation
+• Presentation Deck: Interactive walkthrough for stakeholder meetings
+• Video Demonstration: Dynamic showcase for online portfolio and social media
+
+Platform Strategy:
+• Professional Portfolio Website: Comprehensive showcase with multiple formats
+• LinkedIn Integration: Regular updates and thought leadership content
+• Industry Publications: Article submissions and conference presentations
+• Professional Presentations: Speaking opportunities and stakeholder meetings
+
+Measurement & Optimization:
+• Track portfolio engagement and feedback for continuous improvement
+• Monitor professional opportunities and advancement generated
+• Collect stakeholder testimonials and success metrics
+• Update regularly with ongoing results and expanded impact
+
+=== IMPLEMENTATION TIMELINE ===
+
+Phase 1: Content Development (Week 1-2)
+• Complete comprehensive case study documentation
+• Develop visual materials and infographic assets
+• Create executive summary and one-page overview
+• Gather stakeholder testimonials and supporting evidence
+
+Phase 2: Format Creation (Week 3)
+• Design professional presentation deck and interactive materials
+• Develop platform-specific content for website and LinkedIn
+• Create industry-specific variations for different contexts
+• Prepare video demonstration and dynamic showcase
+
+Phase 3: Launch & Distribution (Week 4)
+• Publish portfolio materials across professional platforms
+• Begin strategic outreach and stakeholder communication
+• Submit thought leadership content to industry publications
+• Schedule presentations and speaking opportunities
+
+Phase 4: Optimization & Expansion (Ongoing)
+• Monitor engagement and feedback for continuous improvement
+• Update materials with ongoing results and expanded impact
+• Develop additional case studies and portfolio elements
+• Scale thought leadership and professional recognition efforts
+
+This comprehensive portfolio strategy transforms your capstone project into a powerful career advancement tool, demonstrating professional competency and creating ongoing opportunities for recognition and growth.`;
+
+            document.getElementById('portfolioIntegrationContent').textContent = portfolioStrategy;
+            document.getElementById('generatedPortfolio').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPortfolio').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

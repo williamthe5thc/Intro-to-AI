@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: AI Leadership Development & Thought Leadership - Module 9</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .leadership-framework {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .leadership-dimension {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #f59e0b;
+            transition: all 0.3s ease;
+        }
+        .leadership-dimension:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .dimension-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .dimension-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        .thought-leadership {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .leadership-pillar {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .influence-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .influence-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .influence-category:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        .transformation-builder {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .transformation-stage {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        .communication-framework {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .communication-channel {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .interactive-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #f59e0b;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-strategy {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .vision-builder {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .vision-component {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22c55e;
+        }
+        .leadership-styles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .style-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .style-card:hover {
+            border-color: #f59e0b;
+            background: #fefbf2;
+        }
+        .style-card.selected {
+            border-color: #f59e0b;
+            background: #fef3c7;
+        }
+        .ethics-integration {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .ethics-principle {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #8b5cf6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 9</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Leadership Development</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/career-development-planner.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/future-readiness-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI Leadership Development & Thought Leadership</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Develop the leadership capabilities needed to guide individuals, teams, and organizations through AI transformation. Learn to establish thought leadership, influence strategic AI adoption, and create lasting impact in the evolving professional landscape.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>AI Leadership Mastery Objectives</h3>
+                <p style="margin-bottom: 1rem;">Build comprehensive AI leadership and influence capabilities:</p>
+                <ul class="modern-list">
+                    <li>Develop authentic leadership styles that inspire confidence during AI transformation</li>
+                    <li>Master strategic communication and stakeholder engagement for AI initiatives</li>
+                    <li>Build thought leadership platforms and establish industry influence</li>
+                    <li>Create organizational change strategies that maximize AI adoption success</li>
+                    <li>Develop ethical frameworks for responsible AI leadership and decision-making</li>
+                    <li>Establish mentoring and knowledge transfer systems for sustainable AI advancement</li>
+                </ul>
+            </div>
+
+            <!-- The LEAD Framework for AI Leadership -->
+            <h2 class="section-title"><i class="fas fa-crown"></i>The LEAD Framework for AI Leadership Excellence</h2>
+
+            <div class="leadership-framework">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chess-king"></i> Comprehensive AI Leadership Development Strategy
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The LEAD framework provides a systematic approach to Learning leadership fundamentals, Engaging stakeholders effectively, Advancing organizational AI capabilities, and Developing others for sustainable transformation.
+                </p>
+                
+                <!-- Learn -->
+                <div class="leadership-dimension">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #f59e0b; margin-bottom: 0.5rem;">Learn AI Leadership Fundamentals</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Master the core competencies required for effective AI leadership across different contexts</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Leadership Competency Areas:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Technical AI Literacy:</strong> Deep understanding of AI capabilities, limitations, and strategic applications</li>
+                            <li><strong>Change Leadership Mastery:</strong> Expertise in guiding individuals and organizations through technological transformation</li>
+                            <li><strong>Strategic Vision Development:</strong> Ability to create compelling futures that inspire action and commitment</li>
+                            <li><strong>Stakeholder Engagement Excellence:</strong> Skills in building coalition and managing diverse interests during AI adoption</li>
+                            <li><strong>Ethical Decision-Making:</strong> Framework for navigating complex moral questions in AI implementation</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong>Learning Approach:</strong> Combine formal leadership development with hands-on AI project experience and mentorship from seasoned transformation leaders.
+                    </div>
+                </div>
+
+                <!-- Engage -->
+                <div class="leadership-dimension">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #f59e0b; margin-bottom: 0.5rem;">Engage Stakeholders & Build Coalition</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Develop expertise in stakeholder management and coalition building for AI initiatives</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Engagement Strategies:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Multi-Level Communication:</strong> Tailored messaging for executives, managers, frontline workers, and external partners</li>
+                            <li><strong>Resistance Management:</strong> Proactive identification and addressing of concerns and obstacles</li>
+                            <li><strong>Champions Development:</strong> Identifying and empowering internal advocates and early adopters</li>
+                            <li><strong>Cross-Functional Alignment:</strong> Building bridges between technical teams and business stakeholders</li>
+                            <li><strong>External Partnership Building:</strong> Developing relationships with vendors, consultants, and industry partners</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong>Engagement Success:</strong> Measure success through stakeholder satisfaction, participation rates, and visible behavior change rather than just compliance.
+                    </div>
+                </div>
+
+                <!-- Advance -->
+                <div class="leadership-dimension">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #f59e0b; margin-bottom: 0.5rem;">Advance Organizational AI Capabilities</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Drive systematic improvement in organizational AI maturity and competitive advantage</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Advancement Initiatives:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Capability Assessment & Gap Analysis:</strong> Systematic evaluation of current state and target capabilities</li>
+                            <li><strong>Strategic Roadmap Development:</strong> Phased implementation plans with clear milestones and success metrics</li>
+                            <li><strong>Resource Allocation & Investment:</strong> Securing funding, talent, and technology for AI advancement</li>
+                            <li><strong>Process Innovation & Optimization:</strong> Redesigning workflows to maximize AI value creation</li>
+                            <li><strong>Cultural Transformation:</strong> Building AI-first mindsets and data-driven decision making culture</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong>Advancement Philosophy:</strong> Focus on sustainable, ethical advancement that enhances human potential rather than replacing human value.
+                    </div>
+                </div>
+
+                <!-- Develop -->
+                <div class="leadership-dimension">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #f59e0b; margin-bottom: 0.5rem;">Develop Others & Build Legacy</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Create sustainable transformation through developing other leaders and knowledge transfer</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Development Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Leadership Pipeline Creation:</strong> Identifying and developing next generation of AI leaders</li>
+                            <li><strong>Knowledge Transfer Systems:</strong> Documenting and sharing lessons learned, best practices, and frameworks</li>
+                            <li><strong>Mentoring & Coaching Programs:</strong> Formal and informal development relationships</li>
+                            <li><strong>Community Building:</strong> Creating networks and forums for ongoing AI leadership development</li>
+                            <li><strong>Thought Leadership Platform:</strong> Sharing insights and influence beyond immediate organization</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong>Legacy Mindset:</strong> True AI leadership success is measured by the sustainable capabilities and leaders created, not just immediate project outcomes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought Leadership Development -->
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i>AI Thought Leadership Platform Development</h2>
+
+            <div class="thought-leadership">
+                <h4 style="color: #1d4ed8; margin-bottom: 1.5rem;">
+                    <i class="fas fa-megaphone"></i> Building Industry Influence & Thought Leadership
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Establish yourself as a recognized expert and influential voice in AI professional practice through strategic content creation, community engagement, and industry leadership.
+                </p>
+                
+                <div class="leadership-pillar">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-pen"></i> Content Strategy & Creation</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Content Development Framework:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Unique Perspective Identification:</strong> Define your distinctive viewpoint on AI in your industry</li>
+                            <li><strong>Signature Content Series:</strong> Develop recurring themes and topics that become associated with your expertise</li>
+                            <li><strong>Multi-Format Portfolio:</strong> Articles, presentations, videos, podcasts, and interactive content</li>
+                            <li><strong>Evidence-Based Insights:</strong> Support opinions with data, research, and real-world case studies</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Content Calendar:</strong> Weekly articles, monthly deep-dive analyses, quarterly trend reports, and annual vision pieces
+                    </div>
+                </div>
+                
+                <div class="leadership-pillar">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-microphone"></i> Speaking & Presentation Excellence</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Speaking Platform Development:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Signature Presentations:</strong> Develop 3-5 core presentations that can be adapted for different audiences</li>
+                            <li><strong>Conference Strategy:</strong> Progress from local events to industry conferences to keynote speaking</li>
+                            <li><strong>Workshop Leadership:</strong> Create interactive learning experiences that demonstrate expertise</li>
+                            <li><strong>Media Engagement:</strong> Build relationships with journalists and industry publications</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Speaking Goals:</strong> Start with 2-3 local events, build to 5-10 industry presentations annually, target 1-2 major keynotes within 2 years
+                    </div>
+                </div>
+                
+                <div class="leadership-pillar">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-network-wired"></i> Community Leadership & Engagement</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Community Building Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Professional Association Leadership:</strong> Take active roles in relevant industry organizations</li>
+                            <li><strong>Online Community Development:</strong> Build and moderate professional forums and discussion groups</li>
+                            <li><strong>Mentorship Program Creation:</strong> Establish formal programs for developing other AI professionals</li>
+                            <li><strong>Industry Standard Setting:</strong> Contribute to best practice development and ethical guidelines</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Community Impact:</strong> Measure influence through community growth, engagement levels, and adoption of ideas and frameworks you promote
+                    </div>
+                </div>
+                
+                <div class="leadership-pillar">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Influence Measurement & Optimization</h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Thought Leadership Metrics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Content Engagement:</strong> Views, shares, comments, and time spent on your content</li>
+                            <li><strong>Speaking Invitations:</strong> Frequency and prestige of speaking opportunities</li>
+                            <li><strong>Media Mentions:</strong> Citations, interviews, and references to your work</li>
+                            <li><strong>Professional Inquiries:</strong> Consulting requests, collaboration offers, and advisory opportunities</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Optimization Strategy:</strong> Quarterly review of metrics with content and strategy adjustments based on audience response and market evolution
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Influence Matrix -->
+            <h2 class="section-title"><i class="fas fa-chess"></i>Strategic Influence & Change Leadership</h2>
+
+            <div class="influence-matrix">
+                <!-- Executive Influence -->
+                <div class="influence-category">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-building"></i> Executive & Board Influence
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Executive Communication Strategy:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Business impact focus with clear ROI and competitive advantage</li>
+                            <li>Risk mitigation and governance framework presentation</li>
+                            <li>Strategic roadmap with measurable milestones</li>
+                            <li>Industry benchmarking and competitive positioning</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Message:</strong> AI as strategic enabler for business transformation and competitive advantage
+                    </div>
+                </div>
+
+                <!-- Peer Leadership -->
+                <div class="influence-category">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-handshake"></i> Peer & Manager Influence
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Peer Engagement Approach:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Collaborative problem-solving and shared success stories</li>
+                            <li>Cross-functional project leadership and partnership</li>
+                            <li>Knowledge sharing and mutual learning initiatives</li>
+                            <li>Recognition and celebration of peer AI adoption</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Message:</strong> AI as enabler for professional effectiveness and career advancement
+                    </div>
+                </div>
+
+                <!-- Team Development -->
+                <div class="influence-category">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-users-cog"></i> Team & Direct Report Development
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Team Development Strategy:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Skill development and training pathway creation</li>
+                            <li>Hands-on project experience and gradual responsibility increase</li>
+                            <li>Coaching and mentoring for AI adoption confidence</li>
+                            <li>Career advancement opportunities through AI expertise</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Message:</strong> AI as career development opportunity and professional growth accelerator
+                    </div>
+                </div>
+
+                <!-- External Stakeholders -->
+                <div class="influence-category">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-globe"></i> External Stakeholder Engagement
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>External Influence Channels:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Client and customer education on AI value proposition</li>
+                            <li>Vendor and partner collaboration on AI initiatives</li>
+                            <li>Industry association leadership and standard setting</li>
+                            <li>Regulatory and policy engagement and advocacy</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Message:</strong> AI as industry advancement catalyst and societal benefit creator
+                    </div>
+                </div>
+
+                <!-- Community & Society -->
+                <div class="influence-category">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-heart"></i> Community & Social Impact
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Social Impact Strategy:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Educational initiatives for broader AI literacy</li>
+                            <li>Ethical AI advocacy and responsible development</li>
+                            <li>Community benefit projects and social good applications</li>
+                            <li>Diversity and inclusion leadership in AI adoption</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Message:</strong> AI as force for positive social change and human empowerment
+                    </div>
+                </div>
+
+                <!-- Academic & Research -->
+                <div class="influence-category">
+                    <h4 style="color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fas fa-university"></i> Academic & Research Collaboration
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Academic Engagement:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Research collaboration and real-world application testing</li>
+                            <li>Guest lecturing and curriculum development support</li>
+                            <li>Student mentoring and career development guidance</li>
+                            <li>Knowledge transfer between academia and practice</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Message:</strong> AI as bridge between theoretical research and practical professional application
+                    </div>
+                </div>
+            </div>
+
+            <!-- Organizational Transformation Leadership -->
+            <div class="transformation-builder">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cogs"></i> Organizational AI Transformation Leadership
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Lead comprehensive organizational transformation that maximizes AI benefits while preserving human value and organizational culture.
+                </p>
+                
+                <div class="transformation-stage">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;"><i class="fas fa-search"></i> Assessment & Vision Development</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Current State Analysis:</strong> Comprehensive audit of AI readiness, skills, culture, and technology</li>
+                        <li><strong>Future State Visioning:</strong> Collaborative development of AI-enhanced organizational vision</li>
+                        <li><strong>Gap Analysis & Prioritization:</strong> Systematic identification of transformation requirements</li>
+                        <li><strong>Stakeholder Alignment:</strong> Building consensus around transformation goals and approach</li>
+                    </ul>
+                </div>
+                
+                <div class="transformation-stage">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;"><i class="fas fa-road"></i> Strategic Roadmap & Resource Allocation</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Phased Implementation Planning:</strong> Logical sequence of transformation initiatives with dependencies</li>
+                        <li><strong>Resource Mobilization:</strong> Securing funding, talent, technology, and executive support</li>
+                        <li><strong>Risk Management:</strong> Proactive identification and mitigation of transformation risks</li>
+                        <li><strong>Success Metrics:</strong> Clear measurement framework for tracking progress and value creation</li>
+                    </ul>
+                </div>
+                
+                <div class="transformation-stage">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;"><i class="fas fa-rocket"></i> Implementation & Change Management</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Pilot Project Leadership:</strong> Managing initial AI implementations for learning and momentum</li>
+                        <li><strong>Change Communication:</strong> Ongoing stakeholder communication and feedback integration</li>
+                        <li><strong>Skill Development:</strong> Comprehensive training and capability building programs</li>
+                        <li><strong>Culture Evolution:</strong> Fostering AI-positive culture while maintaining organizational values</li>
+                    </ul>
+                </div>
+                
+                <div class="transformation-stage">
+                    <h5 style="color: #10b981; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Scaling & Optimization</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Success Amplification:</strong> Scaling successful pilots across the organization</li>
+                        <li><strong>Continuous Improvement:</strong> Regular optimization based on results and feedback</li>
+                        <li><strong>Innovation Culture:</strong> Building ongoing innovation and experimentation capabilities</li>
+                        <li><strong>Transformation Sustainability:</strong> Embedding AI advancement into organizational DNA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Communication Excellence Framework -->
+            <div class="communication-framework">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-broadcast-tower"></i> AI Leadership Communication Excellence
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Master the communication skills essential for inspiring confidence, building support, and driving action during AI transformation initiatives.
+                </p>
+                
+                <div class="communication-channel">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-presentation"></i> Executive & Board Communication</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Strategic Framing:</strong> Present AI initiatives in context of business strategy and competitive advantage</li>
+                        <li><strong>Risk & Governance:</strong> Address concerns about AI risks with comprehensive mitigation strategies</li>
+                        <li><strong>ROI Demonstration:</strong> Clear business case with measurable benefits and implementation costs</li>
+                        <li><strong>Industry Benchmarking:</strong> Position organization relative to competitors and industry leaders</li>
+                    </ul>
+                </div>
+                
+                <div class="communication-channel">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-users"></i> Team & Department Communication</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Empowerment Messaging:</strong> Frame AI as tool for professional enhancement rather than replacement</li>
+                        <li><strong>Practical Benefits:</strong> Focus on immediate improvements to daily work and job satisfaction</li>
+                        <li><strong>Learning Support:</strong> Provide clear pathways for skill development and capability building</li>
+                        <li><strong>Success Celebration:</strong> Regular recognition of AI adoption achievements and milestones</li>
+                    </ul>
+                </div>
+                
+                <div class="communication-channel">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-handshake"></i> Cross-Functional Stakeholder Communication</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Collaboration Emphasis:</strong> Highlight how AI enables better cross-functional partnership</li>
+                        <li><strong>Integration Planning:</strong> Address concerns about workflow and system integration</li>
+                        <li><strong>Mutual Benefits:</strong> Demonstrate value creation for all participating departments</li>
+                        <li><strong>Change Timeline:</strong> Realistic expectations about implementation pace and resource needs</li>
+                    </ul>
+                </div>
+                
+                <div class="communication-channel">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-globe"></i> External & Public Communication</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Industry Leadership:</strong> Position organization as AI innovation leader and responsible adopter</li>
+                        <li><strong>Customer Value:</strong> Communicate how AI improvements benefit customers and stakeholders</li>
+                        <li><strong>Ethical Commitment:</strong> Emphasize responsible AI development and deployment practices</li>
+                        <li><strong>Thought Leadership:</strong> Share insights and lessons learned to benefit broader professional community</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical AI Leadership Framework -->
+            <div class="ethics-integration">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-shield-alt"></i> Ethical AI Leadership & Responsible Innovation
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Integrate ethical considerations into every aspect of AI leadership, ensuring responsible development and deployment that serves all stakeholders.
+                </p>
+                
+                <div class="ethics-principle">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-balance-scale"></i> Fairness & Equity Leadership</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Bias Prevention:</strong> Systematic testing and mitigation of AI bias in all implementations</li>
+                        <li><strong>Inclusive Access:</strong> Ensuring AI benefits are distributed fairly across all employee groups</li>
+                        <li><strong>Diverse Perspectives:</strong> Including diverse voices in AI decision-making and development</li>
+                        <li><strong>Impact Assessment:</strong> Regular evaluation of AI effects on different stakeholder groups</li>
+                    </ul>
+                </div>
+                
+                <div class="ethics-principle">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-eye"></i> Transparency & Accountability</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Explainable AI:</strong> Ensuring AI decision-making processes are understandable and auditable</li>
+                        <li><strong>Clear Governance:</strong> Establishing accountability structures for AI decisions and outcomes</li>
+                        <li><strong>Open Communication:</strong> Honest discussion of AI capabilities, limitations, and risks</li>
+                        <li><strong>Regular Reporting:</strong> Systematic sharing of AI impact and performance metrics</li>
+                    </ul>
+                </div>
+                
+                <div class="ethics-principle">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-shield"></i> Privacy & Security Excellence</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Data Protection:</strong> Rigorous safeguards for personal and sensitive information</li>
+                        <li><strong>Consent Management:</strong> Clear processes for data use consent and preference management</li>
+                        <li><strong>Security Architecture:</strong> Robust protection against AI-related security vulnerabilities</li>
+                        <li><strong>Compliance Leadership:</strong> Exceeding regulatory requirements and industry standards</li>
+                    </ul>
+                </div>
+                
+                <div class="ethics-principle">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-hand-holding-heart"></i> Human-Centered Development</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Human Dignity:</strong> Ensuring AI enhances rather than diminishes human agency and worth</li>
+                        <li><strong>Meaningful Work:</strong> Designing AI implementations that create more fulfilling professional roles</li>
+                        <li><strong>Skill Development:</strong> Prioritizing human capability building alongside AI deployment</li>
+                        <li><strong>Well-being Focus:</strong> Considering mental health and job satisfaction impacts of AI changes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leadership Style Assessment -->
+            <h2 class="section-title"><i class="fas fa-user-tie"></i>AI Leadership Style Development</h2>
+
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0;">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Authentic AI Leadership Style Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Develop your authentic leadership style for AI transformation by understanding different approaches and selecting elements that align with your personality and organizational context.
+                </p>
+                
+                <div class="leadership-styles">
+                    <div class="style-card" onclick="exploreStyle('visionary')">
+                        <h5><i class="fas fa-telescope"></i> Visionary Leader</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Inspiring future-focused leadership that motivates through compelling AI transformation vision</p>
+                    </div>
+                    <div class="style-card" onclick="exploreStyle('collaborative')">
+                        <h5><i class="fas fa-handshake"></i> Collaborative Leader</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Building consensus and shared ownership through inclusive AI decision-making</p>
+                    </div>
+                    <div class="style-card" onclick="exploreStyle('servant')">
+                        <h5><i class="fas fa-hands-helping"></i> Servant Leader</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Supporting others' growth and success through AI skill development and empowerment</p>
+                    </div>
+                    <div class="style-card" onclick="exploreStyle('adaptive')">
+                        <h5><i class="fas fa-sync"></i> Adaptive Leader</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Flexible leadership that adjusts approach based on context and stakeholder needs</p>
+                    </div>
+                    <div class="style-card" onclick="exploreStyle('results')">
+                        <h5><i class="fas fa-target"></i> Results-Driven Leader</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Achievement-focused leadership that delivers measurable AI transformation outcomes</p>
+                    </div>
+                    <div class="style-card" onclick="exploreStyle('authentic')">
+                        <h5><i class="fas fa-heart"></i> Authentic Leader</h5>
+                        <p style="font-size: 0.9rem; margin: 0.5rem 0;">Values-based leadership that maintains integrity and builds trust during change</p>
+                    </div>
+                </div>
+
+                <div id="style-details" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="style-content"></div>
+                </div>
+            </div>
+
+            <!-- Interactive Leadership Strategy Builder -->
+            <div class="interactive-builder">
+                <h4 style="color: #f59e0b; margin-bottom: 1.5rem;">
+                    <i class="fas fa-tools"></i> Build Your AI Leadership Strategy
+                </h4>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Current Leadership Context:</label>
+                    <textarea id="leadershipContext" placeholder="Describe your current leadership role, responsibilities, and the AI challenges you're facing..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Leadership Experience Level:</label>
+                    <select id="leadershipExperience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select experience level</option>
+                        <option value="emerging">Emerging Leader (0-2 years leadership experience)</option>
+                        <option value="developing">Developing Leader (3-7 years leadership experience)</option>
+                        <option value="experienced">Experienced Leader (8-15 years leadership experience)</option>
+                        <option value="senior">Senior Executive (15+ years leadership experience)</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Leadership Goals:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="transformation"> Lead organizational AI transformation
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="team-development"> Develop AI-capable teams
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="thought-leadership"> Build industry thought leadership
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="innovation"> Drive AI innovation initiatives
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="culture-change"> Create AI-positive culture
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="stakeholder-engagement"> Engage executive stakeholders
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Biggest Leadership Challenges:</label>
+                    <textarea id="leadershipChallenges" placeholder="What are the main obstacles you face in leading AI initiatives?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Stakeholder Influence Priorities:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="executives"> Executives and board members
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="peers"> Peer managers and leaders
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="teams"> Direct reports and teams
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="customers"> Customers and clients
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="industry"> Industry and professional community
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="partners"> Vendors and partners
+                        </label>
+                    </div>
+                </div>
+                
+                <button onclick="generateLeadershipStrategy()" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-crown"></i> Generate My AI Leadership Strategy
+                </button>
+                
+                <div id="generatedStrategy" class="generated-strategy">
+                    <strong style="color: #065f46;">Your Personalized AI Leadership Strategy:</strong><br><br>
+                    <div id="strategyContent" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-crown"></i> Leadership Excellence Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with building trust and credibility through small, successful AI implementations</li>
+                            <li>Focus on empowering others rather than just directing change</li>
+                            <li>Maintain authentic communication about both AI opportunities and challenges</li>
+                            <li>Celebrate progress and recognize contributors to build momentum</li>
+                            <li>Continuously develop your own AI knowledge to maintain credibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px;">
+                <h3 style="color: #92400e; margin-bottom: 1rem;">Ready to Apply Your AI Leadership Skills?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Put your leadership development into practice with comprehensive career planning and strategic development activities.</p>
+                <a href="../practice/career-development-planner.html" class="nav-btn">
+                    <i class="fas fa-rocket"></i>
+                    Create Your Career Development Plan
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-2-professional-adaptation-strategies.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Adaptation Strategies
+                </a>
+                <a href="../practice/career-development-planner.html" class="nav-btn">
+                    Next: Career Planner
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function exploreStyle(style) {
+            const styles = document.querySelectorAll('.style-card');
+            styles.forEach(s => s.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            
+            const detailsDiv = document.getElementById('style-details');
+            const contentDiv = document.getElementById('style-content');
+            
+            const styleContent = {
+                visionary: {
+                    title: 'Visionary AI Leadership Development',
+                    content: `
+                    <strong>Core Approach:</strong> Inspiring future-focused leadership that motivates through compelling AI transformation vision
+                    
+                    <strong>Key Characteristics:</strong>
+                    • Creates compelling narratives about AI-enhanced future possibilities
+                    • Communicates complex AI concepts through accessible stories and metaphors
+                    • Builds excitement and energy around transformation opportunities
+                    • Connects AI initiatives to broader organizational mission and values
+                    
+                    <strong>Development Activities:</strong>
+                    • Study successful transformation leaders and their communication approaches
+                    • Practice developing and presenting compelling future scenarios
+                    • Build skills in storytelling and narrative construction
+                    • Create signature presentations that inspire action and commitment
+                    
+                    <strong>Communication Style:</strong>
+                    • Forward-looking language focused on possibilities and opportunities
+                    • Emotional engagement through stories and personal connection
+                    • Clear articulation of the journey from current state to desired future
+                    • Regular reinforcement of vision through multiple channels and touchpoints
+                    
+                    <strong>Best For:</strong> Leaders in innovation-focused organizations, early-stage AI adoption, or contexts requiring significant culture change`
+                },
+                collaborative: {
+                    title: 'Collaborative AI Leadership Development',
+                    content: `
+                    <strong>Core Approach:</strong> Building consensus and shared ownership through inclusive AI decision-making
+                    
+                    <strong>Key Characteristics:</strong>
+                    • Involves stakeholders in AI strategy development and implementation planning
+                    • Seeks input and feedback from diverse perspectives before making decisions
+                    • Builds cross-functional teams and partnerships for AI initiatives
+                    • Shares credit and celebrates collective achievements
+                    
+                    <strong>Development Activities:</strong>
+                    • Practice facilitation skills for group decision-making and planning
+                    • Build expertise in conflict resolution and consensus building
+                    • Develop cross-functional collaboration and partnership skills
+                    • Learn stakeholder analysis and engagement strategies
+                    
+                    <strong>Communication Style:</strong>
+                    • Inclusive language that emphasizes "we" and shared ownership
+                    • Active listening and incorporation of diverse viewpoints
+                    • Regular check-ins and feedback solicitation
+                    • Transparent sharing of decision-making processes and criteria
+                    
+                    <strong>Best For:</strong> Matrix organizations, cross-functional AI initiatives, or contexts requiring broad stakeholder buy-in`
+                },
+                servant: {
+                    title: 'Servant AI Leadership Development',
+                    content: `
+                    <strong>Core Approach:</strong> Supporting others' growth and success through AI skill development and empowerment
+                    
+                    <strong>Key Characteristics:</strong>
+                    • Prioritizes team member development and capability building
+                    • Removes obstacles and provides resources for AI learning and application
+                    • Coaches and mentors others through AI adoption challenges
+                    • Creates psychological safety for experimentation and learning
+                    
+                    <strong>Development Activities:</strong>
+                    • Build coaching and mentoring skills for AI skill development
+                    • Learn to identify and remove systemic obstacles to adoption
+                    • Develop expertise in adult learning and capability building
+                    • Practice creating supportive and safe learning environments
+                    
+                    <strong>Communication Style:</strong>
+                    • Supportive and encouraging language that builds confidence
+                    • Questions that help others discover solutions and insights
+                    • Patient explanation and re-explanation of complex concepts
+                    • Recognition and celebration of learning progress and effort
+                    
+                    <strong>Best For:</strong> Team development contexts, skill-building initiatives, or organizations with learning-focused cultures`
+                },
+                adaptive: {
+                    title: 'Adaptive AI Leadership Development',
+                    content: `
+                    <strong>Core Approach:</strong> Flexible leadership that adjusts approach based on context and stakeholder needs
+                    
+                    <strong>Key Characteristics:</strong>
+                    • Reads situational context and adjusts leadership style accordingly
+                    • Responds quickly to changing circumstances and new information
+                    • Uses different approaches for different stakeholder groups
+                    • Balances consistency with flexibility based on needs
+                    
+                    <strong>Development Activities:</strong>
+                    • Study situational leadership models and diagnostic frameworks
+                    • Practice reading organizational and individual readiness levels
+                    • Build repertoire of different leadership approaches and techniques
+                    • Develop skills in rapid assessment and strategy adjustment
+                    
+                    <strong>Communication Style:</strong>
+                    • Varied communication approaches tailored to audience needs
+                    • Flexible message framing based on stakeholder concerns and interests
+                    • Regular assessment of communication effectiveness and adjustment
+                    • Multiple channels and formats to reach different stakeholders
+                    
+                    <strong>Best For:</strong> Complex organizations, rapidly changing environments, or diverse stakeholder groups with different needs`
+                },
+                results: {
+                    title: 'Results-Driven AI Leadership Development',
+                    content: `
+                    <strong>Core Approach:</strong> Achievement-focused leadership that delivers measurable AI transformation outcomes
+                    
+                    <strong>Key Characteristics:</strong>
+                    • Sets clear, measurable goals and holds teams accountable for results
+                    • Focuses on practical business value and return on investment
+                    • Drives execution with urgency and attention to performance metrics
+                    • Makes decisions quickly based on data and evidence
+                    
+                    <strong>Development Activities:</strong>
+                    • Build expertise in performance measurement and metrics design
+                    • Learn project management and execution excellence methodologies
+                    • Develop skills in data analysis and evidence-based decision making
+                    • Practice driving accountability while maintaining team engagement
+                    
+                    <strong>Communication Style:</strong>
+                    • Clear, direct communication focused on objectives and expectations
+                    • Regular reporting on progress, challenges, and course corrections
+                    • Data-driven presentations with concrete evidence and metrics
+                    • Action-oriented language that emphasizes execution and delivery
+                    
+                    <strong>Best For:</strong> Performance-driven organizations, time-pressured implementations, or contexts requiring rapid AI value demonstration`
+                },
+                authentic: {
+                    title: 'Authentic AI Leadership Development',
+                    content: `
+                    <strong>Core Approach:</strong> Values-based leadership that maintains integrity and builds trust during change
+                    
+                    <strong>Key Characteristics:</strong>
+                    • Maintains consistency between personal values and leadership actions
+                    • Demonstrates vulnerability and honesty about AI challenges and limitations
+                    • Builds deep trust through reliable follow-through and transparent communication
+                    • Admits mistakes and learns from setbacks openly
+                    
+                    <strong>Development Activities:</strong>
+                    • Develop clear personal values framework and decision-making criteria
+                    • Practice vulnerable and honest communication about challenges
+                    • Build self-awareness through feedback and reflection
+                    • Learn to integrate personal values with professional responsibilities
+                    
+                    <strong>Communication Style:</strong>
+                    • Honest, transparent communication that acknowledges both opportunities and challenges
+                    • Personal storytelling that reveals character and values
+                    • Consistent messaging that aligns with demonstrated behavior
+                    • Emphasis on trust-building and relationship development
+                    
+                    <strong>Best For:</strong> Trust-based organizations, ethical AI implementations, or contexts requiring high stakeholder confidence`
+                }
+            };
+            
+            if (styleContent[style]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;">${styleContent[style].title}</h5>
+                    <div style="white-space: pre-line;">${styleContent[style].content}</div>
+                `;
+                detailsDiv.style.display = 'block';
+            }
+        }
+        
+        function generateLeadershipStrategy() {
+            const leadershipContext = document.getElementById('leadershipContext').value;
+            const leadershipExperience = document.getElementById('leadershipExperience').value;
+            const leadershipChallenges = document.getElementById('leadershipChallenges').value;
+            
+            // Get selected goals
+            const goalCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const leadershipGoals = Array.from(goalCheckboxes).filter(cb => 
+                ['transformation', 'team-development', 'thought-leadership', 'innovation', 'culture-change', 'stakeholder-engagement'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            // Get selected stakeholders
+            const stakeholderCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const stakeholderPriorities = Array.from(stakeholderCheckboxes).filter(cb => 
+                ['executives', 'peers', 'teams', 'customers', 'industry', 'partners'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            if (!leadershipContext || !leadershipExperience || leadershipGoals.length === 0) {
+                alert('Please fill in at least the leadership context, experience level, and primary goals.');
+                return;
+            }
+            
+            const experienceText = {
+                'emerging': 'Emerging Leader (0-2 years leadership experience)',
+                'developing': 'Developing Leader (3-7 years leadership experience)', 
+                'experienced': 'Experienced Leader (8-15 years leadership experience)',
+                'senior': 'Senior Executive (15+ years leadership experience)'
+            };
+            
+            let strategy = `COMPREHENSIVE AI LEADERSHIP STRATEGY
+PERSONALIZED DEVELOPMENT PLAN
+
+=== LEADERSHIP ASSESSMENT ===
+
+Current Context: ${leadershipContext}
+Experience Level: ${experienceText[leadershipExperience] || leadershipExperience}
+Primary Goals: ${leadershipGoals.join(', ')}
+Stakeholder Priorities: ${stakeholderPriorities.join(', ') || 'Not specified'}
+Key Challenges: ${leadershipChallenges || 'None specified'}
+
+=== STRATEGIC LEADERSHIP APPROACH ===
+
+${leadershipExperience === 'emerging' ? `Emerging Leader Development Focus:
+• Build foundational AI knowledge to establish credibility
+• Start with small, manageable AI initiatives to build experience
+• Focus on learning from mistakes and documenting lessons
+• Seek mentorship from experienced AI transformation leaders
+• Practice communication skills with supportive stakeholders first` :
+leadershipExperience === 'developing' ? `Developing Leader Advancement Strategy:
+• Take on cross-functional AI initiatives to build broader perspective
+• Develop expertise in change management and stakeholder engagement
+• Build thought leadership through content creation and speaking
+• Mentor junior team members in AI adoption
+• Position for senior leadership opportunities in AI transformation` :
+leadershipExperience === 'experienced' ? `Experienced Leader Strategic Positioning:
+• Lead enterprise-wide AI transformation initiatives
+• Develop organizational AI strategy and governance frameworks
+• Build industry relationships and thought leadership platform
+• Mentor and develop other AI leaders throughout organization
+• Position for C-suite or board-level AI strategy roles` :
+`Senior Executive Vision & Legacy:
+• Shape industry-wide AI adoption standards and best practices
+• Develop next generation of AI leaders across multiple organizations
+• Influence policy and regulatory frameworks for responsible AI
+• Create lasting impact through thought leadership and innovation
+• Build legacy of ethical, effective AI transformation leadership`}
+
+=== STAKEHOLDER ENGAGEMENT STRATEGY ===
+
+${stakeholderPriorities.includes('executives') ? `Executive Engagement:
+• Focus on business strategy alignment and competitive advantage
+• Present clear ROI and risk management frameworks
+• Provide regular progress updates with measurable outcomes
+• Address governance and compliance concerns proactively` : ''}
+
+${stakeholderPriorities.includes('teams') ? `Team Development:
+• Create safe learning environments for AI experimentation
+• Provide clear skill development pathways and support
+• Celebrate learning progress and successful implementations
+• Address fears and concerns about AI impact on roles` : ''}
+
+${stakeholderPriorities.includes('peers') ? `Peer Leadership:
+• Build coalition of AI champions across departments
+• Share successes and lessons learned openly
+• Collaborate on cross-functional AI initiatives
+• Support each other's AI leadership development` : ''}
+
+=== IMPLEMENTATION ROADMAP ===
+
+Phase 1 (Months 1-3): Foundation Building
+• Assess current AI leadership readiness and skill gaps
+• Identify key stakeholders and their concerns/interests
+• Launch small pilot initiatives to build credibility
+• Begin building AI knowledge and communication skills
+• Establish measurement framework for leadership effectiveness
+
+Phase 2 (Months 4-9): Capability Expansion
+• Lead larger, more visible AI initiatives
+• Develop advanced stakeholder engagement and communication skills
+• Begin building thought leadership through content and speaking
+• Mentor others and build AI champion network
+• Refine leadership approach based on feedback and results
+
+Phase 3 (Months 10-18): Strategic Leadership
+• Position for senior AI leadership opportunities
+• Develop enterprise-level AI strategy and governance
+• Establish industry thought leadership and recognition
+• Create sustainable AI adoption culture and capabilities
+• Build legacy of successful AI transformation leadership
+
+This personalized leadership strategy provides a roadmap for developing authentic, effective AI leadership capabilities tailored to your experience level and context.`;
+
+            document.getElementById('strategyContent').textContent = strategy;
+            document.getElementById('generatedStrategy').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedStrategy').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

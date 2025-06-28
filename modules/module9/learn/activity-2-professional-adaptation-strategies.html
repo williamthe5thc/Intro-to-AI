@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: Professional Adaptation & Continuous Learning Systems - Module 9</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .adaptation-framework {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .adaptation-pillar {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+        .adaptation-pillar:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .pillar-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+        .learning-system {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .system-component {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+        }
+        .skill-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .skill-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .skill-category:hover {
+            border-color: #10b981;
+            transform: translateY(-2px);
+        }
+        .resilience-builder {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .resilience-dimension {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .network-builder {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .network-layer {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .interactive-planner {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .planner-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-plan {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .mindset-cultivation {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .mindset-element {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .innovation-tracker {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .tracker-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22c55e;
+        }
+        .competency-framework {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .competency-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .competency-card:hover {
+            border-color: #8b5cf6;
+            background: #faf5ff;
+        }
+        .competency-card.selected {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 9</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Adaptation Strategies</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/career-development-planner.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/future-readiness-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Professional Adaptation & Continuous Learning Systems</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Build robust systems for continuous professional adaptation in the rapidly evolving AI landscape. Master the art of lifelong learning, develop resilience to change, and create sustainable frameworks for staying ahead of technological advancement.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Adaptation Mastery Objectives</h3>
+                <p style="margin-bottom: 1rem;">Develop comprehensive professional adaptation capabilities:</p>
+                <ul class="modern-list">
+                    <li>Design and implement personal continuous learning systems for AI-era professional development</li>
+                    <li>Build psychological and professional resilience to navigate rapid technological change</li>
+                    <li>Create strategic networks and mentorship relationships for ongoing adaptation support</li>
+                    <li>Develop meta-learning skills for rapidly acquiring new competencies as needed</li>
+                    <li>Establish innovation tracking and opportunity identification systems</li>
+                    <li>Cultivate adaptive mindsets and growth-oriented professional identities</li>
+                </ul>
+            </div>
+
+            <!-- The ADAPT Framework for Professional Evolution -->
+            <h2 class="section-title"><i class="fas fa-sync"></i>The ADAPT Framework for Professional Evolution</h2>
+
+            <div class="adaptation-framework">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Comprehensive Professional Adaptation Strategy
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The ADAPT framework provides a systematic approach to Assess current capabilities, Develop learning systems, Anticipate change, Practice resilience, and Transform professionally.
+                </p>
+                
+                <!-- Assess -->
+                <div class="adaptation-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Assess Current Position & Capabilities</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Conduct comprehensive audit of current skills, knowledge gaps, and adaptation readiness</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Assessment Dimensions:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Technical Competency Audit:</strong> Current AI skills, tool proficiency, and technical knowledge gaps</li>
+                            <li><strong>Professional Network Analysis:</strong> Relationship quality, diversity, and strategic value assessment</li>
+                            <li><strong>Learning Agility Evaluation:</strong> Speed of skill acquisition, adaptation to new contexts, change comfort</li>
+                            <li><strong>Market Position Review:</strong> Professional reputation, competitive advantages, and vulnerability areas</li>
+                            <li><strong>Resource Availability Check:</strong> Time, funding, access, and support systems for development</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Assessment Tools:</strong> Use 360-degree feedback, skills gap analysis, network mapping, and market positioning review to create comprehensive baseline understanding.
+                    </div>
+                </div>
+
+                <!-- Develop -->
+                <div class="adaptation-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Develop Continuous Learning Systems</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Build sustainable frameworks for ongoing skill development and knowledge acquisition</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Learning System Components:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Personalized Learning Pathways:</strong> Customized curriculum based on career goals and learning style</li>
+                            <li><strong>Multi-Modal Learning Portfolio:</strong> Combination of formal education, experiential learning, and peer instruction</li>
+                            <li><strong>Practice and Application Framework:</strong> Regular opportunities to apply new skills in real professional contexts</li>
+                            <li><strong>Feedback and Adjustment Mechanisms:</strong> Systems for receiving input and refining learning approaches</li>
+                            <li><strong>Progress Tracking and Motivation:</strong> Metrics and rewards to maintain engagement and measure advancement</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>System Design Principle:</strong> Create learning systems that are sustainable, enjoyable, and integrated into daily professional life rather than additional burdens.
+                    </div>
+                </div>
+
+                <!-- Anticipate -->
+                <div class="adaptation-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-telescope"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Anticipate Change & Future Needs</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Develop foresight capabilities to identify emerging trends and prepare proactively</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Anticipation Strategies:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Trend Monitoring Systems:</strong> Regular scanning of industry publications, research, and thought leadership</li>
+                            <li><strong>Expert Network Cultivation:</strong> Relationships with forward-thinking professionals and researchers</li>
+                            <li><strong>Scenario Planning Practice:</strong> Regular exercises in imagining and preparing for multiple futures</li>
+                            <li><strong>Early Adopter Engagement:</strong> Connections with professionals who test new technologies and approaches</li>
+                            <li><strong>Innovation Signal Tracking:</strong> Systematic attention to emerging tools, methodologies, and best practices</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Anticipation Balance:</strong> Stay informed about emerging trends without becoming paralyzed by future uncertainty or abandoning current competency development.
+                    </div>
+                </div>
+
+                <!-- Practice -->
+                <div class="adaptation-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Practice Resilience & Change Navigation</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Build psychological and professional resilience through deliberate practice and experience</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Resilience Building Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Comfort Zone Expansion:</strong> Regular challenges that stretch capabilities and build confidence</li>
+                            <li><strong>Failure Recovery Practice:</strong> Deliberate experiences with setbacks and learning from mistakes</li>
+                            <li><strong>Stress Management Development:</strong> Tools and techniques for managing change-related anxiety and pressure</li>
+                            <li><strong>Identity Flexibility Training:</strong> Practice adapting professional identity while maintaining core values</li>
+                            <li><strong>Support System Utilization:</strong> Active use of mentors, peers, and professional communities during challenges</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Resilience Mindset:</strong> View change as opportunity for growth rather than threat to security, building confidence through successful navigation of smaller transitions.
+                    </div>
+                </div>
+
+                <!-- Transform -->
+                <div class="adaptation-pillar">
+                    <div class="pillar-header">
+                        <div class="pillar-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Transform Professional Identity & Value Proposition</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Continuously evolve professional identity to align with changing market demands and personal growth</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Transformation Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Value Proposition Evolution:</strong> Regular updates to how you create and communicate professional value</li>
+                            <li><strong>Brand and Reputation Management:</strong> Systematic development of professional reputation and market positioning</li>
+                            <li><strong>Role and Responsibility Expansion:</strong> Proactive pursuit of new challenges and leadership opportunities</li>
+                            <li><strong>Cross-Functional Skill Integration:</strong> Combining traditional expertise with AI and emerging capabilities</li>
+                            <li><strong>Legacy and Impact Development:</strong> Focus on contributions that create lasting value and professional recognition</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Transformation Philosophy:</strong> Professional transformation is not abandoning past expertise but enhancing and repositioning it for maximum future relevance and impact.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Adaptation Plan Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Personal Adaptation Strategy Builder</h2>
+
+            <div class="interactive-planner">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cog"></i> Build Your Comprehensive Adaptation Plan
+                </h4>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current Professional Challenge or Change:</label>
+                    <textarea id="currentChallenge" placeholder="Describe the biggest professional challenge or change you're facing or anticipating..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Learning Style Preferences:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="formal"> Formal courses and certifications
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="experiential"> Hands-on projects and experiments
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="social"> Peer learning and study groups
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="self-directed"> Self-directed research and study
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="mentoring"> Mentorship and coaching
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="immersive"> Conferences and immersive experiences
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Available Time for Professional Development:</label>
+                    <select id="timeAvailable" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select time availability</option>
+                        <option value="minimal">Minimal (1-2 hours per week)</option>
+                        <option value="moderate">Moderate (3-5 hours per week)</option>
+                        <option value="substantial">Substantial (6-10 hours per week)</option>
+                        <option value="intensive">Intensive (10+ hours per week)</option>
+                    </select>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Priority Skill Development Areas:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="ai-technical"> AI technical skills and tools
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="strategic"> Strategic thinking and planning
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="leadership"> Leadership and people management
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="innovation"> Innovation and creative problem-solving
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="communication"> Communication and influence
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="adaptation"> Change management and adaptation
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Biggest Obstacles to Professional Development:</label>
+                    <textarea id="developmentObstacles" placeholder="What are the main barriers preventing you from advancing your professional development?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Professional Network Strength:</label>
+                    <select id="networkStrength" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select network assessment</option>
+                        <option value="limited">Limited network, mostly internal colleagues</option>
+                        <option value="developing">Developing network with some external connections</option>
+                        <option value="strong">Strong network across industry and functions</option>
+                        <option value="extensive">Extensive network with thought leaders and mentors</option>
+                    </select>
+                </div>
+                
+                <button onclick="generateAdaptationPlan()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate My Comprehensive Adaptation Strategy
+                </button>
+                
+                <div id="generatedPlan" class="generated-plan">
+                    <strong style="color: #065f46;">Your Personalized Professional Adaptation Plan:</strong><br><br>
+                    <div id="planContent" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-rocket"></i> Implementation Success Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with the highest-priority learning activity identified in your plan</li>
+                            <li>Schedule specific time blocks for professional development activities</li>
+                            <li>Find an accountability partner or mentor to support your progress</li>
+                            <li>Track and celebrate small wins and progress milestones</li>
+                            <li>Review and adjust your plan monthly based on progress and changing needs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Ready to Develop AI Leadership Capabilities?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">With your adaptation systems in place, learn how to become a thought leader and guide others through AI transformation.</p>
+                <a href="activity-3-ai-leadership-development.html" class="nav-btn">
+                    <i class="fas fa-crown"></i>
+                    Build AI Leadership Skills
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-future-trends-analysis.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Trends Analysis
+                </a>
+                <a href="activity-3-ai-leadership-development.html" class="nav-btn">
+                    Next: Leadership Development
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function generateAdaptationPlan() {
+            const currentChallenge = document.getElementById('currentChallenge').value;
+            const timeAvailable = document.getElementById('timeAvailable').value;
+            const developmentObstacles = document.getElementById('developmentObstacles').value;
+            const networkStrength = document.getElementById('networkStrength').value;
+            
+            // Get selected learning styles
+            const learningCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const learningStyles = Array.from(learningCheckboxes).filter(cb => 
+                ['formal', 'experiential', 'social', 'self-directed', 'mentoring', 'immersive'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            // Get selected skill areas
+            const skillCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const skillAreas = Array.from(skillCheckboxes).filter(cb => 
+                ['ai-technical', 'strategic', 'leadership', 'innovation', 'communication', 'adaptation'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            if (!currentChallenge || !timeAvailable || skillAreas.length === 0) {
+                alert('Please fill in at least the current challenge, time availability, and priority skill areas.');
+                return;
+            }
+            
+            const timeText = {
+                'minimal': 'Minimal (1-2 hours per week)',
+                'moderate': 'Moderate (3-5 hours per week)',
+                'substantial': 'Substantial (6-10 hours per week)',
+                'intensive': 'Intensive (10+ hours per week)'
+            };
+            
+            const networkText = {
+                'limited': 'Limited network, mostly internal colleagues',
+                'developing': 'Developing network with some external connections',
+                'strong': 'Strong network across industry and functions',
+                'extensive': 'Extensive network with thought leaders and mentors'
+            };
+            
+            let plan = `COMPREHENSIVE PROFESSIONAL ADAPTATION STRATEGY
+PERSONALIZED PLAN FOR AI-ERA SUCCESS
+
+=== SITUATION ASSESSMENT ===
+
+Primary Challenge: ${currentChallenge}
+Available Development Time: ${timeText[timeAvailable] || timeAvailable}
+Network Strength: ${networkText[networkStrength] || networkStrength}
+Development Obstacles: ${developmentObstacles || 'None specified'}
+
+Priority Skill Areas: ${skillAreas.join(', ')}
+Preferred Learning Styles: ${learningStyles.join(', ') || 'Not specified'}
+
+=== CUSTOMIZED LEARNING PATHWAY ===
+
+${learningStyles.includes('formal') ? `Formal Education Component:
+• AI certification programs relevant to your industry
+• Executive education in digital transformation and innovation
+• Professional development courses in leadership and change management
+• Industry conferences and summit attendance
+
+` : ''}${learningStyles.includes('experiential') ? `Experiential Learning Component:
+• Pilot AI projects in your current role
+• Cross-functional collaboration on innovation initiatives
+• Leadership of AI adoption or training programs
+• Consulting or advisory work in your expertise area
+
+` : ''}${learningStyles.includes('social') ? `Social Learning Component:
+• AI professional learning communities and study groups
+• Industry association active participation
+• Peer mentoring and collaboration networks
+• Professional mastermind groups focused on AI adoption
+
+` : ''}=== IMPLEMENTATION TIMELINE ===
+
+Next 30 Days - Foundation Setting:
+• Complete comprehensive skills assessment
+• Identify and connect with 3-5 key learning resources or mentors
+• Establish daily/weekly learning routines
+• Begin highest-priority skill development activities
+• Create tracking and measurement systems
+
+Next 90 Days - Momentum Building:
+• Complete first major learning milestone or project
+• Expand professional network by 10-15 quality connections
+• Implement AI tools or strategies in current role
+• Document learning progress and value creation
+• Adjust plan based on initial results and feedback
+
+Next 6 Months - Acceleration:
+• Achieve intermediate competency in priority skill areas
+• Lead or participate in significant AI implementation project
+• Establish thought leadership through content creation or speaking
+• Build mentoring relationships both as mentor and mentee
+• Position for new opportunities or expanded responsibilities
+
+This personalized adaptation strategy provides a comprehensive framework for thriving in the AI era while addressing your specific challenges, preferences, and constraints.`;
+
+            document.getElementById('planContent').textContent = plan;
+            document.getElementById('generatedPlan').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPlan').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

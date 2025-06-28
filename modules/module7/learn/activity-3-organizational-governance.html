@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 3: Organizational AI Ethics Governance - Module 7</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .governance-framework {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .governance-layer {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #0891b2;
+            transition: all 0.3s ease;
+        }
+        .governance-layer:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .policy-template {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .implementation-roadmap {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .roadmap-phase {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #22c55e;
+        }
+        .assessment-tool {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #f59e0b;
+        }
+        .assessment-category {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .maturity-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem;
+            text-align: center;
+        }
+        .level-basic { background: #fee2e2; color: #dc2626; }
+        .level-developing { background: #fef3c7; color: #d97706; }
+        .level-intermediate { background: #dbeafe; color: #2563eb; }
+        .level-advanced { background: #d1fae5; color: #059669; }
+        .level-leading { background: #e0e7ff; color: #5b21b6; }
+        .governance-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-governance {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .risk-cell {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .impact-low { background: #d1fae5; color: #065f46; }
+        .impact-medium { background: #fef3c7; color: #92400e; }
+        .impact-high { background: #fee2e2; color: #dc2626; }
+        .impact-critical { background: #fdf2f8; color: #9d174d; }
+        .governance-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .example-card:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+        .checklist-category {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 7</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Organizational Governance</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/ethics-scenarios.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/ethics-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Organizational AI Ethics Governance</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Build comprehensive organizational frameworks for ethical AI governance. Learn to establish policies, processes, and cultures that ensure responsible AI adoption at scale while enabling innovation and competitive advantage.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Governance Leadership Objectives</h3>
+                <p style="margin-bottom: 1rem;">Master organizational AI ethics leadership:</p>
+                <ul class="modern-list">
+                    <li>Design comprehensive AI ethics governance frameworks for organizations</li>
+                    <li>Develop policies and procedures that scale ethical AI practices</li>
+                    <li>Build organizational cultures that prioritize responsible AI innovation</li>
+                    <li>Implement monitoring, auditing, and continuous improvement systems</li>
+                    <li>Lead change management for ethical AI transformation initiatives</li>
+                </ul>
+            </div>
+
+            <!-- Governance Framework Overview -->
+            <h2 class="section-title"><i class="fas fa-building"></i>Comprehensive AI Ethics Governance Framework</h2>
+
+            <div class="governance-framework">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-sitemap"></i> Multi-Layer Governance Architecture
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151; line-height: 1.6;">
+                    Effective AI ethics governance requires coordinated action across all organizational levels, from board oversight to individual contributor practices. This framework ensures comprehensive coverage and accountability.
+                </p>
+                
+                <!-- Strategic Layer -->
+                <div class="governance-layer">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); color: white; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fas fa-chess-king"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0c4a6e; margin-bottom: 0.5rem;">Strategic Governance Layer</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Board and C-Suite oversight and strategic direction</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Responsibilities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Establish AI ethics vision and organizational commitment</li>
+                            <li>Approve high-level AI ethics policies and frameworks</li>
+                            <li>Allocate resources for ethical AI initiatives</li>
+                            <li>Oversee risk management and regulatory compliance</li>
+                            <li>Review and approve high-risk AI applications</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Board AI ethics education completion, ethics policy approval rates, budget allocation for responsible AI, stakeholder trust metrics
+                    </div>
+                </div>
+
+                <!-- Tactical Layer -->
+                <div class="governance-layer">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); color: white; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0c4a6e; margin-bottom: 0.5rem;">Tactical Management Layer</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Middle management implementation and coordination</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Responsibilities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Develop detailed AI ethics policies and procedures</li>
+                            <li>Coordinate cross-functional AI ethics initiatives</li>
+                            <li>Manage AI ethics training and development programs</li>
+                            <li>Oversee compliance monitoring and reporting</li>
+                            <li>Facilitate ethics review processes and decision-making</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Policy implementation rates, training completion rates, ethics review cycle times, compliance audit results
+                    </div>
+                </div>
+
+                <!-- Operational Layer -->
+                <div class="governance-layer">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0c4a6e; margin-bottom: 0.5rem;">Operational Execution Layer</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Day-to-day ethical AI practices and implementation</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Responsibilities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Apply ethical AI practices in daily work</li>
+                            <li>Conduct ethical reviews for AI applications</li>
+                            <li>Implement bias testing and fairness assessments</li>
+                            <li>Document AI assistance and decision processes</li>
+                            <li>Report ethical concerns and incidents</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Ethical AI practice adoption rates, bias incident reports, quality of AI documentation, stakeholder satisfaction
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Ethics Maturity Model -->
+            <h2 class="section-title"><i class="fas fa-chart-line"></i>AI Ethics Maturity Assessment</h2>
+
+            <div class="assessment-tool">
+                <h4 style="color: #d97706; margin-bottom: 1.5rem;">
+                    <i class="fas fa-clipboard-check"></i> Organizational AI Ethics Maturity Model
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Assess your organization's current AI ethics maturity level and identify areas for improvement. Use this model to guide your governance development strategy.
+                </p>
+                
+                <div style="text-align: center; margin: 1.5rem 0;">
+                    <div class="maturity-level level-basic">Level 1: Basic</div>
+                    <div class="maturity-level level-developing">Level 2: Developing</div>
+                    <div class="maturity-level level-intermediate">Level 3: Intermediate</div>
+                    <div class="maturity-level level-advanced">Level 4: Advanced</div>
+                    <div class="maturity-level level-leading">Level 5: Leading</div>
+                </div>
+
+                <!-- Policy & Governance Assessment -->
+                <div class="assessment-category">
+                    <h5 style="color: #374151; margin-bottom: 1rem;">
+                        <i class="fas fa-gavel"></i> Policy & Governance Maturity
+                    </h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div onclick="toggleMaturityDetails('policy', 1)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #fee2e2; border-radius: 6px; background: #fef2f2;">
+                            <strong style="color: #dc2626;">Level 1: Basic</strong><br>
+                            <span style="font-size: 0.8rem;">No formal AI ethics policies</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('policy', 2)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #fef3c7; border-radius: 6px; background: #fffbeb;">
+                            <strong style="color: #d97706;">Level 2: Developing</strong><br>
+                            <span style="font-size: 0.8rem;">Basic AI use guidelines exist</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('policy', 3)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #dbeafe; border-radius: 6px; background: #eff6ff;">
+                            <strong style="color: #2563eb;">Level 3: Intermediate</strong><br>
+                            <span style="font-size: 0.8rem;">Comprehensive ethics policies</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('policy', 4)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #d1fae5; border-radius: 6px; background: #f0fdf4;">
+                            <strong style="color: #059669;">Level 4: Advanced</strong><br>
+                            <span style="font-size: 0.8rem;">Integrated governance framework</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('policy', 5)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #e0e7ff; border-radius: 6px; background: #f5f3ff;">
+                            <strong style="color: #5b21b6;">Level 5: Leading</strong><br>
+                            <span style="font-size: 0.8rem;">Industry-leading practices</span>
+                        </div>
+                    </div>
+                    <div id="policy-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 6px;">
+                        <div id="policy-content"></div>
+                    </div>
+                </div>
+
+                <!-- Culture & Training Assessment -->
+                <div class="assessment-category">
+                    <h5 style="color: #374151; margin-bottom: 1rem;">
+                        <i class="fas fa-users"></i> Culture & Training Maturity
+                    </h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div onclick="toggleMaturityDetails('culture', 1)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #fee2e2; border-radius: 6px; background: #fef2f2;">
+                            <strong style="color: #dc2626;">Level 1: Basic</strong><br>
+                            <span style="font-size: 0.8rem;">No AI ethics training</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('culture', 2)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #fef3c7; border-radius: 6px; background: #fffbeb;">
+                            <strong style="color: #d97706;">Level 2: Developing</strong><br>
+                            <span style="font-size: 0.8rem;">Ad-hoc awareness sessions</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('culture', 3)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #dbeafe; border-radius: 6px; background: #eff6ff;">
+                            <strong style="color: #2563eb;">Level 3: Intermediate</strong><br>
+                            <span style="font-size: 0.8rem;">Regular training programs</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('culture', 4)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #d1fae5; border-radius: 6px; background: #f0fdf4;">
+                            <strong style="color: #059669;">Level 4: Advanced</strong><br>
+                            <span style="font-size: 0.8rem;">Embedded ethical culture</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('culture', 5)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #e0e7ff; border-radius: 6px; background: #f5f3ff;">
+                            <strong style="color: #5b21b6;">Level 5: Leading</strong><br>
+                            <span style="font-size: 0.8rem;">Continuous learning culture</span>
+                        </div>
+                    </div>
+                    <div id="culture-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 6px;">
+                        <div id="culture-content"></div>
+                    </div>
+                </div>
+
+                <!-- Technology & Monitoring Assessment -->
+                <div class="assessment-category">
+                    <h5 style="color: #374151; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Technology & Monitoring Maturity
+                    </h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div onclick="toggleMaturityDetails('tech', 1)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #fee2e2; border-radius: 6px; background: #fef2f2;">
+                            <strong style="color: #dc2626;">Level 1: Basic</strong><br>
+                            <span style="font-size: 0.8rem;">No monitoring systems</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('tech', 2)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #fef3c7; border-radius: 6px; background: #fffbeb;">
+                            <strong style="color: #d97706;">Level 2: Developing</strong><br>
+                            <span style="font-size: 0.8rem;">Basic usage tracking</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('tech', 3)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #dbeafe; border-radius: 6px; background: #eff6ff;">
+                            <strong style="color: #2563eb;">Level 3: Intermediate</strong><br>
+                            <span style="font-size: 0.8rem;">Systematic monitoring</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('tech', 4)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #d1fae5; border-radius: 6px; background: #f0fdf4;">
+                            <strong style="color: #059669;">Level 4: Advanced</strong><br>
+                            <span style="font-size: 0.8rem;">Automated compliance tools</span>
+                        </div>
+                        <div onclick="toggleMaturityDetails('tech', 5)" style="cursor: pointer; padding: 0.75rem; border: 2px solid #e0e7ff; border-radius: 6px; background: #f5f3ff;">
+                            <strong style="color: #5b21b6;">Level 5: Leading</strong><br>
+                            <span style="font-size: 0.8rem;">AI-powered governance</span>
+                        </div>
+                    </div>
+                    <div id="tech-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 6px;">
+                        <div id="tech-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Roadmap -->
+            <h2 class="section-title"><i class="fas fa-road"></i>Implementation Roadmap</h2>
+
+            <div class="implementation-roadmap">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-map"></i> 90-Day AI Ethics Governance Implementation Plan
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    A structured approach to implementing comprehensive AI ethics governance in your organization, designed for rapid deployment with sustainable results.
+                </p>
+                
+                <!-- Phase 1: Foundation -->
+                <div class="roadmap-phase">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-foundation"></i> Phase 1: Foundation (Days 1-30)
+                    </h5>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Week 1-2: Assessment & Leadership Alignment</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Conduct organizational AI ethics maturity assessment</li>
+                            <li>Secure C-suite commitment and resource allocation</li>
+                            <li>Establish AI Ethics Committee or governance body</li>
+                            <li>Define scope and priorities for initial implementation</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px;">
+                        <strong>Week 3-4: Framework Development</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Develop organizational AI ethics charter and principles</li>
+                            <li>Create initial policy frameworks and guidelines</li>
+                            <li>Establish risk assessment and classification systems</li>
+                            <li>Begin stakeholder communication and change management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 2: Implementation -->
+                <div class="roadmap-phase">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Phase 2: Implementation (Days 31-60)
+                    </h5>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Week 5-6: Process & Training Development</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Develop detailed procedures and workflows</li>
+                            <li>Create comprehensive training materials and programs</li>
+                            <li>Establish AI ethics review processes and committees</li>
+                            <li>Implement initial monitoring and reporting systems</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px;">
+                        <strong>Week 7-8: Pilot Implementation</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Launch pilot programs with select teams/departments</li>
+                            <li>Begin manager and key stakeholder training</li>
+                            <li>Test ethics review processes with real applications</li>
+                            <li>Collect feedback and refine processes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Phase 3: Scale & Optimize -->
+                <div class="roadmap-phase">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">
+                        <i class="fas fa-rocket"></i> Phase 3: Scale & Optimize (Days 61-90)
+                    </h5>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Week 9-10: Organization-wide Rollout</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Deploy training programs organization-wide</li>
+                            <li>Implement ethics review processes across all departments</li>
+                            <li>Launch comprehensive monitoring and audit systems</li>
+                            <li>Establish regular reporting and communication channels</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px;">
+                        <strong>Week 11-12: Optimization & Sustainability</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Analyze initial results and optimize processes</li>
+                            <li>Establish continuous improvement mechanisms</li>
+                            <li>Plan for ongoing training and development</li>
+                            <li>Prepare for external communication and reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Policy Templates -->
+            <h2 class="section-title"><i class="fas fa-file-contract"></i>AI Ethics Policy Templates</h2>
+
+            <div class="governance-examples">
+                <!-- Employee AI Use Policy -->
+                <div class="example-card">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-user-check"></i> Employee AI Use Policy Template
+                    </h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem; font-family: monospace; font-size: 0.8rem;">
+                        <strong>ORGANIZATIONAL AI USE POLICY</strong><br><br>
+                        <strong>Purpose:</strong> Establish guidelines for ethical AI use<br><br>
+                        <strong>Scope:</strong> All employees using AI tools<br><br>
+                        <strong>Core Requirements:</strong><br>
+                        • Transparency in AI assistance disclosure<br>
+                        • Professional accountability for outputs<br>
+                        • Privacy and confidentiality protection<br>
+                        • Bias awareness and mitigation<br>
+                        • Compliance with professional standards<br><br>
+                        <strong>Prohibited Uses:</strong><br>
+                        • Replacing professional judgment<br>
+                        • Processing confidential data without authorization<br>
+                        • Creating discriminatory outcomes<br>
+                        • Misrepresenting AI capabilities
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Implementation:</strong> Customize for your industry requirements and professional standards. Include specific examples relevant to your organization's AI use cases.
+                    </div>
+                </div>
+
+                <!-- AI Risk Assessment Policy -->
+                <div class="example-card">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-shield-alt"></i> AI Risk Assessment Policy Template
+                    </h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem; font-family: monospace; font-size: 0.8rem;">
+                        <strong>AI RISK ASSESSMENT FRAMEWORK</strong><br><br>
+                        <strong>Risk Categories:</strong><br>
+                        • Low: Routine tasks, minimal stakeholder impact<br>
+                        • Medium: Important decisions, moderate impact<br>
+                        • High: Significant decisions, major impact<br>
+                        • Critical: Life, legal, financial consequences<br><br>
+                        <strong>Assessment Criteria:</strong><br>
+                        • Stakeholder impact scope and severity<br>
+                        • Decision permanence and reversibility<br>
+                        • Regulatory and legal implications<br>
+                        • Bias and fairness considerations<br>
+                        • Professional liability exposure<br><br>
+                        <strong>Required Actions by Risk Level:</strong><br>
+                        • Low: Basic documentation<br>
+                        • Medium: Manager review required<br>
+                        • High: Ethics committee approval<br>
+                        • Critical: C-level authorization
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Implementation:</strong> Adapt risk thresholds to your organization's risk tolerance and regulatory environment. Train managers on consistent assessment application.
+                    </div>
+                </div>
+
+                <!-- Vendor AI Policy -->
+                <div class="example-card">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-handshake"></i> AI Vendor Management Policy Template
+                    </h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem; font-family: monospace; font-size: 0.8rem;">
+                        <strong>AI VENDOR ETHICS REQUIREMENTS</strong><br><br>
+                        <strong>Due Diligence Requirements:</strong><br>
+                        • AI training data sources and quality<br>
+                        • Bias testing and mitigation measures<br>
+                        • Privacy and security protections<br>
+                        • Transparency and explainability features<br>
+                        • Regulatory compliance certifications<br><br>
+                        <strong>Contractual Requirements:</strong><br>
+                        • Data processing limitations<br>
+                        • Bias monitoring and reporting<br>
+                        • Audit rights and access<br>
+                        • Incident notification procedures<br>
+                        • Liability and indemnification terms<br><br>
+                        <strong>Ongoing Monitoring:</strong><br>
+                        • Regular performance reviews<br>
+                        • Compliance audits<br>
+                        • User feedback collection
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Implementation:</strong> Work with legal and procurement teams to integrate these requirements into standard vendor contracts and evaluation processes.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Governance Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Custom Governance Framework Builder</h2>
+
+            <div class="governance-builder">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-wrench"></i> Build Your Organization's AI Ethics Governance Framework
+                </h4>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Organization Size & Type:</label>
+                    <select id="orgSize" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select organization type...</option>
+                        <option value="small">Small Business (1-50 employees)</option>
+                        <option value="medium">Medium Enterprise (51-500 employees)</option>
+                        <option value="large">Large Corporation (500+ employees)</option>
+                        <option value="nonprofit">Non-profit Organization</option>
+                        <option value="government">Government Agency</option>
+                        <option value="healthcare">Healthcare Organization</option>
+                        <option value="education">Educational Institution</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Industry/Sector:</label>
+                    <input type="text" id="industry" placeholder="e.g., Financial Services, Technology, Manufacturing, Legal" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current AI Ethics Maturity Level:</label>
+                    <select id="maturityLevel" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select current maturity...</option>
+                        <option value="basic">Level 1: Basic (No formal policies)</option>
+                        <option value="developing">Level 2: Developing (Basic guidelines)</option>
+                        <option value="intermediate">Level 3: Intermediate (Comprehensive policies)</option>
+                        <option value="advanced">Level 4: Advanced (Integrated framework)</option>
+                        <option value="leading">Level 5: Leading (Industry best practices)</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key AI Use Cases:</label>
+                    <textarea id="useCases" placeholder="Describe how your organization currently uses or plans to use AI..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Regulatory Environment:</label>
+                    <input type="text" id="regulations" placeholder="e.g., GDPR, HIPAA, SOX, industry-specific regulations" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Implementation Timeline:</label>
+                    <select id="timeline" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select timeline...</option>
+                        <option value="immediate">Immediate (30 days)</option>
+                        <option value="rapid">Rapid (90 days)</option>
+                        <option value="standard">Standard (6 months)</option>
+                        <option value="comprehensive">Comprehensive (12 months)</option>
+                    </select>
+                </div>
+                
+                <button onclick="generateGovernanceFramework()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Custom Governance Framework
+                </button>
+                
+                <div id="generatedGovernance" class="generated-governance">
+                    <strong style="color: #065f46;">Your Custom AI Ethics Governance Framework:</strong><br><br>
+                    <div id="governanceText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap; font-family: monospace;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Next Steps:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Share this framework with leadership for approval</li>
+                            <li>Customize policies based on your specific requirements</li>
+                            <li>Begin with pilot implementation in one department</li>
+                            <li>Establish training programs and communication plans</li>
+                            <li>Set up monitoring and feedback mechanisms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Checklist -->
+            <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #22c55e;">
+                <h3 style="color: #166534; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-clipboard-check"></i>AI Ethics Governance Implementation Checklist
+                </h3>
+                
+                <div class="checklist-category">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">Leadership & Strategy</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Secure C-suite commitment and budget allocation</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Establish AI Ethics Committee with diverse representation</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Define organizational AI ethics vision and principles</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Conduct comprehensive organizational maturity assessment</span>
+                    </div>
+                </div>
+
+                <div class="checklist-category">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">Policies & Procedures</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Develop comprehensive AI use policies</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Create risk assessment and classification frameworks</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Establish AI ethics review processes and workflows</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Implement vendor management and due diligence procedures</span>
+                    </div>
+                </div>
+
+                <div class="checklist-category">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">Training & Culture</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Design comprehensive AI ethics training programs</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Train managers and key stakeholders</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Establish ongoing education and awareness programs</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Create channels for ethical concerns and reporting</span>
+                    </div>
+                </div>
+
+                <div class="checklist-category">
+                    <h5 style="color: #166534; margin-bottom: 1rem;">Monitoring & Improvement</h5>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Implement monitoring and audit systems</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Establish regular reporting and communication mechanisms</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Create continuous improvement and feedback processes</span>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" style="margin-right: 0.5rem;">
+                        <span>Plan for regular review and update of policies</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Practice Ethical Leadership</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Apply your governance knowledge to real-world ethical dilemmas and case studies that leaders face in AI implementation.</p>
+                <a href="../practice/ethics-scenarios.html" class="nav-btn">
+                    <i class="fas fa-gavel"></i>
+                    Practice Leadership Scenarios
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-2-advanced-prompting-ethics.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Ethical Advanced Prompting
+                </a>
+                <a href="../practice/ethics-scenarios.html" class="nav-btn">
+                    Next: Practice Scenarios
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const maturityDetails = {
+            policy: {
+                1: "No formal AI ethics policies exist. AI use is unregulated and unmonitored. No governance structure or oversight.",
+                2: "Basic AI use guidelines exist but are informal. Limited policy coverage. Ad-hoc governance approaches.",
+                3: "Comprehensive AI ethics policies are documented and communicated. Clear governance structure with defined roles.",
+                4: "Integrated governance framework with automated compliance monitoring. Policies are regularly updated and optimized.",
+                5: "Industry-leading practices with continuous innovation. Proactive policy development and external thought leadership."
+            },
+            culture: {
+                1: "No AI ethics training or awareness. Ethics considerations are not part of organizational culture.",
+                2: "Ad-hoc awareness sessions and informal discussions. Limited training coverage and engagement.",
+                3: "Regular training programs with good participation. Growing ethical awareness and discussion.",
+                4: "Embedded ethical culture with ongoing development. Ethics is integrated into performance management.",
+                5: "Continuous learning culture with innovation in ethical practices. External leadership and knowledge sharing."
+            },
+            tech: {
+                1: "No monitoring systems or technological support for ethics compliance. Manual processes only.",
+                2: "Basic usage tracking and reporting. Simple tools for monitoring AI use and outcomes.",
+                3: "Systematic monitoring with regular audits. Integrated tools for compliance and risk management.",
+                4: "Automated compliance tools with real-time monitoring. Advanced analytics for bias detection.",
+                5: "AI-powered governance with predictive capabilities. Cutting-edge tools for ethical AI management."
+            }
+        };
+
+        function toggleMaturityDetails(category, level) {
+            const detailsDiv = document.getElementById(category + '-details');
+            const contentDiv = document.getElementById(category + '-content');
+            
+            contentDiv.innerHTML = `<strong>Level ${level} Details:</strong><br>${maturityDetails[category][level]}`;
+            detailsDiv.style.display = detailsDiv.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function generateGovernanceFramework() {
+            const orgSize = document.getElementById('orgSize').value;
+            const industry = document.getElementById('industry').value;
+            const maturity = document.getElementById('maturityLevel').value;
+            const useCases = document.getElementById('useCases').value;
+            const regulations = document.getElementById('regulations').value;
+            const timeline = document.getElementById('timeline').value;
+            
+            if (!orgSize || !industry || !maturity || !useCases || !timeline) {
+                alert('Please fill in all required fields to generate your governance framework.');
+                return;
+            }
+            
+            const frameworks = {
+                immediate: `RAPID AI ETHICS GOVERNANCE IMPLEMENTATION
+${industry.toUpperCase()} - ${orgSize.toUpperCase()} ORGANIZATION
+
+=== 30-DAY RAPID DEPLOYMENT PLAN ===
+
+Week 1: Foundation & Leadership
+• Day 1-2: Secure executive sponsorship and form ethics committee
+• Day 3-5: Conduct rapid maturity assessment (current level: ${maturity})
+• Day 6-7: Define organizational AI ethics charter and core principles
+
+Week 2: Essential Policies
+• Day 8-10: Develop critical AI use policies for: ${useCases}
+• Day 11-12: Create risk assessment framework (focus on high-risk scenarios)
+• Day 13-14: Establish basic review and approval processes
+
+Week 3: Implementation & Training
+• Day 15-17: Deploy policies to key departments and teams
+• Day 18-21: Conduct intensive training for managers and key users
+• Day 22: Launch ethics review process for new AI applications
+
+Week 4: Monitoring & Optimization
+• Day 23-25: Implement basic monitoring and reporting systems
+• Day 26-28: Collect feedback and optimize initial processes
+• Day 29-30: Establish regular review and improvement cycles
+
+=== ESSENTIAL POLICIES FOR ${industry.toUpperCase()} ===
+
+1. AI Use Authorization Policy
+   - All AI applications require manager approval
+   - High-risk uses require ethics committee review
+   - Compliance with ${regulations || 'industry regulations'}
+
+2. Professional Standards Integration
+   - AI outputs must meet ${industry} professional standards
+   - Human oversight required for all critical decisions
+   - Documentation requirements for AI assistance
+
+3. Privacy and Security Requirements
+   - Data protection protocols for AI processing
+   - Confidentiality safeguards appropriate for ${industry}
+   - Vendor security and compliance requirements
+
+4. Bias Prevention and Monitoring
+   - Regular testing for discriminatory outcomes
+   - Diverse stakeholder representation in reviews
+   - Corrective action procedures for bias incidents
+
+=== IMMEDIATE ACTION ITEMS ===
+
+Priority 1 (Week 1):
+☐ Appoint AI Ethics Officer or Committee Chair
+☐ Secure budget for governance implementation
+☐ Communicate ethics initiative to organization
+☐ Begin stakeholder mapping and engagement
+
+Priority 2 (Week 2):
+☐ Draft and approve core policies
+☐ Design ethics review process workflow
+☐ Identify high-risk AI applications for immediate review
+☐ Establish vendor evaluation criteria
+
+Priority 3 (Week 3-4):
+☐ Train key personnel and managers
+☐ Launch pilot ethics review processes
+☐ Implement basic monitoring systems
+☐ Establish feedback and improvement mechanisms`,
+
+                rapid: `COMPREHENSIVE AI ETHICS GOVERNANCE FRAMEWORK
+${industry.toUpperCase()} - ${orgSize.toUpperCase()} ORGANIZATION
+
+=== 90-DAY STRATEGIC IMPLEMENTATION ===
+
+Phase 1: Foundation (Days 1-30)
+Building solid ethical groundwork and organizational alignment
+
+Phase 2: Development (Days 31-60)
+Creating comprehensive policies, training, and processes
+
+Phase 3: Deployment (Days 61-90)
+Organization-wide rollout with monitoring and optimization
+
+=== CURRENT STATE ANALYSIS ===
+Starting Maturity Level: ${maturity}
+Primary AI Applications: ${useCases}
+Regulatory Environment: ${regulations || 'Standard industry regulations'}
+Organization Scale: ${orgSize}
+
+=== GOVERNANCE STRUCTURE ===
+
+Strategic Level (Board/C-Suite):
+• AI Ethics Board Committee (quarterly meetings)
+• Chief Ethics Officer or designated executive sponsor
+• Annual ethics strategy review and approval
+• Resource allocation and risk oversight
+
+Tactical Level (Management):
+• AI Ethics Committee (monthly meetings)
+• Department ethics liaisons
+• Policy development and implementation
+• Training coordination and compliance monitoring
+
+Operational Level (Daily Practice):
+• Ethics-trained AI users across all departments
+• Peer review and consultation networks
+• Incident reporting and resolution procedures
+• Continuous improvement feedback loops
+
+=== COMPREHENSIVE POLICY FRAMEWORK ===
+
+1. Organizational AI Ethics Charter
+   - Vision: Ethical leadership in ${industry} AI adoption
+   - Principles: Transparency, accountability, fairness, privacy
+   - Commitments: Stakeholder protection and societal benefit
+
+2. AI Use and Governance Policy
+   - Scope: All AI applications in ${industry} context
+   - Authorization: Risk-based approval processes
+   - Compliance: Integration with ${regulations || 'industry standards'}
+
+3. Professional Standards Integration
+   - ${industry} professional codes and AI use
+   - Quality assurance and validation requirements
+   - Liability and accountability frameworks
+
+4. Risk Management Framework
+   - Risk assessment methodology for AI applications
+   - Mitigation strategies and controls
+   - Monitoring and audit procedures
+
+5. Privacy and Data Protection
+   - Data handling protocols for AI processing
+   - Consent and disclosure requirements
+   - Security measures and breach response
+
+6. Vendor Management and Procurement
+   - Due diligence requirements for AI vendors
+   - Contractual ethics and compliance clauses
+   - Ongoing vendor monitoring and evaluation
+
+=== IMPLEMENTATION ROADMAP ===
+
+Month 1: Foundation and Planning
+Week 1-2:
+• Leadership alignment and resource allocation
+• Stakeholder mapping and engagement strategy
+• Initial maturity assessment and gap analysis
+• Ethics committee formation and charter development
+
+Week 3-4:
+• Core policy framework development
+• Risk assessment methodology design
+• Training program planning and content creation
+• Communication strategy and change management planning
+
+Month 2: Development and Testing
+Week 5-6:
+• Detailed policy and procedure development
+• Ethics review process design and testing
+• Training material creation and pilot delivery
+• Technology platform evaluation and procurement
+
+Week 7-8:
+• Pilot implementation with select departments
+• Process testing and refinement
+• Manager training and capability building
+• Monitoring and reporting system development
+
+Month 3: Deployment and Optimization
+Week 9-10:
+• Organization-wide policy deployment
+• Comprehensive training program rollout
+• Full ethics review process activation
+• Monitoring and reporting system launch
+
+Week 11-12:
+• Performance evaluation and optimization
+• Feedback collection and process improvement
+• Sustainability planning and resource allocation
+• External communication and stakeholder reporting
+
+=== SUCCESS METRICS AND KPIs ===
+
+Governance Metrics:
+• Policy compliance rate (target: 95%+)
+• Ethics training completion (target: 100%)
+• Review process cycle time (target: <5 days)
+• Stakeholder satisfaction score (target: 4.5/5)
+
+Risk Management Metrics:
+• Bias incident rate (target: <1 per quarter)
+• Risk assessment completion rate (target: 100%)
+• High-risk application approval rate (track trends)
+• Compliance audit results (target: no major findings)
+
+Cultural Metrics:
+• Employee ethics awareness score
+• Ethics-related feedback and suggestions
+• Cross-department collaboration on ethics
+• External recognition and industry leadership
+
+=== CONTINUOUS IMPROVEMENT FRAMEWORK ===
+
+Quarterly Reviews:
+• Policy effectiveness assessment
+• Training program evaluation and updates
+• Risk landscape analysis and adaptation
+• Stakeholder feedback integration
+
+Annual Strategic Review:
+• Governance framework comprehensive evaluation
+• Industry best practice benchmarking
+• Regulatory compliance assessment
+• Strategic planning for next year improvements
+
+This framework is designed to evolve with your organization's growth and the changing AI landscape in ${industry}.`,
+
+                standard: `STRATEGIC AI ETHICS GOVERNANCE TRANSFORMATION
+${industry.toUpperCase()} - ${orgSize.toUpperCase()} ORGANIZATION
+
+=== 6-MONTH COMPREHENSIVE DEVELOPMENT PROGRAM ===
+
+This extended timeline allows for thorough development, extensive stakeholder engagement, and robust testing before full deployment.
+
+Phase 1: Assessment and Strategy (Months 1-2)
+• Comprehensive organizational analysis
+• Stakeholder mapping and requirement gathering
+• Industry best practice research and benchmarking
+• Strategic planning and roadmap development
+
+Phase 2: Framework Development (Months 3-4)
+• Detailed policy and procedure creation
+• Technology platform development or procurement
+• Comprehensive training program development
+• Change management and communication strategy
+
+Phase 3: Pilot and Testing (Month 5)
+• Limited pilot deployment with select groups
+• Extensive testing and feedback collection
+• Process refinement and optimization
+• Risk assessment and mitigation planning
+
+Phase 4: Full Deployment (Month 6)
+• Organization-wide rollout with full support
+• Comprehensive monitoring and evaluation
+• Continuous improvement process establishment
+• External stakeholder communication and reporting
+
+[Continue with detailed monthly plans...]`,
+
+                comprehensive: `ENTERPRISE AI ETHICS GOVERNANCE ECOSYSTEM
+${industry.toUpperCase()} - ${orgSize.toUpperCase()} ORGANIZATION
+
+=== 12-MONTH TRANSFORMATIONAL PROGRAM ===
+
+This comprehensive approach establishes industry-leading governance with deep cultural integration and advanced technological capabilities.
+
+Quarters 1-2: Foundation and Architecture
+• Deep organizational transformation planning
+• Advanced governance framework development
+• Cultural change management program
+• Technology ecosystem design and implementation
+
+Quarters 3-4: Implementation and Excellence
+• Phased deployment with extensive support
+• Advanced monitoring and analytics implementation
+• Industry leadership and external engagement
+• Continuous innovation and improvement processes
+
+[Continue with detailed quarterly and monthly plans...]`
+            };
+            
+            let framework = frameworks[timeline] || frameworks.rapid;
+            
+            document.getElementById('governanceText').textContent = framework;
+            document.getElementById('generatedGovernance').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedGovernance').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

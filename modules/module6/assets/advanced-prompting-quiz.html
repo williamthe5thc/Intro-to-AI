@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Prompting Mastery Quiz - Module 6</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+        }
+        .question-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: var(--neutral-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background: #f3e8ff;
+            border-color: #a855f7;
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+        .option.selected {
+            background: #f3e8ff;
+            border-color: #8b5cf6;
+        }
+        .scenario-question {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .prompt-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .prompt-example {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-green);
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+        }
+        .mastery-level {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        .novice { background: #fee2e2; color: #dc2626; }
+        .developing { background: #fef3c7; color: #92400e; }
+        .proficient { background: #dbeafe; color: #1e40af; }
+        .advanced { background: #d1fae5; color: #065f46; }
+        .expert { background: #ede9fe; color: #5b21b6; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 6</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Mastery Quiz</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chain-of-thought.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompt-optimization-lab.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Advanced Prompting Mastery Assessment</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Demonstrate your mastery of advanced prompting techniques including chain-of-thought reasoning, role-playing prompts, and multi-step workflows. This comprehensive assessment measures your ability to apply expert-level AI communication strategies.
+            </p>
+
+            <div class="quiz-container">
+
+                <!-- Question 1: Chain-of-Thought Understanding -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        What is the primary benefit of using chain-of-thought prompting for complex business analysis?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            It makes prompts longer and more impressive to stakeholders
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            It guides AI through step-by-step reasoning, improving accuracy and transparency
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            It automatically generates multiple outputs for comparison
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            It reduces the need for human oversight in business decisions
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: Persona Optimization -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        When designing an expert persona for financial analysis, which elements are most critical for unlocking specialized knowledge?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            Generic business experience and general analytical skills
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            Specific years of experience, industry expertise, and relevant credentials
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            Creative personality traits and communication preferences
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            Technical software skills and tool proficiency
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Workflow Design -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        In a multi-step workflow for strategic planning, what is the most effective approach to maintain context and quality across steps?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            Use the same persona throughout all steps to maintain consistency
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            Include validation checkpoints and carry forward key insights from previous steps
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            Keep each step completely independent to avoid bias
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            Automate the entire workflow without human intervention
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4: Scenario-Based Application -->
+                <div class="question-card">
+                    <div class="scenario-question">
+                        <h4 style="color: #0c4a6e; margin-bottom: 1rem;">
+                            <i class="fas fa-briefcase"></i> Professional Scenario
+                        </h4>
+                        <p style="margin-bottom: 1rem;">
+                            You're a management consultant helping a mid-size manufacturing company evaluate whether to expand internationally. The CEO wants a comprehensive analysis that considers financial, operational, and strategic factors.
+                        </p>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        Which advanced prompting approach would be most effective for this multi-faceted business challenge?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            A single comprehensive prompt asking for general expansion advice
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            A multi-step workflow with different expert personas (financial analyst, operations expert, strategy consultant) and chain-of-thought reasoning at each stage
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            A role-playing prompt asking AI to act as the CEO making the decision
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            Multiple separate prompts for each business function without integration
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5: Prompt Optimization -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        Which prompt optimization technique is most effective for ensuring professional-quality outputs suitable for executive audiences?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            Making prompts as long and detailed as possible
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            Specifying output format, audience considerations, and quality standards
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            Using technical jargon to sound more professional
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            Asking for multiple versions and choosing the best one
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6: Integration Mastery -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        When combining chain-of-thought reasoning with expert personas in a workflow, what is the key to maintaining both logical rigor and domain expertise?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            Focus only on the reasoning process and ignore persona details
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            Ensure each reasoning step draws from the persona's specific expertise and experience
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            Use generic reasoning steps that work for any persona
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            Alternate between persona-based and logical reasoning approaches
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7: Professional Application -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">7</span>
+                        What is the most important consideration when designing AI workflows for high-stakes business decisions?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            Maximizing automation to reduce human involvement
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            Building in validation points, quality checks, and human oversight opportunities
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            Using the most advanced AI model available regardless of cost
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            Keeping workflows simple to avoid complexity
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8: Advanced Technique Comparison -->
+                <div class="question-card">
+                    <div class="prompt-comparison">
+                        <div>
+                            <h5 style="color: #dc2626; margin-bottom: 0.5rem;">Prompt A:</h5>
+                            <div class="prompt-example">
+                                "Analyze our marketing performance and tell me what we should do differently."
+                            </div>
+                        </div>
+                        <div>
+                            <h5 style="color: #065f46; margin-bottom: 0.5rem;">Prompt B:</h5>
+                            <div class="prompt-example">
+                                "You are a senior marketing analyst with 10 years of experience in B2B SaaS marketing. Analyze our marketing performance using this framework: 1) Channel performance analysis 2) Customer acquisition cost trends 3) Conversion funnel optimization opportunities 4) Competitive positioning assessment 5) Actionable recommendations with expected impact. Present findings in executive summary format."
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-title">
+                        <span class="question-number">8</span>
+                        What advanced prompting techniques make Prompt B more effective than Prompt A?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            It's longer and more detailed
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            It uses technical marketing terminology
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            It combines expert persona, structured framework, and output format specifications
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            It asks for more information than Prompt A
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 9: Quality Control -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">9</span>
+                        In professional AI workflows, what is the most effective method for ensuring output quality and reliability?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            Running the same prompt multiple times and averaging the results
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            Using only the most expensive AI models for important tasks
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            Implementing systematic validation steps, A/B testing optimizations, and measuring outputs against defined success criteria
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            Having multiple people write different prompts for the same task
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 10: Strategic Implementation -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">10</span>
+                        For an organization implementing advanced AI prompting strategies, what is the most critical success factor?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            Having the latest AI technology and tools
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            Training team members on systematic prompting methodologies and building reusable workflow templates
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            Replacing human decision-making with AI-driven processes
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            Outsourcing all AI implementation to external consultants
+                        </label>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-brain"></i>
+                    Submit Mastery Assessment
+                </button>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/professional-workflow-builder.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Workflow Builder
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Expert Discussion
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // Chain-of-thought reasoning improves accuracy and transparency
+                q2: 'b', // Specific experience, industry expertise, and credentials
+                q3: 'b', // Validation checkpoints and context preservation
+                q4: 'b', // Multi-step workflow with different personas and CoT
+                q5: 'b', // Specify format, audience, and quality standards
+                q6: 'b', // Reasoning steps draw from persona expertise
+                q7: 'b', // Build in validation and human oversight
+                q8: 'c', // Combines persona, structure, and format specifications
+                q9: 'c', // Systematic validation, testing, and success criteria
+                q10: 'b' // Training team on methodologies and building templates
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / total) * 100);
+            let masteryLevel = '';
+            let message = '';
+            let encouragement = '';
+
+            if (percentage >= 90) {
+                masteryLevel = 'expert';
+                message = 'Expert Mastery Achieved!';
+                encouragement = 'Outstanding! You have demonstrated expert-level understanding of advanced prompting techniques. You\'re ready to implement sophisticated AI workflows in professional settings and train others in these methodologies.';
+            } else if (percentage >= 80) {
+                masteryLevel = 'advanced';
+                message = 'Advanced Proficiency';
+                encouragement = 'Excellent work! You have strong mastery of advanced prompting concepts. Review the areas where you missed questions to refine your expertise further.';
+            } else if (percentage >= 70) {
+                masteryLevel = 'proficient';
+                message = 'Proficient Understanding';
+                encouragement = 'Good progress! You understand most advanced prompting concepts. Focus on practicing workflow integration and quality optimization techniques.';
+            } else if (percentage >= 60) {
+                masteryLevel = 'developing';
+                message = 'Developing Skills';
+                encouragement = 'You\'re making progress with advanced techniques. We recommend reviewing the learning activities and practicing with the interactive tools before applying these methods professionally.';
+            } else {
+                masteryLevel = 'novice';
+                message = 'Foundation Building Needed';
+                encouragement = 'Focus on mastering the fundamentals first. Review Module 6\'s learning activities, practice with the optimization lab, and experiment with basic chain-of-thought and persona techniques.';
+            }
+
+            document.getElementById('score').innerHTML = `
+                ${message}<br>
+                <span style="font-size: 1.2rem;">${score}/${total} correct (${percentage}%)</span><br>
+                <span class="mastery-level ${masteryLevel}">
+                    ${masteryLevel.charAt(0).toUpperCase() + masteryLevel.slice(1)} Level
+                </span>
+            `;
+            
+            document.getElementById('feedback').innerHTML = `
+                <p style="margin-bottom: 1rem;">${encouragement}</p>
+                
+                <h4 style="color: #065f46; margin-bottom: 0.5rem;">Your Advanced Prompting Journey:</h4>
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>Mastered Concepts:</strong> ${score} out of ${total} advanced prompting principles<br>
+                    <strong>Proficiency Level:</strong> ${masteryLevel.charAt(0).toUpperCase() + masteryLevel.slice(1)}<br>
+                    <strong>Ready for:</strong> ${
+                        percentage >= 80 
+                            ? 'Professional implementation and team training' 
+                            : percentage >= 70 
+                                ? 'Guided practice and workflow development' 
+                                : 'Continued learning and skill building'
+                    }
+                </div>
+                
+                <h4 style="color: #065f46; margin-bottom: 0.5rem;">Next Steps:</h4>
+                <ul style="margin-left: 1rem;">
+                    ${percentage >= 80 
+                        ? '<li>Share your expertise in the discussion forum</li><li>Build advanced workflows for your organization</li><li>Mentor others in advanced prompting techniques</li>' 
+                        : percentage >= 70 
+                            ? '<li>Practice with the workflow builder tool</li><li>Experiment with multi-step processes</li><li>Join the discussion to learn from peers</li>' 
+                            : '<li>Review the learning activities for deeper understanding</li><li>Practice with the optimization lab</li><li>Start with simpler chain-of-thought exercises</li>'
+                    }
+                </ul>
+            `;
+            
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

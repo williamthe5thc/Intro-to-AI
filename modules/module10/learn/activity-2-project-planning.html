@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: Capstone Project Planning & Scope Definition - Module 10</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .planning-framework {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .planning-phase {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+        .planning-phase:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .phase-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+        .project-templates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .template-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .template-card:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+        .scope-matrix {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .matrix-cell {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+        .matrix-header {
+            background: #10b981;
+            color: white;
+            font-weight: 600;
+        }
+        .interactive-planner {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .planner-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-plan {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .timeline-builder {
+            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .timeline-step {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #d97706;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .timeline-step:hover {
+            background: #fef3c7;
+            transform: translateX(5px);
+        }
+        .risk-assessment {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .risk-level {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+        }
+        .risk-low { background: #d1fae5; }
+        .risk-medium { background: #fef3c7; }
+        .risk-high { background: #fee2e2; }
+        .success-metrics {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .metric-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 10</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Project Planning</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/capstone-project.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/capstone-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Capstone Project Planning & Scope Definition</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Design a capstone project that demonstrates your AI expertise while delivering real business value. Learn to scope projects for maximum impact, manage constraints effectively, and create a compelling narrative that showcases your professional growth and competency.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Project Planning Objectives</h3>
+                <p style="margin-bottom: 1rem;">Master the strategic planning skills for successful AI capstone projects:</p>
+                <ul class="modern-list">
+                    <li>Define project scope that balances ambition with achievability</li>
+                    <li>Apply systematic project planning methodologies to AI implementations</li>
+                    <li>Identify and mitigate risks specific to AI projects</li>
+                    <li>Establish clear success metrics and measurement frameworks</li>
+                    <li>Create realistic timelines and resource allocation plans</li>
+                    <li>Design projects that demonstrate professional competency and business impact</li>
+                </ul>
+            </div>
+
+            <!-- The SCOPE Framework for AI Projects -->
+            <h2 class="section-title"><i class="fas fa-compass"></i>The SCOPE Framework for AI Project Planning</h2>
+
+            <div class="planning-framework">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-target"></i> Strategic AI Project Planning Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The SCOPE framework ensures your capstone project is Strategic, Constrained, Objective-driven, Portfolio-worthy, and Executable within available timeframes.
+                </p>
+                
+                <!-- Strategic -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-chess"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Strategic Alignment</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Ensure your project supports broader business and career objectives</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Strategic Considerations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Business Alignment:</strong> How does this solve a real organizational challenge?</li>
+                            <li><strong>Career Advancement:</strong> What skills and recognition will this project provide?</li>
+                            <li><strong>Industry Relevance:</strong> How does this position you within your field?</li>
+                            <li><strong>Innovation Opportunity:</strong> What new approaches or insights can you contribute?</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Strategic Questions:</strong> Does this project advance my organization's goals? Will it differentiate me in my industry? Can I build thought leadership around this work?
+                    </div>
+                </div>
+
+                <!-- Constrained -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-border-all"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Constraint Management</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Work within realistic time, resource, and access limitations</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Constraints:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Time Boundaries:</strong> 4-8 weeks for completion including documentation</li>
+                            <li><strong>Resource Limits:</strong> Available AI tools, data access, and budget constraints</li>
+                            <li><strong>Skill Prerequisites:</strong> Build on existing competencies rather than requiring new expertise</li>
+                            <li><strong>Organizational Approval:</strong> Ensure compliance with policies and permissions</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Constraint Wisdom:</strong> The best capstone projects succeed within constraints, not despite them. Use limitations to focus scope and drive creativity.
+                    </div>
+                </div>
+
+                <!-- Objective-driven -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Objective-Driven Design</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Define clear, measurable outcomes and success criteria</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Objective Framework:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Primary Objective:</strong> The main business or professional problem being solved</li>
+                            <li><strong>Learning Objectives:</strong> Specific skills and knowledge you'll demonstrate</li>
+                            <li><strong>Impact Objectives:</strong> Measurable improvements or value creation</li>
+                            <li><strong>Portfolio Objectives:</strong> How this enhances your professional showcase</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>SMART Goals Application:</strong> Ensure objectives are Specific, Measurable, Achievable, Relevant, and Time-bound for maximum clarity and impact.
+                    </div>
+                </div>
+
+                <!-- Portfolio-worthy -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Portfolio-Worthy Impact</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Ensure the project creates compelling portfolio content and professional narrative</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Portfolio Value Criteria:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Demonstrable Results:</strong> Quantifiable outcomes that showcase competency</li>
+                            <li><strong>Storytelling Potential:</strong> Rich narrative with clear challenges, solutions, and impact</li>
+                            <li><strong>Professional Relevance:</strong> Directly applicable to your industry and career goals</li>
+                            <li><strong>Differentiation Factor:</strong> Unique approaches or insights that set you apart</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Portfolio Test:</strong> Can you explain this project's value to a potential employer in 30 seconds? Does it demonstrate skills they need?
+                    </div>
+                </div>
+
+                <!-- Executable -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Executable Implementation</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Design for successful completion with available resources and timeline</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Execution Readiness:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Skill Match:</strong> Builds on competencies from previous modules</li>
+                            <li><strong>Resource Availability:</strong> All needed tools, data, and permissions accessible</li>
+                            <li><strong>Timeline Realism:</strong> Achievable milestones with buffer for challenges</li>
+                            <li><strong>Risk Mitigation:</strong> Backup plans for potential obstacles</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Execution Mindset:</strong> Better to deliver excellent results on a well-scoped project than to overreach and underdeliver.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Template Library -->
+            <h2 class="section-title"><i class="fas fa-layer-group"></i>Professional AI Project Templates</h2>
+
+            <div class="project-templates">
+                <!-- Process Optimization -->
+                <div class="template-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Process Optimization Project
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Project Type:</strong> Automate or enhance existing business processes using AI
+                        <br><strong>Timeline:</strong> 4-6 weeks
+                        <br><strong>Complexity:</strong> Moderate
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Example Applications:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Document processing and analysis automation</li>
+                            <li>Customer service response optimization</li>
+                            <li>Report generation and data analysis enhancement</li>
+                            <li>Meeting notes and action item tracking</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Time saved, error reduction, quality improvement, user satisfaction
+                    </div>
+                </div>
+
+                <!-- Decision Support System -->
+                <div class="template-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-brain"></i> Decision Support System
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Project Type:</strong> Create AI-enhanced decision-making tools and frameworks
+                        <br><strong>Timeline:</strong> 5-7 weeks
+                        <br><strong>Complexity:</strong> Moderate to High
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Example Applications:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Market analysis and strategic planning support</li>
+                            <li>Risk assessment and mitigation frameworks</li>
+                            <li>Resource allocation optimization</li>
+                            <li>Performance analysis and recommendation systems</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Decision quality improvement, analysis speed, insight generation, stakeholder adoption
+                    </div>
+                </div>
+
+                <!-- Communication Enhancement -->
+                <div class="template-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-comments"></i> Communication Enhancement
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Project Type:</strong> Improve organizational communication using AI tools
+                        <br><strong>Timeline:</strong> 4-5 weeks
+                        <br><strong>Complexity:</strong> Low to Moderate
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Example Applications:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Personalized content creation for different audiences</li>
+                            <li>Multi-language communication support</li>
+                            <li>Training material development and optimization</li>
+                            <li>Stakeholder engagement and feedback analysis</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Engagement rates, comprehension improvement, communication efficiency, audience reach
+                    </div>
+                </div>
+
+                <!-- Innovation Research -->
+                <div class="template-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-lightbulb"></i> Innovation Research Project
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Project Type:</strong> Explore new AI applications specific to your industry
+                        <br><strong>Timeline:</strong> 6-8 weeks
+                        <br><strong>Complexity:</strong> High
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Example Applications:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Pilot testing emerging AI technologies</li>
+                            <li>Industry trend analysis and opportunity identification</li>
+                            <li>Competitive advantage research and development</li>
+                            <li>New business model exploration and validation</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Innovation potential, feasibility assessment, business case development, stakeholder interest
+                    </div>
+                </div>
+
+                <!-- Training & Development -->
+                <div class="template-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i> Training & Development
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Project Type:</strong> Develop AI literacy and training programs for colleagues
+                        <br><strong>Timeline:</strong> 5-6 weeks
+                        <br><strong>Complexity:</strong> Moderate
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Example Applications:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>AI awareness and ethics training curriculum</li>
+                            <li>Tool adoption and best practices workshops</li>
+                            <li>Change management for AI implementation</li>
+                            <li>Professional development pathway design</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Training effectiveness, adoption rates, competency improvement, behavior change
+                    </div>
+                </div>
+
+                <!-- Governance & Ethics -->
+                <div class="template-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-shield-alt"></i> Governance & Ethics Framework
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Project Type:</strong> Develop organizational AI governance and ethical frameworks
+                        <br><strong>Timeline:</strong> 6-7 weeks
+                        <br><strong>Complexity:</strong> High
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Example Applications:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>AI policy development and implementation</li>
+                            <li>Bias testing and fairness auditing systems</li>
+                            <li>Risk management and compliance frameworks</li>
+                            <li>Stakeholder engagement and transparency protocols</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Policy adoption, compliance rates, risk reduction, stakeholder confidence
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Scope Definition Matrix -->
+            <h2 class="section-title"><i class="fas fa-table"></i>Project Scope Definition Matrix</h2>
+
+            <div class="scope-matrix">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-crosshairs"></i> Strategic Scope Assessment Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Use this matrix to evaluate project scope across three critical dimensions: Impact Potential, Implementation Feasibility, and Timeline Realism.
+                </p>
+                
+                <div class="matrix-grid">
+                    <div class="matrix-cell matrix-header">Evaluation Criteria</div>
+                    <div class="matrix-cell matrix-header">High Scope</div>
+                    <div class="matrix-cell matrix-header">Optimal Scope</div>
+                    
+                    <div class="matrix-cell">
+                        <strong>Impact Potential</strong><br>
+                        <small>Business value and portfolio impact</small>
+                    </div>
+                    <div class="matrix-cell">
+                        Organization-wide transformation with significant ROI and industry recognition potential
+                    </div>
+                    <div class="matrix-cell" style="background: #d1fae5;">
+                        Department/team-level improvement with measurable results and clear professional advancement
+                    </div>
+                    
+                    <div class="matrix-cell">
+                        <strong>Implementation Feasibility</strong><br>
+                        <small>Technical and resource requirements</small>
+                    </div>
+                    <div class="matrix-cell">
+                        Requires new systems, significant stakeholder buy-in, and complex technical integration
+                    </div>
+                    <div class="matrix-cell" style="background: #d1fae5;">
+                        Uses existing tools and access, minimal additional resources, straightforward implementation
+                    </div>
+                    
+                    <div class="matrix-cell">
+                        <strong>Timeline Realism</strong><br>
+                        <small>Completion within capstone timeframe</small>
+                    </div>
+                    <div class="matrix-cell">
+                        Requires 12+ weeks with multiple phases and stakeholder coordination
+                    </div>
+                    <div class="matrix-cell" style="background: #d1fae5;">
+                        Achievable in 4-8 weeks with clear milestones and buffer time
+                    </div>
+                    
+                    <div class="matrix-cell">
+                        <strong>Skill Development</strong><br>
+                        <small>Learning and competency demonstration</small>
+                    </div>
+                    <div class="matrix-cell">
+                        Requires expertise not yet developed or extensive new learning
+                    </div>
+                    <div class="matrix-cell" style="background: #d1fae5;">
+                        Builds on course competencies with moderate skill extension
+                    </div>
+                    
+                    <div class="matrix-cell">
+                        <strong>Documentation Potential</strong><br>
+                        <small>Portfolio and case study value</small>
+                    </div>
+                    <div class="matrix-cell">
+                        Complex project with confidentiality constraints limiting sharing potential
+                    </div>
+                    <div class="matrix-cell" style="background: #d1fae5;">
+                        Rich storytelling opportunity with clear challenges, solutions, and measurable outcomes
+                    </div>
+                    
+                    <div class="matrix-cell">
+                        <strong>Risk Level</strong><br>
+                        <small>Probability of successful completion</small>
+                    </div>
+                    <div class="matrix-cell">
+                        High dependency on external factors, approval processes, or untested approaches
+                    </div>
+                    <div class="matrix-cell" style="background: #d1fae5;">
+                        Low to moderate risk with backup options and clear success pathways
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-compass"></i> Scope Selection Guidance:</strong>
+                    Projects that score in the "Optimal Scope" column across 4+ criteria are ideal for capstone success. High scope projects may be better suited for longer-term professional initiatives.
+                </div>
+            </div>
+
+            <!-- Interactive Project Planner -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Interactive Capstone Project Planner</h2>
+
+            <div class="interactive-planner">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-drafting-compass"></i> Build Your Capstone Project Plan
+                </h4>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Project Title & Focus Area:</label>
+                    <input type="text" id="projectTitle" placeholder="e.g., AI-Enhanced Customer Service Response Optimization" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Business Challenge:</label>
+                    <textarea id="businessChallenge" placeholder="Describe the specific problem or opportunity you want to address..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Proposed AI Solution Approach:</label>
+                    <textarea id="aiSolution" placeholder="How will you use AI to address this challenge? What tools and methods will you employ?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Available Resources & Access:</label>
+                    <textarea id="availableResources" placeholder="What data, tools, systems, and stakeholder access do you have?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Success Metrics:</label>
+                    <input type="text" id="successMetrics" placeholder="e.g., 25% reduction in response time, 90% user satisfaction, 15% cost savings" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Target Completion Timeline:</label>
+                    <select id="targetTimeline" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select timeline</option>
+                        <option value="4">4 weeks (focused, single-component project)</option>
+                        <option value="6">6 weeks (moderate complexity, multiple phases)</option>
+                        <option value="8">8 weeks (comprehensive project with extensive documentation)</option>
+                    </select>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key Stakeholders & Their Needs:</label>
+                    <textarea id="stakeholders" placeholder="Who will be impacted by or involved in this project? What do they need?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <button onclick="generateProjectPlan()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Comprehensive Project Plan
+                </button>
+                
+                <div id="generatedPlan" class="generated-plan">
+                    <strong style="color: #065f46;">Your Customized Capstone Project Plan:</strong><br><br>
+                    <div id="projectPlanContent" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-rocket"></i> Implementation Strategy:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with stakeholder alignment and requirement gathering</li>
+                            <li>Begin documentation from day one for portfolio development</li>
+                            <li>Set up weekly milestone reviews and progress tracking</li>
+                            <li>Plan for iteration and refinement based on initial results</li>
+                            <li>Prepare backup approaches if primary plan encounters obstacles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Assessment Framework -->
+            <div class="risk-assessment">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i> Capstone Project Risk Assessment
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Proactively identify and plan for potential project risks to ensure successful completion and maximum learning value.
+                </p>
+                
+                <div class="risk-level risk-high">
+                    <i class="fas fa-times-circle" style="color: #dc2626; width: 20px;"></i>
+                    <div>
+                        <strong>High Risk Factors:</strong> Dependency on external approvals, unproven technology, tight stakeholder availability, complex organizational politics
+                    </div>
+                </div>
+                
+                <div class="risk-level risk-medium">
+                    <i class="fas fa-exclamation-circle" style="color: #d97706; width: 20px;"></i>
+                    <div>
+                        <strong>Medium Risk Factors:</strong> Learning new tools during project, moderate stakeholder coordination, data access uncertainties, timeline pressures
+                    </div>
+                </div>
+                
+                <div class="risk-level risk-low">
+                    <i class="fas fa-check-circle" style="color: #059669; width: 20px;"></i>
+                    <div>
+                        <strong>Low Risk Factors:</strong> Using familiar tools, clear resource access, supportive stakeholders, flexible timeline, backup plan options
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong>Risk Mitigation Strategies:</strong>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li><strong>Stakeholder Engagement:</strong> Secure commitment and availability early</li>
+                        <li><strong>Technical Validation:</strong> Test tools and approaches before full implementation</li>
+                        <li><strong>Scope Flexibility:</strong> Define minimum viable project and extension opportunities</li>
+                        <li><strong>Timeline Buffers:</strong> Build in 20% contingency time for unexpected challenges</li>
+                        <li><strong>Alternative Approaches:</strong> Prepare backup methodologies and simplified versions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Success Metrics Framework -->
+            <div class="success-metrics">
+                <h4 style="color: #1d4ed8; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-line"></i> Comprehensive Success Metrics Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Define multi-dimensional success criteria that demonstrate both business impact and professional competency development.
+                </p>
+                
+                <div class="metric-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-briefcase"></i> Business Impact Metrics</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Efficiency Gains:</strong> Time saved, process improvements, automation benefits</li>
+                        <li><strong>Quality Improvements:</strong> Error reduction, accuracy enhancement, consistency gains</li>
+                        <li><strong>Cost Optimization:</strong> Resource savings, cost avoidance, ROI generation</li>
+                        <li><strong>Stakeholder Value:</strong> User satisfaction, adoption rates, feedback scores</li>
+                    </ul>
+                </div>
+                
+                <div class="metric-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Professional Development Metrics</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Skill Demonstration:</strong> Competencies applied, complexity handled, expertise shown</li>
+                        <li><strong>Leadership Evidence:</strong> Initiative taken, stakeholders influenced, change managed</li>
+                        <li><strong>Innovation Contribution:</strong> New approaches, creative solutions, best practices developed</li>
+                        <li><strong>Knowledge Transfer:</strong> Documentation quality, training provided, insights shared</li>
+                    </ul>
+                </div>
+                
+                <div class="metric-category">
+                    <h5 style="color: #3b82f6; margin-bottom: 1rem;"><i class="fas fa-star"></i> Portfolio Enhancement Metrics</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Story Quality:</strong> Narrative strength, challenge complexity, solution elegance</li>
+                        <li><strong>Visual Documentation:</strong> Charts, dashboards, before/after comparisons</li>
+                        <li><strong>Replicability:</strong> Framework creation, template development, methodology documentation</li>
+                        <li><strong>Industry Relevance:</strong> Transferable insights, thought leadership potential, peer interest</li>
+                    </ul>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-target"></i> Measurement Best Practices:</strong>
+                    Establish baseline measurements before project start, track progress weekly, document both quantitative results and qualitative insights, and prepare multiple formats for different audiences (technical, executive, peer).
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Ready to Master Documentation Strategy?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">With your project planned and scoped, learn how to document your work for maximum professional impact and portfolio value.</p>
+                <a href="activity-3-documentation-strategy.html" class="nav-btn">
+                    <i class="fas fa-file-alt"></i>
+                    Master Documentation Strategy
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-portfolio-foundation.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Portfolio Foundation
+                </a>
+                <a href="activity-3-documentation-strategy.html" class="nav-btn">
+                    Next: Documentation Strategy
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function generateProjectPlan() {
+            const title = document.getElementById('projectTitle').value;
+            const challenge = document.getElementById('businessChallenge').value;
+            const solution = document.getElementById('aiSolution').value;
+            const resources = document.getElementById('availableResources').value;
+            const metrics = document.getElementById('successMetrics').value;
+            const timeline = document.getElementById('targetTimeline').value;
+            const stakeholders = document.getElementById('stakeholders').value;
+            
+            if (!title || !challenge || !solution || !timeline) {
+                alert('Please fill in at least the project title, business challenge, AI solution, and timeline fields.');
+                return;
+            }
+            
+            const timelineText = {
+                '4': '4 weeks',
+                '6': '6 weeks', 
+                '8': '8 weeks'
+            };
+            
+            let projectPlan = `CAPSTONE PROJECT COMPREHENSIVE PLAN
+${title.toUpperCase()}
+
+=== PROJECT OVERVIEW ===
+
+Business Challenge:
+${challenge}
+
+AI Solution Approach:
+${solution}
+
+Success Metrics:
+${metrics || 'To be defined based on baseline measurements'}
+
+Target Timeline: ${timelineText[timeline] || timeline}
+
+=== STAKEHOLDER ANALYSIS ===
+
+Key Stakeholders & Requirements:
+${stakeholders || 'To be identified and mapped during project initiation'}
+
+=== PROJECT PHASES & TIMELINE ===
+
+Phase 1: Discovery & Planning (Week 1)
+• Stakeholder interviews and requirement gathering
+• Baseline measurement and current state analysis
+• Technical feasibility assessment and tool selection
+• Risk assessment and mitigation planning
+• Detailed project scope refinement
+
+Phase 2: Development & Implementation (Week ${timeline === '4' ? '2-3' : timeline === '6' ? '2-4' : '2-5'})
+• Initial AI solution development and testing
+• Iterative refinement based on early results
+• Stakeholder feedback integration and adjustments
+• Quality assurance and validation testing
+• Performance measurement and optimization
+
+Phase 3: Validation & Documentation (Week ${timeline === '4' ? '4' : timeline === '6' ? '5-6' : '6-7'})
+• Comprehensive solution testing and validation
+• Results analysis and impact measurement
+• Portfolio documentation and case study development
+• Stakeholder presentation and feedback collection
+• Implementation recommendations and next steps
+
+${timeline === '8' ? `Phase 4: Scaling & Knowledge Transfer (Week 8)
+• Scaling strategy development and piloting
+• Training material creation and delivery
+• Best practices documentation and sharing
+• Organizational change management support
+• Long-term monitoring and improvement planning` : ''}
+
+=== DELIVERABLES FRAMEWORK ===
+
+Technical Deliverables:
+• Functional AI solution addressing the business challenge
+• Performance benchmarks and improvement measurements
+• Implementation documentation and user guidelines
+• Quality assurance testing results and validation reports
+
+Business Deliverables:
+• Executive summary with ROI analysis and business impact
+• Stakeholder presentation and demonstration materials
+• Process improvement recommendations and scaling plans
+• Cost-benefit analysis and sustainability assessment
+
+Portfolio Deliverables:
+• Comprehensive case study with visual documentation
+• Professional project summary for portfolio inclusion
+• Lessons learned document and best practices guide
+• Thought leadership content for professional sharing
+
+=== RISK MANAGEMENT STRATEGY ===
+
+Technical Risks:
+• Tool compatibility and performance issues
+• Data access or quality limitations
+• Integration challenges with existing systems
+• Mitigation: Advance testing, backup tools, simplified scope options
+
+Organizational Risks:
+• Stakeholder availability and engagement challenges
+• Timeline pressures and resource constraints
+• Change management and adoption resistance
+• Mitigation: Early engagement, flexible scope, stakeholder champions
+
+Project Risks:
+• Scope creep and timeline extension
+• Quality standards and expectation management
+• Documentation and portfolio development delays
+• Mitigation: Clear scope definition, regular reviews, parallel documentation
+
+=== SUCCESS MEASUREMENT FRAMEWORK ===
+
+Quantitative Metrics:
+• ${metrics || 'Primary KPIs to be defined during baseline assessment'}
+• Implementation timeline adherence and milestone completion
+• Stakeholder satisfaction scores and adoption rates
+• Technical performance benchmarks and reliability measures
+
+Qualitative Metrics:
+• Stakeholder feedback and testimonial collection
+• Professional skill development and competency demonstration
+• Innovation and creativity in problem-solving approach
+• Knowledge transfer effectiveness and organizational impact
+
+Portfolio Impact Metrics:
+• Case study strength and narrative quality
+• Professional visibility and recognition gained
+• Career advancement opportunities created
+• Industry thought leadership potential developed
+
+=== IMPLEMENTATION CHECKLIST ===
+
+Week 1 Priorities:
+☐ Secure stakeholder commitment and calendar availability
+☐ Establish baseline measurements and current state documentation
+☐ Confirm access to necessary tools, data, and systems
+☐ Complete risk assessment and develop mitigation strategies
+☐ Create detailed project timeline with weekly milestones
+
+Ongoing Weekly Tasks:
+☐ Progress review and milestone assessment
+☐ Stakeholder communication and feedback collection
+☐ Portfolio documentation and visual material creation
+☐ Risk monitoring and mitigation strategy adjustment
+☐ Quality assurance testing and performance validation
+
+Final Phase Priorities:
+☐ Comprehensive results analysis and impact measurement
+☐ Professional case study development and visual documentation
+☐ Stakeholder presentation and feedback integration
+☐ Implementation recommendations and scaling strategy
+☐ Portfolio integration and professional sharing preparation
+
+=== CONTINGENCY PLANNING ===
+
+Scope Reduction Options:
+• Focus on single department/team rather than organization-wide
+• Implement pilot version with core functionality only
+• Prioritize highest-impact use cases and defer secondary features
+• Simplify technical implementation while maintaining business value
+
+Alternative Approaches:
+• Shift from automation to decision-support if technical challenges arise
+• Focus on process optimization rather than new capability development
+• Emphasize training and change management if adoption challenges occur
+• Pivot to analysis and recommendation format if implementation is blocked
+
+Timeline Flexibility:
+• Identify minimum viable project scope for shorter timeline
+• Define extension opportunities for additional development time
+• Plan parallel workstreams to optimize overall project efficiency
+• Prepare accelerated documentation approach if time becomes constrained
+
+This comprehensive plan provides structure while maintaining flexibility for adaptation based on project evolution and stakeholder feedback.`;
+
+            document.getElementById('projectPlanContent').textContent = projectPlan;
+            document.getElementById('generatedPlan').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPlan').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

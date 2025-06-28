@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity: AI-Enhanced Data Analysis & Insights - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .ai-tools-landscape {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .tool-spotlight {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #10b981;
+            transition: all 0.3s ease;
+        }
+        .tool-spotlight:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .capability-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .capability-card {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .capability-card:hover {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        .analysis-workflow {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .workflow-stage {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--neutral-white);
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        .stage-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .industry-applications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .application-example {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .application-example:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+        .data-playground {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .analysis-type {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .analysis-type:hover, .analysis-type.selected {
+            border-color: #8b5cf6;
+            background: #faf5ff;
+        }
+        .tool-comparison-matrix {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #f59e0b;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .grid-header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .grid-cell {
+            background: var(--neutral-light);
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .implementation-roadmap {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .roadmap-phase {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .interactive-dashboard {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #059669;
+        }
+        .metric-card {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            border-color: #059669;
+            background: #f0fdf4;
+        }
+        .insight-generator {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Data Analysis AI</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/cross-industry-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/professional-toolkit-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI-Enhanced Data Analysis & Insights</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Transform raw data into actionable business intelligence using cutting-edge AI tools. Learn to automate data preparation, generate predictive insights, create compelling visualizations, and build intelligent dashboards that drive decision-making across your organization.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Data Analysis AI Mastery Goals</h3>
+                <p style="margin-bottom: 1rem;">Build comprehensive AI-powered data analysis capabilities:</p>
+                <ul class="modern-list">
+                    <li>Master leading AI data analysis platforms and their specialized capabilities</li>
+                    <li>Implement automated data preparation, cleaning, and integration workflows</li>
+                    <li>Generate predictive analytics and trend identification using AI algorithms</li>
+                    <li>Create intelligent visualizations and interactive dashboards for stakeholder insights</li>
+                    <li>Build natural language querying systems for non-technical data access</li>
+                    <li>Design collaborative analytics environments for team-based decision making</li>
+                </ul>
+            </div>
+
+            <!-- 2025 AI Data Analysis Landscape -->
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i>2025 AI Data Analysis Tool Ecosystem</h2>
+
+            <div class="ai-tools-landscape">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-database"></i> Next-Generation Data Analysis AI Platforms
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The AI data analysis landscape has revolutionized in 2025, with platforms offering unprecedented automation, intelligence, and accessibility for professional data analysis.
+                </p>
+                
+                <!-- Domo -->
+                <div class="tool-spotlight">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Domo - Enterprise Data Platform</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">End-to-end data platform with AI-powered insights and business intelligence</p>
+                        </div>
+                    </div>
+                    <div class="capability-matrix">
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">AI-Enhanced Exploration</strong><br>
+                            <span style="font-size: 0.9rem;">Automated data discovery and insight generation with intelligent recommendations</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Custom Data Apps</strong><br>
+                            <span style="font-size: 0.9rem;">Build customizable applications that deliver insights where teams work</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">ML Model Integration</strong><br>
+                            <span style="font-size: 0.9rem;">Deploy AI models with governance, monitoring, and usage analytics</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Real-time Processing</strong><br>
+                            <span style="font-size: 0.9rem;">Live data streaming and instant insight delivery for dynamic decision-making</span>
+                        </div>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <strong>Best For:</strong> Enterprise-scale analytics, multi-source data integration, executive dashboards, and AI-driven business intelligence
+                    </div>
+                </div>
+
+                <!-- Excel AI Tools -->
+                <div class="tool-spotlight">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Excel AI Tools & Extensions</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">AI-powered Excel enhancement tools for automated analysis and visualization</p>
+                        </div>
+                    </div>
+                    <div class="capability-matrix">
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">AI Excel Bot</strong><br>
+                            <span style="font-size: 0.9rem;">Text-to-formula conversion and automated Excel task completion</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Power Query AI</strong><br>
+                            <span style="font-size: 0.9rem;">Intelligent data transformation and automated cleaning workflows</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Ajelix Automation</strong><br>
+                            <span style="font-size: 0.9rem;">Complex formula generation and VBA script automation for advanced analysis</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Smart Insights</strong><br>
+                            <span style="font-size: 0.9rem;">Automated trend detection and pattern recognition in spreadsheet data</span>
+                        </div>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <strong>Best For:</strong> Excel power users, financial modeling, data analysis workflows, and teams migrating to AI-enhanced spreadsheet analysis
+                    </div>
+                </div>
+
+                <!-- Powerdrill AI -->
+                <div class="tool-spotlight">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Powerdrill AI</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Advanced visualization and collaborative data analysis platform</p>
+                        </div>
+                    </div>
+                    <div class="capability-matrix">
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Smart Visualizations</strong><br>
+                            <span style="font-size: 0.9rem;">AI-generated charts and graphs with automatic insight annotations</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Team Collaboration</strong><br>
+                            <span style="font-size: 0.9rem;">Real-time collaborative analysis with shared datasets and insights</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Presentation Generation</strong><br>
+                            <span style="font-size: 0.9rem;">Automated presentation creation from CSV data with narrative structure</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Complex Data Simplification</strong><br>
+                            <span style="font-size: 0.9rem;">Transform complicated datasets into clear, understandable visual stories</span>
+                        </div>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <strong>Best For:</strong> Data visualization, team collaboration, presentation creation, and making complex data accessible to non-technical stakeholders
+                    </div>
+                </div>
+
+                <!-- Akkio -->
+                <div class="tool-spotlight">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #10b981; margin-bottom: 0.5rem;">Akkio</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">AI platform specialized for marketing and advertising analytics</p>
+                        </div>
+                    </div>
+                    <div class="capability-matrix">
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Marketing Analytics</strong><br>
+                            <span style="font-size: 0.9rem;">Specialized tools for campaign performance and customer behavior analysis</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">No-Code Interface</strong><br>
+                            <span style="font-size: 0.9rem;">User-friendly design requiring no technical expertise or complex setup</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Client Optimization</strong><br>
+                            <span style="font-size: 0.9rem;">Automated optimization for advertising and marketing agency client data</span>
+                        </div>
+                        <div class="capability-card">
+                            <strong style="color: #10b981;">Quick Insights</strong><br>
+                            <span style="font-size: 0.9rem;">Rapid analysis and insight generation for time-sensitive marketing decisions</span>
+                        </div>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <strong>Best For:</strong> Marketing agencies, advertising optimization, customer analytics, and rapid marketing data insights without technical complexity
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Powered Analysis Workflow -->
+            <h2 class="section-title"><i class="fas fa-flow-chart"></i>AI-Powered Data Analysis Workflow</h2>
+
+            <div class="analysis-workflow">
+                <h4 style="color: #1e40af; margin-bottom: 1.5rem;">
+                    <i class="fas fa-robot"></i> Intelligent Data Analysis Pipeline
+                </h4>
+                
+                <div class="workflow-stage">
+                    <div class="stage-icon">1</div>
+                    <div style="flex: 1;">
+                        <strong>Intelligent Data Ingestion</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Automated data collection from multiple sources with smart formatting, validation, and quality assessment
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-stage">
+                    <div class="stage-icon">2</div>
+                    <div style="flex: 1;">
+                        <strong>AI-Powered Data Preparation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Automated cleaning, transformation, integration, and feature engineering with anomaly detection
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-stage">
+                    <div class="stage-icon">3</div>
+                    <div style="flex: 1;">
+                        <strong>Predictive Analytics & Pattern Recognition</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Machine learning algorithms identify trends, correlations, and predictive insights automatically
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-stage">
+                    <div class="stage-icon">4</div>
+                    <div style="flex: 1;">
+                        <strong>Intelligent Visualization & Storytelling</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            AI-generated charts, dashboards, and narrative explanations that highlight key findings and recommendations
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="workflow-stage">
+                    <div class="stage-icon">5</div>
+                    <div style="flex: 1;">
+                        <strong>Collaborative Insights & Action</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">
+                            Shared analytics environments with natural language querying and automated reporting for stakeholder engagement
+                        </span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-lightbulb"></i> Workflow Benefits:</strong> 85% reduction in data preparation time, 70% faster insight generation, and 95% improvement in analysis accuracy through AI automation.
+                </div>
+            </div>
+
+            <!-- Tool Comparison Matrix -->
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i>AI Data Analysis Tool Comparison Matrix</h2>
+
+            <div class="tool-comparison-matrix">
+                <h4 style="color: #d97706; margin-bottom: 1.5rem;">
+                    <i class="fas fa-table"></i> Strategic Tool Selection Framework
+                </h4>
+                
+                <div class="comparison-grid">
+                    <div class="grid-header">Tool & Focus</div>
+                    <div class="grid-header">Complexity</div>
+                    <div class="grid-header">Cost</div>
+                    <div class="grid-header">Scale</div>
+                    <div class="grid-header">Best Use Cases</div>
+                    
+                    <div class="grid-cell">
+                        <strong>Domo</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Enterprise Analytics</span>
+                    </div>
+                    <div class="grid-cell">High</div>
+                    <div class="grid-cell">Premium</div>
+                    <div class="grid-cell">Enterprise</div>
+                    <div class="grid-cell">Executive dashboards, multi-source integration, large-scale BI</div>
+                    
+                    <div class="grid-cell">
+                        <strong>Excel AI Tools</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Spreadsheet Enhancement</span>
+                    </div>
+                    <div class="grid-cell">Low</div>
+                    <div class="grid-cell">Budget</div>
+                    <div class="grid-cell">Department</div>
+                    <div class="grid-cell">Financial modeling, existing Excel workflows, rapid adoption</div>
+                    
+                    <div class="grid-cell">
+                        <strong>Powerdrill AI</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Visualization Focus</span>
+                    </div>
+                    <div class="grid-cell">Medium</div>
+                    <div class="grid-cell">Moderate</div>
+                    <div class="grid-cell">Team</div>
+                    <div class="grid-cell">Data visualization, presentations, collaborative analysis</div>
+                    
+                    <div class="grid-cell">
+                        <strong>Akkio</strong><br>
+                        <span style="font-size: 0.8rem; color: #6b7280;">Marketing Specialist</span>
+                    </div>
+                    <div class="grid-cell">Low</div>
+                    <div class="grid-cell">Moderate</div>
+                    <div class="grid-cell">SMB</div>
+                    <div class="grid-cell">Marketing analytics, agency work, quick insights</div>
+                </div>
+                
+                <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-compass"></i> Selection Guide:</strong> Choose based on your organization's size, technical capabilities, budget constraints, and primary use cases. Many organizations benefit from a hybrid approach using multiple tools for different purposes.
+                </div>
+            </div>
+
+            <!-- Industry Application Examples -->
+            <h2 class="section-title"><i class="fas fa-industry"></i>Cross-Industry Data Analysis Applications</h2>
+
+            <div class="industry-applications">
+                <!-- Healthcare Analytics -->
+                <div class="application-example">
+                    <h4 style="color: #059669; margin-bottom: 1rem;">
+                        <i class="fas fa-heartbeat"></i> Healthcare Analytics
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Analytics Areas:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Patient outcome prediction and intervention timing</li>
+                            <li>Resource allocation and capacity planning optimization</li>
+                            <li>Clinical trial data analysis and protocol effectiveness</li>
+                            <li>Operational efficiency and cost management analytics</li>
+                        </ul>
+                    </div>
+                    <div style="background: #ecfdf5; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact Examples:</strong> 25% improvement in patient flow prediction, 40% reduction in readmission rates through predictive analytics, and $2M annual savings through optimized resource allocation.
+                    </div>
+                </div>
+
+                <!-- Financial Analytics -->
+                <div class="application-example">
+                    <h4 style="color: #7c3aed; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Financial Services Analytics
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Critical Analysis Functions:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Risk assessment and portfolio optimization modeling</li>
+                            <li>Fraud detection and anomaly identification systems</li>
+                            <li>Market trend analysis and investment opportunity scoring</li>
+                            <li>Customer behavior analytics and retention prediction</li>
+                        </ul>
+                    </div>
+                    <div style="background: #faf5ff; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact Examples:</strong> 90% fraud detection accuracy, 35% improvement in investment returns through predictive modeling, and 50% faster risk assessment processing.
+                    </div>
+                </div>
+
+                <!-- Manufacturing Analytics -->
+                <div class="application-example">
+                    <h4 style="color: #2563eb; margin-bottom: 1rem;">
+                        <i class="fas fa-cogs"></i> Manufacturing & Operations
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Operational Analytics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Predictive maintenance and equipment failure prevention</li>
+                            <li>Supply chain optimization and demand forecasting</li>
+                            <li>Quality control analytics and defect prediction</li>
+                            <li>Production efficiency and throughput optimization</li>
+                        </ul>
+                    </div>
+                    <div style="background: #eff6ff; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact Examples:</strong> 30% reduction in unplanned downtime, 20% improvement in supply chain efficiency, and 95% accuracy in quality prediction models.
+                    </div>
+                </div>
+
+                <!-- Marketing Analytics -->
+                <div class="application-example">
+                    <h4 style="color: #dc2626; margin-bottom: 1rem;">
+                        <i class="fas fa-bullhorn"></i> Marketing & Customer Analytics
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Marketing Intelligence:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Customer segmentation and personalization engines</li>
+                            <li>Campaign performance optimization and attribution analysis</li>
+                            <li>Market opportunity identification and competitive intelligence</li>
+                            <li>Customer lifetime value prediction and churn prevention</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef2f2; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact Examples:</strong> 45% improvement in campaign ROI, 60% increase in customer retention through predictive analytics, and 3x faster market opportunity identification.
+                    </div>
+                </div>
+
+                <!-- Education Analytics -->
+                <div class="application-example">
+                    <h4 style="color: #d97706; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i> Education & Learning Analytics
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Educational Intelligence:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Student performance prediction and intervention recommendations</li>
+                            <li>Curriculum effectiveness analysis and optimization suggestions</li>
+                            <li>Learning pathway personalization and adaptive content delivery</li>
+                            <li>Resource allocation and institutional performance analytics</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef3c7; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact Examples:</strong> 25% improvement in student success rates, 40% more effective resource allocation, and personalized learning paths for 95% of students.
+                    </div>
+                </div>
+
+                <!-- Human Resources Analytics -->
+                <div class="application-example">
+                    <h4 style="color: #64748b; margin-bottom: 1rem;">
+                        <i class="fas fa-users"></i> Human Resources Analytics
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Workforce Intelligence:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Employee performance analytics and development recommendations</li>
+                            <li>Talent acquisition optimization and candidate screening</li>
+                            <li>Retention prediction and engagement analytics</li>
+                            <li>Compensation analysis and market benchmarking</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 6px;">
+                        <strong>AI Impact Examples:</strong> 50% improvement in hiring quality, 35% reduction in employee turnover, and data-driven compensation strategies saving 15% annually.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Data Analysis Playground -->
+            <h2 class="section-title"><i class="fas fa-play-circle"></i>Interactive Data Analysis Playground</h2>
+
+            <div class="data-playground">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-area"></i> Simulate AI-Powered Data Analysis
+                </h4>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Select Dataset Type:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+                        <div class="analysis-type" onclick="selectDataset('sales')">
+                            <i class="fas fa-shopping-cart" style="color: #059669; margin-right: 0.5rem;"></i>
+                            <strong>Sales Performance</strong>
+                        </div>
+                        <div class="analysis-type" onclick="selectDataset('customer')">
+                            <i class="fas fa-users" style="color: #3b82f6; margin-right: 0.5rem;"></i>
+                            <strong>Customer Behavior</strong>
+                        </div>
+                        <div class="analysis-type" onclick="selectDataset('financial')">
+                            <i class="fas fa-dollar-sign" style="color: #7c3aed; margin-right: 0.5rem;"></i>
+                            <strong>Financial Data</strong>
+                        </div>
+                        <div class="analysis-type" onclick="selectDataset('operations')">
+                            <i class="fas fa-cogs" style="color: #dc2626; margin-right: 0.5rem;"></i>
+                            <strong>Operations Metrics</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Analysis Objective:</label>
+                    <select id="analysisGoal" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select analysis goal...</option>
+                        <option value="trends">Identify Trends & Patterns</option>
+                        <option value="prediction">Predictive Forecasting</option>
+                        <option value="optimization">Performance Optimization</option>
+                        <option value="segmentation">Data Segmentation</option>
+                        <option value="anomaly">Anomaly Detection</option>
+                    </select>
+                </div>
+                
+                <button onclick="runAnalysis()" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%;">
+                    <i class="fas fa-play"></i> Run AI Analysis
+                </button>
+                
+                <div id="analysisResults" class="insight-generator">
+                    <strong style="color: #065f46;">AI Analysis Complete!</strong><br><br>
+                    <div id="analysisOutput" style="background: #f8fafc; padding: 1rem; border-radius: 6px;"></div>
+                </div>
+            </div>
+
+            <!-- Implementation Roadmap -->
+            <div class="implementation-roadmap">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-map-marked-alt"></i> AI Data Analysis Implementation Roadmap
+                </h4>
+                
+                <div class="roadmap-phase">
+                    <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Phase 1: Foundation & Assessment (Weeks 1-2)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Audit existing data sources, quality, and accessibility</li>
+                        <li>Identify key business questions and analytical priorities</li>
+                        <li>Evaluate AI tool options based on technical requirements and budget</li>
+                        <li>Establish data governance and security protocols</li>
+                    </ul>
+                </div>
+                
+                <div class="roadmap-phase">
+                    <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Phase 2: Pilot Implementation (Weeks 3-6)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Deploy selected AI tools with pilot dataset and use cases</li>
+                        <li>Train core team members on tool functionality and best practices</li>
+                        <li>Develop initial dashboards and analytical workflows</li>
+                        <li>Measure pilot results against baseline manual processes</li>
+                    </ul>
+                </div>
+                
+                <div class="roadmap-phase">
+                    <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Phase 3: Scale & Integration (Weeks 7-12)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Expand analysis to additional data sources and business areas</li>
+                        <li>Integrate AI analytics with existing business systems and workflows</li>
+                        <li>Develop automated reporting and alert systems</li>
+                        <li>Train broader organization on self-service analytics capabilities</li>
+                    </ul>
+                </div>
+                
+                <div class="roadmap-phase">
+                    <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Phase 4: Advanced Analytics & Innovation (Ongoing)</h5>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Implement predictive modeling and machine learning capabilities</li>
+                        <li>Develop custom AI models for specialized business applications</li>
+                        <li>Establish center of excellence for advanced analytics</li>
+                        <li>Continuously evaluate emerging tools and techniques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Dashboard Builder -->
+            <div class="interactive-dashboard">
+                <h4 style="color: #059669; margin-bottom: 1.5rem;">
+                    <i class="fas fa-tachometer-alt"></i> AI Dashboard Performance Metrics
+                </h4>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #059669;">85%</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Time Savings vs Manual Analysis</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #3b82f6;">96%</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Analysis Accuracy Rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6;">5x</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Faster Insight Generation</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: 2rem; font-weight: 700; color: #dc2626;">$2.4M</div>
+                        <div style="font-size: 0.9rem; color: #6b7280;">Average Annual ROI</div>
+                    </div>
+                </div>
+                
+                <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong><i class="fas fa-chart-line"></i> Performance Impact:</strong> Organizations implementing AI data analysis report significant improvements in decision-making speed, accuracy, and overall business outcomes.
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-radius: 12px;">
+                <h3 style="color: #065f46; margin-bottom: 1rem;">Ready to Explore Research & Information Systems?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Complete your AI toolkit mastery by learning how AI transforms research and information gathering across industries.</p>
+                <a href="activity-3-research-systems.html" class="nav-btn">
+                    <i class="fas fa-search"></i>
+                    Master Research Systems
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-document-processing.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Document Processing
+                </a>
+                <a href="activity-3-research-systems.html" class="nav-btn">
+                    Next: Research Systems
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedDataset = '';
+        
+        function selectDataset(type) {
+            selectedDataset = type;
+            
+            // Remove selected class from all cards
+            document.querySelectorAll('.analysis-type').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked card
+            event.currentTarget.classList.add('selected');
+        }
+        
+        function runAnalysis() {
+            const goal = document.getElementById('analysisGoal').value;
+            
+            if (!selectedDataset || !goal) {
+                alert('Please select both dataset type and analysis goal.');
+                return;
+            }
+            
+            const analysisResults = {
+                'sales-trends': {
+                    title: 'Sales Performance Trend Analysis',
+                    insights: `<strong>Key Trends Identified:</strong>
+                    • 23% quarterly growth acceleration in Q3-Q4
+                    • Product Category A shows 45% higher performance vs baseline
+                    • Regional expansion in Southeast markets driving 18% of total growth
+                    • Seasonal patterns indicate 35% peak performance in December
+                    
+                    <strong>Predictive Indicators:</strong>
+                    • Lead conversion rates up 12% month-over-month
+                    • Customer acquisition cost decreased by 8%
+                    • Average deal size increased 15% year-over-year
+                    
+                    <strong>Recommendations:</strong>
+                    • Invest additional resources in Category A products
+                    • Accelerate Southeast market expansion strategy
+                    • Prepare inventory for Q4 seasonal surge`
+                },
+                'customer-segmentation': {
+                    title: 'Customer Behavior Segmentation Analysis',
+                    insights: `<strong>Customer Segments Identified:</strong>
+                    • High-Value Loyalists (15%): $50K+ annual value, 95% retention
+                    • Growth Prospects (35%): 6-month tenure, 65% expansion potential  
+                    • Price-Sensitive Buyers (40%): Promotion-driven, 45% churn risk
+                    • Premium Service Seekers (10%): Quality-focused, premium pricing tolerance
+                    
+                    <strong>Behavioral Patterns:</strong>
+                    • Mobile engagement 3x higher in Growth Prospects segment
+                    • Email response rates 40% higher in Premium Service segment
+                    • Seasonal purchasing concentrated in Q1 and Q4
+                    
+                    <strong>Engagement Strategies:</strong>
+                    • Personalized loyalty programs for High-Value segment
+                    • Mobile-first communication for Growth Prospects
+                    • Targeted promotions for Price-Sensitive segment`
+                },
+                'financial-prediction': {
+                    title: 'Financial Performance Forecasting',
+                    insights: `<strong>Revenue Projections (Next 12 Months):</strong>
+                    • Q1 2025: $2.8M (12% growth)
+                    • Q2 2025: $3.1M (18% growth)  
+                    • Q3 2025: $3.4M (22% growth)
+                    • Q4 2025: $4.2M (28% growth)
+                    
+                    <strong>Key Performance Drivers:</strong>
+                    • New product launches contributing 35% of growth
+                    • Market expansion adding $1.2M annual recurring revenue
+                    • Operational efficiency improvements saving $450K annually
+                    
+                    <strong>Risk Factors:</strong>
+                    • 15% probability of market downturn impact
+                    • Currency fluctuation exposure: $200K potential variance
+                    • Competitive pressure in core markets
+                    
+                    <strong>Investment Recommendations:</strong>
+                    • Increase R&D budget by 25% to maintain competitive advantage
+                    • Hedge currency exposure for international operations`
+                },
+                'operations-optimization': {
+                    title: 'Operations Performance Optimization',
+                    insights: `<strong>Efficiency Opportunities Identified:</strong>
+                    • Process bottleneck in quality control (25% time reduction possible)
+                    • Equipment utilization averaging 68% (target: 85%)
+                    • Inventory turnover can improve by 30% with demand forecasting
+                    • Staff productivity 15% below industry benchmark
+                    
+                    <strong>Cost Reduction Potential:</strong>
+                    • Automated quality control: $180K annual savings
+                    • Predictive maintenance: $220K cost avoidance
+                    • Optimized scheduling: $95K efficiency gains
+                    
+                    <strong>Implementation Priority:</strong>
+                    • High Impact, Low Effort: Automated quality control
+                    • High Impact, High Effort: Predictive maintenance system
+                    • Quick Wins: Improved scheduling algorithms
+                    
+                    <strong>ROI Timeline:</strong>
+                    • 6-month payback period for automation investments
+                    • 18-month payback for predictive maintenance system`
+                },
+                'operations-anomaly': {
+                    title: 'Operations Anomaly Detection Results',
+                    insights: `<strong>Anomalies Detected:</strong>
+                    • Equipment #7: Performance deviation -12% from baseline
+                    • Production Line B: Quality variance exceeding control limits
+                    • Inventory Level Alert: SKU #445 showing unusual consumption pattern
+                    • Energy Usage Spike: Building 2 consuming 18% above normal
+                    
+                    <strong>Root Cause Analysis:</strong>
+                    • Equipment #7: Maintenance overdue by 3 weeks
+                    • Line B: New operator training impact on quality metrics
+                    • SKU #445: Seasonal demand surge not accounted in forecast
+                    • Building 2: HVAC system inefficiency due to filter replacement needed
+                    
+                    <strong>Immediate Actions Required:</strong>
+                    • Schedule emergency maintenance for Equipment #7
+                    • Provide additional quality training for Line B operators
+                    • Adjust inventory forecast model for seasonal SKU patterns
+                    • Replace Building 2 HVAC filters and schedule efficiency audit`
+                }
+            };
+            
+            const key = `${selectedDataset}-${goal}`;
+            const result = analysisResults[key] || {
+                title: 'AI Analysis Complete',
+                insights: `Analysis of ${selectedDataset} data for ${goal} has been completed. Key patterns identified include significant opportunities for optimization and strategic decision-making. Detailed recommendations have been generated based on statistical analysis and predictive modeling.`
+            };
+            
+            document.getElementById('analysisOutput').innerHTML = `
+                <h5 style="color: #059669; margin-bottom: 1rem;">${result.title}</h5>
+                <div style="line-height: 1.6; white-space: pre-line;">${result.insights}</div>
+                <div style="margin-top: 1rem; padding: 1rem; background: #e0f2fe; border-radius: 6px; font-size: 0.9rem;">
+                    <strong>Analysis Details:</strong> Processed 15,000+ data points • Applied 8 ML algorithms • 94.7% confidence level • Generated 12 actionable recommendations
+                </div>
+            `;
+            
+            document.getElementById('analysisResults').style.display = 'block';
+            document.getElementById('analysisResults').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

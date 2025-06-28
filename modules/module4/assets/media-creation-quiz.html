@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Media Creation Knowledge Check Quiz - Module 4</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .question-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #9333ea;
+        }
+        .question-number {
+            background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            color: var(--neutral-white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .question-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .option:hover {
+            background: #f3e8ff;
+            border-color: #c084fc;
+        }
+        .option input[type="radio"] {
+            margin-right: 0.75rem;
+            width: 18px;
+            height: 18px;
+        }
+        .option.selected {
+            background: #f3e8ff;
+            border-color: #9333ea;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--accent-green);
+        }
+        .results.show {
+            display: block;
+        }
+        .score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #065f46;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .feedback {
+            color: #374151;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 4</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Quiz</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-media-tools-overview.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/tools-comparison-matrix.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI Media Creation Knowledge Check Quiz</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Test your understanding of AI media creation tools, their capabilities, and professional applications. This quiz covers key concepts from Module 4's learning activities.
+            </p>
+
+            <div class="quiz-container">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">1</span>
+                        Which AI tool category is most appropriate for creating professional presentation slides with minimal design experience?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            Image generation tools like DALL-E 3
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            Presentation AI tools like Gamma or Beautiful.AI
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            Video creation tools like RunwayML
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            Design platforms like Figma AI
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">2</span>
+                        What is a key advantage of AI-generated content over traditional content creation methods?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            AI content is always completely original and copyright-free
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            Speed of creation and iteration for professional workflows
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            AI content never requires human review or editing
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            AI tools are free and require no investment
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">3</span>
+                        When evaluating AI media tools for professional use, which factor should be considered MOST important?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            The tool with the most advanced AI technology
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            The lowest-cost option available
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            Alignment with specific professional needs and use cases
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            The tool that's most popular on social media
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">4</span>
+                        What is an important ethical consideration when using AI-generated images in professional contexts?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            AI images can always be used without attribution
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            Disclosing AI use when required and ensuring appropriate licensing
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            AI images are exempt from copyright considerations
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            Only artistic images require ethical consideration
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">5</span>
+                        Which approach is most effective for getting high-quality results from AI media generation tools?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            Using very short, simple prompts
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            Detailed, specific prompts with professional context and style preferences
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            Copying prompts from other users without modification
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            Using only technical jargon in prompts
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">6</span>
+                        What is a potential limitation of current AI video generation tools that professionals should be aware of?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            They can create unlimited length videos without any constraints
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            They may struggle with complex movements and realistic physics
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            They only work with animated content, not real footage
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            They require expensive hardware to operate
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">7</span>
+                        For a law firm wanting to create marketing materials, which combination of AI tools would be most appropriate?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            Video game development tools and 3D modeling software
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            Image generation for graphics, presentation tools for slides, and design platforms for brochures
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            Only free tools to minimize costs
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            The most complex and feature-rich tools available
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="question-card">
+                    <div class="question-title">
+                        <span class="question-number">8</span>
+                        What is the main benefit of using a comparison matrix when evaluating AI media tools?
+                    </div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            It guarantees you'll choose the most expensive tool
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            It provides a systematic way to evaluate tools against specific criteria
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            It eliminates the need to actually test the tools
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            It focuses only on pricing considerations
+                        </label>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="submitQuiz()">
+                    <i class="fas fa-check"></i>
+                    Submit Quiz
+                </button>
+
+                <div class="results" id="results">
+                    <div class="score" id="score"></div>
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/tools-comparison-matrix.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Practice Activity
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Discussion Forum
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Add click handlers for options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                const name = input.name;
+                
+                // Remove selected class from all options in this question
+                document.querySelectorAll(`input[name="${name}"]`).forEach(radio => {
+                    radio.closest('.option').classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('selected');
+                input.checked = true;
+            });
+        });
+
+        function submitQuiz() {
+            const answers = {
+                q1: 'b', // Presentation AI tools
+                q2: 'b', // Speed of creation
+                q3: 'c', // Alignment with professional needs
+                q4: 'b', // Disclosing AI use and appropriate licensing
+                q5: 'b', // Detailed, specific prompts
+                q6: 'b', // Struggle with complex movements
+                q7: 'b', // Combination of appropriate tools
+                q8: 'b'  // Systematic evaluation method
+            };
+
+            let score = 0;
+            let total = Object.keys(answers).length;
+            let feedback = [];
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / total) * 100);
+            let message = '';
+            let encouragement = '';
+
+            if (percentage >= 90) {
+                message = 'Outstanding!';
+                encouragement = 'You have excellent understanding of AI media creation tools and their professional applications. You\'re ready to implement these tools effectively in your work.';
+            } else if (percentage >= 80) {
+                message = 'Great work!';
+                encouragement = 'You have a strong grasp of AI media creation concepts. Review the learning activities to refine your understanding of tool selection criteria.';
+            } else if (percentage >= 70) {
+                message = 'Good progress!';
+                encouragement = 'You understand many key concepts. Focus on the tool evaluation process and professional use cases to strengthen your knowledge.';
+            } else if (percentage >= 60) {
+                message = 'Fair understanding';
+                encouragement = 'You\'ve grasped some important concepts. We recommend reviewing the learning activities and practicing with the comparison matrix.';
+            } else {
+                message = 'More study needed';
+                encouragement = 'Take time to review Module 4\'s learning activities. Focus on understanding different tool categories, evaluation criteria, and professional applications.';
+            }
+
+            document.getElementById('score').innerHTML = `${message}<br><span style="font-size: 1.2rem;">${score}/${total} correct (${percentage}%)</span>`;
+            document.getElementById('feedback').innerHTML = encouragement;
+            document.getElementById('results').classList.add('show');
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

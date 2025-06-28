@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2 Practice: Prompting Activity</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .task-container {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            border: 2px solid var(--neutral-light);
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .task-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+        }
+        
+        .task-content {
+            padding: 1.5rem;
+        }
+        
+        .prompt-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-blue);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .reflection-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent-orange);
+        }
+        
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .assessment-item {
+            background: var(--neutral-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-blue);
+        }
+        
+        .part-divider {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary-blue);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 2</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Practice Activity</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-prompting-basics.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/basic-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Module 2 Practice: Zero and One-Shot Prompting Activity</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Practice fundamental prompting techniques using real workplace scenarios. You'll experiment with different approaches and compare their effectiveness.
+            </p>
+
+            <!-- Activity Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-clipboard-list"></i>Activity Overview</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>Activity Type:</strong> Practical Prompting Exercise</div>
+                    <div><strong>Estimated Time:</strong> 30 minutes</div>
+                    <div><strong>Tools:</strong> Any AI assistant (ChatGPT, Claude, Copilot, etc.)</div>
+                </div>
+            </div>
+
+            <!-- Part A -->
+            <div class="part-divider">
+                <h2 style="color: var(--primary-blue); margin: 0; font-size: 1.5rem;">
+                    <i class="fas fa-play"></i> PART A: ZERO-SHOT PROMPTING (10 MINUTES)
+                </h2>
+            </div>
+
+            <div class="activities-card">
+                <h3><i class="fas fa-envelope"></i>Scenario: Professional Email Decline</h3>
+                <p>You need to write a professional email declining a meeting invitation.</p>
+            </div>
+
+            <!-- Task 1 -->
+            <div class="task-container">
+                <div class="task-header">
+                    <i class="fas fa-tasks"></i> Task 1: Basic Prompt
+                </div>
+                <div class="task-content">
+                    <p>Try this simple prompt and record the results:</p>
+                    <div class="prompt-box">
+                        "Write an email declining a meeting invitation."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-container">
+                <div class="task-header">
+                    <i class="fas fa-star"></i> Task 2: CLEAR Framework Prompt
+                </div>
+                <div class="task-content">
+                    <p>Now try the same task using the CLEAR framework:</p>
+                    <div class="prompt-box">
+                        Context: I'm a project manager who needs to decline a weekly status meeting because of a scheduling conflict.<br><br>
+                        Length: Keep it under 100 words.<br><br>
+                        Examples: Use a polite but direct tone, similar to standard business correspondence.<br><br>
+                        Audience: My direct supervisor who scheduled the meeting.<br><br>
+                        Role: Act as a diplomatic professional who values both the meeting and their time constraints.<br><br>
+                        Write an email declining this meeting invitation.
+                    </div>
+                    
+                    <div class="reflection-box">
+                        <h4 style="color: #92400e; margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> Reflection</h4>
+                        <p style="margin: 0; color: #374151;">Compare the two outputs. What differences do you notice in tone, specificity, and professionalism?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part B -->
+            <div class="part-divider">
+                <h2 style="color: var(--primary-blue); margin: 0; font-size: 1.5rem;">
+                    <i class="fas fa-magic"></i> PART B: ONE-SHOT PROMPTING (10 MINUTES)
+                </h2>
+            </div>
+
+            <div class="activities-card">
+                <h3><i class="fas fa-chart-line"></i>Scenario: Executive Report Summary</h3>
+                <p>You need to summarize a lengthy report for executives.</p>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-container">
+                <div class="task-header">
+                    <i class="fas fa-example"></i> Task 3: Prompt with Example
+                </div>
+                <div class="task-content">
+                    <p>Provide this prompt with an example:</p>
+                    <div class="prompt-box">
+                        I need to create executive summaries from detailed reports. Here's the format I want:<br><br>
+                        Example Summary:<br>
+                        **Key Finding:** Revenue increased 15% due to new customer acquisition<br>
+                        **Impact:** $2.3M additional quarterly revenue<br>
+                        **Recommendation:** Expand marketing budget by 20% to accelerate growth<br>
+                        **Timeline:** Implement within Q1 for Q2 results<br><br>
+                        Now create a similar summary for this report: [paste your own work report or use provided sample]
+                    </div>
+                    
+                    <div class="reflection-box">
+                        <h4 style="color: #92400e; margin-bottom: 0.5rem;"><i class="fas fa-search"></i> Analysis</h4>
+                        <p style="margin: 0; color: #374151;">How did providing an example change the quality and format of the output?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Part C -->
+            <div class="part-divider">
+                <h2 style="color: var(--primary-blue); margin: 0; font-size: 1.5rem;">
+                    <i class="fas fa-sync"></i> PART C: ITERATION PRACTICE (10 MINUTES)
+                </h2>
+            </div>
+
+            <div class="activities-card">
+                <h3><i class="fas fa-presentation"></i>Scenario: Presentation Outline Creation</h3>
+                <p>Creating a presentation outline through iterative refinement.</p>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="task-container">
+                <div class="task-header">
+                    <i class="fas fa-redo"></i> Task 4: Iterative Refinement
+                </div>
+                <div class="task-content">
+                    <p>Start with a basic prompt, then refine it through 2-3 iterations:</p>
+                    
+                    <h4 style="color: var(--neutral-dark); margin-top: 1.5rem;">Initial Prompt:</h4>
+                    <div class="prompt-box">
+                        "Create a presentation outline about artificial intelligence."
+                    </div>
+                    
+                    <h4 style="color: var(--neutral-dark); margin-top: 1.5rem;">Your Iterations:</h4>
+                    <ul class="modern-list">
+                        <li><strong>Iteration 1:</strong> Add specificity about audience and context</li>
+                        <li><strong>Iteration 2:</strong> Include timing and key message requirements</li>
+                        <li><strong>Iteration 3:</strong> Specify format and style preferences</li>
+                    </ul>
+                    
+                    <div class="reflection-box">
+                        <h4 style="color: #92400e; margin-bottom: 0.5rem;"><i class="fas fa-file-alt"></i> Documentation</h4>
+                        <p style="margin: 0; color: #374151;">Record each prompt and its output to see how iteration improves results.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission Requirements -->
+            <div class="tips-card">
+                <h3><i class="fas fa-upload"></i>Submission Requirements</h3>
+                <p style="margin-bottom: 1rem;">Submit a document containing:</p>
+                <ol class="modern-list">
+                    <li>All prompts you used</li>
+                    <li>The AI outputs for each prompt</li>
+                    <li>Your reflection on which approaches worked best</li>
+                    <li>At least 2 specific improvements you noticed when using the CLEAR framework</li>
+                </ol>
+            </div>
+
+            <!-- Assessment Criteria -->
+            <h2 class="section-title"><i class="fas fa-check-circle"></i>Assessment Criteria</h2>
+            
+            <div class="assessment-grid">
+                <div class="assessment-item">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Prompt Quality (40%)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; color: var(--neutral-medium);">Use of CLEAR framework principles</p>
+                </div>
+                <div class="assessment-item">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Analysis (30%)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; color: var(--neutral-medium);">Thoughtful comparison of different approaches</p>
+                </div>
+                <div class="assessment-item">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Professional Application (20%)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; color: var(--neutral-medium);">Relevance to workplace scenarios</p>
+                </div>
+                <div class="assessment-item">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">Reflection (10%)</h4>
+                    <p style="font-size: 0.9rem; margin: 0; color: var(--neutral-medium);">Insights about effective prompting</p>
+                </div>
+            </div>
+
+            <!-- Extension Challenge -->
+            <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--accent-green);">
+                <h3 style="color: #065f46; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-rocket"></i>
+                    Extension Challenge
+                </h3>
+                <p style="color: #374151; margin: 0;">
+                    Choose a task from your actual work and create 3 different prompts for it using different techniques covered in this module. Compare the results and identify which approach works best for your specific professional context.
+                </p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/one-shot-prompting.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: One-Shot Prompting
+                </a>
+                <a href="../assets/basic-prompting-quiz.html" class="nav-btn">
+                    Next: Knowledge Quiz
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 2: Role-Playing & Persona Prompts - Module 6</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .persona-showcase {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .persona-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #8b5cf6;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        .persona-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .persona-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .persona-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .persona-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #581c87;
+        }
+        .persona-subtitle {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .expertise-tag {
+            background: #f3e8ff;
+            color: #581c87;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .prompt-template {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+        .role-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .role-option {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .role-option:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        .role-option.selected {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+            color: #581c87;
+        }
+        .role-option i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #8b5cf6;
+        }
+        .interactive-persona {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .persona-builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .before-persona, .after-persona {
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .before-persona {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+        }
+        .after-persona {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+        }
+        .generated-persona {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 6</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Role-Playing Prompts</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompt-optimization-lab.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/advanced-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Role-Playing & Persona Prompts</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Unlock expert-level knowledge and specialized perspectives by teaching AI to adopt professional personas. Master the art of role-playing prompts that give you access to world-class expertise on demand.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-theater-masks"></i>Persona Mastery Objectives</h3>
+                <p style="margin-bottom: 1rem;">Transform AI into your personal expert consultant:</p>
+                <ul class="modern-list">
+                    <li>Design compelling professional personas that unlock specialized knowledge</li>
+                    <li>Apply role-playing techniques for different business contexts and challenges</li>
+                    <li>Combine personas with other advanced prompting techniques for maximum impact</li>
+                    <li>Create custom expert personas tailored to your specific industry needs</li>
+                    <li>Troubleshoot persona prompts to ensure consistent expert-level responses</li>
+                </ul>
+            </div>
+
+            <!-- The Power of Role-Playing -->
+            <h2 class="section-title"><i class="fas fa-magic"></i>Why Role-Playing Transforms AI Performance</h2>
+
+            <div class="persona-showcase">
+                <h4 style="color: #581c87; margin-bottom: 1.5rem;">
+                    <i class="fas fa-lightbulb"></i> The Psychology Behind Persona Prompts
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151; line-height: 1.6;">
+                    When you ask AI to "act as" a specific expert, you're not just changing the tone—you're activating specialized knowledge patterns in the model. Role-playing prompts guide AI to draw from domain-specific training data and respond with the depth, context, and perspective of a true expert.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Deeper Expertise</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Access specialized knowledge and industry-specific insights</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Contextual Responses</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Answers tailored to professional situations and constraints</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Multiple Perspectives</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">See challenges through different expert lenses</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Professional Language</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Communication in appropriate industry terminology</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before vs After Example -->
+            <h2 class="section-title"><i class="fas fa-before-after"></i>The Persona Transformation</h2>
+
+            <div class="comparison-grid">
+                <div class="before-persona">
+                    <h5 style="color: #dc2626; margin-bottom: 1rem;">❌ Generic Approach</h5>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Prompt:</strong><br>
+                        "How can we improve our marketing strategy?"
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Generic Result:</strong><br>
+                        "To improve marketing, consider: 1) Define your target audience 2) Use social media 3) Create valuable content 4) Track metrics..."
+                        <br><br>
+                        <em style="color: #dc2626;">Problem: Generic advice anyone could Google</em>
+                    </div>
+                </div>
+                
+                <div class="after-persona">
+                    <h5 style="color: #065f46; margin-bottom: 1rem;">✅ Expert Persona Approach</h5>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Prompt:</strong><br>
+                        "You are a CMO with 15 years of experience scaling B2B SaaS companies from $1M to $100M+ ARR. You've led marketing teams through 3 successful exits. Based on your experience, how would you improve our marketing strategy for a Series A SaaS company with $2M ARR?"
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Expert Persona Result:</strong><br>
+                        <em>Provides specific, experienced-based insights about SaaS growth stages, tactical advice for Series A metrics, channel recommendations, and team scaling strategies</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expert Persona Gallery -->
+            <h2 class="section-title"><i class="fas fa-users"></i>Professional Persona Gallery</h2>
+
+            <!-- Strategy Consultant Persona -->
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">SC</div>
+                    <div>
+                        <div class="persona-title">Senior Strategy Consultant</div>
+                        <div class="persona-subtitle">McKinsey, BCG, Bain experience</div>
+                    </div>
+                </div>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Strategic Planning</span>
+                    <span class="expertise-tag">Market Analysis</span>
+                    <span class="expertise-tag">Business Model Design</span>
+                    <span class="expertise-tag">Competitive Strategy</span>
+                </div>
+                <div class="prompt-template">You are a Senior Partner at a top-tier strategy consulting firm (McKinsey, BCG, or Bain) with 12+ years of experience. You've led strategy engagements for Fortune 500 clients across multiple industries. You excel at:
+- Breaking down complex business problems into structured analyses
+- Using frameworks like Porter's Five Forces, SWOT, and Value Chain Analysis
+- Synthesizing market data to identify strategic opportunities
+- Developing actionable recommendations for C-suite executives
+
+When responding, use the analytical rigor and structured thinking approach that consulting firms are known for. Present insights in a clear, executive-ready format.</div>
+            </div>
+
+            <!-- Tech Executive Persona -->
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">CTO</div>
+                    <div>
+                        <div class="persona-title">Experienced Tech Executive</div>
+                        <div class="persona-subtitle">Startup to Enterprise CTO</div>
+                    </div>
+                </div>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Technology Strategy</span>
+                    <span class="expertise-tag">Team Scaling</span>
+                    <span class="expertise-tag">Architecture Decisions</span>
+                    <span class="expertise-tag">Digital Transformation</span>
+                </div>
+                <div class="prompt-template">You are a seasoned CTO who has scaled technology organizations from startup to enterprise level. Your background includes:
+- 15+ years in technology leadership roles
+- Experience building teams from 5 to 500+ engineers
+- Led digital transformations for traditional companies
+- Expertise in cloud architecture, AI/ML implementation, and cybersecurity
+- Track record of delivering complex products on time and budget
+
+Your communication style is pragmatic and focuses on balancing technical excellence with business outcomes. You understand both the opportunities and risks of emerging technologies.</div>
+            </div>
+
+            <!-- Financial Advisor Persona -->
+            <div class="persona-card">
+                <div class="persona-header">
+                    <div class="persona-avatar">CFO</div>
+                    <div>
+                        <div class="persona-title">Financial Strategy Expert</div>
+                        <div class="persona-subtitle">Big 4, Investment Banking, Corporate Finance</div>
+                    </div>
+                </div>
+                <div class="expertise-tags">
+                    <span class="expertise-tag">Financial Modeling</span>
+                    <span class="expertise-tag">Investment Analysis</span>
+                    <span class="expertise-tag">Risk Management</span>
+                    <span class="expertise-tag">Corporate Finance</span>
+                </div>
+                <div class="prompt-template">You are a senior financial executive with extensive experience in corporate finance and strategy. Your background includes:
+- Big 4 accounting firm experience (audit and advisory)
+- Investment banking experience with M&A and capital markets
+- CFO role at multiple companies from growth stage to public
+- Deep expertise in financial modeling, valuation, and risk management
+- Experience with fundraising, IPOs, and complex financial transactions
+
+You provide financially sound advice that balances growth opportunities with prudent risk management. Your recommendations always consider cash flow impact, return on investment, and long-term financial sustainability.</div>
+            </div>
+
+            <!-- Interactive Persona Builder -->
+            <h2 class="section-title"><i class="fas fa-user-cog"></i>Custom Persona Builder</h2>
+
+            <div class="interactive-persona">
+                <h4 style="color: #581c87; margin-bottom: 1.5rem;">
+                    <i class="fas fa-wrench"></i> Build Your Expert Persona
+                </h4>
+                
+                <div class="persona-builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">What type of expert do you need?</label>
+                    <div class="role-selector">
+                        <div class="role-option" onclick="selectRole('marketing')">
+                            <i class="fas fa-bullhorn"></i>
+                            <div>Marketing Executive</div>
+                        </div>
+                        <div class="role-option" onclick="selectRole('sales')">
+                            <i class="fas fa-handshake"></i>
+                            <div>Sales Leader</div>
+                        </div>
+                        <div class="role-option" onclick="selectRole('hr')">
+                            <i class="fas fa-users"></i>
+                            <div>HR Director</div>
+                        </div>
+                        <div class="role-option" onclick="selectRole('operations')">
+                            <i class="fas fa-cogs"></i>
+                            <div>Operations Expert</div>
+                        </div>
+                        <div class="role-option" onclick="selectRole('product')">
+                            <i class="fas fa-cube"></i>
+                            <div>Product Manager</div>
+                        </div>
+                        <div class="role-option" onclick="selectRole('analyst')">
+                            <i class="fas fa-chart-line"></i>
+                            <div>Business Analyst</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="persona-builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Industry/Domain Expertise</label>
+                    <input type="text" id="industryExpertise" placeholder="e.g., SaaS, Healthcare, Manufacturing, Financial Services" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="persona-builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Years of Experience</label>
+                    <select id="experience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select experience level...</option>
+                        <option value="5-8">5-8 years (Senior level)</option>
+                        <option value="8-12">8-12 years (Director level)</option>
+                        <option value="12-15">12-15 years (VP level)</option>
+                        <option value="15+">15+ years (C-Suite/Executive)</option>
+                    </select>
+                </div>
+                
+                <div class="persona-builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Specific Expertise Areas (comma-separated)</label>
+                    <input type="text" id="specificSkills" placeholder="e.g., digital transformation, team scaling, performance optimization" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="persona-builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Company Background/Context</label>
+                    <input type="text" id="companyBackground" placeholder="e.g., Fortune 500, High-growth startups, Consulting firms" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="persona-builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Communication Style</label>
+                    <select id="communicationStyle" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select style...</option>
+                        <option value="analytical">Analytical & Data-Driven</option>
+                        <option value="strategic">Strategic & Big Picture</option>
+                        <option value="practical">Practical & Action-Oriented</option>
+                        <option value="consultative">Consultative & Advisory</option>
+                        <option value="innovative">Innovative & Future-Focused</option>
+                    </select>
+                </div>
+                
+                <button onclick="buildPersona()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Expert Persona Prompt
+                </button>
+                
+                <div id="generatedPersona" class="generated-persona">
+                    <strong style="color: #065f46;">Your Custom Expert Persona:</strong><br><br>
+                    <div id="personaPromptText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; font-family: monospace; white-space: pre-wrap; border: 2px solid #e2e8f0;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-rocket"></i> Advanced Usage Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Combine this persona with chain-of-thought reasoning for deeper analysis</li>
+                            <li>Ask the persona to consider multiple perspectives or stakeholder viewpoints</li>
+                            <li>Request specific frameworks or methodologies this expert would use</li>
+                            <li>Have the persona explain their reasoning and assumptions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Persona Techniques -->
+            <div class="tips-card">
+                <h3><i class="fas fa-graduation-cap"></i>Advanced Persona Techniques</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Multiple Expert Panel</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">"Assemble a panel of 3 experts: a CMO, Product Manager, and Data Scientist. Have them debate..."</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Evolving Personas</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">"You are an experienced consultant. After each response, gain 2 years of experience and update your perspective..."</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Opposing Viewpoints</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">"First respond as a risk-averse CFO, then as a growth-focused CMO. Compare the perspectives..."</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Historical Context</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">"You are a business executive who lived through the 2008 crisis and COVID-19. How does this experience shape your approach..."</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Applications -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #0891b2;">
+                <h3 style="color: #0c4a6e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-briefcase"></i>Professional Use Cases for Role-Playing Prompts
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Strategic Decision Making</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Get expert perspectives on complex business decisions from multiple professional viewpoints</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Industry Analysis</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Leverage specialized knowledge about specific sectors, markets, and competitive dynamics</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Team Coaching & Development</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Access leadership insights and management best practices from experienced executives</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Problem-Solving Workshops</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Simulate expert brainstorming sessions with diverse professional perspectives</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Guide -->
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #f59e0b;">
+                <h3 style="color: #92400e; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-tools"></i>Persona Prompt Troubleshooting
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Generic Responses?</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Add more specific background details, company types, and years of experience to the persona</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Breaking Character?</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Remind the AI to "stay in character as [persona]" and reinforce the role mid-conversation</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Too Academic?</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Emphasize practical experience, real-world challenges, and hands-on problem-solving in the persona</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #92400e;">Inconsistent Quality?</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Save successful persona prompts as templates and refine the background details over time</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">Ready for Multi-Step Workflows?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Combine your persona mastery with sophisticated multi-step workflows to tackle the most complex professional challenges.</p>
+                <a href="activity-3-multi-step-workflows.html" class="nav-btn">
+                    <i class="fas fa-project-diagram"></i>
+                    Master Workflow Design
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-chain-of-thought.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Chain-of-Thought
+                </a>
+                <a href="activity-3-multi-step-workflows.html" class="nav-btn">
+                    Next: Multi-Step Workflows
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let selectedRole = '';
+        
+        function selectRole(role) {
+            selectedRole = role;
+            
+            // Remove selected class from all options
+            document.querySelectorAll('.role-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selected class to clicked option
+            event.currentTarget.classList.add('selected');
+        }
+        
+        function buildPersona() {
+            const industry = document.getElementById('industryExpertise').value;
+            const experience = document.getElementById('experience').value;
+            const skills = document.getElementById('specificSkills').value;
+            const background = document.getElementById('companyBackground').value;
+            const style = document.getElementById('communicationStyle').value;
+            
+            if (!selectedRole || !industry || !experience || !skills) {
+                alert('Please fill in all required fields (role, industry, experience, and skills).');
+                return;
+            }
+            
+            const roleTemplates = {
+                marketing: 'Senior Marketing Executive',
+                sales: 'Experienced Sales Leader', 
+                hr: 'Strategic HR Director',
+                operations: 'Operations Excellence Expert',
+                product: 'Senior Product Manager',
+                analyst: 'Senior Business Analyst'
+            };
+            
+            const styleDescriptions = {
+                analytical: 'You communicate with data-driven precision, always backing up recommendations with metrics and analysis',
+                strategic: 'You think in terms of long-term impact and big-picture implications for the business',
+                practical: 'You focus on actionable solutions and implementation details that drive results',
+                consultative: 'You ask probing questions and guide clients to discover insights themselves',
+                innovative: 'You emphasize emerging trends, creative solutions, and forward-thinking approaches'
+            };
+            
+            let persona = `You are a ${roleTemplates[selectedRole]} with ${experience} years of extensive experience in the ${industry} industry. Your professional background includes:
+
+• Deep expertise in: ${skills}
+• Experience working with: ${background || 'various company types from startups to enterprises'}
+• Track record of driving measurable business results and leading successful initiatives
+• Hands-on experience solving complex challenges in ${industry}
+
+Professional Communication Style:
+${styleDescriptions[style] || 'You communicate clearly and professionally, focusing on practical business outcomes.'}
+
+When responding to questions:
+1. Draw from your extensive ${industry} experience and specific expertise in ${skills}
+2. Provide concrete, actionable recommendations based on real-world knowledge
+3. Reference relevant frameworks, best practices, and methodologies from your field
+4. Consider the practical implications and implementation challenges
+5. Share insights that only come from years of hands-on experience in ${industry}
+
+Always maintain the perspective and knowledge depth of a seasoned ${roleTemplates[selectedRole]} who has successfully navigated complex business challenges.`;
+
+            document.getElementById('personaPromptText').textContent = persona;
+            document.getElementById('generatedPersona').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPersona').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

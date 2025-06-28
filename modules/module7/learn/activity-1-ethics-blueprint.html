@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: AI Ethics Blueprint for Professionals - Module 7</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .ethics-framework {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .principle-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+        .principle-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .principle-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .principle-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+        .dilemma-scenario {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-analysis {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .ethics-checklist {
+            background: var(--neutral-white);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: var(--neutral-light);
+            border-radius: 6px;
+        }
+        .decision-tree {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .tree-node {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tree-node:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .risk-cell {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .risk-low { background: #d1fae5; color: #065f46; }
+        .risk-medium { background: #fef3c7; color: #92400e; }
+        .risk-high { background: #fee2e2; color: #dc2626; }
+        .professional-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .example-card:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+        .interactive-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-framework {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 7</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Ethics Blueprint</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/ethics-scenarios.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/ethics-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI Ethics Blueprint for Professionals</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Build a comprehensive ethical framework for professional AI use. Learn to navigate complex ethical dilemmas, make principled decisions, and establish organizational guidelines that ensure responsible AI deployment.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Ethical Foundation Objectives</h3>
+                <p style="margin-bottom: 1rem;">Develop professional-grade ethical expertise:</p>
+                <ul class="modern-list">
+                    <li>Master the core ethical principles governing professional AI use</li>
+                    <li>Apply ethical decision-making frameworks to complex AI scenarios</li>
+                    <li>Identify and mitigate bias, fairness, and transparency issues</li>
+                    <li>Develop organizational policies for responsible AI governance</li>
+                    <li>Build ethical reasoning into advanced prompting workflows</li>
+                </ul>
+            </div>
+
+            <!-- Core Ethical Principles -->
+            <h2 class="section-title"><i class="fas fa-shield-alt"></i>The Six Pillars of Professional AI Ethics</h2>
+
+            <div class="ethics-framework">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-columns"></i> Foundational Ethical Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    These six principles form the foundation for ethical AI use in professional settings. Each pillar supports responsible decision-making and sustainable AI integration.
+                </p>
+                
+                <!-- Principle 1: Transparency -->
+                <div class="principle-card">
+                    <div class="principle-header">
+                        <div class="principle-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">1. Transparency & Disclosure</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Clear communication about AI assistance and capabilities</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Requirements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Disclose AI assistance when material to the work product</li>
+                            <li>Explain AI capabilities and limitations to stakeholders</li>
+                            <li>Provide clear attribution for AI-generated content</li>
+                            <li>Maintain honest communication about AI's role in decisions</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Application:</strong> When presenting AI-assisted analysis to a client, clearly state which portions involved AI assistance and how the results were validated.
+                    </div>
+                </div>
+
+                <!-- Principle 2: Accountability -->
+                <div class="principle-card">
+                    <div class="principle-header">
+                        <div class="principle-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">2. Professional Accountability</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Taking responsibility for AI-assisted work and outcomes</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Requirements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Maintain professional responsibility for all AI-assisted outputs</li>
+                            <li>Implement human review and validation processes</li>
+                            <li>Accept liability for AI-related decisions and recommendations</li>
+                            <li>Ensure competent oversight of AI tools and processes</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Application:</strong> A lawyer using AI for contract analysis remains fully responsible for reviewing and validating all AI suggestions before providing legal advice.
+                    </div>
+                </div>
+
+                <!-- Principle 3: Fairness -->
+                <div class="principle-card">
+                    <div class="principle-header">
+                        <div class="principle-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">3. Fairness & Non-Discrimination</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Ensuring equitable treatment and avoiding bias</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Requirements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Actively identify and mitigate algorithmic bias</li>
+                            <li>Ensure equitable outcomes across diverse populations</li>
+                            <li>Test AI systems for discriminatory impacts</li>
+                            <li>Provide equal access to AI-enhanced services</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Application:</strong> HR professionals using AI for resume screening must test and monitor for bias against protected groups and ensure fair evaluation criteria.
+                    </div>
+                </div>
+
+                <!-- Principle 4: Privacy -->
+                <div class="principle-card">
+                    <div class="principle-header">
+                        <div class="principle-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">4. Privacy & Confidentiality</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Protecting sensitive information and maintaining trust</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Requirements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Safeguard client and organizational confidential information</li>
+                            <li>Implement data protection measures for AI processing</li>
+                            <li>Respect individual privacy rights and preferences</li>
+                            <li>Comply with data protection regulations (GDPR, CCPA, etc.)</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Application:</strong> Financial advisors must ensure that client financial data used in AI analysis is properly anonymized and never stored by external AI systems.
+                    </div>
+                </div>
+
+                <!-- Principle 5: Competence -->
+                <div class="principle-card">
+                    <div class="principle-header">
+                        <div class="principle-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">5. Professional Competence</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Maintaining expertise and quality standards</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Requirements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Maintain current knowledge of AI capabilities and limitations</li>
+                            <li>Develop competency in AI tools relevant to professional practice</li>
+                            <li>Ensure AI use enhances rather than diminishes professional standards</li>
+                            <li>Provide ongoing training and skill development</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Application:</strong> Medical professionals using AI diagnostic tools must understand the AI's training data, accuracy rates, and appropriate use cases for different medical conditions.
+                    </div>
+                </div>
+
+                <!-- Principle 6: Societal Benefit -->
+                <div class="principle-card">
+                    <div class="principle-header">
+                        <div class="principle-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">6. Societal Benefit</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Contributing to positive social and economic outcomes</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Core Requirements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Consider broader social implications of AI applications</li>
+                            <li>Avoid uses that could cause significant social harm</li>
+                            <li>Promote AI applications that benefit society</li>
+                            <li>Support sustainable and responsible AI development</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Application:</strong> Environmental consultants using AI for sustainability analysis should ensure their work contributes to genuine environmental improvement, not just regulatory compliance.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Decision-Making Framework -->
+            <h2 class="section-title"><i class="fas fa-compass"></i>Professional Ethical Decision-Making Framework</h2>
+
+            <div class="decision-tree">
+                <h4 style="color: #374151; margin-bottom: 1.5rem;">
+                    <i class="fas fa-sitemap"></i> The DECIDE Framework for AI Ethics
+                </h4>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div class="tree-node" onclick="toggleNodeDetails('define')">
+                        <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <strong>D</strong>efine the Ethical Issue
+                        </h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Clearly identify the ethical dimensions and stakeholders affected</p>
+                        <div id="define-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f3e8ff; border-radius: 6px;">
+                            <strong>Key Questions:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                <li>What ethical principles are at stake?</li>
+                                <li>Who are the affected stakeholders?</li>
+                                <li>What are the potential benefits and harms?</li>
+                                <li>Are there competing interests or values?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node" onclick="toggleNodeDetails('establish')">
+                        <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <strong>E</strong>stablish Evaluation Criteria
+                        </h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Determine which ethical principles and standards apply</p>
+                        <div id="establish-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f3e8ff; border-radius: 6px;">
+                            <strong>Evaluation Areas:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                <li>Professional codes of conduct</li>
+                                <li>Legal and regulatory requirements</li>
+                                <li>Organizational policies and values</li>
+                                <li>Industry best practices</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node" onclick="toggleNodeDetails('consider')">
+                        <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <strong>C</strong>onsider Alternative Actions
+                        </h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Generate multiple options for addressing the ethical issue</p>
+                        <div id="consider-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f3e8ff; border-radius: 6px;">
+                            <strong>Alternative Approaches:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                <li>Different AI tools or methodologies</li>
+                                <li>Enhanced human oversight processes</li>
+                                <li>Modified disclosure and transparency measures</li>
+                                <li>Alternative business processes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node" onclick="toggleNodeDetails('identify')">
+                        <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <strong>I</strong>dentify Best Alternative
+                        </h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Evaluate options against ethical criteria and select the best approach</p>
+                        <div id="identify-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f3e8ff; border-radius: 6px;">
+                            <strong>Selection Criteria:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                <li>Alignment with ethical principles</li>
+                                <li>Feasibility and practicality</li>
+                                <li>Stakeholder impact and acceptance</li>
+                                <li>Long-term sustainability</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node" onclick="toggleNodeDetails('develop')">
+                        <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <strong>D</strong>evelop Action Plan
+                        </h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Create implementation strategy with monitoring and adjustment mechanisms</p>
+                        <div id="develop-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f3e8ff; border-radius: 6px;">
+                            <strong>Implementation Elements:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                <li>Clear roles and responsibilities</li>
+                                <li>Timeline and milestones</li>
+                                <li>Monitoring and evaluation procedures</li>
+                                <li>Communication and training plans</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="tree-node" onclick="toggleNodeDetails('evaluate')">
+                        <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <strong>E</strong>valuate and Monitor
+                        </h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Assess outcomes and make adjustments as needed</p>
+                        <div id="evaluate-details" style="display: none; margin-top: 1rem; padding: 1rem; background: #f3e8ff; border-radius: 6px;">
+                            <strong>Ongoing Assessment:</strong>
+                            <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                                <li>Regular ethical audits and reviews</li>
+                                <li>Stakeholder feedback collection</li>
+                                <li>Performance metrics and indicators</li>
+                                <li>Continuous improvement processes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Risk Assessment -->
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i>AI Ethics Risk Assessment Matrix</h2>
+
+            <div style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #ef4444;">
+                <h4 style="color: #dc2626; margin-bottom: 1rem;">
+                    <i class="fas fa-chart-bar"></i> Professional AI Risk Assessment
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Evaluate the ethical risk level of AI applications using this professional framework. Different risk levels require different oversight and mitigation strategies.
+                </p>
+                
+                <div class="risk-matrix">
+                    <div class="risk-cell risk-low">
+                        <h5 style="margin-bottom: 0.5rem;">Low Risk</h5>
+                        <p style="font-size: 0.8rem; margin: 0;">Routine tasks, minimal impact</p>
+                    </div>
+                    <div class="risk-cell risk-medium">
+                        <h5 style="margin-bottom: 0.5rem;">Medium Risk</h5>
+                        <p style="font-size: 0.8rem; margin: 0;">Important decisions, moderate impact</p>
+                    </div>
+                    <div class="risk-cell risk-high">
+                        <h5 style="margin-bottom: 0.5rem;">High Risk</h5>
+                        <p style="font-size: 0.8rem; margin: 0;">Critical decisions, significant impact</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px;">
+                        <strong style="color: #065f46;">Low Risk Examples:</strong><br>
+                        <span style="font-size: 0.9rem;">• Scheduling meetings<br>• Generating draft emails<br>• Basic data formatting</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px;">
+                        <strong style="color: #92400e;">Medium Risk Examples:</strong><br>
+                        <span style="font-size: 0.9rem;">• Market analysis reports<br>• Customer communications<br>• Process recommendations</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 6px;">
+                        <strong style="color: #dc2626;">High Risk Examples:</strong><br>
+                        <span style="font-size: 0.9rem;">• Medical diagnoses<br>• Legal advice<br>• Financial investments</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Application Examples -->
+            <h2 class="section-title"><i class="fas fa-briefcase"></i>Professional Application Examples</h2>
+
+            <div class="professional-examples">
+                <!-- Legal Example -->
+                <div class="example-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-gavel"></i> Legal Practice
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> Using AI for contract review and legal research
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Considerations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Client confidentiality and privilege</li>
+                            <li>Professional competence and liability</li>
+                            <li>Duty of candor to courts and opposing parties</li>
+                            <li>Quality control and error detection</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Practices:</strong> Always review AI outputs, maintain confidentiality protocols, disclose AI assistance where required, and ensure human expertise validates all legal conclusions.
+                    </div>
+                </div>
+
+                <!-- Healthcare Example -->
+                <div class="example-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-heartbeat"></i> Healthcare
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> AI-assisted diagnostic imaging and treatment recommendations
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Considerations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Patient safety and primum non nocere</li>
+                            <li>Informed consent and AI transparency</li>
+                            <li>Bias in diagnostic algorithms</li>
+                            <li>Patient privacy and data security</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Practices:</strong> Maintain clinical judgment primacy, ensure algorithm transparency, monitor for bias, obtain appropriate consents, and preserve patient-physician relationship.
+                    </div>
+                </div>
+
+                <!-- Financial Example -->
+                <div class="example-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-chart-line"></i> Financial Services
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> AI-driven investment advice and risk assessment
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Considerations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Fiduciary duty to clients</li>
+                            <li>Fair lending and discrimination prevention</li>
+                            <li>Transparency in algorithmic decisions</li>
+                            <li>Suitability and appropriateness standards</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Practices:</strong> Ensure algorithm fairness, maintain human oversight for major decisions, provide clear disclosures, and regularly audit for discriminatory outcomes.
+                    </div>
+                </div>
+
+                <!-- Education Example -->
+                <div class="example-card">
+                    <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <i class="fas fa-graduation-cap"></i> Education
+                    </h4>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> AI-powered personalized learning and assessment
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Considerations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Educational equity and access</li>
+                            <li>Student privacy and data protection</li>
+                            <li>Academic integrity and plagiarism</li>
+                            <li>Bias in assessment algorithms</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Best Practices:</strong> Ensure equitable access, protect student data, maintain assessment validity, provide AI literacy education, and preserve human teaching relationships.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Ethics Checklist Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Personal Ethics Framework Builder</h2>
+
+            <div class="interactive-builder">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-wrench"></i> Build Your Professional AI Ethics Framework
+                </h4>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Profession/Industry:</label>
+                    <input type="text" id="profession" placeholder="e.g., Legal, Healthcare, Financial Services, Education" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary AI Use Cases:</label>
+                    <textarea id="useCases" placeholder="Describe how you plan to use AI in your professional work..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key Stakeholders:</label>
+                    <input type="text" id="stakeholders" placeholder="e.g., Clients, patients, students, customers, colleagues" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Highest Risk Scenarios:</label>
+                    <textarea id="riskScenarios" placeholder="Identify the highest-risk AI applications in your field..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Professional Standards/Regulations:</label>
+                    <input type="text" id="standards" placeholder="e.g., Bar rules, HIPAA, FERPA, SEC regulations" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <button onclick="generateEthicsFramework()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate My Professional Ethics Framework
+                </button>
+                
+                <div id="generatedFramework" class="generated-framework">
+                    <strong style="color: #065f46;">Your Personalized AI Ethics Framework:</strong><br><br>
+                    <div id="frameworkText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Implementation Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Share this framework with your team and organization</li>
+                            <li>Review and update quarterly as AI capabilities evolve</li>
+                            <li>Use this as a checklist for AI-related decisions</li>
+                            <li>Integrate with your existing professional policies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Apply Ethics to Advanced Prompting</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you understand ethical principles, learn how to integrate them with the advanced prompting techniques from Module 6.</p>
+                <a href="activity-2-advanced-prompting-ethics.html" class="nav-btn">
+                    <i class="fas fa-brain"></i>
+                    Ethical Advanced Prompting
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-advanced-prompting-ethics.html" class="nav-btn">
+                    Next: Ethical Advanced Prompting
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleNodeDetails(nodeId) {
+            const details = document.getElementById(nodeId + '-details');
+            if (details.style.display === 'none' || !details.style.display) {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+        
+        function generateEthicsFramework() {
+            const profession = document.getElementById('profession').value;
+            const useCases = document.getElementById('useCases').value;
+            const stakeholders = document.getElementById('stakeholders').value;
+            const riskScenarios = document.getElementById('riskScenarios').value;
+            const standards = document.getElementById('standards').value;
+            
+            if (!profession || !useCases || !stakeholders) {
+                alert('Please fill in at least the profession, use cases, and stakeholders fields.');
+                return;
+            }
+            
+            let framework = `PROFESSIONAL AI ETHICS FRAMEWORK
+${profession.toUpperCase()}
+
+=== CORE ETHICAL PRINCIPLES ===
+
+1. TRANSPARENCY & DISCLOSURE
+   • Clearly communicate AI assistance to ${stakeholders}
+   • Explain AI capabilities and limitations relevant to ${profession.toLowerCase()}
+   • Provide appropriate attribution for AI-generated content
+   • Maintain honest dialogue about AI's role in professional decisions
+
+2. PROFESSIONAL ACCOUNTABILITY
+   • Accept full responsibility for all AI-assisted work products
+   • Implement human review processes for all AI outputs
+   • Maintain professional liability for recommendations and decisions
+   • Ensure competent oversight of AI tools and methodologies
+
+3. FAIRNESS & NON-DISCRIMINATION
+   • Test AI systems for bias affecting ${stakeholders}
+   • Ensure equitable treatment across all demographic groups
+   • Monitor outcomes for discriminatory patterns
+   • Provide equal access to AI-enhanced services
+
+4. PRIVACY & CONFIDENTIALITY
+   • Protect sensitive information when using AI systems
+   • Comply with ${standards || 'relevant professional standards'}
+   • Implement data security measures for AI processing
+   • Respect privacy rights and preferences of ${stakeholders}
+
+5. PROFESSIONAL COMPETENCE
+   • Maintain current knowledge of AI capabilities in ${profession.toLowerCase()}
+   • Develop expertise in relevant AI tools and methodologies
+   • Ensure AI use enhances professional standards
+   • Provide ongoing training and skill development
+
+6. SOCIETAL BENEFIT
+   • Consider broader implications of AI applications in ${profession.toLowerCase()}
+   • Avoid applications that could cause harm to ${stakeholders}
+   • Promote responsible AI development in the profession
+   • Support ethical AI practices industry-wide
+
+=== RISK ASSESSMENT FOR ${profession.toUpperCase()} ===
+
+Primary Use Cases: ${useCases}
+
+High-Risk Scenarios: ${riskScenarios || 'To be defined based on specific applications'}
+
+=== DECISION-MAKING CHECKLIST ===
+
+Before Using AI:
+☐ Is this application appropriate for my professional role?
+☐ Do I have the competence to oversee this AI application?
+☐ Have I considered the impact on ${stakeholders}?
+☐ Are there potential bias or fairness concerns?
+☐ Does this comply with ${standards || 'professional standards'}?
+
+During AI Use:
+☐ Am I maintaining appropriate human oversight?
+☐ Am I protecting confidential information?
+☐ Am I documenting the AI assistance provided?
+☐ Am I monitoring for quality and bias?
+
+After AI Use:
+☐ Have I reviewed and validated all outputs?
+☐ Have I provided appropriate disclosure/attribution?
+☐ Have I assessed outcomes for fairness and quality?
+☐ Have I learned from this application for future use?
+
+=== ORGANIZATIONAL POLICIES ===
+
+1. Develop clear AI use guidelines for ${profession.toLowerCase()} practice
+2. Provide regular training on ethical AI applications
+3. Implement monitoring and audit procedures
+4. Establish clear accountability structures
+5. Create channels for ethical concerns and reporting
+6. Regularly update policies as AI technology evolves
+
+=== CONTINUOUS IMPROVEMENT ===
+
+• Quarterly review of AI applications and outcomes
+• Regular bias testing and fairness assessments
+• Stakeholder feedback collection and analysis
+• Professional development in AI ethics
+• Industry best practice monitoring and adoption
+
+This framework should be reviewed and updated regularly as AI technology and professional standards evolve.`;
+
+            document.getElementById('frameworkText').textContent = framework;
+            document.getElementById('generatedFramework').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedFramework').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

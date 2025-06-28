@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: Chain-of-Thought Reasoning - Module 6</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .technique-showcase {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .before-example, .after-example {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+        }
+        .after-example {
+            border-left-color: #10b981;
+        }
+        .before-example {
+            background: #fef2f2;
+        }
+        .after-example {
+            background: #f0fdf4;
+        }
+        .step-indicator {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+        .thinking-process {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            white-space: pre-wrap;
+        }
+        .interactive-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #0891b2;
+        }
+        .prompt-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-output {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .complexity-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .beginner { background: #d1fae5; color: #065f46; }
+        .intermediate { background: #fef3c7; color: #92400e; }
+        .advanced { background: #fee2e2; color: #dc2626; }
+        .expert { background: #ede9fe; color: #5b21b6; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 6</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Chain-of-Thought</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompt-optimization-lab.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/advanced-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Chain-of-Thought Reasoning</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Master the most powerful advanced prompting technique: Chain-of-Thought reasoning. Learn to guide AI through step-by-step thinking processes that dramatically improve accuracy and reliability for complex tasks.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Chain-of-Thought Mastery</h3>
+                <p style="margin-bottom: 1rem;">By mastering this technique, you will:</p>
+                <ul class="modern-list">
+                    <li>Understand the science behind chain-of-thought reasoning and why it works</li>
+                    <li>Apply step-by-step thinking prompts to complex professional problems</li>
+                    <li>Design multi-layered reasoning chains for sophisticated analysis</li>
+                    <li>Troubleshoot and optimize reasoning chains for consistent results</li>
+                    <li>Integrate chain-of-thought into professional workflows and decision-making</li>
+                </ul>
+            </div>
+
+            <!-- What is Chain-of-Thought -->
+            <h2 class="section-title"><i class="fas fa-brain"></i>Understanding Chain-of-Thought Reasoning</h2>
+
+            <div class="technique-showcase">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-lightbulb"></i> The Science Behind the Technique
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151; line-height: 1.6;">
+                    Chain-of-thought (CoT) prompting guides AI through explicit step-by-step reasoning, mimicking how human experts solve complex problems. Instead of jumping to conclusions, the AI shows its work, leading to more accurate, reliable, and explainable results.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Improved Accuracy</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Up to 40% better performance on complex reasoning tasks</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Error Detection</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Transparent reasoning allows you to spot and correct mistakes</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Professional Trust</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Stakeholders can follow and verify the reasoning process</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Before vs After Example -->
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i>The Power of Step-by-Step Thinking</h2>
+
+            <div class="example-grid">
+                <div class="before-example">
+                    <h5 style="color: #dc2626; margin-bottom: 1rem;">❌ Basic Approach</h5>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Prompt:</strong><br>
+                        "Should we launch the new product in Q3 or Q4? Consider market conditions, competition, and our resources."
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Typical Result:</strong><br>
+                        "I recommend Q4 because it aligns better with holiday spending and gives more time for marketing preparation."
+                        <br><br>
+                        <em style="color: #dc2626;">Problem: Shallow analysis, no visible reasoning, hard to trust or verify</em>
+                    </div>
+                </div>
+                
+                <div class="after-example">
+                    <h5 style="color: #065f46; margin-bottom: 1rem;">✅ Chain-of-Thought Approach</h5>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Prompt:</strong><br>
+                        "Should we launch the new product in Q3 or Q4? Please think through this step-by-step:
+                        1. Analyze current market conditions
+                        2. Evaluate competitive landscape
+                        3. Assess our internal resources and readiness
+                        4. Consider seasonal factors and customer behavior
+                        5. Weigh risks and opportunities for each timeline
+                        6. Make a recommendation with clear reasoning"
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px;">
+                        <strong>Chain-of-Thought Result:</strong><br>
+                        <em>Provides detailed analysis for each step, transparent reasoning, and actionable insights you can trust and defend to stakeholders</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chain-of-Thought Patterns -->
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i>Professional CoT Patterns & Templates</h2>
+
+            <!-- Analysis Pattern -->
+            <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #22c55e;">
+                <h4 style="color: #166534; margin-bottom: 1rem;">
+                    <span class="complexity-level intermediate">Intermediate</span>
+                    Business Analysis Pattern
+                </h4>
+                
+                <div class="thinking-process">
+"Let me analyze [business situation] systematically:
+
+Step 1: Current State Assessment
+- What is the current situation?
+- What data do we have?
+- What are the key metrics?
+
+Step 2: Problem Identification  
+- What specific challenges are we facing?
+- What are the root causes?
+- How urgent/important is each issue?
+
+Step 3: Options Analysis
+- What are our potential solutions?
+- What are the pros/cons of each?
+- What resources would each require?
+
+Step 4: Risk Assessment
+- What could go wrong with each option?
+- How likely are these risks?
+- How can we mitigate them?
+
+Step 5: Recommendation
+- Based on the analysis above, what's the best path forward?
+- Why is this the optimal choice?
+- What are the next steps?"
+                </div>
+            </div>
+
+            <!-- Decision Making Pattern -->
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #f59e0b;">
+                <h4 style="color: #92400e; margin-bottom: 1rem;">
+                    <span class="complexity-level advanced">Advanced</span>
+                    Strategic Decision Pattern
+                </h4>
+                
+                <div class="thinking-process">
+"I need to make a strategic decision about [situation]. Let me work through this systematically:
+
+Phase 1: Context & Constraints
+- What's the decision we need to make?
+- What are our constraints (time, budget, resources)?
+- Who are the stakeholders and what do they care about?
+
+Phase 2: Criteria Development
+- What factors should influence this decision?
+- How should we weight these factors?
+- What does success look like?
+
+Phase 3: Option Generation
+- What are all possible approaches?
+- Can we combine or modify any options?
+- Are there creative alternatives we haven't considered?
+
+Phase 4: Evaluation Matrix
+- How does each option score against our criteria?
+- What are the quantitative and qualitative trade-offs?
+- What does sensitivity analysis tell us?
+
+Phase 5: Implementation Considerations
+- Which option is most feasible to execute?
+- What implementation challenges should we anticipate?
+- How will we measure success and adapt if needed?
+
+Phase 6: Final Recommendation
+- What's my recommendation and why?
+- What key assumptions is this based on?
+- What should we monitor as we move forward?"
+                </div>
+            </div>
+
+            <!-- Problem Solving Pattern -->
+            <div style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #8b5cf6;">
+                <h4 style="color: #5b21b6; margin-bottom: 1rem;">
+                    <span class="complexity-level expert">Expert</span>
+                    Complex Problem-Solving Pattern
+                </h4>
+                
+                <div class="thinking-process">
+"I'll approach this complex problem using structured reasoning:
+
+1. Problem Definition & Scope
+   - What exactly is the problem we're solving?
+   - What's in scope vs. out of scope?
+   - What would happen if we don't solve this?
+
+2. Information Gathering & Analysis
+   - What do we know for certain?
+   - What assumptions are we making?
+   - What critical information are we missing?
+
+3. Root Cause Analysis
+   - What are the symptoms vs. root causes?
+   - Which causes are primary vs. secondary?
+   - How do these causes interact with each other?
+
+4. Solution Design
+   - What approaches could address the root causes?
+   - How can we leverage our strengths and opportunities?
+   - What innovative solutions haven't been tried?
+
+5. Feasibility & Impact Assessment
+   - Which solutions are most practical to implement?
+   - What's the expected impact vs. effort for each?
+   - How do these align with our strategic goals?
+
+6. Risk Analysis & Mitigation
+   - What could go wrong with our preferred approach?
+   - How can we minimize risks or create contingency plans?
+   - What early warning signs should we monitor?
+
+7. Implementation Strategy
+   - What's our step-by-step execution plan?
+   - Who needs to be involved and when?
+   - How will we measure progress and success?"
+                </div>
+            </div>
+
+            <!-- Interactive Chain Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Interactive Chain-of-Thought Builder</h2>
+
+            <div class="interactive-builder">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-wrench"></i> Build Your Professional CoT Prompt
+                </h4>
+                
+                <div class="prompt-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">What's your complex professional challenge?</label>
+                    <textarea id="problemStatement" placeholder="Describe the business problem, decision, or analysis you need to tackle..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="prompt-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Choose your reasoning pattern:</label>
+                    <select id="reasoningPattern" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select a pattern...</option>
+                        <option value="analysis">Business Analysis (Systematic evaluation)</option>
+                        <option value="decision">Strategic Decision (Multi-criteria choice)</option>
+                        <option value="problem">Complex Problem-Solving (Root cause to solution)</option>
+                        <option value="creative">Creative Problem-Solving (Innovation-focused)</option>
+                        <option value="risk">Risk Assessment (Threat analysis)</option>
+                        <option value="planning">Strategic Planning (Future-focused)</option>
+                    </select>
+                </div>
+                
+                <div class="prompt-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">What's your professional context?</label>
+                    <input type="text" id="professionalContext" placeholder="e.g., Marketing Director at SaaS company, Management Consultant, etc." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="prompt-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Who's your intended audience?</label>
+                    <select id="audience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select audience...</option>
+                        <option value="self">Personal analysis</option>
+                        <option value="team">Team members</option>
+                        <option value="management">Senior management</option>
+                        <option value="board">Board of directors</option>
+                        <option value="clients">External clients</option>
+                        <option value="stakeholders">Mixed stakeholders</option>
+                    </select>
+                </div>
+                
+                <button onclick="buildCoTPrompt()" style="background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Chain-of-Thought Prompt
+                </button>
+                
+                <div id="generatedCoT" class="generated-output">
+                    <strong style="color: #065f46;">Your Professional Chain-of-Thought Prompt:</strong><br><br>
+                    <div id="cotPromptText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; font-family: monospace; white-space: pre-wrap; border: 2px solid #e2e8f0;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Usage Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Copy this prompt and test it with your AI tool</li>
+                            <li>Adjust the steps based on your specific needs</li>
+                            <li>Save successful prompts as templates for similar challenges</li>
+                            <li>Iterate on the reasoning structure to improve results</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Applications -->
+            <div class="tips-card">
+                <h3><i class="fas fa-briefcase"></i>Chain-of-Thought in Professional Contexts</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Financial Analysis</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Guide AI through investment decisions, budget planning, and risk assessment with transparent financial reasoning</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Strategic Planning</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Break down complex market analysis, competitive positioning, and long-term strategy development</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Problem Diagnosis</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Systematically identify root causes of operational issues, performance problems, or system failures</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Project Planning</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Develop comprehensive project strategies with risk mitigation and resource optimization</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Optimization Tips -->
+            <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #9333ea;">
+                <h3 style="color: #581c87; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-chart-line"></i>Expert Optimization Strategies
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Numbered Steps</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Use clear numbering (1, 2, 3...) to guide AI through sequential reasoning</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Explicit Connections</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Ask AI to show how each step builds on the previous one</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Verification Steps</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Include "double-check" or "verify" instructions for critical decisions</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Multiple Perspectives</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Ask AI to consider different viewpoints or stakeholder perspectives</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); border-radius: 12px;">
+                <h3 style="color: #0c4a6e; margin-bottom: 1rem;">Ready for Role-Playing Techniques?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you've mastered chain-of-thought reasoning, discover how to unlock expert-level knowledge through advanced role-playing prompts.</p>
+                <a href="activity-2-role-playing-prompts.html" class="nav-btn">
+                    <i class="fas fa-user-tie"></i>
+                    Master Role-Playing Prompts
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-role-playing-prompts.html" class="nav-btn">
+                    Next: Role-Playing Prompts
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function buildCoTPrompt() {
+            const problem = document.getElementById('problemStatement').value;
+            const pattern = document.getElementById('reasoningPattern').value;
+            const context = document.getElementById('professionalContext').value;
+            const audience = document.getElementById('audience').value;
+            
+            if (!problem || !pattern || !context || !audience) {
+                alert('Please fill in all fields to generate your chain-of-thought prompt.');
+                return;
+            }
+            
+            const patterns = {
+                analysis: `I need to analyze this business situation systematically as a ${context}:
+
+"${problem}"
+
+Please work through this step-by-step:
+
+1. Current Situation Assessment
+   - What are the key facts and data points?
+   - What is the current state vs. desired state?
+   
+2. Problem/Opportunity Identification
+   - What are the core issues or opportunities?
+   - How do these connect to business objectives?
+   
+3. Stakeholder Impact Analysis
+   - Who is affected and how?
+   - What do different stakeholders care about most?
+   
+4. Options and Alternatives
+   - What approaches could we take?
+   - What are the trade-offs for each option?
+   
+5. Resource and Feasibility Assessment
+   - What resources would each approach require?
+   - What are the practical constraints?
+   
+6. Risk and Benefit Analysis
+   - What could go wrong with each approach?
+   - What are the potential benefits and ROI?
+   
+7. Recommendation and Next Steps
+   - What's your recommended approach and why?
+   - What specific actions should we take first?
+
+Please format this analysis for ${audience === 'self' ? 'my own decision-making' : audience} and include specific, actionable insights.`,
+
+                decision: `I need to make a strategic decision as a ${context}:
+
+"${problem}"
+
+Please guide me through this decision systematically:
+
+1. Decision Framing
+   - What exactly are we deciding?
+   - What's the deadline and what happens if we delay?
+   
+2. Success Criteria & Constraints
+   - How will we measure success?
+   - What are our non-negotiable constraints?
+   
+3. Stakeholder Requirements
+   - Who cares about this decision and what do they need?
+   - How do we balance competing interests?
+   
+4. Option Generation
+   - What are all possible approaches (including creative alternatives)?
+   - Can we combine or modify any options?
+   
+5. Multi-Criteria Evaluation
+   - How does each option score on our success criteria?
+   - What are the quantitative and qualitative trade-offs?
+   
+6. Risk Assessment & Mitigation
+   - What are the risks for each option?
+   - How can we minimize risks or create backup plans?
+   
+7. Implementation Feasibility
+   - Which options are most realistic to execute?
+   - What implementation challenges should we anticipate?
+   
+8. Final Recommendation
+   - What's your recommended decision and why?
+   - What key assumptions is this based on?
+   - What should we monitor as we move forward?
+
+Structure this analysis for presentation to ${audience === 'self' ? 'support my decision-making process' : audience}.`,
+
+                problem: `I'm facing a complex problem as a ${context} and need systematic problem-solving:
+
+"${problem}"
+
+Please work through this using structured problem-solving:
+
+1. Problem Definition & Scope
+   - What exactly is the problem we're solving?
+   - What's the root issue vs. symptoms?
+   - What's in scope vs. out of scope?
+   
+2. Current State Analysis
+   - What's happening now and why?
+   - What data and evidence do we have?
+   - What assumptions are we making?
+   
+3. Root Cause Investigation
+   - What are the underlying causes of this problem?
+   - How do these causes interact with each other?
+   - Which causes are within our control to change?
+   
+4. Solution Generation
+   - What approaches could address the root causes?
+   - What innovative solutions haven't been tried?
+   - How can we leverage our strengths and resources?
+   
+5. Solution Evaluation
+   - Which solutions are most likely to be effective?
+   - What are the costs, benefits, and feasibility of each?
+   - How do these align with our goals and constraints?
+   
+6. Risk Analysis & Contingency Planning
+   - What could go wrong with our preferred solution?
+   - What early warning signs should we monitor?
+   - What backup plans should we prepare?
+   
+7. Implementation Strategy
+   - What's our step-by-step execution plan?
+   - Who needs to be involved and when?
+   - How will we measure progress and success?
+
+Please tailor this analysis for ${audience === 'self' ? 'my own problem-solving process' : audience} with specific, actionable recommendations.`
+            };
+            
+            let prompt = patterns[pattern] || patterns.analysis;
+            
+            document.getElementById('cotPromptText').textContent = prompt;
+            document.getElementById('generatedCoT').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedCoT').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

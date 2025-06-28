@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: AI Ethics Case Study Analysis - Module 7</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .scenario-container {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .case-study-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+        }
+        .ethical-dilemma {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .analysis-framework {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .stakeholder-analysis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .stakeholder-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .complexity-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .beginner { background: #d1fae5; color: #065f46; }
+        .intermediate { background: #fef3c7; color: #92400e; }
+        .advanced { background: #fee2e2; color: #dc2626; }
+        .expert { background: #ede9fe; color: #5b21b6; }
+        .interactive-analyzer {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .analysis-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-analysis {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .decision-tree {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .tree-node {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tree-node:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        .professional-response {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .unethical-response {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .scenario-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .scenario-tab {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .scenario-tab:hover {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+        }
+        .scenario-tab.active {
+            border-color: #8b5cf6;
+            background: #f3e8ff;
+            color: #5b21b6;
+        }
+        .scenario-content {
+            display: none;
+        }
+        .scenario-content.active {
+            display: block;
+        }
+        .reflection-questions {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .question-item {
+            background: rgba(255,255,255,0.8);
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 7</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Ethics Scenarios</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-ethics-blueprint.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/ethics-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI Ethics Case Study Analysis</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Practice ethical decision-making with realistic professional scenarios. Develop your ability to navigate complex ethical dilemmas while applying advanced AI techniques responsibly.
+            </p>
+
+            <!-- Practice Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-gavel"></i>Ethical Practice Objectives</h3>
+                <p style="margin-bottom: 1rem;">Build practical ethical decision-making skills:</p>
+                <ul class="modern-list">
+                    <li>Analyze complex ethical dilemmas in professional AI applications</li>
+                    <li>Apply the DECIDE framework to real-world scenarios</li>
+                    <li>Balance competing stakeholder interests and ethical principles</li>
+                    <li>Develop practical strategies for ethical AI implementation</li>
+                    <li>Practice transparent documentation and accountability measures</li>
+                </ul>
+            </div>
+
+            <!-- Scenario Selection -->
+            <h2 class="section-title"><i class="fas fa-theater-masks"></i>Professional Ethics Scenarios</h2>
+
+            <div class="scenario-container">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-folder-open"></i> Choose Your Ethical Challenge
+                </h4>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="scenario-tab active" onclick="showScenario('healthcare')">
+                        <span class="complexity-level expert">Expert Level</span><br>
+                        <strong>Healthcare AI Diagnosis</strong><br>
+                        <span style="font-size: 0.9rem;">Patient safety vs. efficiency</span>
+                    </div>
+                    <div class="scenario-tab" onclick="showScenario('legal')">
+                        <span class="complexity-level advanced">Advanced</span><br>
+                        <strong>Legal AI Research</strong><br>
+                        <span style="font-size: 0.9rem;">Client confidentiality challenges</span>
+                    </div>
+                    <div class="scenario-tab" onclick="showScenario('finance')">
+                        <span class="complexity-level advanced">Advanced</span><br>
+                        <strong>Financial AI Advisory</strong><br>
+                        <span style="font-size: 0.9rem;">Fiduciary duty conflicts</span>
+                    </div>
+                    <div class="scenario-tab" onclick="showScenario('hr')">
+                        <span class="complexity-level intermediate">Intermediate</span><br>
+                        <strong>HR AI Screening</strong><br>
+                        <span style="font-size: 0.9rem;">Bias and discrimination issues</span>
+                    </div>
+                </div>
+
+                <!-- Healthcare Scenario -->
+                <div id="healthcare-scenario" class="scenario-content active">
+                    <div class="case-study-card">
+                        <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="complexity-level expert">Expert Level</span>
+                            Healthcare AI Diagnosis Dilemma
+                        </h4>
+                        
+                        <div class="ethical-dilemma">
+                            <h5 style="color: #dc2626; margin-bottom: 1rem;">🏥 The Situation</h5>
+                            <p style="margin-bottom: 1rem;">
+                                Dr. Sarah Chen, an emergency room physician, has access to an AI diagnostic assistant that can analyze medical images and patient data to suggest diagnoses. The AI has a 95% accuracy rate for common conditions but only 78% for rare diseases. The hospital administration is pressuring doctors to use the AI to reduce diagnostic time and costs.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                Tonight, Dr. Chen encounters a complex case: a 34-year-old patient with unusual symptoms that could indicate either a common condition (treatable with standard medication) or a rare autoimmune disease (requiring immediate specialist intervention). The AI strongly suggests the common condition. However, Dr. Chen's clinical intuition and some subtle symptoms make her suspect the rare disease.
+                            </p>
+                            <p>
+                                <strong>The Dilemma:</strong> Using the AI recommendation would align with hospital efficiency goals and the statistical probability. However, if Dr. Chen is right about the rare disease, delaying specialist intervention could be life-threatening. The hospital's ethical AI policy requires documenting when physicians override AI recommendations.
+                            </p>
+                        </div>
+                        
+                        <div class="stakeholder-analysis">
+                            <div class="stakeholder-card">
+                                <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">Patient</h5>
+                                <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                    <li>Right to best possible care</li>
+                                    <li>Trust in physician judgment</li>
+                                    <li>Potential life-threatening consequences</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-card">
+                                <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">Dr. Chen</h5>
+                                <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                    <li>Professional medical judgment</li>
+                                    <li>Hippocratic oath obligations</li>
+                                    <li>Career and administrative pressure</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-card">
+                                <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">Hospital</h5>
+                                <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                    <li>Cost control and efficiency</li>
+                                    <li>AI system investment ROI</li>
+                                    <li>Liability and risk management</li>
+                                </ul>
+                            </div>
+                            <div class="stakeholder-card">
+                                <h5 style="color: #8b5cf6; margin-bottom: 0.5rem;">Healthcare System</h5>
+                                <ul style="font-size: 0.9rem; margin: 0; padding-left: 1rem;">
+                                    <li>Resource allocation fairness</li>
+                                    <li>Trust in AI-assisted medicine</li>
+                                    <li>Setting precedents for AI use</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="reflection-questions">
+                            <h5 style="color: #0c4a6e; margin-bottom: 1rem;">Critical Analysis Questions</h5>
+                            <div class="question-item">
+                                <strong>1. Ethical Principles in Conflict:</strong><br>
+                                How do you balance the principle of "do no harm" against efficiency and statistical probability?
+                            </div>
+                            <div class="question-item">
+                                <strong>2. Professional Autonomy:</strong><br>
+                                What are Dr. Chen's obligations when her clinical judgment conflicts with AI recommendations?
+                            </div>
+                            <div class="question-item">
+                                <strong>3. Institutional Ethics:</strong><br>
+                                How should hospitals structure AI policies to support both efficiency and patient care?
+                            </div>
+                            <div class="question-item">
+                                <strong>4. Long-term Implications:</strong><br>
+                                What precedent does this decision set for future AI-human collaboration in healthcare?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Scenario -->
+                <div id="legal-scenario" class="scenario-content">
+                    <div class="case-study-card">
+                        <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="complexity-level advanced">Advanced</span>
+                            Legal AI Research Confidentiality Challenge
+                        </h4>
+                        
+                        <div class="ethical-dilemma">
+                            <h5 style="color: #dc2626; margin-bottom: 1rem;">⚖️ The Situation</h5>
+                            <p style="margin-bottom: 1rem;">
+                                Attorney Michael Rodriguez represents a client in a high-stakes corporate litigation case. He's using an AI legal research tool to analyze thousands of documents and identify relevant precedents. The AI tool requires uploading case documents to a cloud-based system for analysis.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                The AI service provider claims their system is secure and compliant with legal confidentiality requirements. However, their terms of service include a clause allowing them to use anonymized data to improve their AI models. Some documents contain highly sensitive trade secrets and strategic information that, even if anonymized, could potentially be identified by competitors familiar with the industry.
+                            </p>
+                            <p>
+                                <strong>The Dilemma:</strong> Using the AI tool would significantly improve the quality and speed of legal research, potentially giving his client a substantial advantage. However, it may violate attorney-client privilege and expose confidential information. Manual research would be less comprehensive and much more expensive for the client.
+                            </p>
+                        </div>
+                        
+                        <div class="reflection-questions">
+                            <h5 style="color: #0c4a6e; margin-bottom: 1rem;">Critical Analysis Questions</h5>
+                            <div class="question-item">
+                                <strong>1. Confidentiality vs. Effectiveness:</strong><br>
+                                How do you balance client confidentiality with providing the most effective representation?
+                            </div>
+                            <div class="question-item">
+                                <strong>2. Informed Consent:</strong><br>
+                                What information must the client have to make an informed decision about AI tool usage?
+                            </div>
+                            <div class="question-item">
+                                <strong>3. Professional Standards:</strong><br>
+                                How do traditional bar rules apply to emerging AI technologies?
+                            </div>
+                            <div class="question-item">
+                                <strong>4. Competitive Advantage vs. Ethics:</strong><br>
+                                Is it ethical to gain advantages through tools that may compromise confidentiality?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finance Scenario -->
+                <div id="finance-scenario" class="scenario-content">
+                    <div class="case-study-card">
+                        <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="complexity-level advanced">Advanced</span>
+                            Financial AI Advisory Fiduciary Conflict
+                        </h4>
+                        
+                        <div class="ethical-dilemma">
+                            <h5 style="color: #dc2626; margin-bottom: 1rem;">💰 The Situation</h5>
+                            <p style="margin-bottom: 1rem;">
+                                Financial advisor Jennifer Park uses an AI portfolio optimization tool that analyzes market trends and client profiles to recommend investment strategies. The AI consistently recommends certain funds that happen to generate higher commissions for her firm, though they also show strong performance metrics.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                Jennifer discovers that the AI was trained on data that includes commission structures, potentially biasing it toward higher-fee products. For a new client - a teacher approaching retirement with limited savings - the AI recommends a portfolio with these higher-fee funds. Alternative lower-fee options would save the client thousands in fees over time but would generate less commission revenue.
+                            </p>
+                            <p>
+                                <strong>The Dilemma:</strong> Following the AI's recommendations provides strong investment performance but higher costs. Manually overriding the AI to select lower-fee alternatives might provide better net returns for the client but requires Jennifer to document her reasoning and potentially explain why she's not following the "optimized" AI recommendations.
+                            </p>
+                        </div>
+                        
+                        <div class="reflection-questions">
+                            <h5 style="color: #0c4a6e; margin-bottom: 1rem;">Critical Analysis Questions</h5>
+                            <div class="question-item">
+                                <strong>1. Fiduciary Duty:</strong><br>
+                                How does fiduciary responsibility apply when AI recommendations may be influenced by profit motives?
+                            </div>
+                            <div class="question-item">
+                                <strong>2. AI Bias Detection:</strong><br>
+                                What responsibilities do financial advisors have to detect and correct AI bias?
+                            </div>
+                            <div class="question-item">
+                                <strong>3. Client Best Interest:</strong><br>
+                                How do you balance investment performance against fee structures in client recommendations?
+                            </div>
+                            <div class="question-item">
+                                <strong>4. Transparency Requirements:</strong><br>
+                                What should clients know about how AI influences their investment recommendations?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HR Scenario -->
+                <div id="hr-scenario" class="scenario-content">
+                    <div class="case-study-card">
+                        <h4 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="complexity-level intermediate">Intermediate</span>
+                            HR AI Screening Bias Challenge
+                        </h4>
+                        
+                        <div class="ethical-dilemma">
+                            <h5 style="color: #dc2626; margin-bottom: 1rem;">👥 The Situation</h5>
+                            <p style="margin-bottom: 1rem;">
+                                HR Director David Kim implements an AI resume screening system to handle the high volume of applications for software engineering positions. The AI ranks candidates based on successful employee profiles at the company. After three months, David notices that the AI consistently ranks male candidates higher than equally qualified female candidates.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                Investigation reveals that the AI learned from historical hiring data where the engineering team was predominantly male due to past industry trends. The AI associates certain language patterns, school names, and experience types with success, inadvertently perpetuating gender bias. However, the AI has significantly improved hiring efficiency and identified several high-performing employees.
+                            </p>
+                            <p>
+                                <strong>The Dilemma:</strong> Continuing to use the current AI system maintains efficiency gains but perpetuates discriminatory hiring practices. Retraining the AI or adding bias correction mechanisms would be expensive and time-consuming, and the company is under pressure to fill positions quickly in a competitive market.
+                            </p>
+                        </div>
+                        
+                        <div class="reflection-questions">
+                            <h5 style="color: #0c4a6e; margin-bottom: 1rem;">Critical Analysis Questions</h5>
+                            <div class="question-item">
+                                <strong>1. Discrimination vs. Efficiency:</strong><br>
+                                How do you balance operational efficiency with fair hiring practices?
+                            </div>
+                            <div class="question-item">
+                                <strong>2. Historical Bias Correction:</strong><br>
+                                What responsibility do organizations have to correct for historical discrimination in AI systems?
+                            </div>
+                            <div class="question-item">
+                                <strong>3. Legal and Ethical Compliance:</strong><br>
+                                How do equal opportunity laws apply to AI-driven hiring decisions?
+                            </div>
+                            <div class="question-item">
+                                <strong>4. Systemic Change:</strong><br>
+                                What long-term strategies can prevent bias in future AI hiring systems?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Ethics Analyzer -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Interactive Ethics Decision Framework</h2>
+
+            <div class="interactive-analyzer">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-balance-scale"></i> Apply the DECIDE Framework
+                </h4>
+                
+                <div class="analysis-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">1. Define the ethical issue clearly:</label>
+                    <textarea id="ethicalIssue" placeholder="What is the core ethical dilemma? What principles are in conflict?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="analysis-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">2. Establish evaluation criteria:</label>
+                    <input type="text" id="evaluationCriteria" placeholder="What ethical principles, laws, and professional standards apply?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="analysis-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">3. Consider alternative actions:</label>
+                    <textarea id="alternatives" placeholder="What are all possible approaches to this ethical challenge?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="analysis-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">4. Identify best alternative:</label>
+                    <input type="text" id="bestAlternative" placeholder="Which approach best balances ethical principles and practical constraints?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="analysis-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">5. Develop action plan:</label>
+                    <textarea id="actionPlan" placeholder="What specific steps will you take to implement this decision?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="analysis-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">6. Evaluate and monitor:</label>
+                    <input type="text" id="monitoring" placeholder="How will you assess outcomes and make adjustments?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <button onclick="generateEthicsAnalysis()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Professional Ethics Analysis
+                </button>
+                
+                <div id="generatedAnalysis" class="generated-analysis">
+                    <strong style="color: #065f46;">Your Professional Ethics Analysis:</strong><br><br>
+                    <div id="analysisText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Implementation Recommendations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Document this decision-making process for accountability</li>
+                            <li>Share your reasoning with relevant stakeholders</li>
+                            <li>Establish monitoring mechanisms for unintended consequences</li>
+                            <li>Use this analysis as a template for future ethical decisions</li>
+                            <li>Seek peer review or ethical consultation for complex cases</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Practices for Ethical AI -->
+            <div class="tips-card">
+                <h3><i class="fas fa-star"></i>Professional Ethical AI Best Practices</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Proactive Ethics Integration</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Build ethical considerations into AI workflows from the start, not as an afterthought</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Stakeholder-Centered Thinking</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Always consider the impact on all affected parties, especially vulnerable populations</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Transparent Documentation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Maintain clear records of ethical decisions and AI assistance for accountability</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Continuous Monitoring</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Regularly assess AI outcomes for bias, fairness, and unintended consequences</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Standards Integration -->
+            <div style="background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #9333ea;">
+                <h3 style="color: #581c87; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-certificate"></i>Integration with Professional Codes
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Medical Ethics</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Hippocratic Oath, patient autonomy, informed consent, beneficence</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Legal Ethics</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Client confidentiality, competent representation, duty of candor</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Financial Ethics</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Fiduciary duty, disclosure requirements, suitability standards</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">HR Ethics</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Equal opportunity, privacy protection, fair treatment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Test Your Ethical Knowledge</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Ready to validate your understanding of professional AI ethics? Take the comprehensive assessment to demonstrate your mastery.</p>
+                <a href="../assets/ethics-quiz.html" class="nav-btn">
+                    <i class="fas fa-question-circle"></i>
+                    Take Ethics Assessment
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-2-advanced-prompting-ethics.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Ethical Advanced Prompting
+                </a>
+                <a href="../assets/ethics-quiz.html" class="nav-btn">
+                    Next: Ethics Assessment
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function showScenario(scenarioId) {
+            // Hide all scenarios
+            const scenarios = document.querySelectorAll('.scenario-content');
+            scenarios.forEach(scenario => {
+                scenario.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.scenario-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected scenario
+            document.getElementById(scenarioId + '-scenario').classList.add('active');
+            
+            // Add active class to clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        
+        function generateEthicsAnalysis() {
+            const issue = document.getElementById('ethicalIssue').value;
+            const criteria = document.getElementById('evaluationCriteria').value;
+            const alternatives = document.getElementById('alternatives').value;
+            const bestAlternative = document.getElementById('bestAlternative').value;
+            const actionPlan = document.getElementById('actionPlan').value;
+            const monitoring = document.getElementById('monitoring').value;
+            
+            if (!issue || !criteria || !alternatives || !bestAlternative || !actionPlan || !monitoring) {
+                alert('Please complete all sections of the DECIDE framework analysis.');
+                return;
+            }
+            
+            const analysis = `PROFESSIONAL AI ETHICS ANALYSIS
+Using the DECIDE Framework
+
+==========================================
+
+ETHICAL ISSUE DEFINITION
+${issue}
+
+EVALUATION CRITERIA & STANDARDS
+${criteria}
+
+ALTERNATIVE ACTIONS CONSIDERED
+${alternatives}
+
+SELECTED APPROACH & RATIONALE
+${bestAlternative}
+
+IMPLEMENTATION ACTION PLAN
+${actionPlan}
+
+MONITORING & EVALUATION STRATEGY
+${monitoring}
+
+==========================================
+
+ETHICAL PRINCIPLES APPLIED:
+✓ Transparency: Clear documentation of decision process
+✓ Accountability: Personal responsibility for outcomes
+✓ Stakeholder Consideration: Impact on all affected parties
+✓ Professional Standards: Alignment with industry ethics
+✓ Continuous Improvement: Monitoring and adjustment mechanisms
+
+RISK MITIGATION MEASURES:
+• Regular review and adjustment of approach
+• Stakeholder communication and feedback
+• Documentation for audit and accountability
+• Escalation procedures for unexpected issues
+• Professional consultation when needed
+
+This analysis demonstrates systematic ethical reasoning and provides a framework for responsible professional AI implementation.`;
+
+            document.getElementById('analysisText').textContent = analysis;
+            document.getElementById('generatedAnalysis').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedAnalysis').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

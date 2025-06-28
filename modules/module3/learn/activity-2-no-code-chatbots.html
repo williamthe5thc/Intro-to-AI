@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 2: Assessing No-Code Chatbot Platforms - Module 3</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        .platform-card {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-blue);
+            transition: all 0.2s;
+        }
+        .platform-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .platform-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .platform-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .beginner {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .intermediate {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .advanced {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .pros {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .cons {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .comparison-table {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--neutral-white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+        .comparison-table th {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--neutral-light);
+        }
+        .comparison-table tr:hover {
+            background: var(--neutral-light);
+        }
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .star {
+            color: #fbbf24;
+        }
+        .star.empty {
+            color: #d1d5db;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 3</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Learning Activity 2</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/chatbot-implementation.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/chatbot-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Learning Activity 2: Assessing No-Code Chatbot Platforms</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Learn how to evaluate and select no-code chatbot platforms for professional applications. Discover the tools that make chatbot creation accessible to non-technical professionals.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Learning Objectives</h3>
+                <p style="margin-bottom: 1rem;">After completing this activity, you will be able to:</p>
+                <ul class="modern-list">
+                    <li>Identify key features to look for in no-code chatbot platforms</li>
+                    <li>Compare popular no-code platforms and their capabilities</li>
+                    <li>Assess platform suitability for specific professional use cases</li>
+                    <li>Understand pricing models and scalability considerations</li>
+                    <li>Evaluate integration options with existing business systems</li>
+                </ul>
+            </div>
+
+            <!-- Video Section -->
+            <div style="margin: 2rem 0;">
+                <h2 class="section-title"><i class="fas fa-play-circle"></i>Video: No-Code Chatbot Platform Assessment</h2>
+                
+                <video controls class="video-player">
+                    <source src="../../../multimedia/module3/3.2-no-code/3.2-No-Code-Chatbot-Platforms.mp4" type="video/mp4">
+                    Your browser does not support the video tag. Please download the video file to watch it.
+                </video>
+
+                <div style="display: flex; gap: 1rem; margin: 1rem 0; align-items: center; flex-wrap: wrap;">
+                    <a href="../../../multimedia/module3/3.2-no-code/3.2-No-Code-Chatbot-Platforms.pptx" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--neutral-light); border: 1px solid var(--neutral-medium); border-radius: 6px; text-decoration: none; color: var(--neutral-dark); font-size: 0.9rem;" download>
+                        <i class="fas fa-download"></i>
+                        Download Presentation
+                    </a>
+                    <a href="../../../multimedia/module3/audio/3.2.1.mp3" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--neutral-light); border: 1px solid var(--neutral-medium); border-radius: 6px; text-decoration: none; color: var(--neutral-dark); font-size: 0.9rem;">
+                        <i class="fas fa-headphones"></i>
+                        Audio Version
+                    </a>
+                </div>
+            </div>
+
+            <!-- Platform Categories -->
+            <div style="margin: 2rem 0;">
+                <h2 class="section-title"><i class="fas fa-layer-group"></i>No-Code Platform Categories</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--primary-blue);">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.75rem;">
+                            <i class="fas fa-seedling"></i> Beginner-Friendly
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark); margin-bottom: 0.75rem;">
+                            Simple drag-and-drop interfaces with templates
+                        </p>
+                        <ul style="list-style: none; margin: 0; font-size: 0.85rem; color: var(--neutral-medium);">
+                            <li>• Chatfuel</li>
+                            <li>• ManyChat</li>
+                            <li>• Botpress</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-orange);">
+                        <h4 style="color: #92400e; margin-bottom: 0.75rem;">
+                            <i class="fas fa-cogs"></i> Feature-Rich
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark); margin-bottom: 0.75rem;">
+                            Advanced features with moderate complexity
+                        </p>
+                        <ul style="list-style: none; margin: 0; font-size: 0.85rem; color: var(--neutral-medium);">
+                            <li>• Dialogflow</li>
+                            <li>• Microsoft Bot Framework</li>
+                            <li>• Amazon Lex</li>
+                        </ul>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px; padding: 1.5rem; border-left: 4px solid var(--accent-green);">
+                        <h4 style="color: #065f46; margin-bottom: 0.75rem;">
+                            <i class="fas fa-rocket"></i> Enterprise-Grade
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-dark); margin-bottom: 0.75rem;">
+                            Scalable solutions with advanced integrations
+                        </p>
+                        <ul style="list-style: none; margin: 0; font-size: 0.85rem; color: var(--neutral-medium);">
+                            <li>• IBM Watson Assistant</li>
+                            <li>• Salesforce Einstein</li>
+                            <li>• Oracle Digital Assistant</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Platforms -->
+            <div style="margin: 2rem 0;">
+                <h2 class="section-title"><i class="fas fa-star"></i>Featured Platform Analysis</h2>
+                
+                <!-- Platform 1: Chatfuel -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-name">Chatfuel</div>
+                        <div class="difficulty-badge beginner">Beginner</div>
+                    </div>
+                    <p style="color: var(--neutral-medium); margin-bottom: 1rem;">
+                        Popular Facebook Messenger chatbot platform with visual flow builder
+                    </p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Visual Flow Builder
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Facebook Integration
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Free Tier Available
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Templates Library
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5 style="color: #065f46; margin-bottom: 0.5rem;">✓ Pros</h5>
+                            <ul style="list-style: none; margin: 0; font-size: 0.9rem;">
+                                <li>• Very user-friendly</li>
+                                <li>• Quick setup</li>
+                                <li>• Good for marketing</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5 style="color: #dc2626; margin-bottom: 0.5rem;">✗ Cons</h5>
+                            <ul style="list-style: none; margin: 0; font-size: 0.9rem;">
+                                <li>• Limited to Facebook</li>
+                                <li>• Basic NLP</li>
+                                <li>• Limited customization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform 2: Dialogflow -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-name">Google Dialogflow</div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+                    <p style="color: var(--neutral-medium); margin-bottom: 1rem;">
+                        Google's conversational AI platform with advanced NLP capabilities
+                    </p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Advanced NLP
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Multi-Platform
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Voice Support
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Google Integration
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5 style="color: #065f46; margin-bottom: 0.5rem;">✓ Pros</h5>
+                            <ul style="list-style: none; margin: 0; font-size: 0.9rem;">
+                                <li>• Powerful NLP</li>
+                                <li>• Scalable</li>
+                                <li>• Multi-language</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5 style="color: #dc2626; margin-bottom: 0.5rem;">✗ Cons</h5>
+                            <ul style="list-style: none; margin: 0; font-size: 0.9rem;">
+                                <li>• Steeper learning curve</li>
+                                <li>• Can be expensive</li>
+                                <li>• Requires Google Cloud</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform 3: Microsoft Bot Framework -->
+                <div class="platform-card">
+                    <div class="platform-header">
+                        <div class="platform-name">Microsoft Bot Framework</div>
+                        <div class="difficulty-badge intermediate">Intermediate</div>
+                    </div>
+                    <p style="color: var(--neutral-medium); margin-bottom: 1rem;">
+                        Enterprise-focused platform with strong integration capabilities
+                    </p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Enterprise Security
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Office 365 Integration
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Teams Support
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check" style="color: var(--accent-green);"></i>
+                            Analytics Dashboard
+                        </div>
+                    </div>
+
+                    <div class="pros-cons">
+                        <div class="pros">
+                            <h5 style="color: #065f46; margin-bottom: 0.5rem;">✓ Pros</h5>
+                            <ul style="list-style: none; margin: 0; font-size: 0.9rem;">
+                                <li>• Strong enterprise features</li>
+                                <li>• Office integration</li>
+                                <li>• Good documentation</li>
+                            </ul>
+                        </div>
+                        <div class="cons">
+                            <h5 style="color: #dc2626; margin-bottom: 0.5rem;">✗ Cons</h5>
+                            <ul style="list-style: none; margin: 0; font-size: 0.9rem;">
+                                <li>• Microsoft ecosystem focused</li>
+                                <li>• Complex setup</li>
+                                <li>• Higher cost</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-table">
+                <h2 class="section-title"><i class="fas fa-table"></i>Platform Comparison</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Ease of Use</th>
+                            <th>NLP Capability</th>
+                            <th>Integration</th>
+                            <th>Pricing</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Chatfuel</strong></td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star empty"></i>
+                                    <i class="fas fa-star empty"></i>
+                                    <i class="fas fa-star empty"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star empty"></i>
+                                    <i class="fas fa-star empty"></i>
+                                </div>
+                            </td>
+                            <td>$</td>
+                            <td>Marketing, Social Media</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dialogflow</strong></td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star empty"></i>
+                                    <i class="fas fa-star empty"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star empty"></i>
+                                </div>
+                            </td>
+                            <td>$$</td>
+                            <td>Customer Service, Voice Assistants</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bot Framework</strong></td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star empty"></i>
+                                    <i class="fas fa-star empty"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star empty"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                            </td>
+                            <td>$$$</td>
+                            <td>Enterprise, Office Integration</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Selection Criteria -->
+            <div class="tips-card">
+                <h3><i class="fas fa-checklist"></i>Platform Selection Criteria</h3>
+                <p style="margin-bottom: 1rem;">When choosing a no-code chatbot platform, consider these key factors:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Use Case Alignment</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Does it support your specific professional needs?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Technical Complexity</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Matches your team's technical expertise</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Integration Requirements</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Works with your existing systems</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Scalability Needs</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Grows with your business</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Budget Constraints</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Fits within your financial parameters</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Support & Documentation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Adequate resources for implementation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Assessment -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--primary-blue);">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-clipboard-check"></i> Quick Platform Assessment
+                </h3>
+                <p style="margin-bottom: 1rem; color: var(--neutral-dark);">Use this checklist when evaluating platforms:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Free trial available
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Clear pricing structure
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Good documentation
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Active community
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Multi-channel support
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Analytics included
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Easy integration
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <input type="checkbox"> Security compliance
+                    </label>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-chatbot-fundamentals.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Chatbot Fundamentals
+                </a>
+                <a href="activity-3-legal-ethical-implications.html" class="nav-btn">
+                    Next: Legal & Ethical Implications
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

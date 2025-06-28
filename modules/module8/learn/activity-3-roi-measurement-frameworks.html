@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 3: ROI Measurement & Success Metrics - Module 8</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .roi-framework {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .metric-category {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #22c55e;
+            transition: all 0.3s ease;
+        }
+        .metric-category:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .metric-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+        .roi-calculator {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #22c55e;
+        }
+        .calculator-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .calculation-results {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .measurement-timeline {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .timeline-phase {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .kpi-dashboard {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .kpi-widget {
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .kpi-widget:hover {
+            border-color: #0891b2;
+            transform: translateY(-2px);
+        }
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0891b2;
+            margin: 0.5rem 0;
+        }
+        .benchmark-comparison {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .benchmark-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .benchmark-card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .interactive-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #22c55e;
+        }
+        .builder-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-framework {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .scenario-analysis {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .scenario-card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 8</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>ROI Measurement</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/implementation-strategy-builder.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/integration-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">ROI Measurement & Success Metrics</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Master the art and science of measuring AI implementation success. Learn to design comprehensive measurement frameworks that capture both quantitative returns and qualitative organizational benefits, enabling data-driven optimization and sustained stakeholder support.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Measurement Excellence Objectives</h3>
+                <p style="margin-bottom: 1rem;">Build expertise in AI implementation measurement and optimization:</p>
+                <ul class="modern-list">
+                    <li>Design comprehensive ROI measurement frameworks that capture multi-dimensional value</li>
+                    <li>Establish baseline metrics and realistic success targets for AI implementation initiatives</li>
+                    <li>Create balanced scorecards that track financial, operational, and strategic indicators</li>
+                    <li>Implement continuous monitoring systems that enable real-time optimization and adjustment</li>
+                    <li>Develop compelling business cases and success narratives that sustain organizational support</li>
+                </ul>
+            </div>
+
+            <!-- Comprehensive ROI Framework -->
+            <h2 class="section-title"><i class="fas fa-chart-line"></i>The VALUE Framework for AI ROI Measurement</h2>
+
+            <div class="roi-framework">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-gem"></i> Multi-Dimensional Value Assessment
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The VALUE framework ensures comprehensive measurement of AI implementation benefits across all organizational dimensions, capturing both immediate returns and long-term strategic advantages.
+                </p>
+                
+                <!-- Velocity Gains -->
+                <div class="metric-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #22c55e; margin-bottom: 0.5rem;">V - Velocity & Efficiency Gains</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Speed improvements and operational efficiency enhancements</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Metrics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Time-to-completion reduction for key processes</li>
+                            <li>Processing speed improvements and throughput increases</li>
+                            <li>Response time reductions for customer-facing activities</li>
+                            <li>Decision-making cycle time acceleration</li>
+                            <li>Resource utilization optimization and waste reduction</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px;">
+                        <strong>Measurement Approach:</strong> Before/after time studies, process flow analysis, capacity utilization reports, and productivity benchmarking against industry standards.
+                    </div>
+                </div>
+
+                <!-- Accuracy & Quality -->
+                <div class="metric-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #22c55e; margin-bottom: 0.5rem;">A - Accuracy & Quality Improvements</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Enhanced precision, consistency, and output quality</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Metrics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Error rate reduction and defect elimination</li>
+                            <li>Quality scores and customer satisfaction ratings</li>
+                            <li>Consistency improvements and variance reduction</li>
+                            <li>Compliance adherence and audit performance</li>
+                            <li>Rework reduction and first-time-right improvements</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px;">
+                        <strong>Measurement Approach:</strong> Quality control data analysis, customer feedback surveys, compliance audit results, and statistical process control monitoring.
+                    </div>
+                </div>
+
+                <!-- Learning & Development -->
+                <div class="metric-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #22c55e; margin-bottom: 0.5rem;">L - Learning & Capability Enhancement</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Skill development and organizational learning acceleration</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Metrics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Employee skill assessment scores and competency growth</li>
+                            <li>Learning velocity and knowledge retention rates</li>
+                            <li>Innovation index and creative output measures</li>
+                            <li>Problem-solving capability and analytical thinking improvement</li>
+                            <li>Career advancement and internal mobility increases</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px;">
+                        <strong>Measurement Approach:</strong> Skills assessments, learning analytics, innovation metrics, career progression tracking, and knowledge management system usage.
+                    </div>
+                </div>
+
+                <!-- User Experience -->
+                <div class="metric-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #22c55e; margin-bottom: 0.5rem;">U - User Experience & Satisfaction</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Employee and customer experience improvements</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Metrics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Employee engagement and job satisfaction scores</li>
+                            <li>Customer satisfaction (CSAT) and Net Promoter Score (NPS)</li>
+                            <li>User adoption rates and system usage patterns</li>
+                            <li>Stress reduction and work-life balance improvements</li>
+                            <li>Retention rates for both employees and customers</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px;">
+                        <strong>Measurement Approach:</strong> Regular surveys, user analytics, retention analysis, wellness assessments, and feedback collection systems.
+                    </div>
+                </div>
+
+                <!-- Economic Returns -->
+                <div class="metric-category">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #22c55e; margin-bottom: 0.5rem;">E - Economic Returns & Financial Impact</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Direct financial benefits and cost optimization</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Metrics:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Cost savings from process automation and optimization</li>
+                            <li>Revenue increases from improved capabilities</li>
+                            <li>Labor cost optimization and resource efficiency</li>
+                            <li>Risk mitigation and compliance cost reductions</li>
+                            <li>Investment payback period and net present value</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px;">
+                        <strong>Measurement Approach:</strong> Financial accounting analysis, cost-benefit calculations, budgetary impact assessments, and comprehensive ROI modeling.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive ROI Calculator -->
+            <h2 class="section-title"><i class="fas fa-calculator"></i>AI Implementation ROI Calculator</h2>
+
+            <div class="roi-calculator">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-pie"></i> Comprehensive ROI Assessment Tool
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Calculate the expected and actual return on investment for your AI implementation using comprehensive financial modeling and benefit quantification.
+                </p>
+                
+                <div class="calculator-section">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;">Implementation Costs</h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Technology & Software Costs:</label>
+                            <input type="number" id="techCosts" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Training & Development Costs:</label>
+                            <input type="number" id="trainingCosts" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Implementation & Consulting:</label>
+                            <input type="number" id="implementationCosts" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Ongoing Operating Costs (Annual):</label>
+                            <input type="number" id="operatingCosts" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator-section">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;">Quantified Benefits</h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Annual Labor Cost Savings:</label>
+                            <input type="number" id="laborSavings" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Annual Revenue Increases:</label>
+                            <input type="number" id="revenueIncrease" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Annual Quality Cost Reductions:</label>
+                            <input type="number" id="qualitySavings" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Annual Risk Mitigation Savings:</label>
+                            <input type="number" id="riskSavings" placeholder="$0" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="calculator-section">
+                    <h5 style="color: #22c55e; margin-bottom: 1rem;">Time Horizon & Parameters</h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Analysis Period (Years):</label>
+                            <select id="timePeriod" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="1">1 Year</option>
+                                <option value="2">2 Years</option>
+                                <option value="3" selected>3 Years</option>
+                                <option value="5">5 Years</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Discount Rate (%):</label>
+                            <input type="number" id="discountRate" value="8" min="0" max="20" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Benefit Growth Rate (%):</label>
+                            <input type="number" id="growthRate" value="5" min="0" max="50" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="calculateROI()" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-calculator"></i> Calculate ROI & Business Case
+                </button>
+                
+                <div id="calculationResults" class="calculation-results">
+                    <strong style="color: #065f46;">Your AI Implementation ROI Analysis:</strong><br><br>
+                    <div id="roiResults" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Financial Insights:</strong>
+                        <div id="roiInsights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Dashboard Framework -->
+            <h2 class="section-title"><i class="fas fa-tachometer-alt"></i>AI Implementation KPI Dashboard</h2>
+
+            <div class="kpi-dashboard">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Real-Time Performance Monitoring
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Track key performance indicators across all dimensions of AI implementation success with real-time monitoring and trend analysis.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div class="kpi-widget">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">
+                            <i class="fas fa-rocket"></i><br>Adoption Rate
+                        </h5>
+                        <div class="kpi-value">87%</div>
+                        <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">Target: 85%</p>
+                        <div style="background: #22c55e; height: 4px; border-radius: 2px; margin-top: 0.5rem;"></div>
+                    </div>
+                    
+                    <div class="kpi-widget">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">
+                            <i class="fas fa-clock"></i><br>Time Savings
+                        </h5>
+                        <div class="kpi-value">42%</div>
+                        <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">vs. Baseline</p>
+                        <div style="background: #22c55e; height: 4px; border-radius: 2px; margin-top: 0.5rem;"></div>
+                    </div>
+                    
+                    <div class="kpi-widget">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">
+                            <i class="fas fa-star"></i><br>Quality Score
+                        </h5>
+                        <div class="kpi-value">4.6</div>
+                        <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">out of 5.0</p>
+                        <div style="background: #22c55e; height: 4px; border-radius: 2px; margin-top: 0.5rem;"></div>
+                    </div>
+                    
+                    <div class="kpi-widget">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">
+                            <i class="fas fa-dollar-sign"></i><br>Cost Reduction
+                        </h5>
+                        <div class="kpi-value">$2.8M</div>
+                        <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">Annual Savings</p>
+                        <div style="background: #22c55e; height: 4px; border-radius: 2px; margin-top: 0.5rem;"></div>
+                    </div>
+                    
+                    <div class="kpi-widget">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">
+                            <i class="fas fa-thumbs-up"></i><br>Satisfaction
+                        </h5>
+                        <div class="kpi-value">8.4</div>
+                        <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">Employee NPS</p>
+                        <div style="background: #22c55e; height: 4px; border-radius: 2px; margin-top: 0.5rem;"></div>
+                    </div>
+                    
+                    <div class="kpi-widget">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">
+                            <i class="fas fa-chart-line"></i><br>ROI
+                        </h5>
+                        <div class="kpi-value">312%</div>
+                        <p style="font-size: 0.8rem; color: #6b7280; margin: 0;">3-Year NPV</p>
+                        <div style="background: #22c55e; height: 4px; border-radius: 2px; margin-top: 0.5rem;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Measurement Timeline -->
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i>Progressive Measurement Timeline</h2>
+
+            <div class="measurement-timeline">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-timeline"></i> Phased Measurement & Optimization Approach
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Implement measurement systems progressively, starting with foundational metrics and evolving to sophisticated analytics and predictive insights.
+                </p>
+                
+                <div class="timeline-phase">
+                    <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">
+                        <i class="fas fa-play"></i> Phase 1: Baseline Establishment (Month 1-2)
+                    </h5>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li>Comprehensive baseline data collection across all VALUE dimensions</li>
+                        <li>Establishment of measurement infrastructure and data collection systems</li>
+                        <li>Definition of key performance indicators and success targets</li>
+                        <li>Initial stakeholder expectations setting and communication</li>
+                        <li>Pilot measurement program launch with select teams</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-phase">
+                    <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">
+                        <i class="fas fa-chart-line"></i> Phase 2: Early Impact Tracking (Month 3-6)
+                    </h5>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li>Monthly progress reporting and trend analysis</li>
+                        <li>Quick wins identification and celebration</li>
+                        <li>Course correction and optimization based on early results</li>
+                        <li>Stakeholder feedback integration and communication</li>
+                        <li>Expansion of measurement to additional teams and processes</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-phase">
+                    <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">
+                        <i class="fas fa-cogs"></i> Phase 3: Optimization & Refinement (Month 7-12)
+                    </h5>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li>Advanced analytics implementation and deeper insights generation</li>
+                        <li>ROI validation and business case refinement</li>
+                        <li>Best practice identification and standardization</li>
+                        <li>Performance benchmarking against industry standards</li>
+                        <li>Measurement system automation and efficiency improvements</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-phase">
+                    <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">
+                        <i class="fas fa-rocket"></i> Phase 4: Strategic Evolution (Month 13+)
+                    </h5>
+                    <ul style="margin: 0.5rem 0 0 1rem;">
+                        <li>Predictive analytics and forward-looking indicators development</li>
+                        <li>Strategic value demonstration and future investment planning</li>
+                        <li>Continuous improvement culture embedding</li>
+                        <li>Industry leadership positioning and external recognition</li>
+                        <li>Next-generation AI capabilities exploration and measurement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Industry Benchmarking -->
+            <h2 class="section-title"><i class="fas fa-balance-scale"></i>Industry Benchmarking & Best Practices</h2>
+
+            <div class="benchmark-comparison">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-trophy"></i> AI Implementation Performance Benchmarks
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Compare your AI implementation performance against industry benchmarks and leading organizations to identify optimization opportunities and set realistic targets.
+                </p>
+                
+                <div class="benchmark-grid">
+                    <div class="benchmark-card">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">Adoption Speed</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Industry Average:</strong> 12-18 months to 70% adoption</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Best Practice:</strong> 6-9 months to 80% adoption</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Key Factor:</strong> Executive sponsorship and champion networks</p>
+                    </div>
+                    
+                    <div class="benchmark-card">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">Productivity Gains</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Industry Average:</strong> 20-30% efficiency improvement</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Best Practice:</strong> 40-60% efficiency improvement</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Key Factor:</strong> Process optimization and training quality</p>
+                    </div>
+                    
+                    <div class="benchmark-card">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">ROI Achievement</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Industry Average:</strong> 200-300% 3-year ROI</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Best Practice:</strong> 400-500% 3-year ROI</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Key Factor:</strong> Strategic use case selection and scaling</p>
+                    </div>
+                    
+                    <div class="benchmark-card">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">Quality Improvement</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Industry Average:</strong> 15-25% error reduction</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Best Practice:</strong> 50-70% error reduction</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Key Factor:</strong> Quality control integration and validation</p>
+                    </div>
+                    
+                    <div class="benchmark-card">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">Employee Satisfaction</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Industry Average:</strong> 60-70% positive sentiment</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Best Practice:</strong> 85-90% positive sentiment</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Key Factor:</strong> Change management and support systems</p>
+                    </div>
+                    
+                    <div class="benchmark-card">
+                        <h5 style="color: #7c3aed; margin-bottom: 0.5rem;">Time to Value</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Industry Average:</strong> 9-15 months to significant value</p>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Best Practice:</strong> 3-6 months to measurable value</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Key Factor:</strong> Pilot strategy and quick wins focus</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Scenario Analysis -->
+            <h2 class="section-title"><i class="fas fa-trophy"></i>Success Scenario Planning</h2>
+
+            <div class="scenario-analysis">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-area"></i> ROI Scenario Modeling & Risk Analysis
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Model different success scenarios to understand potential outcomes, plan for contingencies, and set realistic expectations for stakeholders.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div class="scenario-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-chart-line"></i> Conservative Scenario (70% Probability)
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Adoption Rate:</strong> 60-70% within 18 months</li>
+                            <li><strong>Productivity Gain:</strong> 15-25% improvement</li>
+                            <li><strong>3-Year ROI:</strong> 150-250%</li>
+                            <li><strong>Time to Value:</strong> 12-15 months</li>
+                            <li><strong>Risk Factors:</strong> Change resistance, skill gaps</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <h5 style="color: #f59e0b; margin-bottom: 0.5rem;">
+                            <i class="fas fa-chart-line"></i> Realistic Scenario (20% Probability)
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Adoption Rate:</strong> 75-85% within 12 months</li>
+                            <li><strong>Productivity Gain:</strong> 30-40% improvement</li>
+                            <li><strong>3-Year ROI:</strong> 300-400%</li>
+                            <li><strong>Time to Value:</strong> 6-9 months</li>
+                            <li><strong>Success Factors:</strong> Strong leadership, good training</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="scenario-card">
+                        <h5 style="color: #22c55e; margin-bottom: 0.5rem;">
+                            <i class="fas fa-rocket"></i> Optimistic Scenario (10% Probability)
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Adoption Rate:</strong> 90%+ within 9 months</li>
+                            <li><strong>Productivity Gain:</strong> 50%+ improvement</li>
+                            <li><strong>3-Year ROI:</strong> 500%+ returns</li>
+                            <li><strong>Time to Value:</strong> 3-6 months</li>
+                            <li><strong>Success Factors:</strong> Perfect execution, cultural fit</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Measurement Framework Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Custom Measurement Framework Builder</h2>
+
+            <div class="interactive-builder">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-drafting-compass"></i> Build Your AI Success Measurement System
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Create a customized measurement framework tailored to your organization's specific goals, industry context, and success criteria.
+                </p>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Business Objectives (select up to 3):</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="cost-reduction"> Cost Reduction
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="revenue-growth"> Revenue Growth
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="efficiency"> Operational Efficiency
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="quality"> Quality Improvement
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="innovation"> Innovation & Agility
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="experience"> Customer/Employee Experience
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Industry/Sector:</label>
+                    <select id="industry" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select industry...</option>
+                        <option value="financial">Financial Services</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="retail">Retail & E-commerce</option>
+                        <option value="technology">Technology</option>
+                        <option value="legal">Legal Services</option>
+                        <option value="education">Education</option>
+                        <option value="consulting">Professional Services</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Measurement Sophistication Level:</label>
+                    <select id="sophistication" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select level...</option>
+                        <option value="basic">Basic (Simple metrics and manual tracking)</option>
+                        <option value="intermediate">Intermediate (Automated reporting with dashboards)</option>
+                        <option value="advanced">Advanced (Predictive analytics and real-time monitoring)</option>
+                        <option value="enterprise">Enterprise (AI-powered measurement and optimization)</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Implementation Timeline:</label>
+                    <select id="implementationTimeline" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select timeline...</option>
+                        <option value="short">Short-term (3-6 months)</option>
+                        <option value="medium">Medium-term (6-12 months)</option>
+                        <option value="long">Long-term (12-24 months)</option>
+                        <option value="ongoing">Ongoing (Multi-year program)</option>
+                    </select>
+                </div>
+                
+                <div class="builder-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Target ROI Expectation:</label>
+                    <select id="roiTarget" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select ROI target...</option>
+                        <option value="conservative">Conservative (100-200% over 3 years)</option>
+                        <option value="moderate">Moderate (200-300% over 3 years)</option>
+                        <option value="aggressive">Aggressive (300-500% over 3 years)</option>
+                        <option value="breakthrough">Breakthrough (500%+ over 3 years)</option>
+                    </select>
+                </div>
+                
+                <button onclick="generateMeasurementFramework()" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Measurement Framework
+                </button>
+                
+                <div id="generatedFramework" class="generated-framework">
+                    <strong style="color: #065f46;">Your Custom AI Measurement Framework:</strong><br><br>
+                    <div id="frameworkText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap; font-family: monospace;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Implementation Recommendations:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with baseline measurements before AI implementation</li>
+                            <li>Implement measurement systems progressively</li>
+                            <li>Ensure data quality and consistency across all metrics</li>
+                            <li>Regular stakeholder communication of progress and insights</li>
+                            <li>Continuous refinement based on learning and feedback</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px;">
+                <h3 style="color: #166534; margin-bottom: 1rem;">Apply Your Strategy Knowledge</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Ready to put it all together? Use the Implementation Strategy Builder to create a comprehensive plan that integrates readiness assessment, change management, and ROI measurement.</p>
+                <a href="../practice/implementation-strategy-builder.html" class="nav-btn">
+                    <i class="fas fa-project-diagram"></i>
+                    Build Implementation Strategy
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-2-change-management-strategies.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Change Management
+                </a>
+                <a href="../practice/implementation-strategy-builder.html" class="nav-btn">
+                    Next: Strategy Builder
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function calculateROI() {
+            const techCosts = parseFloat(document.getElementById('techCosts').value) || 0;
+            const trainingCosts = parseFloat(document.getElementById('trainingCosts').value) || 0;
+            const implementationCosts = parseFloat(document.getElementById('implementationCosts').value) || 0;
+            const operatingCosts = parseFloat(document.getElementById('operatingCosts').value) || 0;
+            
+            const laborSavings = parseFloat(document.getElementById('laborSavings').value) || 0;
+            const revenueIncrease = parseFloat(document.getElementById('revenueIncrease').value) || 0;
+            const qualitySavings = parseFloat(document.getElementById('qualitySavings').value) || 0;
+            const riskSavings = parseFloat(document.getElementById('riskSavings').value) || 0;
+            
+            const timePeriod = parseInt(document.getElementById('timePeriod').value);
+            const discountRate = parseFloat(document.getElementById('discountRate').value) / 100;
+            const growthRate = parseFloat(document.getElementById('growthRate').value) / 100;
+            
+            if (techCosts === 0 && trainingCosts === 0 && implementationCosts === 0) {
+                alert('Please enter at least one cost value.');
+                return;
+            }
+            
+            if (laborSavings === 0 && revenueIncrease === 0 && qualitySavings === 0 && riskSavings === 0) {
+                alert('Please enter at least one benefit value.');
+                return;
+            }
+            
+            // Calculate total initial investment
+            const initialInvestment = techCosts + trainingCosts + implementationCosts;
+            
+            // Calculate annual benefits
+            const annualBenefits = laborSavings + revenueIncrease + qualitySavings + riskSavings;
+            
+            // Calculate NPV and ROI
+            let totalPV = 0;
+            let totalCosts = initialInvestment;
+            
+            for (let year = 1; year <= timePeriod; year++) {
+                const yearlyBenefits = annualBenefits * Math.pow(1 + growthRate, year - 1);
+                const pv = (yearlyBenefits - operatingCosts) / Math.pow(1 + discountRate, year);
+                totalPV += pv;
+                totalCosts += operatingCosts / Math.pow(1 + discountRate, year);
+            }
+            
+            const netPresentValue = totalPV - initialInvestment;
+            const roi = (netPresentValue / initialInvestment) * 100;
+            const paybackPeriod = initialInvestment / (annualBenefits - operatingCosts);
+            
+            // Generate results
+            let resultsHTML = `
+<strong>Financial Analysis Summary:</strong><br><br>
+<strong>Initial Investment:</strong> $${initialInvestment.toLocaleString()}<br>
+<strong>Annual Benefits:</strong> $${annualBenefits.toLocaleString()}<br>
+<strong>Annual Operating Costs:</strong> $${operatingCosts.toLocaleString()}<br>
+<strong>Net Annual Benefit:</strong> $${(annualBenefits - operatingCosts).toLocaleString()}<br><br>
+<strong>Key Financial Metrics:</strong><br>
+• <strong>Net Present Value (${timePeriod} years):</strong> $${netPresentValue.toLocaleString()}<br>
+• <strong>Return on Investment:</strong> ${roi.toFixed(1)}%<br>
+• <strong>Payback Period:</strong> ${paybackPeriod.toFixed(1)} years<br>
+• <strong>Benefit-Cost Ratio:</strong> ${(totalPV / initialInvestment).toFixed(2)}:1<br>
+            `;
+            
+            // Generate insights
+            let insights = '<ul style="margin: 0.5rem 0 0 1rem;">';
+            
+            if (roi > 300) {
+                insights += '<li><strong>Excellent ROI:</strong> Your AI implementation shows exceptional financial returns. This is a strong business case for executive approval.</li>';
+            } else if (roi > 200) {
+                insights += '<li><strong>Strong ROI:</strong> Good financial returns that justify the investment. Consider accelerating implementation.</li>';
+            } else if (roi > 100) {
+                insights += '<li><strong>Positive ROI:</strong> Acceptable returns, but look for optimization opportunities to increase benefits.</li>';
+            } else if (roi > 0) {
+                insights += '<li><strong>Marginal ROI:</strong> Returns are positive but modest. Review costs and benefits for improvement opportunities.</li>';
+            } else {
+                insights += '<li><strong>Negative ROI:</strong> Current projections show losses. Reassess implementation strategy, costs, and benefit assumptions.</li>';
+            }
+            
+            if (paybackPeriod < 2) {
+                insights += '<li><strong>Fast Payback:</strong> Your investment pays back quickly, reducing financial risk.</li>';
+            } else if (paybackPeriod < 3) {
+                insights += '<li><strong>Reasonable Payback:</strong> Acceptable payback period for technology investments.</li>';
+            } else {
+                insights += '<li><strong>Long Payback:</strong> Consider ways to accelerate benefits or reduce costs for faster payback.</li>';
+            }
+            
+            insights += '</ul>';
+            
+            document.getElementById('roiResults').innerHTML = resultsHTML;
+            document.getElementById('roiInsights').innerHTML = insights;
+            document.getElementById('calculationResults').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('calculationResults').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function generateMeasurementFramework() {
+            const objectives = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
+            const industry = document.getElementById('industry').value;
+            const sophistication = document.getElementById('sophistication').value;
+            const timeline = document.getElementById('implementationTimeline').value;
+            const roiTarget = document.getElementById('roiTarget').value;
+            
+            if (objectives.length === 0 || !industry || !sophistication || !timeline || !roiTarget) {
+                alert('Please complete all sections of the measurement framework builder.');
+                return;
+            }
+            
+            let framework = generateCustomFramework(objectives, industry, sophistication, timeline, roiTarget);
+            
+            document.getElementById('frameworkText').textContent = framework;
+            document.getElementById('generatedFramework').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedFramework').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function generateCustomFramework(objectives, industry, sophistication, timeline, roiTarget) {
+            const objectiveNames = {
+                'cost-reduction': 'Cost Reduction',
+                'revenue-growth': 'Revenue Growth',
+                'efficiency': 'Operational Efficiency',
+                'quality': 'Quality Improvement',
+                'innovation': 'Innovation & Agility',
+                'experience': 'Customer/Employee Experience'
+            };
+            
+            const industrySpecifics = {
+                financial: 'Regulatory compliance, risk management, customer experience',
+                healthcare: 'Patient outcomes, safety, regulatory compliance',
+                manufacturing: 'Production efficiency, quality control, safety',
+                retail: 'Customer experience, inventory management, sales performance',
+                technology: 'Innovation speed, product quality, development efficiency',
+                legal: 'Case outcomes, efficiency, client satisfaction',
+                education: 'Student outcomes, engagement, operational efficiency',
+                consulting: 'Client satisfaction, project efficiency, expertise delivery'
+            };
+            
+            let framework = `AI SUCCESS MEASUREMENT FRAMEWORK
+Industry: ${industry.charAt(0).toUpperCase() + industry.slice(1)}
+Timeline: ${timeline.charAt(0).toUpperCase() + timeline.slice(1)}
+ROI Target: ${roiTarget.charAt(0).toUpperCase() + roiTarget.slice(1)}
+
+=== PRIMARY SUCCESS OBJECTIVES ===
+${objectives.map(obj => `• ${objectiveNames[obj]}`).join('\n')}
+
+=== VALUE FRAMEWORK METRICS ===
+
+VELOCITY & EFFICIENCY GAINS:
+${getVelocityMetrics(objectives, industry)}
+
+ACCURACY & QUALITY IMPROVEMENTS:
+${getQualityMetrics(objectives, industry)}
+
+LEARNING & CAPABILITY ENHANCEMENT:
+${getLearningMetrics(objectives, sophistication)}
+
+USER EXPERIENCE & SATISFACTION:
+${getExperienceMetrics(objectives)}
+
+ECONOMIC RETURNS & FINANCIAL IMPACT:
+${getEconomicMetrics(objectives, roiTarget)}
+
+=== INDUSTRY-SPECIFIC CONSIDERATIONS ===
+${industrySpecifics[industry] || 'General business metrics'}
+
+=== MEASUREMENT TIMELINE ===
+${getMeasurementTimeline(timeline)}
+
+=== KPI DASHBOARD DESIGN ===
+${getDashboardDesign(sophistication)}
+
+=== SUCCESS TARGETS ===
+${getSuccessTargets(roiTarget, timeline)}
+
+=== REPORTING & GOVERNANCE ===
+${getReportingFramework(sophistication)}
+
+This framework should be reviewed and updated quarterly to ensure continued alignment with business objectives and organizational evolution.`;
+
+            return framework;
+        }
+        
+        function getVelocityMetrics(objectives, industry) {
+            if (objectives.includes('efficiency')) {
+                return `• Process cycle time reduction (target: 30-50%)
+• Throughput improvements (target: 25-40%)
+• Resource utilization optimization (target: 20-30%)
+• Decision-making speed enhancement (target: 40-60%)`;
+            }
+            return `• Task completion time reduction (target: 20-35%)
+• Process efficiency improvements (target: 15-25%)
+• Response time enhancements (target: 25-40%)`;
+        }
+        
+        function getQualityMetrics(objectives, industry) {
+            if (objectives.includes('quality')) {
+                return `• Error rate reduction (target: 50-80%)
+• Quality score improvements (target: 15-25% increase)
+• Consistency enhancements (target: 30-50% variance reduction)
+• Compliance adherence (target: 95%+ scores)`;
+            }
+            return `• Accuracy improvements (target: 20-40%)
+• Consistency enhancements (target: 15-30%)
+• Customer satisfaction (target: 10-20% increase)`;
+        }
+        
+        function getLearningMetrics(objectives, sophistication) {
+            if (sophistication === 'advanced' || sophistication === 'enterprise') {
+                return `• Skill competency growth (target: 40-60% improvement)
+• Learning velocity acceleration (target: 50-70% faster)
+• Innovation index increases (target: 30-50% more ideas)
+• Knowledge retention rates (target: 80%+ retention)`;
+            }
+            return `• Training completion rates (target: 90%+ completion)
+• Skill assessment improvements (target: 25-40%)
+• User confidence levels (target: 70%+ high confidence)`;
+        }
+        
+        function getExperienceMetrics(objectives) {
+            if (objectives.includes('experience')) {
+                return `• Employee engagement scores (target: 15-25% increase)
+• Customer satisfaction (CSAT) improvements (target: 20-30%)
+• Net Promoter Score (NPS) enhancement (target: 10-20 point increase)
+• User adoption rates (target: 80%+ active usage)`;
+            }
+            return `• User satisfaction scores (target: 70%+ positive)
+• Adoption rates (target: 75%+ active usage)
+• Support ticket reduction (target: 30-50%)`;
+        }
+        
+        function getEconomicMetrics(objectives, roiTarget) {
+            if (roiTarget === 'aggressive' || roiTarget === 'breakthrough') {
+                return `• Cost savings realization (target: $500K-$2M annually)
+• Revenue enhancement (target: $1M-$5M+ annually)
+• ROI achievement (target: ${roiTarget === 'breakthrough' ? '500%+' : '300-500%'} over 3 years)
+• Payback period (target: 6-18 months)`;
+            }
+            return `• Cost savings (target: $100K-$500K annually)
+• Productivity value (target: $200K-$1M annually)
+• ROI achievement (target: 150-300% over 3 years)
+• Payback period (target: 12-24 months)`;
+        }
+        
+        function getMeasurementTimeline(timeline) {
+            const timelines = {
+                short: 'Monthly detailed tracking, quarterly comprehensive reviews',
+                medium: 'Bi-weekly progress tracking, monthly detailed analysis, quarterly strategic reviews',
+                long: 'Weekly progress monitoring, monthly analysis, quarterly comprehensive reviews, annual strategic assessment',
+                ongoing: 'Real-time monitoring, weekly analysis, monthly reviews, quarterly strategic planning'
+            };
+            return timelines[timeline] || 'Regular monitoring and analysis';
+        }
+        
+        function getDashboardDesign(sophistication) {
+            const dashboards = {
+                basic: 'Simple KPI tracking with manual reporting and basic visualizations',
+                intermediate: 'Automated dashboards with real-time data, trend analysis, and interactive visualizations',
+                advanced: 'Predictive analytics, automated insights, comprehensive scorecards, and executive dashboards',
+                enterprise: 'AI-powered analytics, predictive modeling, automated optimization recommendations, and strategic intelligence'
+            };
+            return dashboards[sophistication] || 'Standard dashboard implementation';
+        }
+        
+        function getSuccessTargets(roiTarget, timeline) {
+            return `Based on ${roiTarget} ROI expectations over ${timeline} timeline:
+• Adoption: 70-90% active usage within implementation period
+• Efficiency: 20-50% productivity improvements
+• Quality: 15-80% error reduction (depending on baseline)
+• Satisfaction: 70-90% positive user sentiment
+• Financial: Achieve target ROI within specified timeframe`;
+        }
+        
+        function getReportingFramework(sophistication) {
+            if (sophistication === 'enterprise' || sophistication === 'advanced') {
+                return `• Real-time executive dashboards with automated insights
+• Monthly stakeholder reports with trend analysis
+• Quarterly business reviews with ROI validation
+• Annual strategic assessments with forward planning
+• Ad-hoc analysis and deep-dive investigations`;
+            }
+            return `• Weekly progress updates to implementation team
+• Monthly summary reports to management
+• Quarterly comprehensive reviews with stakeholders
+• Annual assessment and planning sessions`;
+        }
+    </script>
+</body>
+</html>

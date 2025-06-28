@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 2: Change Management for AI Adoption - Module 8</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .change-framework {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .change-stage {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+            transition: all 0.3s ease;
+        }
+        .change-stage:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .stage-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+        .resistance-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .resistance-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        .resistance-card:hover {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+        .strategy-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .strategy-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        .strategy-card:hover {
+            border-color: #10b981;
+            background: #f0fdf4;
+        }
+        .communication-plan {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .stakeholder-card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .interactive-planner {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .planner-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-plan {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .milestone-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .milestone {
+            background: var(--neutral-light);
+            border-radius: 6px;
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .milestone::after {
+            content: '';
+            position: absolute;
+            right: -0.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid var(--neutral-light);
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+        .milestone:last-child::after {
+            display: none;
+        }
+        .champion-network {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .training-ladder {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .training-level {
+            background: rgba(255,255,255,0.8);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-left: 4px solid #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 8</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Change Management</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/implementation-strategy-builder.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/integration-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Change Management for AI Adoption</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Master the human side of AI implementation. Learn to navigate resistance, build engagement, and create sustainable adoption through proven change management strategies tailored specifically for AI transformation initiatives.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Change Leadership Mastery</h3>
+                <p style="margin-bottom: 1rem;">Develop expertise in leading successful AI adoption initiatives:</p>
+                <ul class="modern-list">
+                    <li>Apply proven change management frameworks specifically adapted for AI implementation</li>
+                    <li>Identify and address various types of resistance to AI adoption in professional settings</li>
+                    <li>Design comprehensive communication strategies that build understanding and buy-in</li>
+                    <li>Build and leverage champion networks to accelerate organizational AI adoption</li>
+                    <li>Create sustainable training and support systems that ensure long-term success</li>
+                </ul>
+            </div>
+
+            <!-- Change Management Framework -->
+            <h2 class="section-title"><i class="fas fa-users-cog"></i>The BRIDGE Framework for AI Change Management</h2>
+
+            <div class="change-framework">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-bridge"></i> Building Successful AI Transformation
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The BRIDGE framework provides a systematic approach to managing the human aspects of AI implementation, ensuring sustainable adoption and organizational success.
+                </p>
+                
+                <!-- Build Awareness -->
+                <div class="change-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">B - Build Awareness & Understanding</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Create foundation of AI knowledge and strategic vision</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Executive education on AI opportunities and implications</li>
+                            <li>Organization-wide AI literacy and awareness campaigns</li>
+                            <li>Clear communication of strategic vision and business case</li>
+                            <li>Demonstration of AI capabilities and potential impact</li>
+                            <li>Address misconceptions and unrealistic expectations</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef7ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Baseline knowledge assessments, engagement in learning activities, quality of AI-related discussions, and demonstrated understanding of strategic vision.
+                    </div>
+                </div>
+
+                <!-- Reduce Resistance -->
+                <div class="change-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">R - Reduce Resistance & Address Concerns</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Proactively identify and address sources of resistance</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Systematic identification of resistance sources and concerns</li>
+                            <li>Direct dialogue and open communication channels</li>
+                            <li>Addressing job security fears with retraining programs</li>
+                            <li>Demonstrating AI as augmentation, not replacement</li>
+                            <li>Creating psychological safety for expressing concerns</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef7ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Reduced negative sentiment, increased participation in AI initiatives, fewer resistance incidents, and improved trust scores.
+                    </div>
+                </div>
+
+                <!-- Involve & Engage -->
+                <div class="change-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">I - Involve & Engage Stakeholders</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Create meaningful participation and ownership</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Co-creation of AI implementation plans with stakeholders</li>
+                            <li>Regular feedback collection and incorporation</li>
+                            <li>Pilot program participation and input gathering</li>
+                            <li>Cross-functional AI working groups and committees</li>
+                            <li>Recognition and celebration of contributions</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef7ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Stakeholder participation rates, quality of feedback, number of improvement suggestions, and sense of ownership surveys.
+                    </div>
+                </div>
+
+                <!-- Develop Capabilities -->
+                <div class="change-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">D - Develop Capabilities & Skills</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Build competence and confidence through systematic training</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Role-specific AI training and skill development programs</li>
+                            <li>Hands-on practice sessions and simulation exercises</li>
+                            <li>Mentoring and peer learning networks</li>
+                            <li>Progressive skill building with certification pathways</li>
+                            <li>Just-in-time support and resource accessibility</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef7ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Skill assessment scores, training completion rates, confidence levels, successful task completion, and knowledge retention.
+                    </div>
+                </div>
+
+                <!-- Generate Momentum -->
+                <div class="change-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">G - Generate Momentum & Quick Wins</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Build confidence through visible successes and achievements</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Identification and execution of high-impact, low-risk pilot projects</li>
+                            <li>Regular celebration and communication of successes</li>
+                            <li>Sharing of best practices and lessons learned</li>
+                            <li>Progressive expansion from successes to new areas</li>
+                            <li>Building confidence through demonstrated value creation</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef7ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Number of successful pilots, ROI demonstrations, positive word-of-mouth, increased adoption requests, and momentum indicators.
+                    </div>
+                </div>
+
+                <!-- Embed & Sustain -->
+                <div class="change-stage">
+                    <div class="stage-header">
+                        <div class="stage-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">E - Embed & Sustain Changes</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Institutionalize AI adoption into organizational culture</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Key Activities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Integration of AI into standard operating procedures</li>
+                            <li>Performance management and incentive alignment</li>
+                            <li>Continuous improvement and innovation processes</li>
+                            <li>Cultural reinforcement through leadership modeling</li>
+                            <li>Long-term sustainability planning and resource allocation</li>
+                        </ul>
+                    </div>
+                    <div style="background: #fef7ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Success Metrics:</strong> Sustained usage rates, cultural integration indicators, continuous improvement activities, and long-term business impact.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Understanding Resistance -->
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i>Understanding and Addressing AI Resistance</h2>
+
+            <div style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid #ef4444;">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-user-times"></i> Common Sources of AI Resistance
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Understanding the root causes of resistance enables targeted interventions that address specific concerns and build genuine support for AI adoption.
+                </p>
+                
+                <div class="resistance-types">
+                    <div class="resistance-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-briefcase"></i> Job Security Fears
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                            Concerns about job displacement, role changes, and career relevance in an AI-enhanced workplace.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                                <li>Clear communication about AI as augmentation, not replacement</li>
+                                <li>Retraining and upskilling programs</li>
+                                <li>New role definition and career path planning</li>
+                                <li>Success stories from other organizations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resistance-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-brain"></i> Cognitive Overload
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                            Feeling overwhelmed by new technology concepts, learning requirements, and workflow changes.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                                <li>Gradual introduction and progressive learning paths</li>
+                                <li>Simplified explanations and hands-on practice</li>
+                                <li>Peer mentoring and support systems</li>
+                                <li>Flexible learning pace and multiple formats</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resistance-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-clock"></i> Time Constraints
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                            Concerns about time required for learning, implementation, and initial productivity dips.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                                <li>Protected time for learning and practice</li>
+                                <li>Micro-learning modules and just-in-time training</li>
+                                <li>Integration with existing workflows</li>
+                                <li>Realistic timelines and expectations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resistance-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-shield-alt"></i> Quality & Trust Concerns
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                            Doubts about AI accuracy, reliability, and impact on professional quality standards.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                                <li>Transparent demonstration of AI capabilities and limitations</li>
+                                <li>Quality control processes and human oversight</li>
+                                <li>Gradual trust building through successful experiences</li>
+                                <li>Clear guidelines for AI use and validation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resistance-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-users"></i> Cultural Misalignment
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                            Conflict between AI adoption and existing organizational values, practices, or identity.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                                <li>Alignment of AI vision with organizational values</li>
+                                <li>Cultural integration and values-based messaging</li>
+                                <li>Leadership modeling and cultural reinforcement</li>
+                                <li>Evolution rather than revolution approach</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="resistance-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;">
+                            <i class="fas fa-dollar-sign"></i> Resource & Priority Concerns
+                        </h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                            Questions about resource allocation, competing priorities, and return on investment.
+                        </p>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                                <li>Clear business case and ROI demonstration</li>
+                                <li>Phased implementation with measurable milestones</li>
+                                <li>Resource allocation transparency</li>
+                                <li>Quick wins and value demonstration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Communication Strategy -->
+            <h2 class="section-title"><i class="fas fa-bullhorn"></i>Strategic Communication Planning</h2>
+
+            <div class="communication-plan">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-comments"></i> Multi-Channel Communication Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Effective AI adoption requires tailored communication strategies that reach different stakeholder groups with relevant, compelling messages through appropriate channels.
+                </p>
+                
+                <div class="stakeholder-grid">
+                    <div class="stakeholder-card">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">Senior Leadership</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Message Focus:</strong> Strategic value, competitive advantage, ROI</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Channels:</strong> Executive briefings, board presentations, strategic planning sessions</p>
+                    </div>
+                    
+                    <div class="stakeholder-card">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">Middle Management</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Message Focus:</strong> Implementation support, team leadership, change facilitation</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Channels:</strong> Management meetings, workshops, leadership forums</p>
+                    </div>
+                    
+                    <div class="stakeholder-card">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">Front-line Employees</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Message Focus:</strong> Job enhancement, skill development, practical benefits</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Channels:</strong> Team meetings, training sessions, peer networks</p>
+                    </div>
+                    
+                    <div class="stakeholder-card">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">IT & Technical Teams</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Message Focus:</strong> Technical capabilities, integration requirements, support needs</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Channels:</strong> Technical briefings, documentation, collaboration platforms</p>
+                    </div>
+                    
+                    <div class="stakeholder-card">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">Customers/Clients</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Message Focus:</strong> Service improvement, innovation, value enhancement</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Channels:</strong> Client communications, case studies, service updates</p>
+                    </div>
+                    
+                    <div class="stakeholder-card">
+                        <h5 style="color: #0891b2; margin-bottom: 0.5rem;">External Partners</h5>
+                        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Message Focus:</strong> Collaboration opportunities, mutual benefits, ecosystem development</p>
+                        <p style="font-size: 0.8rem; color: #6b7280;"><strong>Channels:</strong> Partner meetings, joint initiatives, industry events</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Champion Network -->
+            <h2 class="section-title"><i class="fas fa-star"></i>Building AI Champion Networks</h2>
+
+            <div class="champion-network">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-network-wired"></i> Creating Influential Change Advocates
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    AI champions are crucial catalysts for successful adoption. They provide peer-to-peer influence, local expertise, and grassroots momentum that accelerates organizational transformation.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #92400e; margin-bottom: 0.5rem;">
+                            <i class="fas fa-search"></i> Champion Identification
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Early technology adopters and innovators</li>
+                            <li>Informal influencers and respected team members</li>
+                            <li>High performers seeking growth opportunities</li>
+                            <li>Cross-functional collaboration builders</li>
+                            <li>Natural mentors and knowledge sharers</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #92400e; margin-bottom: 0.5rem;">
+                            <i class="fas fa-graduation-cap"></i> Champion Development
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Advanced AI training and certification programs</li>
+                            <li>Leadership development and coaching</li>
+                            <li>Access to exclusive resources and information</li>
+                            <li>Recognition and career advancement opportunities</li>
+                            <li>Direct connection to implementation leadership</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #92400e; margin-bottom: 0.5rem;">
+                            <i class="fas fa-hands-helping"></i> Champion Activities
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Peer mentoring and informal training sessions</li>
+                            <li>Success story sharing and case study development</li>
+                            <li>Feedback collection and barrier identification</li>
+                            <li>Local implementation support and troubleshooting</li>
+                            <li>Cultural change reinforcement and encouragement</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #92400e; margin-bottom: 0.5rem;">
+                            <i class="fas fa-trophy"></i> Champion Support
+                        </h5>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Regular champion network meetings and updates</li>
+                            <li>Resource allocation for champion activities</li>
+                            <li>Performance recognition and reward systems</li>
+                            <li>Professional development and growth opportunities</li>
+                            <li>Leadership visibility and executive sponsorship</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Strategy -->
+            <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i>Systematic Training & Development</h2>
+
+            <div class="training-ladder">
+                <h4 style="color: #166534; margin-bottom: 1.5rem;">
+                    <i class="fas fa-stairs"></i> Progressive AI Competency Development
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Build organizational AI capabilities through structured, role-appropriate training programs that progress from basic awareness to advanced application skills.
+                </p>
+                
+                <div class="training-level">
+                    <h5 style="color: #22c55e; margin-bottom: 0.5rem;">
+                        <i class="fas fa-seedling"></i> Level 1: AI Awareness & Foundation
+                    </h5>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                        <strong>Target:</strong> All employees • <strong>Duration:</strong> 2-4 hours • <strong>Format:</strong> Online modules, lunch-and-learns
+                    </p>
+                    <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                        <strong>Learning Objectives:</strong>
+                        <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                            <li>Understand basic AI concepts and terminology</li>
+                            <li>Recognize AI applications in daily work contexts</li>
+                            <li>Appreciate benefits and address common misconceptions</li>
+                            <li>Align with organizational AI vision and strategy</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="training-level">
+                    <h5 style="color: #22c55e; margin-bottom: 0.5rem;">
+                        <i class="fas fa-hammer"></i> Level 2: Practical AI Application
+                    </h5>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                        <strong>Target:</strong> Role-specific groups • <strong>Duration:</strong> 8-16 hours • <strong>Format:</strong> Workshops, hands-on practice
+                    </p>
+                    <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                        <strong>Learning Objectives:</strong>
+                        <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                            <li>Master basic prompting and AI interaction techniques</li>
+                            <li>Apply AI tools to specific professional tasks</li>
+                            <li>Understand quality control and validation processes</li>
+                            <li>Integrate AI into existing workflows effectively</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="training-level">
+                    <h5 style="color: #22c55e; margin-bottom: 0.5rem;">
+                        <i class="fas fa-rocket"></i> Level 3: Advanced AI Integration
+                    </h5>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                        <strong>Target:</strong> Power users, champions • <strong>Duration:</strong> 20-40 hours • <strong>Format:</strong> Intensive programs, mentoring
+                    </p>
+                    <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                        <strong>Learning Objectives:</strong>
+                        <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                            <li>Design sophisticated AI workflows and strategies</li>
+                            <li>Optimize AI performance and business outcomes</li>
+                            <li>Lead AI implementation within teams and projects</li>
+                            <li>Mentor others and drive continuous improvement</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="training-level">
+                    <h5 style="color: #22c55e; margin-bottom: 0.5rem;">
+                        <i class="fas fa-crown"></i> Level 4: AI Leadership & Strategy
+                    </h5>
+                    <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #6b7280;">
+                        <strong>Target:</strong> Leaders, managers • <strong>Duration:</strong> 16-32 hours • <strong>Format:</strong> Executive programs, strategic sessions
+                    </p>
+                    <div style="background: rgba(255,255,255,0.8); padding: 0.75rem; border-radius: 6px;">
+                        <strong>Learning Objectives:</strong>
+                        <ul style="margin: 0.25rem 0 0 1rem; font-size: 0.85rem;">
+                            <li>Develop organizational AI strategies and policies</li>
+                            <li>Lead change management and cultural transformation</li>
+                            <li>Make strategic decisions about AI investments</li>
+                            <li>Build sustainable AI capabilities and governance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Change Plan Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Interactive Change Management Plan Builder</h2>
+
+            <div class="interactive-planner">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-drafting-compass"></i> Build Your AI Change Management Strategy
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Create a customized change management plan tailored to your organization's specific context, challenges, and objectives.
+                </p>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Organization Size & Structure:</label>
+                    <select id="orgSize" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select organization size...</option>
+                        <option value="small">Small (Under 100 employees)</option>
+                        <option value="medium">Medium (100-1,000 employees)</option>
+                        <option value="large">Large (1,000-10,000 employees)</option>
+                        <option value="enterprise">Enterprise (Over 10,000 employees)</option>
+                    </select>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Resistance Sources (select up to 3):</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="resist1" value="job-security"> Job Security Fears
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="resist2" value="cognitive-overload"> Cognitive Overload
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="resist3" value="time-constraints"> Time Constraints
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="resist4" value="quality-concerns"> Quality & Trust Concerns
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="resist5" value="cultural-misalignment"> Cultural Misalignment
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="resist6" value="resource-concerns"> Resource & Priority Concerns
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Implementation Timeline:</label>
+                    <select id="timeline" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select implementation timeline...</option>
+                        <option value="rapid">Rapid (3-6 months)</option>
+                        <option value="standard">Standard (6-12 months)</option>
+                        <option value="gradual">Gradual (12-18 months)</option>
+                        <option value="extended">Extended (18+ months)</option>
+                    </select>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current Change Management Maturity:</label>
+                    <select id="maturity" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select maturity level...</option>
+                        <option value="low">Low (Limited change management experience)</option>
+                        <option value="moderate">Moderate (Some successful change initiatives)</option>
+                        <option value="high">High (Strong change management capabilities)</option>
+                        <option value="advanced">Advanced (World-class change management)</option>
+                    </select>
+                </div>
+                
+                <div class="planner-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Leadership Support Level:</label>
+                    <select id="leadership" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select leadership support...</option>
+                        <option value="limited">Limited (Some interest but minimal commitment)</option>
+                        <option value="moderate">Moderate (General support with resource constraints)</option>
+                        <option value="strong">Strong (Active sponsorship and resource allocation)</option>
+                        <option value="champion">Champion (Passionate advocacy and full commitment)</option>
+                    </select>
+                </div>
+                
+                <button onclick="generateChangePlan()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Change Management Plan
+                </button>
+                
+                <div id="generatedPlan" class="generated-plan">
+                    <strong style="color: #065f46;">Your Customized AI Change Management Plan:</strong><br><br>
+                    <div id="planText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Implementation Tips:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Start with a pilot group to test and refine your approach</li>
+                            <li>Maintain regular communication and feedback loops</li>
+                            <li>Celebrate early wins and learn from setbacks</li>
+                            <li>Adapt the plan based on organizational response and results</li>
+                            <li>Ensure sustained leadership commitment throughout the process</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Ready to Measure Success?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">With your change management strategy in place, learn how to establish meaningful metrics and measure the ROI of your AI implementation efforts.</p>
+                <a href="activity-3-roi-measurement-frameworks.html" class="nav-btn">
+                    <i class="fas fa-chart-line"></i>
+                    Master ROI Measurement
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-ai-readiness-assessment.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Readiness Assessment
+                </a>
+                <a href="activity-3-roi-measurement-frameworks.html" class="nav-btn">
+                    Next: ROI Measurement
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function generateChangePlan() {
+            const orgSize = document.getElementById('orgSize').value;
+            const timeline = document.getElementById('timeline').value;
+            const maturity = document.getElementById('maturity').value;
+            const leadership = document.getElementById('leadership').value;
+            
+            // Get selected resistance sources
+            const resistanceBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const resistance = Array.from(resistanceBoxes).map(box => box.value);
+            
+            if (!orgSize || !timeline || !maturity || !leadership || resistance.length === 0) {
+                alert('Please complete all sections of the change management planner.');
+                return;
+            }
+            
+            let plan = generateCustomPlan(orgSize, timeline, maturity, leadership, resistance);
+            
+            document.getElementById('planText').textContent = plan;
+            document.getElementById('generatedPlan').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPlan').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        
+        function generateCustomPlan(orgSize, timeline, maturity, leadership, resistance) {
+            let plan = `AI CHANGE MANAGEMENT STRATEGY
+Organization Profile: ${getOrgSizeDesc(orgSize)}
+Implementation Timeline: ${getTimelineDesc(timeline)}
+Change Management Maturity: ${getMaturityDesc(maturity)}
+Leadership Support: ${getLeadershipDesc(leadership)}
+
+=== RESISTANCE MITIGATION STRATEGY ===
+Primary Focus Areas:
+${resistance.map(r => `• ${getResistanceStrategy(r)}`).join('\n')}
+
+=== BRIDGE FRAMEWORK IMPLEMENTATION ===
+
+Phase 1: BUILD AWARENESS (${getPhaseTimeline(timeline, 1)})
+${getBuildAwarenessStrategy(orgSize, leadership)}
+
+Phase 2: REDUCE RESISTANCE (${getPhaseTimeline(timeline, 2)})
+${getReduceResistanceStrategy(resistance)}
+
+Phase 3: INVOLVE & ENGAGE (${getPhaseTimeline(timeline, 3)})
+${getInvolveEngageStrategy(orgSize, maturity)}
+
+Phase 4: DEVELOP CAPABILITIES (${getPhaseTimeline(timeline, 4)})
+${getDevelopCapabilitiesStrategy(orgSize, timeline)}
+
+Phase 5: GENERATE MOMENTUM (${getPhaseTimeline(timeline, 5)})
+${getGenerateMomentumStrategy(leadership, timeline)}
+
+Phase 6: EMBED & SUSTAIN (${getPhaseTimeline(timeline, 6)})
+${getEmbedSustainStrategy(maturity, orgSize)}
+
+=== COMMUNICATION STRATEGY ===
+${getCommunicationStrategy(orgSize, leadership)}
+
+=== CHAMPION NETWORK ===
+${getChampionStrategy(orgSize)}
+
+=== SUCCESS METRICS ===
+${getSuccessMetrics(timeline, orgSize)}
+
+=== RISK MITIGATION ===
+${getRiskMitigation(resistance, maturity)}
+
+This plan should be reviewed monthly and adapted based on progress, feedback, and changing organizational needs.`;
+
+            return plan;
+        }
+        
+        function getOrgSizeDesc(size) {
+            const descriptions = {
+                small: 'Small Organization (Under 100 employees)',
+                medium: 'Medium Organization (100-1,000 employees)',
+                large: 'Large Organization (1,000-10,000 employees)',
+                enterprise: 'Enterprise Organization (Over 10,000 employees)'
+            };
+            return descriptions[size] || size;
+        }
+        
+        function getTimelineDesc(timeline) {
+            const descriptions = {
+                rapid: 'Rapid Implementation (3-6 months)',
+                standard: 'Standard Implementation (6-12 months)',
+                gradual: 'Gradual Implementation (12-18 months)',
+                extended: 'Extended Implementation (18+ months)'
+            };
+            return descriptions[timeline] || timeline;
+        }
+        
+        function getMaturityDesc(maturity) {
+            const descriptions = {
+                low: 'Developing (Limited change management experience)',
+                moderate: 'Competent (Some successful change initiatives)',
+                high: 'Advanced (Strong change management capabilities)',
+                advanced: 'Expert (World-class change management)'
+            };
+            return descriptions[maturity] || maturity;
+        }
+        
+        function getLeadershipDesc(leadership) {
+            const descriptions = {
+                limited: 'Limited Support (Some interest but minimal commitment)',
+                moderate: 'Moderate Support (General support with constraints)',
+                strong: 'Strong Support (Active sponsorship and resources)',
+                champion: 'Champion Level (Passionate advocacy and full commitment)'
+            };
+            return descriptions[leadership] || leadership;
+        }
+        
+        function getResistanceStrategy(resistance) {
+            const strategies = {
+                'job-security': 'Job Security Fears - Focus on retraining, role enhancement, and clear communication about AI as augmentation',
+                'cognitive-overload': 'Cognitive Overload - Implement gradual learning paths, simplified training, and peer support systems',
+                'time-constraints': 'Time Constraints - Provide protected learning time, micro-learning modules, and realistic timelines',
+                'quality-concerns': 'Quality & Trust Concerns - Demonstrate capabilities, establish quality controls, and build trust gradually',
+                'cultural-misalignment': 'Cultural Misalignment - Align AI vision with values, evolve culture gradually, and use values-based messaging',
+                'resource-concerns': 'Resource & Priority Concerns - Provide clear business case, demonstrate ROI, and show quick wins'
+            };
+            return strategies[resistance] || resistance;
+        }
+        
+        function getPhaseTimeline(timeline, phase) {
+            const timelines = {
+                rapid: ['Week 1-2', 'Week 3-4', 'Week 5-8', 'Week 9-16', 'Week 17-20', 'Week 21-24'],
+                standard: ['Month 1', 'Month 2', 'Month 3-4', 'Month 5-7', 'Month 8-10', 'Month 11-12'],
+                gradual: ['Month 1-2', 'Month 3-4', 'Month 5-7', 'Month 8-12', 'Month 13-15', 'Month 16-18'],
+                extended: ['Month 1-3', 'Month 4-6', 'Month 7-10', 'Month 11-15', 'Month 16-20', 'Month 21-24']
+            };
+            return timelines[timeline] ? timelines[timeline][phase - 1] : `Phase ${phase}`;
+        }
+        
+        function getBuildAwarenessStrategy(orgSize, leadership) {
+            if (orgSize === 'small') {
+                return leadership === 'champion' 
+                    ? '• All-hands meetings with leadership presenting AI vision\n• Interactive workshops for entire organization\n• Direct leadership engagement with all employees'
+                    : '• Leadership communication sessions\n• Basic AI awareness training\n• Q&A sessions to address concerns';
+            } else if (orgSize === 'enterprise') {
+                return '• Multi-channel communication campaign\n• Department-specific awareness sessions\n• Executive video messages and town halls\n• Digital learning platform deployment';
+            } else {
+                return '• Leadership communication cascade\n• Department-level awareness sessions\n• Interactive learning modules\n• Regular update communications';
+            }
+        }
+        
+        function getReduceResistanceStrategy(resistance) {
+            if (resistance.includes('job-security')) {
+                return '• Job security guarantee communications\n• Retraining program announcements\n• Success stories from other organizations\n• One-on-one conversations with concerned employees';
+            } else if (resistance.includes('cognitive-overload')) {
+                return '• Simplified learning materials and approaches\n• Peer mentoring program setup\n• Flexible learning pace options\n• Hands-on demonstration sessions';
+            } else {
+                return '• Direct dialogue sessions with stakeholders\n• Concern identification and response development\n• Transparent communication about challenges\n• Psychological safety establishment';
+            }
+        }
+        
+        function getInvolveEngageStrategy(orgSize, maturity) {
+            if (maturity === 'advanced') {
+                return '• Cross-functional AI steering committee\n• Department-specific working groups\n• Regular feedback collection and integration\n• Co-creation of implementation plans';
+            } else {
+                return '• Basic feedback collection mechanisms\n• Pilot program volunteer recruitment\n• Simple engagement activities\n• Regular progress sharing sessions';
+            }
+        }
+        
+        function getDevelopCapabilitiesStrategy(orgSize, timeline) {
+            if (timeline === 'rapid') {
+                return '• Intensive bootcamp-style training programs\n• Just-in-time learning resources\n• Accelerated champion development\n• External trainer support';
+            } else {
+                return '• Progressive learning pathway implementation\n• Role-specific training program rollout\n• Internal trainer development\n• Competency assessment and certification';
+            }
+        }
+        
+        function getGenerateMomentumStrategy(leadership, timeline) {
+            return leadership === 'champion' 
+                ? '• High-visibility pilot project launches\n• Regular success celebration events\n• Executive participation in demonstrations\n• Rapid expansion of successful initiatives'
+                : '• Carefully selected pilot projects\n• Regular progress reporting\n• Success story documentation\n• Gradual expansion planning';
+        }
+        
+        function getEmbedSustainStrategy(maturity, orgSize) {
+            if (maturity === 'advanced') {
+                return '• Integration into performance management systems\n• Cultural reinforcement mechanisms\n• Continuous improvement processes\n• Advanced governance structure establishment';
+            } else {
+                return '• Basic process integration\n• Simple sustainability measures\n• Regular reinforcement activities\n• Basic governance framework';
+            }
+        }
+        
+        function getCommunicationStrategy(orgSize, leadership) {
+            if (orgSize === 'enterprise') {
+                return '• Multi-channel digital communication platform\n• Regional and department-specific messaging\n• Leadership video content series\n• Interactive feedback mechanisms';
+            } else {
+                return '• Direct leadership communication\n• Team meeting integration\n• Email updates and newsletters\n• Face-to-face engagement sessions';
+            }
+        }
+        
+        function getChampionStrategy(orgSize) {
+            if (orgSize === 'small') {
+                return '• 2-3 key champions identified and developed\n• Direct leadership mentoring\n• Cross-functional influence building';
+            } else if (orgSize === 'enterprise') {
+                return '• 50-100 champions across all divisions\n• Formal champion development program\n• Network coordination and support systems';
+            } else {
+                return '• 5-15 champions per major department\n• Regular champion network meetings\n• Structured development and support program';
+            }
+        }
+        
+        function getSuccessMetrics(timeline, orgSize) {
+            return `• Training completion rates (target: 90% within implementation period)
+• User adoption rates (target: 70% active usage)
+• Performance improvement metrics (productivity, quality, satisfaction)
+• Resistance indicators (decreased concerns, increased participation)
+• Business impact measures (ROI, efficiency gains, innovation metrics)`;
+        }
+        
+        function getRiskMitigation(resistance, maturity) {
+            return `• Regular pulse surveys to monitor resistance levels
+• Rapid response team for addressing emerging concerns
+• Contingency plans for high-resistance scenarios
+• Leadership escalation protocols
+• External support and consulting as needed`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 6 Discussion: Expert Prompting Strategies - Module 6</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-thread {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+        }
+        .discussion-prompt {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #8b5cf6;
+        }
+        .prompt-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #581c87;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .participation-guidelines {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-green);
+        }
+        .guidelines-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sample-post {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid #8b5cf6;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--neutral-medium);
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .post-content {
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+        .discussion-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .point-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--neutral-light);
+            transition: all 0.2s;
+        }
+        .point-card:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .point-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: var(--neutral-white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        .expert-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .expert-example {
+            background: var(--neutral-white);
+            border: 2px solid var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.2s;
+        }
+        .expert-example:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+        }
+        .technique-highlight {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #0891b2;
+        }
+        .workflow-example {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+        .mastery-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .mastery-card {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid;
+        }
+        .novice-card { border-color: #fbbf24; background: #fef3c7; }
+        .intermediate-card { border-color: #3b82f6; background: #dbeafe; }
+        .advanced-card { border-color: #10b981; background: #d1fae5; }
+        .expert-card { border-color: #8b5cf6; background: #f3e8ff; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 6</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Discussion</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-chain-of-thought.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompt-optimization-lab.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="advanced-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Expert Prompting Strategies Discussion</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Share your advanced prompting discoveries, showcase sophisticated workflows, and collaborate with fellow practitioners to push the boundaries of professional AI application.
+            </p>
+
+            <!-- Discussion Prompt -->
+            <div class="discussion-prompt">
+                <div class="prompt-title">
+                    <i class="fas fa-brain"></i>
+                    Discussion Challenge: Share Your Advanced Prompting Mastery
+                </div>
+                <p style="margin-bottom: 1rem;">Now that you've mastered chain-of-thought reasoning, expert personas, and multi-step workflows, it's time to showcase your advanced skills and learn from the community's collective expertise.</p>
+                
+                <div class="discussion-points">
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">1</span>Showcase Your Best Workflow
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Share a sophisticated workflow you've created that combines multiple advanced techniques for a real business challenge.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">2</span>Document Your Optimization Process
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Walk us through how you optimized a prompt from basic to expert-level, including your testing methodology.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">3</span>Share Professional Results
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Describe the business impact and professional outcomes you've achieved using advanced prompting techniques.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">4</span>Discuss Integration Challenges
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            What challenges have you faced integrating advanced techniques, and what solutions have you discovered?
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mastery Level Framework -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-trophy"></i>Advanced Prompting Mastery Levels</h2>
+                
+                <div class="mastery-levels">
+                    <div class="mastery-card novice-card">
+                        <h4 style="color: #92400e; margin-bottom: 0.5rem;">Emerging Practitioner</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Experimenting with basic chain-of-thought and simple personas</p>
+                    </div>
+                    <div class="mastery-card intermediate-card">
+                        <h4 style="color: #1e40af; margin-bottom: 0.5rem;">Skilled Practitioner</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Creating effective 3-5 step workflows with integrated techniques</p>
+                    </div>
+                    <div class="mastery-card advanced-card">
+                        <h4 style="color: #065f46; margin-bottom: 0.5rem;">Advanced Practitioner</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Building complex enterprise workflows with quality optimization</p>
+                    </div>
+                    <div class="mastery-card expert-card">
+                        <h4 style="color: #5b21b6; margin-bottom: 0.5rem;">Expert Practitioner</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Creating innovative methodologies and training others</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expert Examples Showcase -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-star"></i>Expert-Level Examples</h2>
+                
+                <div class="expert-showcase">
+                    <div class="expert-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-chess"></i> Strategic Decision Workflow
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            Multi-persona workflow for complex business decisions with scenario analysis and risk assessment.
+                        </p>
+                        <div class="technique-highlight">
+                            <strong>Techniques Used:</strong> Chain-of-thought, Multiple expert personas, Scenario planning, Validation checkpoints
+                        </div>
+                    </div>
+                    
+                    <div class="expert-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-rocket"></i> Innovation Pipeline
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            Creative workflow combining design thinking with systematic business analysis for product innovation.
+                        </p>
+                        <div class="technique-highlight">
+                            <strong>Techniques Used:</strong> Creative personas, Structured ideation, Feasibility analysis, Market validation
+                        </div>
+                    </div>
+                    
+                    <div class="expert-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-shield-alt"></i> Crisis Response Protocol
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            Rapid response workflow for crisis management with stakeholder communication and recovery planning.
+                        </p>
+                        <div class="technique-highlight">
+                            <strong>Techniques Used:</strong> Time-sensitive reasoning, Stakeholder perspective analysis, Communication optimization
+                        </div>
+                    </div>
+                    
+                    <div class="expert-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-chart-line"></i> Investment Due Diligence
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            Comprehensive financial analysis workflow with multi-dimensional risk assessment and scenario modeling.
+                        </p>
+                        <div class="technique-highlight">
+                            <strong>Techniques Used:</strong> Financial expertise persona, Quantitative analysis, Risk matrices, Investment frameworks
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Participation Guidelines -->
+            <div class="participation-guidelines">
+                <div class="guidelines-title">
+                    <i class="fas fa-users"></i>
+                    Advanced Discussion Guidelines
+                </div>
+                <ul class="modern-list">
+                    <li><strong>Share Advanced Techniques:</strong> Focus on sophisticated methods beyond basic prompting—showcase integration and optimization</li>
+                    <li><strong>Provide Real Examples:</strong> Include actual workflows, prompts, and results from professional contexts</li>
+                    <li><strong>Document Your Process:</strong> Explain your methodology, testing approach, and optimization techniques</li>
+                    <li><strong>Discuss Business Impact:</strong> Connect your techniques to measurable professional outcomes and value creation</li>
+                    <li><strong>Be Constructively Critical:</strong> Provide thoughtful feedback on others' techniques and suggest improvements</li>
+                    <li><strong>Share Teaching Insights:</strong> Help others understand how to apply advanced techniques in their contexts</li>
+                </ul>
+            </div>
+
+            <!-- Sample Expert Posts -->
+            <div class="discussion-thread">
+                <h3 style="margin-bottom: 1rem; color: var(--neutral-dark);">
+                    <i class="fas fa-star" style="color: #8b5cf6; margin-right: 0.5rem;"></i>
+                    Expert-Level Discussion Examples
+                </h3>
+                
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">DR</div>
+                        <strong>Dr. Rebecca Chen</strong>
+                        <span>•</span>
+                        <span>Strategy Consultant</span>
+                        <span>•</span>
+                        <span>Posted 2 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>Advanced Workflow: Multi-Stakeholder Strategic Planning</strong></p>
+                        
+                        <p>I've developed a 7-step workflow that combines chain-of-thought reasoning with rotating expert personas for comprehensive strategic planning. Here's what makes it powerful:</p>
+                        
+                        <div class="workflow-example">
+**STEP 1:** Market analyst persona - systematic competitive analysis
+**STEP 2:** Financial expert persona - economic modeling and projections  
+**STEP 3:** Operations specialist - feasibility and resource assessment
+**STEP 4:** Risk management expert - comprehensive risk analysis
+**STEP 5:** Implementation consultant - change management planning
+**STEP 6:** Board advisor persona - strategic synthesis and prioritization
+**STEP 7:** Validation checkpoint - cross-perspective consistency review
+                        </div>
+                        
+                        <p><strong>Key Innovation:</strong> Each persona explicitly builds on previous insights while maintaining their expert perspective. I include "handoff prompts" that ensure context preservation.</p>
+                        
+                        <p><strong>Business Impact:</strong> This approach reduced our strategic planning cycle from 6 weeks to 2 weeks while improving analysis depth. Client satisfaction scores increased 40% due to more comprehensive recommendations.</p>
+                        
+                        <p><strong>Optimization Discovery:</strong> The validation checkpoint in Step 7 catches 80% of logical inconsistencies that would otherwise appear in final recommendations.</p>
+                        
+                        <p><strong>Challenge for Discussion:</strong> How do you handle conflicting expert perspectives within a single workflow? I'm experimenting with "expert debate" prompts but would love to hear other approaches.</p>
+                    </div>
+                </div>
+
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">MK</div>
+                        <strong>Marcus Kim</strong>
+                        <span>•</span>
+                        <span>Product Director</span>
+                        <span>•</span>
+                        <span>Posted 4 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>Breakthrough in Prompt Optimization: The "Progressive Complexity" Method</strong></p>
+                        
+                        <p>I've discovered that gradually increasing prompt sophistication yields better results than starting with fully complex prompts. Here's my systematic approach:</p>
+                        
+                        <p><strong>Stage 1:</strong> Basic task definition with simple persona<br>
+                        <strong>Stage 2:</strong> Add chain-of-thought structure<br>
+                        <strong>Stage 3:</strong> Enhance persona with specific expertise<br>
+                        <strong>Stage 4:</strong> Integrate quality standards and output format<br>
+                        <strong>Stage 5:</strong> Add validation and optimization requests</p>
+                        
+                        <p><strong>Surprising Finding:</strong> AI performs 60% better when prompts evolve this way vs. starting with the full complexity. It's like warming up the AI's reasoning engine.</p>
+                        
+                        <p><strong>Professional Application:</strong> I use this for product roadmap planning. The progressive approach helps identify gaps in my own thinking before the AI tackles the full problem.</p>
+                        
+                        <p><strong>Testing Methodology:</strong> I A/B test each stage against the "full complexity" version using identical business scenarios. The progressive method wins consistently on relevance and specificity metrics.</p>
+                        
+                        <p><strong>Question for Experts:</strong> Has anyone else noticed this "warm-up" effect? I'm wondering if there's a cognitive science explanation for why incremental complexity works better.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Topics for Discussion -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #0891b2;">
+                <h3 style="color: #0c4a6e; margin-bottom: 1rem;">
+                    <i class="fas fa-lightbulb"></i>
+                    Advanced Topics for Expert Discussion
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Workflow Orchestration</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How do you manage complex workflows with 10+ steps while maintaining quality and context?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Enterprise Integration</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Strategies for implementing advanced prompting methodologies across large organizations</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Quality Measurement</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How do you quantify the business value and ROI of sophisticated prompting techniques?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Innovation Frontiers</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What new techniques are you pioneering beyond the established advanced methods?</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Platform Access -->
+            <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 50%, #a855f7 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #8b5cf6; text-align: center;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">
+                    <i class="fas fa-graduation-cap"></i>
+                    Join the Expert Prompting Community
+                </h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">
+                    Connect with fellow advanced practitioners, share sophisticated workflows, and push the boundaries of professional AI application together.
+                </p>
+                <a href="#" class="nav-btn" style="font-size: 1.1rem; font-weight: 600; background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);">
+                    <i class="fas fa-arrow-right"></i>
+                    Access Expert Discussion Forum
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
+                    Share your mastery, learn from experts, and contribute to the advancement of professional AI practices.
+                </p>
+            </div>
+
+            <!-- Reflection Questions -->
+            <div class="tips-card">
+                <h3><i class="fas fa-brain"></i>Expert Reflection Questions</h3>
+                <p style="margin-bottom: 1rem;">Consider these advanced questions to create a valuable discussion contribution:</p>
+                <ul class="modern-list">
+                    <li>How have you successfully integrated multiple advanced techniques into a single workflow for maximum impact?</li>
+                    <li>What systematic testing methodology do you use to optimize complex prompts for professional reliability?</li>
+                    <li>How do you balance automation efficiency with human oversight in high-stakes business applications?</li>
+                    <li>What innovative persona combinations have you discovered that unlock unique AI capabilities?</li>
+                    <li>How do you measure and demonstrate the ROI of advanced prompting techniques to stakeholders?</li>
+                    <li>What challenges have you encountered when scaling advanced techniques across teams or organizations?</li>
+                    <li>How do you stay current with evolving AI capabilities while maintaining proven workflow methodologies?</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="advanced-prompting-quiz.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Mastery Quiz
+                </a>
+                <a href="../../module7/welcome.html" class="nav-btn">
+                    Next: Module 7
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

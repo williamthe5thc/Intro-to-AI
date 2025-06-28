@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2 Discussion: Prompting Strategies - Module 2</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-thread {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-blue);
+        }
+        .discussion-prompt {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .prompt-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .participation-guidelines {
+            background: linear-gradient(135d, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-green);
+        }
+        .guidelines-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sample-post {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--accent-orange);
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--neutral-medium);
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .post-content {
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+        .discussion-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .point-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--neutral-light);
+            transition: all 0.2s;
+        }
+        .point-card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .point-number {
+            background: var(--gradient-accent);
+            color: var(--neutral-white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .external-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 2</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Discussion</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-prompting-basics.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/prompting-activity.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="basic-prompting-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Module 2 Discussion: Prompting Strategies in Your Profession</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Connect with your peers to share experiences and insights about applying prompt engineering in professional contexts.
+            </p>
+
+            <!-- Discussion Prompt -->
+            <div class="discussion-prompt">
+                <div class="prompt-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Discussion Prompt: Real-World Prompting Applications
+                </div>
+                <p style="margin-bottom: 1rem;">Now that you've learned about the CLEAR framework and different prompting strategies, let's explore how these concepts apply to real professional scenarios.</p>
+                
+                <div class="discussion-points">
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">
+                            <span class="point-number">1</span>Share Your Context
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Describe a specific task in your profession where AI could help. What type of output would you need?
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">
+                            <span class="point-number">2</span>Apply CLEAR Framework
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Draft a prompt using the CLEAR framework for your professional scenario. Explain your choices.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">
+                            <span class="point-number">3</span>Choose Your Strategy
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Would you use zero-shot or few-shot prompting? Why would this approach work best for your scenario?
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: var(--primary-blue);">
+                            <span class="point-number">4</span>Peer Feedback
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Comment on at least two peers' posts with constructive suggestions or questions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Participation Guidelines -->
+            <div class="participation-guidelines">
+                <div class="guidelines-title">
+                    <i class="fas fa-users"></i>
+                    Discussion Guidelines
+                </div>
+                <ul class="modern-list">
+                    <li><strong>Initial Post:</strong> Share your response by [Date] with a minimum of 200 words</li>
+                    <li><strong>Peer Responses:</strong> Comment meaningfully on at least 2 classmates' posts</li>
+                    <li><strong>Professional Tone:</strong> Maintain a respectful, collegial atmosphere</li>
+                    <li><strong>Constructive Feedback:</strong> Offer specific suggestions and ask thoughtful questions</li>
+                    <li><strong>Real Examples:</strong> Use concrete scenarios from your field when possible</li>
+                </ul>
+            </div>
+
+            <!-- Sample Post -->
+            <div class="discussion-thread">
+                <h3 style="margin-bottom: 1rem; color: var(--neutral-dark);">
+                    <i class="fas fa-star" style="color: var(--accent-orange); margin-right: 0.5rem;"></i>
+                    Sample Post for Inspiration
+                </h3>
+                
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">JD</div>
+                        <strong>Jane Doe</strong>
+                        <span>•</span>
+                        <span>Marketing Manager</span>
+                        <span>•</span>
+                        <span>Posted 2 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>Professional Context:</strong> In my role as a marketing manager, I frequently need to create compelling email subject lines for different campaign types. The challenge is making them engaging while maintaining professionalism and avoiding spam filters.</p>
+                        
+                        <p><strong>My CLEAR Framework Prompt:</strong></p>
+                        <p style="background: rgba(255,255,255,0.7); padding: 0.75rem; border-radius: 6px; font-family: monospace; font-size: 0.9rem; margin: 0.5rem 0;">
+                            <strong>Context:</strong> I'm a marketing manager at a B2B software company launching a new project management tool.<br>
+                            <strong>Length:</strong> Create 5 email subject lines, each 6-8 words maximum.<br>
+                            <strong>Examples:</strong> Good: "Transform Your Team's Productivity Today" Bad: "Amazing Software Deal!!!"<br>
+                            <strong>Audience:</strong> Small business owners and project managers aged 30-50.<br>
+                            <strong>Role:</strong> Act as an expert email marketing copywriter focused on professional B2B communications.
+                        </p>
+                        
+                        <p><strong>Strategy Choice:</strong> I chose few-shot prompting because providing good/bad examples helps the AI understand our brand voice and avoid common email marketing pitfalls. The examples guide the AI toward professional, benefit-focused language while steering away from overly promotional tone.</p>
+                        
+                        <p>Looking forward to seeing how others approach prompting for their fields!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discussion Platform Note -->
+            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid var(--accent-orange); text-align: center;">
+                <h3 style="color: #92400e; margin-bottom: 1rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    Join the Discussion
+                </h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">
+                    This discussion takes place on your course learning management system. Use the link below to participate.
+                </p>
+                <a href="#" class="external-link" style="font-size: 1.1rem; font-weight: 600;">
+                    <i class="fas fa-arrow-right"></i>
+                    Access Discussion Forum
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
+                    Not yet enrolled? Contact your course administrator for access.
+                </p>
+            </div>
+
+            <!-- Reflection Questions -->
+            <div class="tips-card">
+                <h3><i class="fas fa-brain"></i>Reflection Questions to Consider</h3>
+                <p style="margin-bottom: 1rem;">Before posting, think about these questions to deepen your response:</p>
+                <ul class="modern-list">
+                    <li>What specific challenges does your profession face that AI prompting could address?</li>
+                    <li>How might different elements of the CLEAR framework be more or less important in your field?</li>
+                    <li>What professional constraints (tone, accuracy, compliance) must your prompts consider?</li>
+                    <li>How could effective prompting save time or improve quality in your daily work?</li>
+                    <li>What concerns might your profession have about AI-generated content?</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="basic-prompting-quiz.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Knowledge Quiz
+                </a>
+                <a href="../../module3/welcome.html" class="nav-btn">
+                    Next: Module 3
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: Legal AI Tools Assessment Matrix - Module 5</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .scenario-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .assessment-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin: 2rem 0;
+        }
+        .assessment-table th {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        .assessment-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .rating-scale {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .rating-item {
+            background: var(--neutral-light);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .worksheet-section {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-dark);
+        }
+        .form-group textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.75rem;
+            border: 2px solid var(--neutral-medium);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            resize: vertical;
+        }
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--neutral-medium);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 5</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Practice Activity</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-legal-ai-overview.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/legal-tools-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Practice: Legal AI Tools Assessment Matrix</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Apply your knowledge to evaluate AI tools for specific legal practice scenarios. Create a comprehensive assessment matrix to guide implementation decisions.
+            </p>
+
+            <!-- Practice Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-target"></i>Practice Objectives</h3>
+                <p style="margin-bottom: 1rem;">In this hands-on exercise, you will:</p>
+                <ul class="modern-list">
+                    <li>Analyze real-world legal practice scenarios</li>
+                    <li>Evaluate AI tools based on specific criteria</li>
+                    <li>Create a decision matrix for tool selection</li>
+                    <li>Develop implementation recommendations</li>
+                    <li>Consider cost-benefit analysis factors</li>
+                </ul>
+            </div>
+
+            <!-- Scenario -->
+            <div class="scenario-card">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-briefcase"></i>Practice Scenario
+                </h3>
+                <p style="margin-bottom: 1rem; font-weight: 600;">
+                    Midsize Law Firm Technology Assessment
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    You are consulting for Harrison & Associates, a 50-attorney firm specializing in corporate law, litigation, and employment law. The firm currently uses traditional research methods and basic case management software. The managing partner has allocated $100,000 annually for legal technology improvements and wants to implement AI tools to:
+                </p>
+                <ul style="margin-bottom: 1rem;">
+                    <li>• Reduce research time by 40%</li>
+                    <li>• Improve document review efficiency</li>
+                    <li>• Enhance client service delivery</li>
+                    <li>• Maintain competitive advantage</li>
+                    <li>• Ensure compliance with professional responsibility requirements</li>
+                </ul>
+                <p>
+                    <strong>Your Task:</strong> Evaluate available AI tools and create a comprehensive assessment matrix to guide the firm's technology investment decisions.
+                </p>
+            </div>
+
+            <!-- Assessment Framework -->
+            <div class="worksheet-section">
+                <h3><i class="fas fa-chart-bar"></i>Assessment Framework</h3>
+                
+                <h4>Step 1: Evaluation Criteria</h4>
+                <p style="margin-bottom: 1rem;">Rate each criterion on importance for this firm (1-5 scale):</p>
+                
+                <div class="rating-scale">
+                    <div class="rating-item">1 = Not Important</div>
+                    <div class="rating-item">2 = Slightly Important</div>
+                    <div class="rating-item">3 = Moderately Important</div>
+                    <div class="rating-item">4 = Very Important</div>
+                    <div class="rating-item">5 = Critical</div>
+                </div>
+
+                <table class="assessment-table">
+                    <thead>
+                        <tr>
+                            <th>Evaluation Criteria</th>
+                            <th>Importance Rating (1-5)</th>
+                            <th>Rationale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Research Capabilities</strong><br><small>Speed, accuracy, coverage</small></td>
+                            <td>
+                                <select name="research_rating">
+                                    <option value="">Select Rating</option>
+                                    <option value="1">1 - Not Important</option>
+                                    <option value="2">2 - Slightly Important</option>
+                                    <option value="3">3 - Moderately Important</option>
+                                    <option value="4">4 - Very Important</option>
+                                    <option value="5">5 - Critical</option>
+                                </select>
+                            </td>
+                            <td><textarea placeholder="Explain your rating..."></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Document Review Features</strong><br><small>AI-powered analysis, privilege review</small></td>
+                            <td>
+                                <select name="document_rating">
+                                    <option value="">Select Rating</option>
+                                    <option value="1">1 - Not Important</option>
+                                    <option value="2">2 - Slightly Important</option>
+                                    <option value="3">3 - Moderately Important</option>
+                                    <option value="4">4 - Very Important</option>
+                                    <option value="5">5 - Critical</option>
+                                </select>
+                            </td>
+                            <td><textarea placeholder="Explain your rating..."></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><strong>User Experience</strong><br><small>Interface, learning curve, adoption</small></td>
+                            <td>
+                                <select name="ux_rating">
+                                    <option value="">Select Rating</option>
+                                    <option value="1">1 - Not Important</option>
+                                    <option value="2">2 - Slightly Important</option>
+                                    <option value="3">3 - Moderately Important</option>
+                                    <option value="4">4 - Very Important</option>
+                                    <option value="5">5 - Critical</option>
+                                </select>
+                            </td>
+                            <td><textarea placeholder="Explain your rating..."></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cost & Value</strong><br><small>Pricing, ROI, total cost of ownership</small></td>
+                            <td>
+                                <select name="cost_rating">
+                                    <option value="">Select Rating</option>
+                                    <option value="1">1 - Not Important</option>
+                                    <option value="2">2 - Slightly Important</option>
+                                    <option value="3">3 - Moderately Important</option>
+                                    <option value="4">4 - Very Important</option>
+                                    <option value="5">5 - Critical</option>
+                                </select>
+                            </td>
+                            <td><textarea placeholder="Explain your rating..."></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integration Capabilities</strong><br><small>Existing systems, workflow compatibility</small></td>
+                            <td>
+                                <select name="integration_rating">
+                                    <option value="">Select Rating</option>
+                                    <option value="1">1 - Not Important</option>
+                                    <option value="2">2 - Slightly Important</option>
+                                    <option value="3">3 - Moderately Important</option>
+                                    <option value="4">4 - Very Important</option>
+                                    <option value="5">5 - Critical</option>
+                                </select>
+                            </td>
+                            <td><textarea placeholder="Explain your rating..."></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Support & Training</strong><br><small>Vendor support, training resources</small></td>
+                            <td>
+                                <select name="support_rating">
+                                    <option value="">Select Rating</option>
+                                    <option value="1">1 - Not Important</option>
+                                    <option value="2">2 - Slightly Important</option>
+                                    <option value="3">3 - Moderately Important</option>
+                                    <option value="4">4 - Very Important</option>
+                                    <option value="5">5 - Critical</option>
+                                </select>
+                            </td>
+                            <td><textarea placeholder="Explain your rating..."></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tool Comparison -->
+            <div class="worksheet-section">
+                <h3><i class="fas fa-balance-scale"></i>Tool Comparison Matrix</h3>
+                <p style="margin-bottom: 1rem;">Rate each platform on how well it meets the firm's needs (1-5 scale):</p>
+
+                <table class="assessment-table">
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Research</th>
+                            <th>Document Review</th>
+                            <th>User Experience</th>
+                            <th>Cost & Value</th>
+                            <th>Integration</th>
+                            <th>Support</th>
+                            <th>Weighted Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Westlaw Edge</strong></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td id="westlaw_score" style="font-weight: bold;">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LexisNexis+</strong></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td id="lexis_score" style="font-weight: bold;">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloomberg Law</strong></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td id="bloomberg_score" style="font-weight: bold;">-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CoCounsel</strong></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td><input type="number" min="1" max="5" style="width: 60px;"></td>
+                            <td id="cocounsel_score" style="font-weight: bold;">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button onclick="calculateScores()" style="margin-top: 1rem;" class="submit-btn">
+                    <i class="fas fa-calculator"></i>
+                    Calculate Weighted Scores
+                </button>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="worksheet-section">
+                <h3><i class="fas fa-lightbulb"></i>Implementation Recommendations</h3>
+                
+                <div class="form-group">
+                    <label>Primary Recommendation</label>
+                    <textarea placeholder="Based on your analysis, which AI tool(s) would you recommend for Harrison & Associates? Explain your reasoning, including how the recommendation aligns with their goals and budget."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Implementation Strategy</label>
+                    <textarea placeholder="Outline a phased implementation approach. Consider pilot programs, training requirements, timeline, and success metrics."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Risk Mitigation</label>
+                    <textarea placeholder="Identify potential risks and challenges with your recommendation. How would you address concerns about professional responsibility, data security, and user adoption?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Success Metrics</label>
+                    <textarea placeholder="How will the firm measure the success of the AI implementation? Define specific, measurable goals and evaluation criteria."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Alternative Scenarios</label>
+                    <textarea placeholder="If budget or other constraints prevent your primary recommendation, what would be your alternative approach? Consider hybrid solutions or phased implementations."></textarea>
+                </div>
+            </div>
+
+            <!-- Additional Considerations -->
+            <div class="tips-card">
+                <h3><i class="fas fa-exclamation-triangle"></i>Professional Responsibility Considerations</h3>
+                <p style="margin-bottom: 1rem;">Remember to address these critical professional responsibility issues:</p>
+                <ul class="modern-list">
+                    <li><strong>Competence (Rule 1.1):</strong> Ensure attorneys understand AI tool capabilities and limitations</li>
+                    <li><strong>Confidentiality (Rule 1.6):</strong> Verify data security and client information protection</li>
+                    <li><strong>Supervision (Rule 5.1):</strong> Establish oversight procedures for AI-generated work</li>
+                    <li><strong>Billing (Rule 1.5):</strong> Consider how AI efficiency affects billing practices</li>
+                    <li><strong>Disclosure:</strong> Determine when AI assistance should be disclosed to clients</li>
+                </ul>
+            </div>
+
+            <!-- Submit Section -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px;">
+                <h3 style="color: #065f46; margin-bottom: 1rem;">Complete Your Assessment</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">When you've completed all sections, save your work and share your recommendations in the discussion forum.</p>
+                <button class="submit-btn" onclick="generateReport()">
+                    <i class="fas fa-file-download"></i>
+                    Generate Assessment Report
+                </button>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-2-research-platforms.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Platform Comparison
+                </a>
+                <a href="../assets/legal-tools-quiz.html" class="nav-btn">
+                    Next: Knowledge Quiz
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function calculateScores() {
+            // Get importance ratings
+            const ratings = {
+                research: parseInt(document.querySelector('select[name="research_rating"]').value) || 0,
+                document: parseInt(document.querySelector('select[name="document_rating"]').value) || 0,
+                ux: parseInt(document.querySelector('select[name="ux_rating"]').value) || 0,
+                cost: parseInt(document.querySelector('select[name="cost_rating"]').value) || 0,
+                integration: parseInt(document.querySelector('select[name="integration_rating"]').value) || 0,
+                support: parseInt(document.querySelector('select[name="support_rating"]').value) || 0
+            };
+
+            // Calculate weighted scores for each platform
+            const platforms = ['westlaw', 'lexis', 'bloomberg', 'cocounsel'];
+            const platformRows = document.querySelectorAll('.assessment-table tbody tr');
+            
+            platforms.forEach((platform, index) => {
+                const row = platformRows[index + 1]; // Skip header row
+                const inputs = row.querySelectorAll('input[type="number"]');
+                
+                if (inputs.length === 6) {
+                    const scores = Array.from(inputs).map(input => parseInt(input.value) || 0);
+                    const weightedScore = (
+                        scores[0] * ratings.research +
+                        scores[1] * ratings.document +
+                        scores[2] * ratings.ux +
+                        scores[3] * ratings.cost +
+                        scores[4] * ratings.integration +
+                        scores[5] * ratings.support
+                    );
+                    
+                    const maxPossible = Object.values(ratings).reduce((sum, rating) => sum + rating * 5, 0);
+                    const percentage = maxPossible > 0 ? Math.round((weightedScore / maxPossible) * 100) : 0;
+                    
+                    document.getElementById(platform + '_score').textContent = `${weightedScore} (${percentage}%)`;
+                }
+            });
+        }
+
+        function generateReport() {
+            alert('Assessment report functionality would generate a comprehensive PDF report with your analysis, recommendations, and decision matrix. In a real implementation, this would create a downloadable document.');
+        }
+
+        // Auto-calculate scores when values change
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'number' || e.target.tagName === 'SELECT') {
+                calculateScores();
+            }
+        });
+    </script>
+</body>
+</html>

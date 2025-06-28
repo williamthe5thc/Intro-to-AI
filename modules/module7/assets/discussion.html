@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion: Ethics in Professional AI Implementation - Module 7</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-thread {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+        }
+        .discussion-prompt {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #8b5cf6;
+        }
+        .prompt-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #581c87;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .participation-guidelines {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-green);
+        }
+        .guidelines-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sample-post {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid #8b5cf6;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--neutral-medium);
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .post-content {
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+        .discussion-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .point-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--neutral-light);
+            transition: all 0.2s;
+        }
+        .point-card:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .point-number {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: var(--neutral-white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        .ethical-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .ethical-example {
+            background: var(--neutral-white);
+            border: 2px solid var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.2s;
+        }
+        .ethical-example:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+        }
+        .ethical-highlight {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .framework-example {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+        .professional-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .level-card {
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid;
+        }
+        .aware-card { border-color: #fbbf24; background: #fef3c7; }
+        .practitioner-card { border-color: #3b82f6; background: #dbeafe; }
+        .leader-card { border-color: #10b981; background: #d1fae5; }
+        .champion-card { border-color: #8b5cf6; background: #f3e8ff; }
+        .ethical-dilemma {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .solution-highlight {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .risk-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .risk-high { background: #fee2e2; color: #dc2626; }
+        .risk-critical { background: #fdf2f8; color: #9d174d; }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 7</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Ethics Discussion</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-ethics-blueprint.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/ethics-scenarios.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="ethics-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Ethics in Professional AI Implementation</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Share your ethical challenges, successful frameworks, and professional insights. Build a community of responsible AI practitioners committed to maintaining the highest ethical standards while leveraging advanced AI capabilities.
+            </p>
+
+            <!-- Discussion Prompt -->
+            <div class="discussion-prompt">
+                <div class="prompt-title">
+                    <i class="fas fa-shield-alt"></i>
+                    Community Challenge: Building Ethical AI Leadership
+                </div>
+                <p style="margin-bottom: 1rem;">As AI becomes integral to professional practice, we have a responsibility to implement it ethically and help others do the same. Share your experiences navigating the complex intersection of advanced AI capabilities and professional ethics.</p>
+                
+                <div class="discussion-points">
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">1</span>Share Your Ethical Dilemmas
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Describe real ethical challenges you've faced and how you navigated them using professional frameworks.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">2</span>Document Successful Policies
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Share organizational policies or personal frameworks that have proven effective for ethical AI implementation.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">3</span>Discuss Professional Integration
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            How have you successfully integrated ethical considerations with advanced prompting techniques in your field?
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #8b5cf6;">
+                            <span class="point-number">4</span>Build Industry Standards
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            What ethical standards should our professions adopt as AI becomes more prevalent in professional practice?
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Leadership Levels -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-balance-scale"></i>Professional Ethics Leadership Levels</h2>
+                
+                <div class="professional-levels">
+                    <div class="level-card aware-card">
+                        <h4 style="color: #92400e; margin-bottom: 0.5rem;">Ethically Aware</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Understanding basic ethical principles and identifying dilemmas</p>
+                    </div>
+                    <div class="level-card practitioner-card">
+                        <h4 style="color: #1e40af; margin-bottom: 0.5rem;">Ethical Practitioner</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Consistently applying ethical frameworks in professional AI use</p>
+                    </div>
+                    <div class="level-card leader-card">
+                        <h4 style="color: #065f46; margin-bottom: 0.5rem;">Ethical Leader</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Developing organizational policies and training others</p>
+                    </div>
+                    <div class="level-card champion-card">
+                        <h4 style="color: #5b21b6; margin-bottom: 0.5rem;">Ethics Champion</h4>
+                        <p style="font-size: 0.9rem; margin: 0;">Advancing industry standards and mentoring ethical AI leaders</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Ethics Examples -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-gavel"></i>Professional Ethics Success Stories</h2>
+                
+                <div class="ethical-showcase">
+                    <div class="ethical-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-heartbeat"></i> Healthcare Implementation
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            AI-assisted diagnostics with ethical oversight, patient consent protocols, and bias monitoring systems.
+                        </p>
+                        <div class="ethical-highlight">
+                            <strong>Key Principles:</strong> Patient autonomy, "do no harm," transparency in AI assistance, human oversight primacy
+                        </div>
+                    </div>
+                    
+                    <div class="ethical-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-scale-balanced"></i> Legal Practice
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            AI research tools with client confidentiality protection, competence maintenance, and disclosure protocols.
+                        </p>
+                        <div class="ethical-highlight">
+                            <strong>Key Principles:</strong> Client confidentiality, professional competence, duty of candor, accountability for AI-assisted work
+                        </div>
+                    </div>
+                    
+                    <div class="ethical-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-chart-line"></i> Financial Services
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            AI investment analysis with fiduciary duty protection, bias detection, and transparent client communication.
+                        </p>
+                        <div class="ethical-highlight">
+                            <strong>Key Principles:</strong> Fiduciary duty, disclosure requirements, suitability standards, client-first recommendations
+                        </div>
+                    </div>
+                    
+                    <div class="ethical-example">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">
+                            <i class="fas fa-users"></i> Human Resources
+                        </h4>
+                        <p style="font-size: 0.9rem; color: #6b7280; margin-bottom: 1rem;">
+                            AI hiring assistance with bias prevention, equal opportunity compliance, and fair treatment protocols.
+                        </p>
+                        <div class="ethical-highlight">
+                            <strong>Key Principles:</strong> Equal opportunity, privacy protection, fair treatment, discrimination prevention
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Participation Guidelines -->
+            <div class="participation-guidelines">
+                <div class="guidelines-title">
+                    <i class="fas fa-compass"></i>
+                    Ethical Discussion Guidelines
+                </div>
+                <ul class="modern-list">
+                    <li><strong>Share Real Challenges:</strong> Focus on actual ethical dilemmas you've encountered in professional AI use</li>
+                    <li><strong>Provide Specific Solutions:</strong> Include detailed frameworks, policies, or decision processes that have worked</li>
+                    <li><strong>Consider All Stakeholders:</strong> Discuss impacts on clients, colleagues, organizations, and society</li>
+                    <li><strong>Be Professionally Constructive:</strong> Offer thoughtful feedback while respecting confidentiality and professional standards</li>
+                    <li><strong>Connect Theory to Practice:</strong> Bridge ethical principles with practical implementation in your industry</li>
+                    <li><strong>Foster Learning:</strong> Help others understand how to apply ethical frameworks in their specific contexts</li>
+                </ul>
+            </div>
+
+            <!-- Sample Professional Posts -->
+            <div class="discussion-thread">
+                <h3 style="margin-bottom: 1rem; color: var(--neutral-dark);">
+                    <i class="fas fa-star" style="color: #8b5cf6; margin-right: 0.5rem;"></i>
+                    Professional Ethics Discussion Examples
+                </h3>
+                
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">DM</div>
+                        <strong>Dr. Maria Santos</strong>
+                        <span>•</span>
+                        <span>Emergency Medicine</span>
+                        <span>•</span>
+                        <span>Posted 3 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>Ethical Framework: AI-Assisted Emergency Diagnostics</strong></p>
+                        
+                        <div class="ethical-dilemma">
+                            <strong>The Challenge:</strong> Balancing AI efficiency recommendations with clinical judgment in time-critical emergency situations where patients' lives are at stake.
+                        </div>
+                        
+                        <p>Our hospital implemented an AI diagnostic assistant for emergency cases. While it has excellent accuracy rates, I faced a dilemma when the AI strongly recommended a common diagnosis, but my clinical intuition suggested a rare but life-threatening condition.</p>
+                        
+                        <div class="solution-highlight">
+                            <strong>Ethical Framework Applied:</strong><br>
+                            1. <strong>Patient Safety First:</strong> "Do no harm" principle overrides efficiency metrics<br>
+                            2. <strong>Professional Accountability:</strong> I remain fully responsible for all diagnostic decisions<br>
+                            3. <strong>Transparent Documentation:</strong> Clear record of AI recommendation vs. clinical override<br>
+                            4. <strong>Continuous Learning:</strong> Follow-up to assess outcomes and improve decision-making
+                        </div>
+                        
+                        <p><strong>Implementation Strategy:</strong> I developed a "Clinical Override Protocol" that requires:</p>
+                        <div class="framework-example">
+- Clear documentation of clinical reasoning for overrides
+- Immediate consultation with available specialists when possible  
+- Follow-up outcome tracking to validate override decisions
+- Regular review of override patterns to identify training needs
+                        </div>
+                        
+                        <p><strong>Professional Impact:</strong> This framework has been adopted hospital-wide. It maintains AI efficiency benefits while preserving essential clinical judgment. Override rates are monitored to ensure we're not undermining the AI system, but patient outcomes have improved.</p>
+                        
+                        <p><strong>Question for Community:</strong> How do other healthcare professionals balance AI recommendations with clinical intuition? What ethical frameworks guide your decisions when AI and professional judgment conflict?</p>
+                    </div>
+                </div>
+
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">JL</div>
+                        <strong>Jennifer Liu</strong>
+                        <span>•</span>
+                        <span>Legal Counsel</span>
+                        <span>•</span>
+                        <span>Posted 5 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>Organizational Policy: Ethical AI in Legal Practice</strong></p>
+                        
+                        <p>After encountering several ethical dilemmas with AI legal research tools, our firm developed comprehensive ethical AI guidelines. Here's what we learned:</p>
+                        
+                        <div class="ethical-dilemma">
+                            <strong>Core Challenge:</strong> <span class="risk-indicator risk-high">High Risk</span> Protecting client confidentiality while leveraging AI capabilities that require data sharing with external services.
+                        </div>
+                        
+                        <p><strong>Our Ethical AI Policy Framework:</strong></p>
+                        
+                        <div class="framework-example">
+**CONFIDENTIALITY PROTECTION:**
+- No privileged information in external AI systems without explicit client consent
+- Data anonymization protocols for AI analysis
+- Secure, firm-controlled AI tools for sensitive matters
+
+**CLIENT DISCLOSURE REQUIREMENTS:**  
+- Inform clients about AI assistance in legal research and analysis
+- Explain benefits, limitations, and any risks
+- Obtain consent for AI use in specific matter types
+
+**PROFESSIONAL COMPETENCE STANDARDS:**
+- Maintain human expertise to validate all AI outputs
+- Regular training on AI tool capabilities and limitations  
+- Clear accountability for all AI-assisted work products
+
+**QUALITY CONTROL MEASURES:**
+- Systematic review of AI-generated research and analysis
+- Cross-validation with traditional legal research methods
+- Documentation of AI assistance for audit and accountability
+                        </div>
+                        
+                        <p><strong>Implementation Results:</strong> This policy framework has enabled us to ethically leverage AI tools while maintaining professional standards. Client satisfaction increased because they appreciate the transparency, and we've avoided any professional responsibility issues.</p>
+                        
+                        <p><strong>Unexpected Benefit:</strong> The ethical framework actually improved our overall research quality because it forced us to be more systematic and thorough in our validation processes.</p>
+                        
+                        <p><strong>Discussion Point:</strong> How are other legal professionals handling the balance between competitive advantage from AI tools and ethical obligations? Are bar associations providing sufficient guidance, or are we developing standards organically?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Integration Topics -->
+            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #0891b2;">
+                <h3 style="color: #0c4a6e; margin-bottom: 1rem;">
+                    <i class="fas fa-lightbulb"></i>
+                    Advanced Ethics Topics for Professional Discussion
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Organizational Policy Development</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How do you develop and implement comprehensive ethical AI policies across large organizations?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Industry Standard Setting</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What ethical standards should professions adopt as AI becomes more prevalent?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Bias Detection & Prevention</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Practical strategies for identifying and addressing algorithmic bias in professional applications</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Stakeholder Communication</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">How do you transparently communicate AI use and limitations to clients and stakeholders?</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Professional Liability & Accountability</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Managing professional responsibility and liability when using AI assistance</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Ethics Training & Education</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Strategies for training teams and organizations in ethical AI practices</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Ethics Resources -->
+            <div style="background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #8b5cf6;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">
+                    <i class="fas fa-book-open"></i>
+                    Professional Ethics Resources & Tools
+                </h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">DECIDE Framework Template</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Downloadable decision-making framework for ethical AI challenges</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Professional Ethics Checklists</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Industry-specific ethical assessment tools and validation checklists</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Policy Templates</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Customizable organizational AI ethics policy frameworks</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #581c87;">Case Study Library</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Real-world ethical scenarios and resolution strategies</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Platform Access -->
+            <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 50%, #a855f7 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #8b5cf6; text-align: center;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">
+                    <i class="fas fa-shield-alt"></i>
+                    Join the Professional AI Ethics Community
+                </h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">
+                    Connect with ethical AI leaders, share challenging scenarios, and collaborate to advance responsible AI practices across all professions.
+                </p>
+                <a href="#" class="nav-btn" style="font-size: 1.1rem; font-weight: 600; background: linear-gradient(135deg, #581c87 0%, #7c3aed 100%);">
+                    <i class="fas fa-arrow-right"></i>
+                    Access Ethics Discussion Forum
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
+                    Lead by example, learn from peers, and help establish the ethical foundations for professional AI use.
+                </p>
+            </div>
+
+            <!-- Reflection Questions -->
+            <div class="tips-card">
+                <h3><i class="fas fa-compass"></i>Professional Ethics Reflection Questions</h3>
+                <p style="margin-bottom: 1rem;">Consider these questions to create a meaningful contribution to our ethics community:</p>
+                <ul class="modern-list">
+                    <li>What specific ethical dilemma have you encountered in your professional AI use, and how did you resolve it?</li>
+                    <li>How have you successfully integrated ethical considerations into advanced prompting workflows?</li>
+                    <li>What organizational policies or personal frameworks have proven most effective for ethical AI implementation?</li>
+                    <li>How do you balance efficiency gains from AI with ethical obligations to clients and stakeholders?</li>
+                    <li>What industry-specific ethical challenges require unique approaches or standards?</li>
+                    <li>How do you handle disclosure and transparency requirements for AI assistance in your profession?</li>
+                    <li>What strategies have you used to identify and address bias in AI applications within your field?</li>
+                    <li>How do you maintain professional accountability and responsibility when using AI assistance?</li>
+                </ul>
+            </div>
+
+            <!-- Final Module Completion -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px; border: 2px solid #8b5cf6;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">
+                    <i class="fas fa-graduation-cap"></i>
+                    Congratulations! Module 7 Complete
+                </h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">
+                    You've mastered the integration of professional ethics with advanced AI capabilities. You're now equipped to lead ethical AI initiatives and mentor others in responsible AI practices.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="../welcome.html" class="nav-btn secondary">
+                        <i class="fas fa-repeat"></i>
+                        Review Module 7
+                    </a>
+                    <a href="../../module8/welcome.html" class="nav-btn" style="background: linear-gradient(135deg, #10b981 0%, #065f46 100%);">
+                        <i class="fas fa-rocket"></i>
+                        Continue to Module 8
+                    </a>
+                </div>
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
+                    Join the discussion to share your ethical AI journey and continue learning from the professional community.
+                </p>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="ethics-quiz.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Ethics Assessment
+                </a>
+                <a href="../../module8/welcome.html" class="nav-btn">
+                    Next: Module 8
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

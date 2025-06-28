@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 1: Historical Timeline - Module 1</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .timeline-section {
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            background: var(--neutral-white);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-decade {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-content {
+            color: var(--neutral-medium);
+            line-height: 1.6;
+        }
+        
+        .video-container {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--neutral-white);
+            border: 2px solid var(--neutral-light);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--neutral-dark);
+            transition: all 0.2s;
+        }
+        
+        .resource-item:hover {
+            border-color: var(--primary-light);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            transform: translateY(-2px);
+        }
+        
+        .resource-icon {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 1</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Historical Timeline</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/matching-activity.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/history-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion-forum.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">The Evolution of AI: A Historical Timeline</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Journey through the fascinating history of artificial intelligence, from theoretical foundations to the practical tools that are transforming professional work today.
+            </p>
+
+            <!-- Learning Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-compass"></i>Learning Overview</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>Content Type:</strong> Video + Interactive Timeline</div>
+                    <div><strong>Duration:</strong> 15 minutes</div>
+                    <div><strong>Format:</strong> Multimedia Learning Experience</div>
+                </div>
+            </div>
+
+            <!-- Video Content Section -->
+            <div class="video-container">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-play-circle"></i> AI History Documentary
+                </h3>
+                <video controls class="video-player">
+                    <source src="../../../multimedia/module1/1.1-ai-fundamentals.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="color: var(--neutral-medium); margin-top: 1rem; font-size: 0.9rem;">
+                    Watch this comprehensive overview of AI's development from the 1950s to today
+                </p>
+            </div>
+
+            <!-- Interactive Timeline -->
+            <h2 class="section-title"><i class="fas fa-history"></i>Interactive Timeline</h2>
+            
+            <div class="timeline-section">
+                <div class="timeline-item">
+                    <div class="timeline-decade">1950s - The Birth of AI</div>
+                    <div class="timeline-title">Foundation Era</div>
+                    <div class="timeline-content">
+                        <strong>Key Developments:</strong> Alan Turing proposes the Turing Test (1950), setting the philosophical foundation for machine intelligence. The Dartmouth Conference (1956) officially coins the term "Artificial Intelligence" and establishes AI as a field of study.
+                        <br><br>
+                        <strong>Why It Matters:</strong> These early visionaries laid the conceptual groundwork that still guides AI development today.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-decade">1960s-1970s - Early Development</div>
+                    <div class="timeline-title">Exploration and First Winter</div>
+                    <div class="timeline-content">
+                        <strong>Key Developments:</strong> Development of expert systems and early natural language processing. However, computational limitations and overpromising led to the first "AI Winter" with reduced funding and interest.
+                        <br><br>
+                        <strong>Professional Impact:</strong> Early business applications began emerging, but limitations became apparent.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-decade">1980s-1990s - Resurgence and Applications</div>
+                    <div class="timeline-title">Commercial Breakthrough</div>
+                    <div class="timeline-content">
+                        <strong>Key Developments:</strong> Neural networks revival, machine learning foundations established. Expert systems found commercial success in industries like finance and manufacturing.
+                        <br><br>
+                        <strong>Professional Impact:</strong> AI begins solving real business problems, moving from research labs to corporate environments.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-decade">2000s-2010s - Big Data Revolution</div>
+                    <div class="timeline-title">The Data-Driven Era</div>
+                    <div class="timeline-content">
+                        <strong>Key Developments:</strong> Internet-scale data availability, cloud computing power, and deep learning breakthroughs. Google's PageRank, recommendation systems, and image recognition become mainstream.
+                        <br><br>
+                        <strong>Professional Impact:</strong> AI becomes invisible infrastructure powering search, recommendations, and automation.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-decade">2010s-Present - AI for Everyone</div>
+                    <div class="timeline-title">The Democratization Era</div>
+                    <div class="timeline-content">
+                        <strong>Key Developments:</strong> Consumer AI applications (Siri, Alexa), professional AI tools, and the generative AI revolution with GPT and similar models.
+                        <br><br>
+                        <strong>Professional Impact:</strong> AI becomes accessible to every professional through user-friendly interfaces and powerful language models.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights -->
+            <div class="tips-card">
+                <h3><i class="fas fa-lightbulb"></i>Key Insights for Professionals</h3>
+                <ul class="modern-list">
+                    <li><strong>Cyclical Nature:</strong> AI has experienced multiple cycles of excitement and disappointment - understanding this helps set realistic expectations</li>
+                    <li><strong>Data-Driven Evolution:</strong> The shift from rule-based to data-driven AI explains why modern systems are more flexible and powerful</li>
+                    <li><strong>Incremental Progress:</strong> Today's "overnight successes" are built on decades of foundational research and development</li>
+                    <li><strong>Practical Applications:</strong> Current AI tools represent the culmination of 70+ years of research, now accessible to everyday professionals</li>
+                </ul>
+            </div>
+
+            <!-- Downloadable Resources -->
+            <h2 class="section-title"><i class="fas fa-download"></i>Resources & Materials</h2>
+            
+            <div class="resource-grid">
+                <a href="../../../multimedia/module1/AI-Timeline-Presentation.pptx" class="resource-item" target="_blank">
+                    <i class="fas fa-file-powerpoint resource-icon"></i>
+                    <div>
+                        <div style="font-weight: 600;">Timeline Presentation</div>
+                        <div style="font-size: 0.9rem; color: var(--neutral-medium);">Detailed slide deck</div>
+                    </div>
+                </a>
+                
+                <a href="../../../multimedia/module1/audio/1.1.1.mp3" class="resource-item" target="_blank">
+                    <i class="fas fa-volume-up resource-icon"></i>
+                    <div>
+                        <div style="font-weight: 600;">Audio Narration</div>
+                        <div style="font-size: 0.9rem; color: var(--neutral-medium);">Listen on the go</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="resource-item">
+                    <i class="fas fa-file-pdf resource-icon"></i>
+                    <div>
+                        <div style="font-weight: 600;">Timeline Reference</div>
+                        <div style="font-size: 0.9rem; color: var(--neutral-medium);">Printable guide</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="resource-item">
+                    <i class="fas fa-external-link-alt resource-icon"></i>
+                    <div>
+                        <div style="font-weight: 600;">Additional Reading</div>
+                        <div style="font-size: 0.9rem; color: var(--neutral-medium);">External resources</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Next Steps -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius: 12px;">
+                <h3 style="color: #065f46; margin-bottom: 1rem;">Ready for the Next Step?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now that you understand AI's history, let's explore how these developments led to today's capabilities.</p>
+                <a href="activity-2-development-capabilities.html" class="nav-btn">
+                    <i class="fas fa-forward"></i>
+                    Continue to AI Capabilities
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../welcome.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Module Overview
+                </a>
+                <a href="activity-2-development-capabilities.html" class="nav-btn">
+                    Next: AI Development
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

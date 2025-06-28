@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future AI Readiness Assessment - Module 9</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .quiz-container {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #3b82f6;
+        }
+        .question-block {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .answer-options {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .answer-option {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .answer-option:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+        }
+        .answer-option.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+        .answer-option input[type="radio"] {
+            margin-top: 2px;
+        }
+        .answer-text {
+            flex: 1;
+        }
+        .answer-value {
+            font-weight: 600;
+            color: #3b82f6;
+            font-size: 0.9rem;
+        }
+        .quiz-progress {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #0891b2;
+        }
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+        .progress-fill {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        .results-container {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: none;
+        }
+        .score-display {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .score-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        .score-excellent { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+        .score-good { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
+        .score-developing { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .score-needs-work { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+        .category-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .category-result {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border-left: 4px solid #10b981;
+        }
+        .recommendations {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .action-plan {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 9</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Future Readiness Assessment</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-future-trends-analysis.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/career-development-planner.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Future AI Readiness Assessment</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Evaluate your preparedness for the AI-enhanced professional future. This comprehensive assessment measures your readiness across multiple dimensions and provides personalized recommendations for continued development.
+            </p>
+
+            <!-- Assessment Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-clipboard-check"></i>Assessment Overview</h3>
+                <p style="margin-bottom: 1rem;">This comprehensive assessment evaluates your future readiness across six critical dimensions:</p>
+                <ul class="modern-list">
+                    <li><strong>AI Technical Competency:</strong> Your ability to effectively use and optimize AI tools and systems</li>
+                    <li><strong>Strategic Thinking & Innovation:</strong> Capacity for complex problem-solving and creative solution development</li>
+                    <li><strong>Adaptive Learning Agility:</strong> Ability to rapidly acquire new skills and adapt to changing contexts</li>
+                    <li><strong>Leadership & Influence:</strong> Capability to guide others and drive organizational change</li>
+                    <li><strong>Professional Network & Relationships:</strong> Strength and strategic value of your professional connections</li>
+                    <li><strong>Future Vision & Planning:</strong> Clarity of career direction and strategic development planning</li>
+                </ul>
+            </div>
+
+            <!-- Quiz Progress Tracker -->
+            <div class="quiz-progress">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <span style="font-weight: 600; color: #0c4a6e;">Assessment Progress</span>
+                    <span id="progress-text" style="color: #6b7280;">0 of 24 questions completed</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Quiz Container -->
+            <div class="quiz-container">
+                <form id="readiness-quiz">
+                    
+                    <!-- AI Technical Competency Section -->
+                    <h3 style="color: #1e40af; margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-robot"></i> AI Technical Competency
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-brain"></i>
+                            How would you rate your current AI tool proficiency?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="1">
+                                <div class="answer-text">
+                                    <div>I'm still learning the basics and use AI tools occasionally with guidance</div>
+                                    <div class="answer-value">Beginner Level</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="2">
+                                <div class="answer-text">
+                                    <div>I use AI tools regularly for routine tasks and understand their basic capabilities</div>
+                                    <div class="answer-value">Developing Competency</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="3">
+                                <div class="answer-text">
+                                    <div>I'm proficient with multiple AI tools and can optimize workflows effectively</div>
+                                    <div class="answer-value">Proficient User</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q1" value="4">
+                                <div class="answer-text">
+                                    <div>I'm an expert user who trains others and develops innovative AI applications</div>
+                                    <div class="answer-value">Expert Level</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-cogs"></i>
+                            How effectively can you integrate AI into your professional workflows?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q2" value="1">
+                                <div class="answer-text">
+                                    <div>I struggle to identify where AI could help in my work</div>
+                                    <div class="answer-value">Limited Integration</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q2" value="2">
+                                <div class="answer-text">
+                                    <div>I can identify some AI opportunities but need help with implementation</div>
+                                    <div class="answer-value">Basic Integration</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q2" value="3">
+                                <div class="answer-text">
+                                    <div>I regularly integrate AI into my workflows and see measurable improvements</div>
+                                    <div class="answer-value">Effective Integration</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q2" value="4">
+                                <div class="answer-text">
+                                    <div>I design AI-enhanced workflows that others adopt as best practices</div>
+                                    <div class="answer-value">Advanced Integration</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-shield-alt"></i>
+                            How well do you understand AI ethics and responsible usage?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="1">
+                                <div class="answer-text">
+                                    <div>I haven't given much thought to AI ethics and bias issues</div>
+                                    <div class="answer-value">Limited Awareness</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="2">
+                                <div class="answer-text">
+                                    <div>I'm aware of ethical concerns but don't actively address them</div>
+                                    <div class="answer-value">Basic Awareness</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="3">
+                                <div class="answer-text">
+                                    <div>I actively consider ethics and bias in my AI usage and decisions</div>
+                                    <div class="answer-value">Active Consideration</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q3" value="4">
+                                <div class="answer-text">
+                                    <div>I champion ethical AI practices and help others navigate these issues</div>
+                                    <div class="answer-value">Ethics Leadership</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-chart-line"></i>
+                            How do you stay current with AI developments and trends?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q4" value="1">
+                                <div class="answer-text">
+                                    <div>I don't actively follow AI developments; I learn as needed</div>
+                                    <div class="answer-value">Reactive Learning</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q4" value="2">
+                                <div class="answer-text">
+                                    <div>I occasionally read AI news but don't have a systematic approach</div>
+                                    <div class="answer-value">Casual Monitoring</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q4" value="3">
+                                <div class="answer-text">
+                                    <div>I regularly follow AI publications and participate in professional communities</div>
+                                    <div class="answer-value">Active Monitoring</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q4" value="4">
+                                <div class="answer-text">
+                                    <div>I systematically track AI trends and contribute to industry discussions</div>
+                                    <div class="answer-value">Thought Leadership</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Strategic Thinking & Innovation Section -->
+                    <h3 style="color: #1e40af; margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-lightbulb"></i> Strategic Thinking & Innovation
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-puzzle-piece"></i>
+                            How effectively can you solve complex, multi-faceted problems?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q5" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer clear, straightforward problems with obvious solutions</div>
+                                    <div class="answer-value">Structured Problem Solving</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q5" value="2">
+                                <div class="answer-text">
+                                    <div>I can handle moderate complexity but struggle with highly ambiguous situations</div>
+                                    <div class="answer-value">Moderate Complexity</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q5" value="3">
+                                <div class="answer-text">
+                                    <div>I thrive on complex problems and can see connections others miss</div>
+                                    <div class="answer-value">Complex Problem Solver</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q5" value="4">
+                                <div class="answer-text">
+                                    <div>I excel at tackling "wicked problems" and creating innovative frameworks</div>
+                                    <div class="answer-value">Systems Thinker</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-telescope"></i>
+                            How well can you anticipate future trends and their implications?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q6" value="1">
+                                <div class="answer-text">
+                                    <div>I focus on current tasks and don't spend much time thinking about the future</div>
+                                    <div class="answer-value">Present-Focused</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q6" value="2">
+                                <div class="answer-text">
+                                    <div>I'm aware of major trends but struggle to assess their impact</div>
+                                    <div class="answer-value">Trend Aware</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q6" value="3">
+                                <div class="answer-text">
+                                    <div>I regularly analyze trends and their potential professional implications</div>
+                                    <div class="answer-value">Strategic Planner</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q6" value="4">
+                                <div class="answer-text">
+                                    <div>I'm recognized for accurately predicting trends and their business impacts</div>
+                                    <div class="answer-value">Futurist Mindset</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-rocket"></i>
+                            How do you approach innovation and creative problem-solving?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q7" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer proven approaches and avoid unnecessary risks</div>
+                                    <div class="answer-value">Conservative Approach</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q7" value="2">
+                                <div class="answer-text">
+                                    <div>I'm open to new ideas but need guidance to implement them</div>
+                                    <div class="answer-value">Guided Innovation</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q7" value="3">
+                                <div class="answer-text">
+                                    <div>I actively seek innovative solutions and enjoy creative challenges</div>
+                                    <div class="answer-value">Active Innovator</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q7" value="4">
+                                <div class="answer-text">
+                                    <div>I consistently generate breakthrough ideas and lead innovation initiatives</div>
+                                    <div class="answer-value">Innovation Leader</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-network-wired"></i>
+                            How well can you understand and navigate complex systems?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q8" value="1">
+                                <div class="answer-text">
+                                    <div>I focus on my specific role and don't worry about broader system impacts</div>
+                                    <div class="answer-value">Narrow Focus</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q8" value="2">
+                                <div class="answer-text">
+                                    <div>I understand my department but struggle with organization-wide complexity</div>
+                                    <div class="answer-value">Departmental View</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q8" value="3">
+                                <div class="answer-text">
+                                    <div>I can see organizational connections and anticipate systemic effects</div>
+                                    <div class="answer-value">Systems Aware</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q8" value="4">
+                                <div class="answer-text">
+                                    <div>I excel at mapping complex systems and designing holistic solutions</div>
+                                    <div class="answer-value">Systems Expert</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Adaptive Learning Agility Section -->
+                    <h3 style="color: #1e40af; margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-sync"></i> Adaptive Learning Agility
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            How quickly can you acquire new skills and knowledge?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q9" value="1">
+                                <div class="answer-text">
+                                    <div>I need extensive training and support to learn new skills effectively</div>
+                                    <div class="answer-value">Structured Learning</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q9" value="2">
+                                <div class="answer-text">
+                                    <div>I can learn new skills with some guidance and practice time</div>
+                                    <div class="answer-value">Guided Learning</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q9" value="3">
+                                <div class="answer-text">
+                                    <div>I quickly pick up new skills and apply them effectively</div>
+                                    <div class="answer-value">Rapid Learner</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q9" value="4">
+                                <div class="answer-text">
+                                    <div>I'm exceptionally fast at learning and often teach others new concepts</div>
+                                    <div class="answer-value">Learning Expert</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-exchange-alt"></i>
+                            How well do you adapt to changing work environments and requirements?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q10" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer stable environments and find frequent changes stressful</div>
+                                    <div class="answer-value">Stability Preference</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q10" value="2">
+                                <div class="answer-text">
+                                    <div>I can adapt to changes but need time to adjust and feel comfortable</div>
+                                    <div class="answer-value">Gradual Adaptation</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q10" value="3">
+                                <div class="answer-text">
+                                    <div>I adapt quickly to changes and often help others navigate transitions</div>
+                                    <div class="answer-value">Change Embracer</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q10" value="4">
+                                <div class="answer-text">
+                                    <div>I thrive in dynamic environments and actively drive positive change</div>
+                                    <div class="answer-value">Change Leader</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-compass"></i>
+                            How comfortable are you with uncertainty and ambiguous situations?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q11" value="1">
+                                <div class="answer-text">
+                                    <div>I avoid ambiguous situations and prefer clear direction and structure</div>
+                                    <div class="answer-value">Structure Seeking</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q11" value="2">
+                                <div class="answer-text">
+                                    <div>I can handle some uncertainty but prefer to minimize ambiguity when possible</div>
+                                    <div class="answer-value">Moderate Tolerance</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q11" value="3">
+                                <div class="answer-text">
+                                    <div>I'm comfortable with uncertainty and can make decisions with incomplete information</div>
+                                    <div class="answer-value">Uncertainty Comfortable</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q11" value="4">
+                                <div class="answer-text">
+                                    <div>I excel in ambiguous situations and help others navigate uncertainty</div>
+                                    <div class="answer-value">Ambiguity Expert</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-brain"></i>
+                            How well do you learn from failure and setbacks?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q12" value="1">
+                                <div class="answer-text">
+                                    <div>Failures are discouraging and I prefer to avoid situations where I might fail</div>
+                                    <div class="answer-value">Failure Avoidant</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q12" value="2">
+                                <div class="answer-text">
+                                    <div>I eventually learn from failures but they initially impact my confidence</div>
+                                    <div class="answer-value">Gradual Recovery</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q12" value="3">
+                                <div class="answer-text">
+                                    <div>I quickly extract lessons from failures and apply them to improve</div>
+                                    <div class="answer-value">Resilient Learner</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q12" value="4">
+                                <div class="answer-text">
+                                    <div>I view failures as valuable learning opportunities and help others do the same</div>
+                                    <div class="answer-value">Growth Mindset Expert</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Leadership & Influence Section -->
+                    <h3 style="color: #1e40af; margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-crown"></i> Leadership & Influence
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-users"></i>
+                            How effectively can you influence and motivate others?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q13" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer to work independently and avoid trying to influence others</div>
+                                    <div class="answer-value">Independent Contributor</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q13" value="2">
+                                <div class="answer-text">
+                                    <div>I can influence close colleagues but struggle with broader stakeholder groups</div>
+                                    <div class="answer-value">Limited Influence</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q13" value="3">
+                                <div class="answer-text">
+                                    <div>I regularly influence cross-functional teams and drive collaborative initiatives</div>
+                                    <div class="answer-value">Effective Influencer</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q13" value="4">
+                                <div class="answer-text">
+                                    <div>I'm recognized as a leader who consistently inspires and motivates others</div>
+                                    <div class="answer-value">Inspirational Leader</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-handshake"></i>
+                            How well do you manage stakeholder relationships and expectations?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q14" value="1">
+                                <div class="answer-text">
+                                    <div>I focus on my work and let others handle stakeholder management</div>
+                                    <div class="answer-value">Task Focused</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q14" value="2">
+                                <div class="answer-text">
+                                    <div>I manage immediate stakeholder relationships but avoid complex dynamics</div>
+                                    <div class="answer-value">Direct Relationships</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q14" value="3">
+                                <div class="answer-text">
+                                    <div>I actively manage multiple stakeholder relationships and align expectations</div>
+                                    <div class="answer-value">Stakeholder Manager</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q14" value="4">
+                                <div class="answer-text">
+                                    <div>I excel at complex stakeholder management and conflict resolution</div>
+                                    <div class="answer-value">Relationship Expert</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-comments"></i>
+                            How effectively do you communicate complex ideas to diverse audiences?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q15" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer written communication and avoid presenting to groups</div>
+                                    <div class="answer-value">Written Communicator</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q15" value="2">
+                                <div class="answer-text">
+                                    <div>I can communicate effectively with similar audiences but struggle with diversity</div>
+                                    <div class="answer-value">Homogeneous Communication</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q15" value="3">
+                                <div class="answer-text">
+                                    <div>I adapt my communication style effectively for different audiences</div>
+                                    <div class="answer-value">Adaptive Communicator</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q15" value="4">
+                                <div class="answer-text">
+                                    <div>I'm recognized for making complex topics accessible to any audience</div>
+                                    <div class="answer-value">Master Communicator</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-seedling"></i>
+                            How do you approach developing and mentoring others?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q16" value="1">
+                                <div class="answer-text">
+                                    <div>I focus on my own development and don't have time to mentor others</div>
+                                    <div class="answer-value">Self-Focused</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q16" value="2">
+                                <div class="answer-text">
+                                    <div>I help colleagues when asked but don't actively seek mentoring opportunities</div>
+                                    <div class="answer-value">Reactive Helper</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q16" value="3">
+                                <div class="answer-text">
+                                    <div>I actively mentor team members and help others develop their skills</div>
+                                    <div class="answer-value">Active Mentor</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q16" value="4">
+                                <div class="answer-text">
+                                    <div>I'm passionate about developing others and known for building great talent</div>
+                                    <div class="answer-value">Talent Developer</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Professional Network & Relationships Section -->
+                    <h3 style="color: #1e40af; margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-network-wired"></i> Professional Network & Relationships
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-users"></i>
+                            How strong and diverse is your professional network?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q17" value="1">
+                                <div class="answer-text">
+                                    <div>My network is mainly colleagues from my current organization</div>
+                                    <div class="answer-value">Internal Network</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q17" value="2">
+                                <div class="answer-text">
+                                    <div>I have some external connections but they're mostly in similar roles</div>
+                                    <div class="answer-value">Homogeneous Network</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q17" value="3">
+                                <div class="answer-text">
+                                    <div>I have a diverse network across industries, functions, and levels</div>
+                                    <div class="answer-value">Diverse Network</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q17" value="4">
+                                <div class="answer-text">
+                                    <div>I have an extensive strategic network including thought leaders and decision makers</div>
+                                    <div class="answer-value">Strategic Network</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-handshake"></i>
+                            How effectively do you build and maintain professional relationships?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q18" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer to keep professional relationships transactional and focused</div>
+                                    <div class="answer-value">Transactional Approach</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q18" value="2">
+                                <div class="answer-text">
+                                    <div>I build good relationships but struggle to maintain them over time</div>
+                                    <div class="answer-value">Short-term Relationships</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q18" value="3">
+                                <div class="answer-text">
+                                    <div>I build strong, lasting relationships and regularly provide value to my network</div>
+                                    <div class="answer-value">Relationship Builder</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q18" value="4">
+                                <div class="answer-text">
+                                    <div>I'm known as a connector who brings value to relationships and introduces others</div>
+                                    <div class="answer-value">Network Catalyst</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            How do you leverage your network for learning and development?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q19" value="1">
+                                <div class="answer-text">
+                                    <div>I rarely think to leverage my network for learning opportunities</div>
+                                    <div class="answer-value">Underutilized Network</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q19" value="2">
+                                <div class="answer-text">
+                                    <div>I occasionally reach out to contacts when I need specific information</div>
+                                    <div class="answer-value">Occasional Outreach</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q19" value="3">
+                                <div class="answer-text">
+                                    <div>I regularly engage my network for insights, advice, and learning opportunities</div>
+                                    <div class="answer-value">Active Network Learning</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q19" value="4">
+                                <div class="answer-text">
+                                    <div>My network is a primary source of learning and I contribute to others' development</div>
+                                    <div class="answer-value">Network Learning Expert</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-star"></i>
+                            How visible are you in your professional community?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q20" value="1">
+                                <div class="answer-text">
+                                    <div>I prefer to keep a low profile and focus on my immediate work</div>
+                                    <div class="answer-value">Low Visibility</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q20" value="2">
+                                <div class="answer-text">
+                                    <div>I'm known within my organization but have limited external visibility</div>
+                                    <div class="answer-value">Internal Recognition</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q20" value="3">
+                                <div class="answer-text">
+                                    <div>I'm active in professional associations and have growing industry recognition</div>
+                                    <div class="answer-value">Industry Participant</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q20" value="4">
+                                <div class="answer-text">
+                                    <div>I'm recognized as a thought leader and regularly invited to speak or advise</div>
+                                    <div class="answer-value">Thought Leader</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Future Vision & Planning Section -->
+                    <h3 style="color: #1e40af; margin: 2rem 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-telescope"></i> Future Vision & Planning
+                    </h3>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-map"></i>
+                            How clear is your long-term career vision and strategy?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q21" value="1">
+                                <div class="answer-text">
+                                    <div>I focus on short-term goals and don't have a clear long-term plan</div>
+                                    <div class="answer-value">Short-term Focus</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q21" value="2">
+                                <div class="answer-text">
+                                    <div>I have general career aspirations but lack a detailed strategy</div>
+                                    <div class="answer-value">General Aspirations</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q21" value="3">
+                                <div class="answer-text">
+                                    <div>I have a clear 3-5 year vision with specific goals and milestones</div>
+                                    <div class="answer-value">Strategic Planner</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q21" value="4">
+                                <div class="answer-text">
+                                    <div>I have a compelling long-term vision that guides all my professional decisions</div>
+                                    <div class="answer-value">Visionary Leader</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-chart-line"></i>
+                            How proactively do you prepare for future career opportunities?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q22" value="1">
+                                <div class="answer-text">
+                                    <div>I respond to opportunities as they arise but don't actively prepare</div>
+                                    <div class="answer-value">Reactive Approach</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q22" value="2">
+                                <div class="answer-text">
+                                    <div>I occasionally invest in development when I see clear need</div>
+                                    <div class="answer-value">Opportunistic Development</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q22" value="3">
+                                <div class="answer-text">
+                                    <div>I systematically build skills and relationships for future opportunities</div>
+                                    <div class="answer-value">Proactive Builder</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q22" value="4">
+                                <div class="answer-text">
+                                    <div>I consistently prepare for opportunities that don't yet exist</div>
+                                    <div class="answer-value">Future-Ready</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-balance-scale"></i>
+                            How well do you balance immediate performance with long-term development?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q23" value="1">
+                                <div class="answer-text">
+                                    <div>I'm focused on current performance and struggle to find time for development</div>
+                                    <div class="answer-value">Performance Focused</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q23" value="2">
+                                <div class="answer-text">
+                                    <div>I try to develop when possible but often get overwhelmed by current demands</div>
+                                    <div class="answer-value">Struggling Balance</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q23" value="3">
+                                <div class="answer-text">
+                                    <div>I effectively balance current performance with consistent development activities</div>
+                                    <div class="answer-value">Balanced Approach</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q23" value="4">
+                                <div class="answer-text">
+                                    <div>I integrate development into my work so both reinforce each other</div>
+                                    <div class="answer-value">Integrated Excellence</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-block">
+                        <div class="question-title">
+                            <i class="fas fa-clipboard-check"></i>
+                            How systematically do you track and adjust your professional development?
+                        </div>
+                        <div class="answer-options">
+                            <label class="answer-option">
+                                <input type="radio" name="q24" value="1">
+                                <div class="answer-text">
+                                    <div>I don't formally track my development or have regular review processes</div>
+                                    <div class="answer-value">Informal Tracking</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q24" value="2">
+                                <div class="answer-text">
+                                    <div>I occasionally reflect on my progress but lack systematic tracking</div>
+                                    <div class="answer-value">Periodic Reflection</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q24" value="3">
+                                <div class="answer-text">
+                                    <div>I have regular review processes and adjust my development plans accordingly</div>
+                                    <div class="answer-value">Systematic Tracking</div>
+                                </div>
+                            </label>
+                            <label class="answer-option">
+                                <input type="radio" name="q24" value="4">
+                                <div class="answer-text">
+                                    <div>I have sophisticated tracking systems and use data to optimize my development</div>
+                                    <div class="answer-value">Data-Driven Development</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <button type="button" onclick="calculateResults()" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">
+                            <i class="fas fa-chart-bar"></i> Calculate My Future Readiness Score
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Results Container -->
+            <div id="results-container" class="results-container">
+                <div class="score-display">
+                    <div id="score-circle" class="score-circle">
+                        <span id="total-score">0</span>%
+                    </div>
+                    <h3 id="readiness-level" style="color: #065f46; margin: 0;">Future Readiness Level</h3>
+                    <p id="readiness-description" style="color: #374151; font-size: 1.1rem;"></p>
+                </div>
+
+                <div class="category-breakdown">
+                    <div class="category-result">
+                        <h4><i class="fas fa-robot"></i> AI Technical Competency</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="tech-score">0%</span>
+                            <span id="tech-level">Level</span>
+                        </div>
+                        <p id="tech-description" style="font-size: 0.9rem; margin: 0.5rem 0 0 0;"></p>
+                    </div>
+                    
+                    <div class="category-result">
+                        <h4><i class="fas fa-lightbulb"></i> Strategic Thinking</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="strategic-score">0%</span>
+                            <span id="strategic-level">Level</span>
+                        </div>
+                        <p id="strategic-description" style="font-size: 0.9rem; margin: 0.5rem 0 0 0;"></p>
+                    </div>
+                    
+                    <div class="category-result">
+                        <h4><i class="fas fa-sync"></i> Learning Agility</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="learning-score">0%</span>
+                            <span id="learning-level">Level</span>
+                        </div>
+                        <p id="learning-description" style="font-size: 0.9rem; margin: 0.5rem 0 0 0;"></p>
+                    </div>
+                    
+                    <div class="category-result">
+                        <h4><i class="fas fa-crown"></i> Leadership & Influence</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="leadership-score">0%</span>
+                            <span id="leadership-level">Level</span>
+                        </div>
+                        <p id="leadership-description" style="font-size: 0.9rem; margin: 0.5rem 0 0 0;"></p>
+                    </div>
+                    
+                    <div class="category-result">
+                        <h4><i class="fas fa-network-wired"></i> Professional Network</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="network-score">0%</span>
+                            <span id="network-level">Level</span>
+                        </div>
+                        <p id="network-description" style="font-size: 0.9rem; margin: 0.5rem 0 0 0;"></p>
+                    </div>
+                    
+                    <div class="category-result">
+                        <h4><i class="fas fa-telescope"></i> Future Vision</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="vision-score">0%</span>
+                            <span id="vision-level">Level</span>
+                        </div>
+                        <p id="vision-description" style="font-size: 0.9rem; margin: 0.5rem 0 0 0;"></p>
+                    </div>
+                </div>
+
+                <div class="recommendations">
+                    <h4><i class="fas fa-lightbulb"></i> Personalized Development Recommendations</h4>
+                    <div id="recommendations-content"></div>
+                </div>
+
+                <div class="action-plan">
+                    <h4><i class="fas fa-rocket"></i> Immediate Action Plan</h4>
+                    <div id="action-plan-content"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../practice/career-development-planner.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Career Planner
+                </a>
+                <a href="discussion.html" class="nav-btn">
+                    Next: Discussion Forum
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Track progress as questions are answered
+        function updateProgress() {
+            const totalQuestions = 24;
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progressPercent = (answeredQuestions / totalQuestions) * 100;
+            
+            document.getElementById('progress-fill').style.width = progressPercent + '%';
+            document.getElementById('progress-text').textContent = `${answeredQuestions} of ${totalQuestions} questions completed`;
+        }
+
+        // Add event listeners to all radio buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    // Update progress
+                    updateProgress();
+                    
+                    // Update visual selection
+                    const questionOptions = this.closest('.question-block').querySelectorAll('.answer-option');
+                    questionOptions.forEach(option => option.classList.remove('selected'));
+                    this.closest('.answer-option').classList.add('selected');
+                });
+            });
+        });
+
+        function calculateResults() {
+            // Check if all questions are answered
+            const totalQuestions = 24;
+            const answeredQuestions = document.querySelectorAll('input[type="radio"]:checked').length;
+            
+            if (answeredQuestions < totalQuestions) {
+                alert(`Please answer all questions. You have answered ${answeredQuestions} of ${totalQuestions} questions.`);
+                return;
+            }
+
+            // Calculate scores for each category
+            const techScore = calculateCategoryScore(['q1', 'q2', 'q3', 'q4']);
+            const strategicScore = calculateCategoryScore(['q5', 'q6', 'q7', 'q8']);
+            const learningScore = calculateCategoryScore(['q9', 'q10', 'q11', 'q12']);
+            const leadershipScore = calculateCategoryScore(['q13', 'q14', 'q15', 'q16']);
+            const networkScore = calculateCategoryScore(['q17', 'q18', 'q19', 'q20']);
+            const visionScore = calculateCategoryScore(['q21', 'q22', 'q23', 'q24']);
+
+            // Calculate overall score
+            const totalScore = Math.round((techScore + strategicScore + learningScore + leadershipScore + networkScore + visionScore) / 6);
+
+            // Display results
+            displayResults(totalScore, {
+                tech: techScore,
+                strategic: strategicScore,
+                learning: learningScore,
+                leadership: leadershipScore,
+                network: networkScore,
+                vision: visionScore
+            });
+
+            // Show results container
+            document.getElementById('results-container').style.display = 'block';
+            document.getElementById('results-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function calculateCategoryScore(questions) {
+            let totalValue = 0;
+            questions.forEach(questionName => {
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                if (selectedOption) {
+                    totalValue += parseInt(selectedOption.value);
+                }
+            });
+            // Convert to percentage (4 questions * 4 max points = 16 max, convert to 100%)
+            return Math.round((totalValue / 16) * 100);
+        }
+
+        function displayResults(totalScore, categoryScores) {
+            // Display total score
+            document.getElementById('total-score').textContent = totalScore;
+            
+            // Set score circle color and readiness level
+            const scoreCircle = document.getElementById('score-circle');
+            const readinessLevel = document.getElementById('readiness-level');
+            const readinessDescription = document.getElementById('readiness-description');
+            
+            if (totalScore >= 85) {
+                scoreCircle.className = 'score-circle score-excellent';
+                readinessLevel.textContent = 'Excellent - Future Ready Leader';
+                readinessDescription.textContent = 'You are exceptionally well-prepared for the AI-enhanced professional future and positioned to lead others through transformation.';
+            } else if (totalScore >= 70) {
+                scoreCircle.className = 'score-circle score-good';
+                readinessLevel.textContent = 'Good - Well Positioned';
+                readinessDescription.textContent = 'You have strong foundations for AI-era success with some areas for continued development and growth.';
+            } else if (totalScore >= 55) {
+                scoreCircle.className = 'score-circle score-developing';
+                readinessLevel.textContent = 'Developing - Building Momentum';
+                readinessDescription.textContent = 'You are making good progress with clear opportunities to accelerate your AI readiness through focused development.';
+            } else {
+                scoreCircle.className = 'score-circle score-needs-work';
+                readinessLevel.textContent = 'Emerging - Foundation Building';
+                readinessDescription.textContent = 'Focus on building fundamental AI competencies and professional development systems for future success.';
+            }
+
+            // Display category scores
+            displayCategoryResult('tech', categoryScores.tech, 'AI Technical Competency');
+            displayCategoryResult('strategic', categoryScores.strategic, 'Strategic Thinking & Innovation');
+            displayCategoryResult('learning', categoryScores.learning, 'Adaptive Learning Agility');
+            displayCategoryResult('leadership', categoryScores.leadership, 'Leadership & Influence');
+            displayCategoryResult('network', categoryScores.network, 'Professional Network & Relationships');
+            displayCategoryResult('vision', categoryScores.vision, 'Future Vision & Planning');
+
+            // Generate recommendations
+            generateRecommendations(totalScore, categoryScores);
+        }
+
+        function displayCategoryResult(category, score, categoryName) {
+            document.getElementById(`${category}-score`).textContent = score + '%';
+            
+            let level, description;
+            if (score >= 85) {
+                level = 'Expert';
+                description = 'Exceptional strength in this area with leadership capabilities';
+            } else if (score >= 70) {
+                level = 'Advanced';
+                description = 'Strong competency with opportunities for thought leadership';
+            } else if (score >= 55) {
+                level = 'Developing';
+                description = 'Good foundation with clear development pathway';
+            } else {
+                level = 'Emerging';
+                description = 'Focus area for accelerated development and growth';
+            }
+            
+            document.getElementById(`${category}-level`).textContent = level;
+            document.getElementById(`${category}-description`).textContent = description;
+        }
+
+        function generateRecommendations(totalScore, categoryScores) {
+            const recommendationsContent = document.getElementById('recommendations-content');
+            const actionPlanContent = document.getElementById('action-plan-content');
+
+            // Find lowest scoring categories for focused recommendations
+            const categories = Object.entries(categoryScores).sort((a, b) => a[1] - b[1]);
+            const lowestCategory = categories[0];
+            const secondLowestCategory = categories[1];
+
+            let recommendations = '';
+            let actionPlan = '';
+
+            // Generate specific recommendations based on lowest scores
+            const categoryRecommendations = {
+                tech: {
+                    recommendations: [
+                        'Complete comprehensive AI literacy training and certification programs',
+                        'Practice with multiple AI tools daily to build fluency and confidence',
+                        'Join AI professional communities and follow industry thought leaders',
+                        'Implement AI solutions in current work to gain practical experience'
+                    ],
+                    actions: [
+                        'Enroll in an AI certification program within 30 days',
+                        'Set up daily practice routine with 2-3 core AI tools',
+                        'Join 2 AI professional communities this month'
+                    ]
+                },
+                strategic: {
+                    recommendations: [
+                        'Study systems thinking and strategic planning methodologies',
+                        'Practice scenario planning and trend analysis exercises',
+                        'Engage with cross-functional projects to build holistic perspective',
+                        'Develop expertise in innovation management and creative problem-solving'
+                    ],
+                    actions: [
+                        'Read one systems thinking book and complete exercises',
+                        'Start monthly trend analysis and scenario planning practice',
+                        'Volunteer for cross-functional strategic initiative'
+                    ]
+                },
+                learning: {
+                    recommendations: [
+                        'Develop meta-learning skills and rapid skill acquisition techniques',
+                        'Practice with unfamiliar technologies and methodologies regularly',
+                        'Build comfort with uncertainty through graduated exposure',
+                        'Create systematic feedback and reflection processes'
+                    ],
+                    actions: [
+                        'Learn a new technical skill each month',
+                        'Set up weekly reflection and learning review process',
+                        'Take on projects outside your comfort zone'
+                    ]
+                },
+                leadership: {
+                    recommendations: [
+                        'Complete leadership development program with focus on influence',
+                        'Practice public speaking and presentation skills',
+                        'Seek mentoring and coaching relationships',
+                        'Take on team leadership or cross-functional project roles'
+                    ],
+                    actions: [
+                        'Join Toastmasters or similar speaking organization',
+                        'Find mentor for leadership development',
+                        'Volunteer to lead next available team project'
+                    ]
+                },
+                network: {
+                    recommendations: [
+                        'Join professional associations and industry communities',
+                        'Attend networking events and conferences regularly',
+                        'Develop systematic approach to relationship building',
+                        'Focus on providing value to others in your network'
+                    ],
+                    actions: [
+                        'Join 2 professional associations this month',
+                        'Attend 1 networking event monthly',
+                        'Reach out to 5 new professional contacts weekly'
+                    ]
+                },
+                vision: {
+                    recommendations: [
+                        'Complete comprehensive career planning and goal-setting process',
+                        'Develop systematic tracking and review processes',
+                        'Study future trends and their career implications',
+                        'Create accountability systems and regular progress reviews'
+                    ],
+                    actions: [
+                        'Complete detailed 5-year career plan this month',
+                        'Set up quarterly career review process',
+                        'Find accountability partner for career development'
+                    ]
+                }
+            };
+
+            // Build recommendations for top 2 development areas
+            recommendations += `<strong>Priority Development Areas:</strong><br><br>`;
+            recommendations += `<strong>1. ${getCategoryName(lowestCategory[0])} (${lowestCategory[1]}%)</strong><br>`;
+            recommendations += `<ul style="margin: 0.5rem 0 1rem 1rem;">`;
+            categoryRecommendations[lowestCategory[0]].recommendations.forEach(rec => {
+                recommendations += `<li>${rec}</li>`;
+            });
+            recommendations += `</ul>`;
+
+            recommendations += `<strong>2. ${getCategoryName(secondLowestCategory[0])} (${secondLowestCategory[1]}%)</strong><br>`;
+            recommendations += `<ul style="margin: 0.5rem 0 1rem 1rem;">`;
+            categoryRecommendations[secondLowestCategory[0]].recommendations.forEach(rec => {
+                recommendations += `<li>${rec}</li>`;
+            });
+            recommendations += `</ul>`;
+
+            // Build action plan
+            actionPlan += `<strong>30-Day Action Plan:</strong><br><br>`;
+            actionPlan += `<strong>Focus Area 1: ${getCategoryName(lowestCategory[0])}</strong><br>`;
+            actionPlan += `<ul style="margin: 0.5rem 0 1rem 1rem;">`;
+            categoryRecommendations[lowestCategory[0]].actions.forEach(action => {
+                actionPlan += `<li>${action}</li>`;
+            });
+            actionPlan += `</ul>`;
+
+            actionPlan += `<strong>Focus Area 2: ${getCategoryName(secondLowestCategory[0])}</strong><br>`;
+            actionPlan += `<ul style="margin: 0.5rem 0 1rem 1rem;">`;
+            categoryRecommendations[secondLowestCategory[0]].actions.forEach(action => {
+                actionPlan += `<li>${action}</li>`;
+            });
+            actionPlan += `</ul>`;
+
+            actionPlan += `<strong>General Development:</strong><br>`;
+            actionPlan += `<ul style="margin: 0.5rem 0 1rem 1rem;">`;
+            actionPlan += `<li>Schedule weekly 1-hour development time</li>`;
+            actionPlan += `<li>Set up monthly progress review process</li>`;
+            actionPlan += `<li>Find accountability partner or mentor</li>`;
+            actionPlan += `</ul>`;
+
+            recommendationsContent.innerHTML = recommendations;
+            actionPlanContent.innerHTML = actionPlan;
+        }
+
+        function getCategoryName(categoryKey) {
+            const names = {
+                tech: 'AI Technical Competency',
+                strategic: 'Strategic Thinking & Innovation',
+                learning: 'Adaptive Learning Agility',
+                leadership: 'Leadership & Influence',
+                network: 'Professional Network & Relationships',
+                vision: 'Future Vision & Planning'
+            };
+            return names[categoryKey] || categoryKey;
+        }
+    </script>
+</body>
+</html>

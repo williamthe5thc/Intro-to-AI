@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion: Sharing Your Portfolio & Future AI Goals - Module 10</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-framework {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .discussion-prompt {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #8b5cf6;
+        }
+        .prompt-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .prompt-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+        }
+        .networking-zone {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .peer-connection {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .peer-connection:hover {
+            border-color: #10b981;
+            transform: translateY(-2px);
+        }
+        .alumni-network {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .success-stories {
+            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+            border: 2px solid #d97706;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .story-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #d97706;
+        }
+        .future-roadmap {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border: 2px solid #ec4899;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .roadmap-section {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .reflection-sharing {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            border: 2px solid #64748b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .reflection-prompt {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #64748b;
+        }
+        .contribution-form {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .form-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .celebration-section {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .achievement-badge {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+        .community-guidelines {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+        }
+        .guideline-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #22c55e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-top: 0.1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 10</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Discussion</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-portfolio-foundation.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/capstone-project.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="capstone-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Discussion: Sharing Your Portfolio & Future AI Goals</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Welcome to our capstone discussion forum! This is your opportunity to share your professional AI portfolio, connect with fellow AI professionals, reflect on your learning journey, and establish your ongoing AI development roadmap. Celebrate your achievements and build lasting professional relationships.
+            </p>
+
+            <!-- Course Completion Celebration -->
+            <div class="celebration-section">
+                <div class="achievement-badge">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 style="color: #dc2626; margin-bottom: 1rem;">🎉 Congratulations on Completing the Course!</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    You have successfully completed "Introduction to AI for Working Professionals" and are now equipped with comprehensive AI competencies for professional excellence. Share your achievement and connect with your new professional AI community!
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #ef4444; margin-bottom: 0.5rem;">10 Modules</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Completed Successfully</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Professional Skills</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">AI Competency Achieved</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Portfolio Ready</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Career Advancement</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px;">
+                        <h5 style="color: #ef4444; margin-bottom: 0.5rem;">Alumni Network</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Lifetime Access</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discussion Overview -->
+            <div class="discussion-framework">
+                <h3 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-users"></i> Capstone Discussion Framework
+                </h3>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    This final discussion serves multiple purposes: celebrating achievements, sharing professional portfolios, building lasting professional relationships, and establishing your ongoing AI development journey. Engage authentically and professionally to maximize networking and learning opportunities.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-share-alt" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 0.5rem;"></i>
+                        <h5>Portfolio Showcase</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Share your capstone project and professional achievements</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-handshake" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 0.5rem;"></i>
+                        <h5>Professional Networking</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Connect with AI professionals across industries</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-road" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 0.5rem;"></i>
+                        <h5>Future Planning</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Establish your AI professional development roadmap</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-lightbulb" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 0.5rem;"></i>
+                        <h5>Knowledge Sharing</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Contribute insights and learn from peers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Guidelines -->
+            <div class="community-guidelines">
+                <h4 style="color: #15803d; margin-bottom: 1.5rem;">
+                    <i class="fas fa-heart"></i> Professional Community Guidelines
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Our discussion community is built on mutual respect, professional support, and shared learning. Please follow these guidelines to create a positive, productive environment for all participants.
+                </p>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <strong>Professional Respect:</strong> Maintain professional tone and courtesy. Support fellow professionals with constructive feedback and encouragement.
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div>
+                        <strong>Confidentiality Awareness:</strong> Share your own projects and insights, but respect organizational confidentiality and intellectual property when discussing work-related implementations.
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div>
+                        <strong>Collaborative Spirit:</strong> Offer help, share resources, make introductions, and contribute to the collective learning and professional growth of the community.
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <strong>Quality Contributions:</strong> Share substantial insights, ask thoughtful questions, and provide meaningful responses that add value to professional discussions.
+                    </div>
+                </div>
+                
+                <div class="guideline-item">
+                    <div class="guideline-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <strong>Inclusive Networking:</strong> Welcome professionals from all industries, experience levels, and backgrounds. Foster an environment where everyone can learn and contribute.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Showcase Discussion Prompts -->
+            <h2 class="section-title"><i class="fas fa-star"></i>Portfolio Showcase & Professional Achievements</h2>
+
+            <div class="discussion-prompt">
+                <div class="prompt-header">
+                    <div class="prompt-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Capstone Project Showcase</h4>
+                        <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Share your capstone project and professional impact</p>
+                    </div>
+                </div>
+                <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>Discussion Prompt:</strong>
+                    <p style="margin: 0.5rem 0 0 0;">
+                        Share your capstone project with the community! Describe your project title, the business challenge you addressed, your AI solution approach, and the results you achieved. What was your most significant professional breakthrough during this project?
+                    </p>
+                </div>
+                <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                    <strong>Suggested Sharing Format:</strong>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li><strong>Project Title:</strong> [Your capstone project name]</li>
+                        <li><strong>Industry/Role:</strong> [Your professional context]</li>
+                        <li><strong>Challenge Addressed:</strong> [Business problem solved]</li>
+                        <li><strong>AI Solution:</strong> [Your approach and tools used]</li>
+                        <li><strong>Key Results:</strong> [Quantified impact and outcomes]</li>
+                        <li><strong>Professional Growth:</strong> [Skills gained and career impact]</li>
+                        <li><strong>Lessons Learned:</strong> [Key insights for others]</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="discussion-prompt">
+                <div class="prompt-header">
+                    <div class="prompt-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Professional Transformation Journey</h4>
+                        <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Reflect on your AI professional development</p>
+                    </div>
+                </div>
+                <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                    <strong>Discussion Prompt:</strong>
+                    <p style="margin: 0.5rem 0 0 0;">
+                        How has this course transformed your professional capabilities and career trajectory? Share specific examples of how your AI competencies have already impacted your work, relationships with colleagues, or opportunities that have opened up.
+                    </p>
+                </div>
+                <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                    <strong>Reflection Areas:</strong>
+                    <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                        <li>Confidence and competency changes from Module 1 to Module 10</li>
+                        <li>Specific workplace applications and results achieved</li>
+                        <li>Colleague and supervisor recognition or feedback received</li>
+                        <li>New professional opportunities or responsibilities gained</li>
+                        <li>Most challenging learning moments and breakthroughs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Professional Networking Zone -->
+            <div class="networking-zone">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-network-wired"></i> Professional AI Network Building
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Connect with fellow AI professionals for ongoing collaboration, knowledge sharing, and career advancement. Build relationships that extend beyond the course and support your continued growth.
+                </p>
+                
+                <div class="discussion-prompt">
+                    <div class="prompt-header">
+                        <div class="prompt-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Professional Introduction & Networking</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Introduce yourself and your professional AI interests</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Networking Prompt:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">
+                            Introduce yourself professionally to build meaningful connections. Share your industry, current role, AI implementation areas of interest, and what kind of professional relationships you're hoping to develop. What expertise can you offer to others, and what collaborative opportunities are you seeking?
+                        </p>
+                    </div>
+                    <div style="background: #d1fae5; padding: 1rem; border-radius: 6px;">
+                        <strong>Professional Introduction Template:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Role & Industry:</strong> [Current position and sector]</li>
+                            <li><strong>AI Focus Areas:</strong> [Your primary AI application interests]</li>
+                            <li><strong>Expertise to Share:</strong> [What you can contribute to others]</li>
+                            <li><strong>Learning Interests:</strong> [Areas where you seek collaboration]</li>
+                            <li><strong>Future Goals:</strong> [Professional AI development objectives]</li>
+                            <li><strong>Connection Interests:</strong> [Types of professional relationships sought]</li>
+                            <li><strong>Contact Preference:</strong> [How others can connect with you]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="discussion-prompt">
+                    <div class="prompt-header">
+                        <div class="prompt-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Cross-Industry Collaboration Opportunities</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Explore collaboration across different industries and roles</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Collaboration Prompt:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">
+                            What cross-industry collaboration opportunities do you see for AI professionals? Share specific projects, research interests, or business challenges where professionals from different sectors could work together. Propose collaborative initiatives or knowledge exchange opportunities.
+                        </p>
+                    </div>
+                    <div style="background: #d1fae5; padding: 1rem; border-radius: 6px;">
+                        <strong>Collaboration Examples:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Joint research projects on AI implementation best practices</li>
+                            <li>Cross-industry case study development and sharing</li>
+                            <li>Mentoring partnerships between experienced and newer AI professionals</li>
+                            <li>Industry-specific AI user groups and communities of practice</li>
+                            <li>Professional development workshops and knowledge sharing sessions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Stories and Inspiration -->
+            <div class="success-stories">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-rocket"></i> Success Stories & Professional Inspiration
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Share your success stories and celebrate achievements to inspire and motivate fellow professionals. These stories become part of our community legacy and demonstrate the real-world impact of AI professional development.
+                </p>
+                
+                <div class="story-card">
+                    <h5 style="color: #d97706; margin-bottom: 1rem;"><i class="fas fa-star"></i> Example Success Story</h5>
+                    <p style="margin-bottom: 1rem; font-style: italic;">
+                        "Six months ago, I was intimidated by AI and uncertain about its relevance to my role in healthcare administration. Through this course, I developed an AI-enhanced patient scheduling system that reduced wait times by 35% and improved patient satisfaction scores from 7.2 to 9.1. The project caught the attention of our executive team, leading to my promotion to Director of Healthcare Innovation and a mandate to lead AI implementation across our hospital network. Most importantly, I gained the confidence to speak at industry conferences and am now recognized as a thought leader in healthcare AI applications."
+                    </p>
+                    <p style="margin: 0; font-size: 0.9rem; color: #92400e;">
+                        <strong>- Sarah M., Healthcare Administrator → Director of Healthcare Innovation</strong>
+                    </p>
+                </div>
+
+                <div class="discussion-prompt">
+                    <div class="prompt-header">
+                        <div class="prompt-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Your Success Story</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Share your professional AI success story</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Success Story Prompt:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">
+                            Share your professional success story from this AI journey. What specific achievements, recognition, or opportunities have resulted from your AI competency development? How has your professional life changed, and what advice would you give to future course participants?
+                        </p>
+                    </div>
+                    <div style="background: #fcd34d; padding: 1rem; border-radius: 6px;">
+                        <strong>Story Elements to Include:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Starting Point:</strong> Your initial AI knowledge and confidence level</li>
+                            <li><strong>Key Breakthrough:</strong> The moment or project that changed everything</li>
+                            <li><strong>Specific Achievements:</strong> Quantified results, recognition, or advancement</li>
+                            <li><strong>Professional Impact:</strong> How colleagues, supervisors, or clients responded</li>
+                            <li><strong>Future Trajectory:</strong> New opportunities and goals that opened up</li>
+                            <li><strong>Advice for Others:</strong> Key insights for future AI professionals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future AI Roadmap Discussion -->
+            <div class="future-roadmap">
+                <h4 style="color: #be185d; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Future AI Professional Development Roadmap
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Plan your ongoing AI professional development journey. Share your goals, learning priorities, and vision for how AI will continue to enhance your career and industry impact.
+                </p>
+                
+                <div class="discussion-prompt">
+                    <div class="prompt-header">
+                        <div class="prompt-icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Your AI Professional Development Plan</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Share your future AI learning and career goals</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Future Planning Prompt:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">
+                            What are your AI professional development goals for the next 6 months, 1 year, and 3 years? Share your learning priorities, skill development targets, and vision for how AI will continue to enhance your career trajectory. What specific steps will you take to maintain and expand your AI expertise?
+                        </p>
+                    </div>
+                    <div style="background: #fce7f3; padding: 1rem; border-radius: 6px;">
+                        <strong>Planning Framework:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>6-Month Goals:</strong> Immediate skill building and application targets</li>
+                            <li><strong>1-Year Vision:</strong> Professional advancement and recognition objectives</li>
+                            <li><strong>3-Year Aspiration:</strong> Leadership and industry impact goals</li>
+                            <li><strong>Learning Priorities:</strong> Specific AI areas for continued development</li>
+                            <li><strong>Industry Contribution:</strong> How you'll give back to the professional community</li>
+                            <li><strong>Success Metrics:</strong> How you'll measure progress and achievement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="discussion-prompt">
+                    <div class="prompt-header">
+                        <div class="prompt-icon">
+                            <i class="fas fa-crystal-ball"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">AI Industry Evolution Predictions</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Share your insights on AI's future professional impact</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Future Insight Prompt:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">
+                            Based on your learning and implementation experience, how do you predict AI will evolve in your industry over the next 2-3 years? What new opportunities, challenges, or professional roles do you anticipate? How should AI professionals prepare for these changes?
+                        </p>
+                    </div>
+                    <div style="background: #fce7f3; padding: 1rem; border-radius: 6px;">
+                        <strong>Discussion Areas:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Emerging AI tools and technologies relevant to your industry</li>
+                            <li>New professional roles and career paths being created</li>
+                            <li>Evolving skill requirements for AI-enhanced professionals</li>
+                            <li>Industry-specific challenges and opportunities ahead</li>
+                            <li>Professional development strategies for staying current</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Network and Continued Learning -->
+            <div class="alumni-network">
+                <h4 style="color: #1d4ed8; margin-bottom: 1.5rem;">
+                    <i class="fas fa-graduation-cap"></i> Alumni Network & Continued Learning Community
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Welcome to the Alumni Network! As a course graduate, you now have lifetime access to our professional AI community, ongoing resources, and continued learning opportunities.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-users" style="font-size: 2rem; color: #3b82f6; margin-bottom: 0.5rem;"></i>
+                        <h5>Monthly Meetups</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Virtual networking and learning sessions</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-book" style="font-size: 2rem; color: #3b82f6; margin-bottom: 0.5rem;"></i>
+                        <h5>Resource Library</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Ongoing updates and advanced materials</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-microphone" style="font-size: 2rem; color: #3b82f6; margin-bottom: 0.5rem;"></i>
+                        <h5>Speaking Opportunities</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Share your expertise at events</p>
+                    </div>
+                    <div style="background: var(--neutral-white); padding: 1rem; border-radius: 8px; text-align: center;">
+                        <i class="fas fa-handshake" style="font-size: 2rem; color: #3b82f6; margin-bottom: 0.5rem;"></i>
+                        <h5>Mentoring Program</h5>
+                        <p style="margin: 0; font-size: 0.9rem;">Guide new professionals and continue learning</p>
+                    </div>
+                </div>
+
+                <div class="discussion-prompt">
+                    <div class="prompt-header">
+                        <div class="prompt-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">Alumni Community Contribution</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">How will you contribute to the ongoing community?</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Community Contribution Prompt:</strong>
+                        <p style="margin: 0.5rem 0 0 0;">
+                            How do you plan to contribute to our ongoing AI professional community? What expertise, resources, or support can you offer to future course participants and fellow alumni? What alumni community activities or initiatives would you like to see developed?
+                        </p>
+                    </div>
+                    <div style="background: #dbeafe; padding: 1rem; border-radius: 6px;">
+                        <strong>Contribution Opportunities:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li><strong>Mentoring:</strong> Guide new professionals entering AI fields</li>
+                            <li><strong>Guest Speaking:</strong> Share your expertise in future course sessions</li>
+                            <li><strong>Case Study Development:</strong> Contribute detailed implementation examples</li>
+                            <li><strong>Industry Insights:</strong> Provide updates on AI trends in your sector</li>
+                            <li><strong>Resource Sharing:</strong> Contribute tools, templates, and best practices</li>
+                            <li><strong>Community Leadership:</strong> Help organize events and initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Contribution Form -->
+            <h2 class="section-title"><i class="fas fa-edit"></i>Share Your Experience & Connect</h2>
+
+            <div class="contribution-form">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-share-alt"></i> Your Professional AI Story & Future Goals
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Use this form to share your complete professional AI journey with the community. Your contribution will help inspire and guide future AI professionals while building valuable connections.
+                </p>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Professional Introduction:</label>
+                    <input type="text" id="professionalIntro" placeholder="Your name, current role, and industry" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Capstone Project Summary:</label>
+                    <textarea id="capstoneProject" placeholder="Brief overview of your capstone project, including challenge, solution, and results..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 120px;"></textarea>
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Professional Transformation Story:</label>
+                    <textarea id="transformationStory" placeholder="How has this course changed your professional capabilities, confidence, and career trajectory?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 120px;"></textarea>
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Future AI Goals (6 months to 3 years):</label>
+                    <textarea id="futureGoals" placeholder="Your AI professional development goals, learning priorities, and career aspirations..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Expertise You Can Share:</label>
+                    <textarea id="expertiseToShare" placeholder="What knowledge, skills, or resources can you contribute to the AI professional community?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Collaboration Interests:</label>
+                    <textarea id="collaborationInterests" placeholder="What types of professional relationships, projects, or learning opportunities are you seeking?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Contact Preferences:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="linkedin"> LinkedIn Connection
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="email"> Professional Email
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="alumni"> Alumni Network Only
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="speaking"> Speaking Opportunities
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="mentoring"> Mentoring Program
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="collaboration"> Project Collaboration
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Professional Contact Information (Optional):</label>
+                    <input type="text" id="contactInfo" placeholder="LinkedIn profile, professional email, or preferred contact method" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <button onclick="shareExperience()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-share"></i> Share My AI Professional Journey
+                </button>
+            </div>
+
+            <!-- Reflection and Final Thoughts -->
+            <div class="reflection-sharing">
+                <h4 style="color: #475569; margin-bottom: 1.5rem;">
+                    <i class="fas fa-heart"></i> Final Reflections & Community Wisdom
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Share your final thoughts, key insights, and wisdom for future AI professionals. These reflections become part of our community knowledge base and inspiration for continued learning.
+                </p>
+                
+                <div class="reflection-prompt">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i> Most Valuable Learning</h5>
+                    <p style="margin-bottom: 1rem; font-style: italic;">
+                        "What was the single most valuable insight, skill, or mindset shift you gained from this AI professional development journey?"
+                    </p>
+                    <textarea placeholder="Share your most valuable learning and how it will impact your professional future..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="reflection-prompt">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Advice for Future Students</h5>
+                    <p style="margin-bottom: 1rem; font-style: italic;">
+                        "What advice would you give to professionals just starting their AI learning journey? What should they focus on, and what mindset should they cultivate?"
+                    </p>
+                    <textarea placeholder="Share your wisdom and encouragement for future AI professionals..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="reflection-prompt">
+                    <h5 style="color: #64748b; margin-bottom: 1rem;"><i class="fas fa-star"></i> Gratitude & Appreciation</h5>
+                    <p style="margin-bottom: 1rem; font-style: italic;">
+                        "Express your gratitude to fellow students, instructors, and supporters who contributed to your learning journey. Celebrate the community that made this experience meaningful."
+                    </p>
+                    <textarea placeholder="Share your appreciation and celebrate the people who supported your AI learning journey..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+            </div>
+
+            <!-- Course Completion and Next Steps -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <div class="achievement-badge">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Congratulations, AI Professional!</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    You have successfully completed "Introduction to AI for Working Professionals" and are now equipped to lead AI initiatives, drive organizational innovation, and advance your career through AI expertise. Welcome to the alumni network!
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../../../index.html" class="nav-btn secondary">
+                        <i class="fas fa-home"></i>
+                        Course Home
+                    </a>
+                    <a href="../../../00-Syllabus/syllabus.html" class="nav-btn">
+                        <i class="fas fa-certificate"></i>
+                        View Course Completion
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="capstone-quiz.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Final Assessment
+                </a>
+                <a href="../../../index.html" class="nav-btn">
+                    Course Complete!
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function shareExperience() {
+            const professionalIntro = document.getElementById('professionalIntro').value;
+            const capstoneProject = document.getElementById('capstoneProject').value;
+            const transformationStory = document.getElementById('transformationStory').value;
+            const futureGoals = document.getElementById('futureGoals').value;
+            const expertiseToShare = document.getElementById('expertiseToShare').value;
+            const collaborationInterests = document.getElementById('collaborationInterests').value;
+            const contactInfo = document.getElementById('contactInfo').value;
+            
+            // Get selected contact preferences
+            const contactCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const contactPreferences = Array.from(contactCheckboxes).map(cb => cb.value);
+            
+            if (!professionalIntro || !capstoneProject || !transformationStory) {
+                alert('Please fill in at least the professional introduction, capstone project, and transformation story fields.');
+                return;
+            }
+            
+            // In a real implementation, this would submit to a backend discussion forum
+            alert('Thank you for sharing your AI professional journey! Your contribution has been added to the discussion forum and will inspire future AI professionals. Welcome to the alumni network!');
+            
+            // Create a summary display
+            const summary = `
+PROFESSIONAL AI JOURNEY SHARED
+
+Professional Introduction: ${professionalIntro}
+
+Capstone Project: ${capstoneProject.substring(0, 200)}...
+
+Professional Transformation: ${transformationStory.substring(0, 200)}...
+
+Future Goals: ${futureGoals.substring(0, 150)}...
+
+Expertise to Share: ${expertiseToShare.substring(0, 150)}...
+
+Collaboration Interests: ${collaborationInterests.substring(0, 150)}...
+
+Contact Preferences: ${contactPreferences.join(', ')}
+
+Your story has been shared with the AI professional community. Thank you for contributing to our collective knowledge and supporting future learners!
+            `;
+            
+            console.log(summary);
+            
+            // Show success message and scroll to completion section
+            document.querySelector('.celebration-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Add some interactive elements to enhance engagement
+        function highlightDiscussionPrompt(element) {
+            element.style.transform = 'translateY(-2px)';
+            element.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.15)';
+        }
+        
+        function resetDiscussionPrompt(element) {
+            element.style.transform = 'translateY(0)';
+            element.style.boxShadow = '';
+        }
+        
+        // Add hover effects to discussion prompts
+        document.addEventListener('DOMContentLoaded', function() {
+            const discussionPrompts = document.querySelectorAll('.discussion-prompt');
+            discussionPrompts.forEach(prompt => {
+                prompt.addEventListener('mouseenter', () => highlightDiscussionPrompt(prompt));
+                prompt.addEventListener('mouseleave', () => resetDiscussionPrompt(prompt));
+            });
+        });
+    </script>
+</body>
+</html>

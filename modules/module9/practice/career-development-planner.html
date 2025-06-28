@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice: AI-Enhanced Career Development Planner - Module 9</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .planner-framework {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .planning-phase {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #0891b2;
+            transition: all 0.3s ease;
+        }
+        .planning-phase:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .phase-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--neutral-white);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+        }
+        .interactive-planner {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #0891b2;
+        }
+        .planner-step {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #0891b2;
+        }
+        .generated-plan {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        .vision-builder {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .vision-component {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #8b5cf6;
+        }
+        .skill-roadmap {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .roadmap-milestone {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #10b981;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .roadmap-milestone:hover {
+            background: #f0fdf4;
+            transform: translateX(5px);
+        }
+        .network-strategy {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .network-tier {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        .action-tracker {
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .action-category {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .progress-tracker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .progress-card {
+            background: var(--neutral-white);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .progress-card:hover {
+            border-color: #0891b2;
+            transform: translateY(-2px);
+        }
+        .career-timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+        .timeline-item {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #0891b2;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0891b2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 9</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Career Development Planner</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-future-trends-analysis.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/future-readiness-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">AI-Enhanced Career Development Planner</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Create a comprehensive, strategic career development plan that positions you for success in the AI-enhanced professional world. This interactive planner integrates everything you've learned to build a personalized roadmap for your professional future.
+            </p>
+
+            <!-- Practice Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-rocket"></i>Career Development Planning Objectives</h3>
+                <p style="margin-bottom: 1rem;">Through this comprehensive planning exercise, you will:</p>
+                <ul class="modern-list">
+                    <li>Create a strategic 5-year career vision that leverages AI capabilities and trends</li>
+                    <li>Develop detailed skill development roadmaps with specific milestones and timelines</li>
+                    <li>Design professional network expansion strategies for maximum career impact</li>
+                    <li>Build actionable implementation plans with accountability systems and progress tracking</li>
+                    <li>Establish contingency planning for multiple AI advancement scenarios</li>
+                    <li>Integrate leadership development and thought leadership goals into your career strategy</li>
+                </ul>
+            </div>
+
+            <!-- The PLAN Framework for Career Development -->
+            <h2 class="section-title"><i class="fas fa-map"></i>The PLAN Framework for Strategic Career Development</h2>
+
+            <div class="planner-framework">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-compass"></i> Comprehensive Career Planning Methodology
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    The PLAN framework guides you through Position assessment, Learning pathway design, Action planning, and Network building for comprehensive career development in the AI era.
+                </p>
+                
+                <!-- Position -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Position Assessment & Vision Creation</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Understand your current position and create a compelling vision for your AI-enhanced career future</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Position Assessment Components:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Current State Analysis:</strong> Skills inventory, experience audit, market position evaluation</li>
+                            <li><strong>Competitive Landscape Review:</strong> Industry AI adoption trends, peer comparison, opportunity identification</li>
+                            <li><strong>Personal Brand Assessment:</strong> Professional reputation analysis, visibility evaluation, differentiation factors</li>
+                            <li><strong>Career Satisfaction Review:</strong> Motivation assessment, values alignment, fulfillment evaluation</li>
+                            <li><strong>Future Vision Development:</strong> 5-year career goals, AI integration aspirations, legacy objectives</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Vision Quality Check:</strong> Ensure your career vision is specific, inspiring, achievable, relevant to AI trends, and time-bound with clear milestones.
+                    </div>
+                </div>
+
+                <!-- Learning -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Learning Pathway Design & Skill Development</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Create systematic learning plans that build the competencies needed for your AI-enhanced career vision</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Learning Design Elements:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Skill Gap Analysis:</strong> Current capabilities vs. future requirements assessment</li>
+                            <li><strong>Learning Prioritization:</strong> High-impact skills identification and sequencing</li>
+                            <li><strong>Multi-Modal Learning Plan:</strong> Formal education, experiential learning, mentorship integration</li>
+                            <li><strong>Timeline & Milestones:</strong> Realistic progression with measurable checkpoints</li>
+                            <li><strong>Resource Allocation:</strong> Time, money, and support system optimization</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Learning Success Principle:</strong> Focus on building transferable competencies that remain valuable across multiple AI advancement scenarios.
+                    </div>
+                </div>
+
+                <!-- Action -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Action Planning & Implementation Strategy</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Translate vision and learning plans into concrete actions with accountability and progress tracking</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Action Planning Framework:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Strategic Initiative Design:</strong> Major projects and activities that advance career goals</li>
+                            <li><strong>Quarterly Action Plans:</strong> Specific, measurable actions with deadlines and accountability</li>
+                            <li><strong>Daily Habit Integration:</strong> Small, consistent actions that compound over time</li>
+                            <li><strong>Progress Tracking Systems:</strong> Metrics, reviews, and adjustment mechanisms</li>
+                            <li><strong>Obstacle Anticipation:</strong> Risk identification and contingency planning</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Implementation Success:</strong> Start with small, achievable actions that build momentum and confidence before progressing to larger initiatives.
+                    </div>
+                </div>
+
+                <!-- Network -->
+                <div class="planning-phase">
+                    <div class="phase-header">
+                        <div class="phase-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: #0891b2; margin-bottom: 0.5rem;">Network Building & Relationship Strategy</h4>
+                            <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Develop strategic relationships that support career advancement and professional development</p>
+                        </div>
+                    </div>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Network Development Strategy:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Relationship Mapping:</strong> Current network analysis and strategic gap identification</li>
+                            <li><strong>Target Relationship Identification:</strong> Key individuals who can accelerate career progress</li>
+                            <li><strong>Value Creation Planning:</strong> How you can provide value to your network</li>
+                            <li><strong>Engagement Strategy Design:</strong> Systematic approach to building and maintaining relationships</li>
+                            <li><strong>Community Leadership:</strong> Building influence through thought leadership and community contribution</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Networking Philosophy:</strong> Focus on authentic relationship building and mutual value creation rather than transactional networking.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Career Vision Builder -->
+            <h2 class="section-title"><i class="fas fa-crystal-ball"></i>AI-Enhanced Career Vision Development</h2>
+
+            <div class="vision-builder">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-telescope"></i> Strategic Career Vision Framework
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Develop a compelling, specific vision for your professional future that integrates AI capabilities and positions you for long-term success and fulfillment.
+                </p>
+                
+                <div class="vision-component">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-bullseye"></i> Professional Identity & Purpose</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Core Purpose Definition:</strong> Why do you work and what impact do you want to create?</li>
+                        <li><strong>Professional Identity Evolution:</strong> How will AI enhance your unique value proposition?</li>
+                        <li><strong>Values Integration:</strong> How will your career honor your personal values and priorities?</li>
+                        <li><strong>Legacy Aspiration:</strong> What lasting contribution do you want to make to your field?</li>
+                    </ul>
+                </div>
+                
+                <div class="vision-component">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-mountain"></i> Achievement & Recognition Goals</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Leadership Aspirations:</strong> What leadership roles and responsibilities do you want to hold?</li>
+                        <li><strong>Expertise Recognition:</strong> In what areas do you want to be recognized as an expert or thought leader?</li>
+                        <li><strong>Innovation Contribution:</strong> What new ideas, solutions, or approaches do you want to create?</li>
+                        <li><strong>Industry Influence:</strong> How do you want to shape your industry's AI adoption and development?</li>
+                    </ul>
+                </div>
+                
+                <div class="vision-component">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Professional Growth & Development</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Skill Mastery Goals:</strong> What competencies do you want to develop to world-class levels?</li>
+                        <li><strong>Experience Breadth:</strong> What diverse experiences will enhance your professional depth?</li>
+                        <li><strong>Learning Integration:</strong> How will continuous learning be embedded in your career?</li>
+                        <li><strong>Adaptability Building:</strong> How will you maintain relevance through technological change?</li>
+                    </ul>
+                </div>
+                
+                <div class="vision-component">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;"><i class="fas fa-balance-scale"></i> Work-Life Integration & Fulfillment</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Lifestyle Design:</strong> How will your career support your desired lifestyle and personal goals?</li>
+                        <li><strong>Relationship Impact:</strong> How will career growth enhance rather than strain important relationships?</li>
+                        <li><strong>Personal Growth:</strong> How will professional development contribute to personal fulfillment?</li>
+                        <li><strong>Contribution Balance:</strong> How will you balance personal success with contribution to others?</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AI Skill Development Roadmap -->
+            <div class="skill-roadmap">
+                <h4 style="color: #065f46; margin-bottom: 1.5rem;">
+                    <i class="fas fa-road"></i> AI Competency Development Roadmap
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Create a strategic timeline for developing AI-related competencies that support your career vision and market demands.
+                </p>
+                
+                <div class="roadmap-milestone" onclick="expandMilestone('foundation')">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-seedling"></i> Foundation Phase (Months 1-6)</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Build core AI literacy and begin practical application in current role</p>
+                </div>
+                
+                <div class="roadmap-milestone" onclick="expandMilestone('application')">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-tools"></i> Application Phase (Months 7-18)</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Develop advanced AI implementation skills and lead initiatives</p>
+                </div>
+                
+                <div class="roadmap-milestone" onclick="expandMilestone('leadership')">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-crown"></i> Leadership Phase (Months 19-36)</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Establish thought leadership and guide organizational AI transformation</p>
+                </div>
+                
+                <div class="roadmap-milestone" onclick="expandMilestone('mastery')">
+                    <h5 style="color: #10b981; margin-bottom: 0.5rem;"><i class="fas fa-star"></i> Mastery Phase (Years 3-5)</h5>
+                    <p style="margin: 0; font-size: 0.9rem;">Achieve recognized expertise and shape industry AI standards</p>
+                </div>
+
+                <div id="milestone-details" style="margin-top: 1.5rem; padding: 1rem; background: var(--neutral-white); border-radius: 8px; display: none;">
+                    <div id="milestone-content"></div>
+                </div>
+            </div>
+
+            <!-- Strategic Network Development -->
+            <div class="network-strategy">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-users"></i> Strategic Professional Network Development
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Build a multi-layered professional network that accelerates career advancement and provides ongoing support for AI-related professional development.
+                </p>
+                
+                <div class="network-tier">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-crown"></i> Senior Mentor & Advisory Tier</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Target Profiles:</strong> C-suite executives, industry thought leaders, experienced AI transformation leaders</li>
+                        <li><strong>Relationship Goals:</strong> Career guidance, strategic advice, industry insights, executive presence development</li>
+                        <li><strong>Engagement Strategy:</strong> Quarterly one-on-one meetings, special project consultations, industry event interactions</li>
+                        <li><strong>Value Contribution:</strong> Market intelligence, fresh perspectives, project support, succession planning assistance</li>
+                    </ul>
+                </div>
+                
+                <div class="network-tier">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-handshake"></i> Peer Collaboration Tier</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Target Profiles:</strong> AI professionals at similar career levels, cross-functional partners, industry peers</li>
+                        <li><strong>Relationship Goals:</strong> Knowledge sharing, collaboration opportunities, peer support, joint initiatives</li>
+                        <li><strong>Engagement Strategy:</strong> Regular study groups, project partnerships, conference attendance, professional association involvement</li>
+                        <li><strong>Value Contribution:</strong> Skill sharing, collaboration, mutual referrals, collective problem-solving</li>
+                    </ul>
+                </div>
+                
+                <div class="network-tier">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-seedling"></i> Mentoring & Development Tier</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Target Profiles:</strong> Junior professionals, students, career changers entering AI fields</li>
+                        <li><strong>Relationship Goals:</strong> Leadership development, giving back, fresh perspectives, future network building</li>
+                        <li><strong>Engagement Strategy:</strong> Formal mentoring programs, speaking at universities, workshop leadership, content creation</li>
+                        <li><strong>Value Contribution:</strong> Career guidance, skill development, opportunity creation, inspiration and motivation</li>
+                    </ul>
+                </div>
+                
+                <div class="network-tier">
+                    <h5 style="color: #f59e0b; margin-bottom: 1rem;"><i class="fas fa-globe"></i> Industry & Community Tier</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Target Profiles:</strong> Vendors, consultants, researchers, media professionals, policy makers</li>
+                        <li><strong>Relationship Goals:</strong> Industry intelligence, resource access, thought leadership opportunities, influence building</li>
+                        <li><strong>Engagement Strategy:</strong> Conference speaking, association leadership, advisory board participation, content collaboration</li>
+                        <li><strong>Value Contribution:</strong> Expertise sharing, industry advancement, standard setting, ethical leadership</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Career Development Planner -->
+            <h2 class="section-title"><i class="fas fa-cogs"></i>Comprehensive Career Development Plan Builder</h2>
+
+            <div class="interactive-planner">
+                <h4 style="color: #0891b2; margin-bottom: 1.5rem;">
+                    <i class="fas fa-drafting-compass"></i> Build Your Strategic Career Development Plan
+                </h4>
+                
+                <div class="planner-step">
+                    <h5 style="color: #0891b2; margin-bottom: 1rem;"><i class="fas fa-user"></i> Current Position & Aspirations</h5>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current Role & Industry:</label>
+                            <input type="text" id="currentPosition" placeholder="e.g., Marketing Manager in Healthcare Technology" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Years of Experience:</label>
+                            <select id="yearsExperience" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select experience</option>
+                                <option value="0-2">0-2 years</option>
+                                <option value="3-7">3-7 years</option>
+                                <option value="8-15">8-15 years</option>
+                                <option value="15+">15+ years</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">5-Year Career Vision:</label>
+                    <textarea id="careerVision" placeholder="Describe where you want to be professionally in 5 years, including role, responsibilities, achievements, and impact..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 120px;"></textarea>
+                </div>
+                
+                <div class="planner-step">
+                    <h5 style="color: #0891b2; margin-bottom: 1rem;"><i class="fas fa-brain"></i> AI Skill Development Priorities</h5>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Current AI Competency Level:</label>
+                    <select id="aiCompetency" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem;">
+                        <option value="">Select current level</option>
+                        <option value="beginner">Beginner (learning fundamentals)</option>
+                        <option value="intermediate">Intermediate (applying tools regularly)</option>
+                        <option value="advanced">Advanced (optimizing workflows, training others)</option>
+                        <option value="expert">Expert (leading initiatives, thought leadership)</option>
+                    </select>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Priority AI Skill Areas (select top 3-4):</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="technical-mastery"> Advanced AI tool mastery
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="strategic-planning"> AI strategy and planning
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="change-leadership"> Change leadership and adoption
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="ethics-governance"> AI ethics and governance
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="innovation-design"> Innovation and solution design
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="thought-leadership"> Industry thought leadership
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="planner-step">
+                    <h5 style="color: #0891b2; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> Career Advancement Goals</h5>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Primary Career Objectives (select all that apply):</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; margin: 0.5rem 0 1rem 0;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="promotion"> Promotion to senior role
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="industry-switch"> Industry or function change
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="leadership-role"> Leadership and management
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="expertise-recognition"> Subject matter expertise
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="entrepreneurship"> Entrepreneurship or consulting
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="work-life-balance"> Better work-life integration
+                        </label>
+                    </div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Biggest Career Development Challenges:</label>
+                    <textarea id="careerChallenges" placeholder="What obstacles or challenges are you facing in achieving your career goals?" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 80px;"></textarea>
+                </div>
+                
+                <div class="planner-step">
+                    <h5 style="color: #0891b2; margin-bottom: 1rem;"><i class="fas fa-network-wired"></i> Professional Development Resources</h5>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Time Available per Week:</label>
+                            <select id="timeCommitment" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select time availability</option>
+                                <option value="1-3">1-3 hours per week</option>
+                                <option value="4-6">4-6 hours per week</option>
+                                <option value="7-10">7-10 hours per week</option>
+                                <option value="10+">10+ hours per week</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Network Strength:</label>
+                            <select id="networkStrength" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">Select network level</option>
+                                <option value="limited">Limited professional network</option>
+                                <option value="developing">Developing industry connections</option>
+                                <option value="strong">Strong professional network</option>
+                                <option value="extensive">Extensive network with thought leaders</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Preferred Learning and Development Approaches:</label>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="formal-education"> Formal courses and certifications
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="hands-on"> Hands-on projects and experiments
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="mentoring"> Mentorship and coaching
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="networking"> Professional networking events
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="self-directed"> Self-directed learning and research
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" value="content-creation"> Content creation and thought leadership
+                        </label>
+                    </div>
+                </div>
+                
+                <button onclick="generateCareerPlan()" style="background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-rocket"></i> Generate My Comprehensive Career Development Plan
+                </button>
+                
+                <div id="generatedPlan" class="generated-plan">
+                    <strong style="color: #065f46;">Your Personalized AI-Enhanced Career Development Plan:</strong><br><br>
+                    <div id="planContent" style="background: #f8fafc; padding: 1.5rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap;"></div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-compass"></i> Implementation Success Strategies:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Schedule weekly 30-minute reviews to track progress and adjust plans</li>
+                            <li>Find an accountability partner or mentor to support your development journey</li>
+                            <li>Start with the highest-impact, lowest-effort activities to build early momentum</li>
+                            <li>Document your progress and learnings for portfolio and interview preparation</li>
+                            <li>Regularly reassess and adjust your plan based on industry changes and new opportunities</li>
+                            <li>Celebrate milestones and progress to maintain motivation and commitment</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #eff6ff; border-radius: 6px;">
+                        <strong><i class="fas fa-calendar-check"></i> Next Steps Action Plan:</strong>
+                        <ol style="margin: 0.5rem 0 0 1rem;">
+                            <li><strong>Week 1:</strong> Set up tracking systems and schedule first learning activities</li>
+                            <li><strong>Week 2:</strong> Begin highest-priority skill development and make first network connections</li>
+                            <li><strong>Month 1:</strong> Complete first milestone and assess progress against plan</li>
+                            <li><strong>Quarter 1:</strong> Adjust plan based on results and expand successful strategies</li>
+                            <li><strong>Ongoing:</strong> Maintain monthly progress reviews and annual strategic planning</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracking Framework -->
+            <div class="action-tracker">
+                <h4 style="color: #dc2626; margin-bottom: 1.5rem;">
+                    <i class="fas fa-chart-bar"></i> Career Development Progress Tracking
+                </h4>
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Establish systematic tracking and accountability systems to ensure consistent progress toward your career development goals.
+                </p>
+                
+                <div class="progress-tracker">
+                    <div class="progress-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;"><i class="fas fa-brain"></i> Skill Development</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Track learning activities, competency improvements, and skill demonstrations</p>
+                    </div>
+                    <div class="progress-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;"><i class="fas fa-users"></i> Network Growth</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Monitor relationship building, mentorship connections, and community engagement</p>
+                    </div>
+                    <div class="progress-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;"><i class="fas fa-trophy"></i> Achievement Milestones</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Document promotions, recognition, project successes, and career advancement</p>
+                    </div>
+                    <div class="progress-card">
+                        <h5 style="color: #dc2626; margin-bottom: 0.5rem;"><i class="fas fa-lightbulb"></i> Thought Leadership</h5>
+                        <p style="font-size: 0.9rem; margin: 0;">Track content creation, speaking opportunities, and industry influence building</p>
+                    </div>
+                </div>
+                
+                <div class="action-category">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-calendar"></i> Weekly & Monthly Review Process</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Weekly Progress Check (30 minutes):</strong> Review completed activities, assess challenges, plan next week's priorities</li>
+                        <li><strong>Monthly Strategic Review (2 hours):</strong> Evaluate overall progress, adjust plans, celebrate achievements, identify new opportunities</li>
+                        <li><strong>Quarterly Deep Assessment (4 hours):</strong> Comprehensive review of all goals, major plan adjustments, stakeholder feedback integration</li>
+                        <li><strong>Annual Strategic Planning (8 hours):</strong> Complete plan refresh, new goal setting, vision refinement, major pivot decisions</li>
+                    </ul>
+                </div>
+                
+                <div class="action-category">
+                    <h5 style="color: #ef4444; margin-bottom: 1rem;"><i class="fas fa-users-cog"></i> Accountability & Support Systems</h5>
+                    <ul style="margin: 0; font-size: 0.9rem;">
+                        <li><strong>Accountability Partner:</strong> Regular check-ins with peer or mentor for progress discussion and motivation</li>
+                        <li><strong>Professional Coach:</strong> Quarterly sessions with career coach for objective assessment and strategic guidance</li>
+                        <li><strong>Peer Learning Group:</strong> Monthly meetings with other professionals pursuing similar AI career development</li>
+                        <li><strong>Annual 360 Review:</strong> Comprehensive feedback from supervisors, peers, and direct reports on progress and development</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px;">
+                <h3 style="color: #0369a1; margin-bottom: 1rem;">Ready to Test Your Future Readiness?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Complete your comprehensive career development plan with a thorough assessment of your AI readiness and strategic positioning.</p>
+                <a href="../assets/future-readiness-quiz.html" class="nav-btn">
+                    <i class="fas fa-clipboard-check"></i>
+                    Take Future Readiness Assessment
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="../learn/activity-3-ai-leadership-development.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Leadership Development
+                </a>
+                <a href="../assets/future-readiness-quiz.html" class="nav-btn">
+                    Next: Future Readiness Quiz
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function expandMilestone(milestone) {
+            const detailsDiv = document.getElementById('milestone-details');
+            const contentDiv = document.getElementById('milestone-content');
+            
+            const milestoneContent = {
+                foundation: {
+                    title: 'Foundation Phase Development Plan (Months 1-6)',
+                    content: `
+                    <strong>Core Objectives:</strong> Build fundamental AI literacy and begin practical application
+                    
+                    <strong>Key Activities:</strong>
+                    • Complete comprehensive AI literacy training (40-60 hours)
+                    • Master 2-3 essential AI tools relevant to your role
+                    • Implement first AI-enhanced workflow in current responsibilities
+                    • Join 2-3 professional AI communities and forums
+                    • Attend 3-4 AI-focused webinars, workshops, or local meetups
+                    
+                    <strong>Skill Development Focus:</strong>
+                    • Advanced prompting and AI communication techniques
+                    • Understanding AI capabilities, limitations, and ethical considerations
+                    • Basic data literacy and analysis skills
+                    • AI tool evaluation and selection criteria
+                    • Change management and adoption strategies
+                    
+                    <strong>Expected Outcomes:</strong>
+                    • Confident use of AI tools in daily work
+                    • 10-20% efficiency improvement in key tasks
+                    • Recognition as early AI adopter within organization
+                    • Established learning routine and progress tracking system
+                    • Initial professional network connections in AI community
+                    
+                    <strong>Success Metrics:</strong>
+                    • Complete planned learning modules and certification
+                    • Document measurable improvements in work quality/speed
+                    • Positive feedback from colleagues on AI knowledge sharing
+                    • Active participation in at least one professional AI community`
+                },
+                application: {
+                    title: 'Application Phase Development Plan (Months 7-18)',
+                    content: `
+                    <strong>Core Objectives:</strong> Develop advanced implementation skills and lead AI initiatives
+                    
+                    <strong>Key Activities:</strong>
+                    • Lead 2-3 AI implementation projects with measurable business impact
+                    • Develop expertise in AI ethics, governance, and risk management
+                    • Begin mentoring colleagues in AI adoption and best practices
+                    • Speak at 2-3 industry events or internal presentations
+                    • Complete advanced AI strategy or leadership certification
+                    
+                    <strong>Skill Development Focus:</strong>
+                    • Project management for AI implementations
+                    • Stakeholder engagement and change communication
+                    • AI strategy development and business case creation
+                    • Advanced problem-solving with AI assistance
+                    • Cross-functional collaboration and team leadership
+                    
+                    <strong>Expected Outcomes:</strong>
+                    • Recognition as AI implementation expert within organization
+                    • Successful delivery of high-impact AI projects
+                    • Expanded role responsibilities or promotion opportunities
+                    • Growing external professional reputation and network
+                    • Established thought leadership through content or speaking
+                    
+                    <strong>Success Metrics:</strong>
+                    • Deliver projects with 25%+ improvement in target metrics
+                    • Receive speaking invitations or media interview requests
+                    • Expand professional network by 50+ quality connections
+                    • Achieve promotion or significant role expansion`
+                },
+                leadership: {
+                    title: 'Leadership Phase Development Plan (Months 19-36)',
+                    content: `
+                    <strong>Core Objectives:</strong> Establish thought leadership and guide organizational transformation
+                    
+                    <strong>Key Activities:</strong>
+                    • Lead enterprise-wide AI transformation initiative
+                    • Develop and publish thought leadership content (articles, white papers)
+                    • Build strategic partnerships with AI vendors and consultants
+                    • Mentor 5+ professionals in AI career development
+                    • Participate in industry standards or policy development
+                    
+                    <strong>Skill Development Focus:</strong>
+                    • Organizational change leadership and culture transformation
+                    • Executive communication and board-level presentation
+                    • Industry analysis and strategic foresight
+                    • Innovation management and emerging technology evaluation
+                    • Ethics leadership and responsible AI governance
+                    
+                    <strong>Expected Outcomes:</strong>
+                    • Recognition as thought leader in AI applications for your industry
+                    • Senior leadership role with AI transformation responsibilities
+                    • Regular speaking engagements at major industry conferences
+                    • Advisory or consulting opportunities with other organizations
+                    • Influence on industry AI adoption standards and best practices
+                    
+                    <strong>Success Metrics:</strong>
+                    • Lead transformation affecting 100+ employees or major processes
+                    • Publish 6+ thought leadership pieces with industry engagement
+                    • Achieve senior leadership position or significant role expansion
+                    • Receive industry recognition or awards for AI leadership`
+                },
+                mastery: {
+                    title: 'Mastery Phase Development Plan (Years 3-5)',
+                    content: `
+                    <strong>Core Objectives:</strong> Achieve recognized expertise and shape industry standards
+                    
+                    <strong>Key Activities:</strong>
+                    • Shape industry-wide AI adoption standards and best practices
+                    • Serve on boards or advisory committees for AI policy development
+                    • Launch consulting practice or advisory services
+                    • Develop next generation of AI leaders through formal programs
+                    • Contribute to academic research or policy papers
+                    
+                    <strong>Skill Development Focus:</strong>
+                    • Visionary leadership and long-term strategic thinking
+                    • Policy development and regulatory framework creation
+                    • Global perspective and cross-cultural collaboration
+                    • Wisdom and judgment in complex ethical decisions
+                    • Legacy building and sustainable impact creation
+                    
+                    <strong>Expected Outcomes:</strong>
+                    • Recognized as top expert in AI applications for your industry
+                    • C-suite executive role or successful consulting/advisory practice
+                    • Industry awards and recognition for AI leadership and innovation
+                    • Influence on national or international AI policy and standards
+                    • Sustainable impact through leaders and standards you've developed
+                    
+                    <strong>Success Metrics:</strong>
+                    • Achieve C-suite role or successful independent practice
+                    • Influence industry standards adopted by multiple organizations
+                    • Develop 20+ AI leaders who achieve senior positions
+                    • Receive national or international recognition for AI contributions`
+                }
+            };
+            
+            if (milestoneContent[milestone]) {
+                contentDiv.innerHTML = `
+                    <h5 style="color: #10b981; margin-bottom: 1rem;">${milestoneContent[milestone].title}</h5>
+                    <div style="white-space: pre-line;">${milestoneContent[milestone].content}</div>
+                `;
+                detailsDiv.style.display = 'block';
+            }
+        }
+        
+        function generateCareerPlan() {
+            const currentPosition = document.getElementById('currentPosition').value;
+            const yearsExperience = document.getElementById('yearsExperience').value;
+            const careerVision = document.getElementById('careerVision').value;
+            const aiCompetency = document.getElementById('aiCompetency').value;
+            const careerChallenges = document.getElementById('careerChallenges').value;
+            const timeCommitment = document.getElementById('timeCommitment').value;
+            const networkStrength = document.getElementById('networkStrength').value;
+            
+            // Get selected skill areas
+            const skillCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const skillAreas = Array.from(skillCheckboxes).filter(cb => 
+                ['technical-mastery', 'strategic-planning', 'change-leadership', 'ethics-governance', 'innovation-design', 'thought-leadership'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            // Get career objectives
+            const objectiveCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const careerObjectives = Array.from(objectiveCheckboxes).filter(cb => 
+                ['promotion', 'industry-switch', 'leadership-role', 'expertise-recognition', 'entrepreneurship', 'work-life-balance'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            // Get learning approaches
+            const learningCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            const learningApproaches = Array.from(learningCheckboxes).filter(cb => 
+                ['formal-education', 'hands-on', 'mentoring', 'networking', 'self-directed', 'content-creation'].includes(cb.value)
+            ).map(cb => cb.value);
+            
+            if (!currentPosition || !careerVision || !aiCompetency || skillAreas.length === 0) {
+                alert('Please fill in at least the current position, career vision, AI competency level, and priority skill areas.');
+                return;
+            }
+            
+            const experienceText = {
+                '0-2': '0-2 years (Early Career)',
+                '3-7': '3-7 years (Mid-Career)',
+                '8-15': '8-15 years (Senior Professional)',
+                '15+': '15+ years (Executive Level)'
+            };
+            
+            const competencyText = {
+                'beginner': 'Beginner (learning fundamentals)',
+                'intermediate': 'Intermediate (applying tools regularly)',
+                'advanced': 'Advanced (optimizing workflows, training others)',
+                'expert': 'Expert (leading initiatives, thought leadership)'
+            };
+            
+            let careerPlan = `COMPREHENSIVE AI-ENHANCED CAREER DEVELOPMENT PLAN
+STRATEGIC ROADMAP FOR PROFESSIONAL SUCCESS
+
+=== CAREER PROFILE SUMMARY ===
+
+Current Position: ${currentPosition}
+Experience Level: ${experienceText[yearsExperience] || yearsExperience}
+AI Competency: ${competencyText[aiCompetency] || aiCompetency}
+Time Commitment: ${timeCommitment || 'Not specified'} for professional development
+Network Strength: ${networkStrength || 'Not specified'}
+
+5-Year Vision: ${careerVision}
+
+Priority Development Areas: ${skillAreas.join(', ')}
+Primary Career Objectives: ${careerObjectives.join(', ') || 'Not specified'}
+Preferred Learning Approaches: ${learningApproaches.join(', ') || 'Not specified'}
+
+=== STRATEGIC DEVELOPMENT ROADMAP ===
+
+${aiCompetency === 'beginner' ? `BEGINNER TO INTERMEDIATE PATHWAY (Next 12-18 Months):
+
+Phase 1: Foundation Building (Months 1-6)
+• Complete comprehensive AI literacy certification program
+• Master 3-4 core AI tools relevant to your industry and role
+• Implement AI enhancements in 2-3 current work processes
+• Join 2-3 professional AI communities and attend monthly events
+• Begin documenting AI learning journey and early wins
+
+Phase 2: Application Development (Months 7-12)
+• Lead first AI implementation project with measurable business impact
+• Develop training materials and mentor 2-3 colleagues in AI adoption
+• Speak at internal company events about AI applications and benefits
+• Expand professional network through industry conferences and meetups
+• Begin building thought leadership through blog posts or social media
+
+Phase 3: Recognition Building (Months 13-18)
+• Position for expanded role responsibilities incorporating AI leadership
+• Speak at external industry events or professional association meetings
+• Establish reputation as go-to AI resource within your organization
+• Build strategic relationships with AI vendors and industry experts
+• Develop business case for major AI transformation initiative` : 
+
+aiCompetency === 'intermediate' ? `INTERMEDIATE TO ADVANCED PATHWAY (Next 18-24 Months):
+
+Phase 1: Expertise Deepening (Months 1-8)
+• Develop advanced skills in 2-3 specialized AI application areas
+• Lead cross-functional AI implementation team or major project
+• Complete advanced AI strategy or leadership development program
+• Begin regular thought leadership content creation and publication
+• Establish mentoring relationships with senior AI leaders
+
+Phase 2: Leadership Development (Months 9-16)
+• Drive enterprise-wide AI adoption strategy and implementation
+• Develop and deliver AI transformation training for senior leadership
+• Speak at major industry conferences and establish external thought leadership
+• Build strategic partnerships with technology vendors and consultants
+• Position for promotion to senior leadership role with AI responsibilities
+
+Phase 3: Industry Influence (Months 17-24)
+• Contribute to industry standards development or policy discussions
+• Launch advisory or consulting services for other organizations
+• Establish thought leadership platform through content and speaking
+• Develop next generation of AI leaders through formal mentoring programs
+• Achieve recognition as industry expert through awards or media coverage` :
+
+aiCompetency === 'advanced' ? `ADVANCED TO EXPERT PATHWAY (Next 24-36 Months):
+
+Phase 1: Strategic Leadership (Months 1-12)
+• Lead organizational AI transformation affecting 100+ employees
+• Develop industry-specific AI governance and ethics frameworks
+• Establish thought leadership through research publication or white papers
+• Build strategic advisory relationships with C-suite executives
+• Influence industry AI adoption standards through association leadership
+
+Phase 2: Industry Influence (Months 13-24)
+• Serve on boards or advisory committees for AI policy development
+• Launch successful consulting practice or achieve C-suite promotion
+• Keynote major industry conferences and establish international recognition
+• Mentor and develop 10+ AI professionals who achieve leadership positions
+• Contribute to academic research or policy development initiatives
+
+Phase 3: Legacy Building (Months 25-36)
+• Shape national or international AI standards and best practices
+• Achieve industry awards and recognition for AI leadership excellence
+• Develop sustainable programs that continue impact beyond your direct involvement
+• Establish endowment or foundation for AI education and ethical development
+• Create documented frameworks and methodologies adopted widely in industry` :
+
+`EXPERT TO THOUGHT LEADER PATHWAY (Next 36+ Months):
+
+Phase 1: Visionary Leadership (Months 1-18)
+• Shape industry transformation through policy and standard setting
+• Lead multi-organizational initiatives for responsible AI development
+• Establish global thought leadership through international speaking and publication
+• Develop and launch innovative AI applications that become industry standards
+• Build coalition of leaders committed to ethical and effective AI advancement
+
+Phase 2: Legacy and Impact (Months 19-36)
+• Influence national and international policy on AI governance and ethics
+• Establish programs that develop thousands of AI-capable professionals
+• Create lasting institutional changes that outlive your direct involvement
+• Build bridges between AI development and broader societal benefit
+• Document and share wisdom that shapes next generation of AI leaders
+
+Phase 3: Sustainable Transformation (Ongoing)
+• Focus on wisdom sharing and mentoring rather than direct implementation
+• Contribute to solving complex societal challenges through AI application
+• Establish educational or research institutions for ongoing AI advancement
+• Create frameworks for ethical AI development adopted globally
+• Build legacy of responsible innovation and human-centered technology development`}
+
+=== SKILL DEVELOPMENT STRATEGY ===
+
+${skillAreas.includes('technical-mastery') ? `Technical AI Mastery Development:
+• Complete advanced certifications in specialized AI tools and platforms
+• Develop expertise in AI workflow design and optimization
+• Build capabilities in AI system integration and architecture
+• Master AI output quality assessment and improvement techniques
+• Stay current with emerging AI technologies and capabilities` : ''}
+
+${skillAreas.includes('strategic-planning') ? `AI Strategic Planning Development:
+• Study business strategy frameworks and their application to AI transformation
+• Develop skills in AI ROI analysis and business case development
+• Learn organizational change management specifically for technology adoption
+• Build expertise in AI governance and risk management frameworks
+• Master executive communication and stakeholder engagement for AI initiatives` : ''}
+
+${skillAreas.includes('change-leadership') ? `Change Leadership Development:
+• Complete advanced leadership development program with change management focus
+• Develop skills in organizational culture assessment and transformation
+• Learn effective communication strategies for technology adoption
+• Build expertise in resistance management and stakeholder engagement
+• Master coaching and mentoring skills for supporting others through change` : ''}
+
+=== NETWORK DEVELOPMENT STRATEGY ===
+
+${networkStrength === 'limited' ? `Network Building Priority Plan:
+• Join 3-4 professional associations relevant to AI and your industry
+• Attend monthly networking events and professional meetups
+• Connect with 5-10 new professionals monthly through LinkedIn and events
+• Seek mentorship from 2-3 senior professionals in AI and your field
+• Begin building reputation through helpful contributions to online communities
+
+Target Network Growth: 50+ new quality professional connections in first year` :
+
+networkStrength === 'developing' ? `Network Enhancement Strategy:
+• Deepen existing relationships through regular engagement and value creation
+• Expand into AI-specific communities and thought leadership circles
+• Develop reciprocal mentoring relationships both as mentor and mentee
+• Take leadership roles in professional associations or community organizations
+• Begin hosting or organizing networking events and learning opportunities
+
+Target Network Growth: 75+ new strategic connections with focus on quality relationships` :
+
+`Network Optimization Strategy:
+• Leverage existing network for AI learning and strategic opportunity identification
+• Develop advisory and consulting relationships with industry leaders
+• Create platforms and initiatives that bring value to your network
+• Focus on building relationships with other thought leaders and decision makers
+• Establish yourself as valuable connector and resource for others in your network
+
+Target Network Growth: Strategic relationship building with 25+ senior leaders and influencers`}
+
+=== LEARNING AND DEVELOPMENT PLAN ===
+
+${learningApproaches.includes('formal-education') ? `Formal Education Component:
+• Complete advanced AI certification relevant to your industry
+• Pursue executive education in digital transformation and innovation leadership
+• Attend major industry conferences and intensive workshops
+• Consider advanced degree or professional development program if aligned with goals` : ''}
+
+${learningApproaches.includes('hands-on') ? `Experiential Learning Component:
+• Lead 2-3 significant AI implementation projects annually
+• Pilot innovative AI applications and document results
+• Volunteer for cross-functional teams and transformation initiatives
+• Seek stretch assignments that require AI strategy and leadership` : ''}
+
+${learningApproaches.includes('mentoring') ? `Mentorship Development:
+• Establish relationships with 2-3 senior mentors for career guidance and AI strategy
+• Join formal mentoring programs through professional associations
+• Seek diverse mentors including those from different industries and backgrounds
+• Develop reverse mentoring relationships with AI-native younger professionals` : ''}
+
+=== IMPLEMENTATION TIMELINE ===
+
+Next 30 Days - Foundation Setting:
+• Complete comprehensive self-assessment using frameworks from this course
+• Identify and connect with first 3-5 mentors, coaches, or learning resources
+• Set up tracking systems for skill development and network growth
+• Schedule first formal learning activities and professional development initiatives
+• Begin highest-priority skill development activities
+
+Next 90 Days - Momentum Building:
+• Complete first major learning milestone or certification
+• Implement AI enhancements in current role with measurable results
+• Expand professional network by 15-20 quality connections
+• Establish regular learning routine and progress tracking
+• Position for first AI leadership opportunity or expanded responsibilities
+
+Next 6 Months - Acceleration:
+• Achieve intermediate competency in priority skill areas
+• Lead significant AI implementation project or initiative
+• Establish thought leadership through content creation or speaking
+• Build strong mentoring relationships both as mentor and mentee
+• Position for major career advancement or role expansion
+
+Next 12-18 Months - Transformation:
+• Achieve advanced competency and recognition in key skill areas
+• Lead major organizational AI transformation or change initiative
+• Establish industry reputation and thought leadership platform
+• Create consulting, advisory, or expanded leadership opportunities
+• Position for senior roles in AI-enhanced professional landscape
+
+=== SUCCESS METRICS AND TRACKING ===
+
+Skill Development Metrics:
+• Completion of planned learning objectives with measurable competency gains
+• Successful application of new skills in professional projects with documented results
+• Recognition and positive feedback from colleagues, supervisors, and industry peers
+• Measurable improvements in work quality, efficiency, and impact
+
+Career Advancement Metrics:
+• Achievement of promotion, role expansion, or significant new opportunities
+• Recognition through awards, speaking invitations, or media coverage
+• Salary and compensation advancement reflecting increased value and capabilities
+• Achievement of specific career objectives outlined in your vision
+
+Network Development Metrics:
+• Growth in number and quality of professional relationships
+• Increased visibility and recognition within professional communities
+• Opportunities generated through network connections and relationships
+• Value provided to others in network through introductions, advice, and support
+
+Thought Leadership Metrics:
+• Content creation and engagement through articles, presentations, and social media
+• Speaking opportunities at conferences, workshops, and industry events
+• Media coverage and expert commentary opportunities
+• Influence on industry discussions and decision-making
+
+=== QUARTERLY REVIEW AND ADJUSTMENT PROCESS ===
+
+Every 3 Months:
+• Comprehensive progress assessment against all development goals
+• Analysis of what's working well and what needs adjustment
+• Identification of new opportunities and emerging trends in AI and your industry
+• Network relationship assessment and strategic relationship building planning
+• Plan refinement based on results, feedback, and changing circumstances
+
+Annual Strategic Review:
+• Complete reassessment of career vision and long-term goals
+• Major plan updates based on industry evolution and personal growth
+• Evaluation of ROI on development investments and resource allocation
+• Strategic pivot decisions based on market opportunities and personal interests
+• Setting of new ambitious goals that stretch capabilities and aspirations
+
+This comprehensive career development plan provides a structured pathway for achieving your AI-enhanced career vision while maintaining flexibility to adapt to changing circumstances and opportunities.`;
+
+            document.getElementById('planContent').textContent = careerPlan;
+            document.getElementById('generatedPlan').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedPlan').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

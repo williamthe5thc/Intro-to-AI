@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Activity 2: Ethical Advanced Prompting Techniques - Module 7</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .ethics-integration {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0891b2;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .technique-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .unsafe-example, .ethical-example {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+        }
+        .ethical-example {
+            border-left-color: #10b981;
+        }
+        .unsafe-example {
+            background: #fef2f2;
+        }
+        .ethical-example {
+            background: #f0fdf4;
+        }
+        .ethics-checkpoint {
+            background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .checkpoint-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: rgba(255,255,255,0.8);
+            border-radius: 6px;
+        }
+        .risk-indicator {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+        .risk-low { background: #d1fae5; color: #065f46; }
+        .risk-medium { background: #fef3c7; color: #92400e; }
+        .risk-high { background: #fee2e2; color: #dc2626; }
+        .risk-critical { background: #fdf2f8; color: #9d174d; }
+        .ethical-framework-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+            border: 2px solid #8b5cf6;
+        }
+        .framework-section {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .generated-ethical-prompt {
+            background: #f0fdf4;
+            border: 2px solid #22c55e;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .persona-ethics {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #64748b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .workflow-ethics {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .professional-scenario {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.3s ease;
+        }
+        .professional-scenario:hover {
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+        .ethical-prompt-showcase {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 7</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Ethical Advanced Prompting</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/ethics-scenarios.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/ethics-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Ethical Advanced Prompting Techniques</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Integrate ethical principles with the sophisticated prompting techniques from Module 6. Learn to apply chain-of-thought reasoning, role-playing, and multi-step workflows while maintaining the highest professional and ethical standards.
+            </p>
+
+            <!-- Learning Objectives -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-bullseye"></i>Ethical Integration Mastery</h3>
+                <p style="margin-bottom: 1rem;">Transform advanced techniques into ethical professional tools:</p>
+                <ul class="modern-list">
+                    <li>Embed ethical checkpoints into chain-of-thought reasoning processes</li>
+                    <li>Design responsible AI personas that embody professional ethical standards</li>
+                    <li>Build multi-step workflows with integrated ethical validation</li>
+                    <li>Apply ethical guardrails to complex professional AI applications</li>
+                    <li>Create transparent, accountable advanced prompting strategies</li>
+                </ul>
+            </div>
+
+            <!-- Integration Framework -->
+            <h2 class="section-title"><i class="fas fa-shield-alt"></i>Ethical Integration Framework</h2>
+
+            <div class="ethics-integration">
+                <h4 style="color: #0c4a6e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-puzzle-piece"></i> Merging Power with Responsibility
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151; line-height: 1.6;">
+                    Advanced prompting techniques become truly professional-grade when combined with ethical frameworks. This integration ensures that sophisticated AI capabilities serve human values and professional standards, not just technical excellence.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Ethical Chain-of-Thought</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Reasoning processes that include ethical validation at each step</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Responsible Personas</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">AI roles that embody professional codes of conduct and ethical principles</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.9); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #0c4a6e;">Transparent Workflows</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Multi-step processes with clear documentation and accountability</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Chain-of-Thought -->
+            <h2 class="section-title"><i class="fas fa-brain"></i>Ethical Chain-of-Thought Reasoning</h2>
+
+            <div class="technique-comparison">
+                <div class="unsafe-example">
+                    <h5 style="color: #dc2626; margin-bottom: 1rem;">⚠️ Standard Advanced Prompting</h5>
+                    <div class="ethical-prompt-showcase">"Analyze our competitor's pricing strategy step-by-step:
+
+1. Gather competitive pricing data
+2. Identify pricing patterns and trends  
+3. Analyze their cost structure assumptions
+4. Predict future pricing moves
+5. Recommend our response strategy"</div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <em style="color: #dc2626;">Missing: Ethical considerations, data source validation, bias assessment, stakeholder impact</em>
+                    </div>
+                </div>
+                
+                <div class="ethical-example">
+                    <h5 style="color: #065f46; margin-bottom: 1rem;">✅ Ethical Chain-of-Thought</h5>
+                    <div class="ethical-prompt-showcase">"Analyze our competitor's pricing strategy with ethical oversight:
+
+1. Data Collection Ethics
+   - Gather publicly available pricing data only
+   - Verify sources are legitimate and accessible to all
+   - Avoid proprietary or confidential information
+
+2. Analysis Framework
+   - Identify pricing patterns objectively
+   - Note data limitations and assumptions
+   - Consider multiple explanatory hypotheses
+
+3. Bias & Accuracy Check
+   - What biases might influence this analysis?
+   - Are we considering diverse market segments?
+   - How reliable is our data sample?
+
+4. Stakeholder Impact Assessment
+   - How would our response affect customers?
+   - What are the implications for employees?
+   - How does this align with our company values?
+
+5. Ethical Response Strategy
+   - Recommend strategies that benefit customers
+   - Ensure fair competitive practices
+   - Consider long-term industry health
+
+6. Transparency & Documentation
+   - Document assumptions and limitations
+   - Prepare clear rationale for decisions
+   - Identify what should be disclosed publicly"</div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                        <em style="color: #065f46;">Includes: Ethical validation, bias assessment, stakeholder consideration, transparency requirements</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Checkpoints -->
+            <div class="ethics-checkpoint">
+                <h4 style="color: #7c3aed; margin-bottom: 1.5rem;">
+                    <i class="fas fa-checkpoint"></i> Universal Ethical Checkpoints for Advanced Prompting
+                </h4>
+                
+                <div class="checkpoint-item">
+                    <div style="background: #22c55e; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</div>
+                    <div>
+                        <strong>Data Ethics Validation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Are we using data appropriately? Is the source legitimate? Do we have proper permissions?</span>
+                    </div>
+                </div>
+                
+                <div class="checkpoint-item">
+                    <div style="background: #3b82f6; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</div>
+                    <div>
+                        <strong>Bias Detection & Mitigation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">What biases might influence this analysis? Are we considering diverse perspectives and populations?</span>
+                    </div>
+                </div>
+                
+                <div class="checkpoint-item">
+                    <div style="background: #f59e0b; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</div>
+                    <div>
+                        <strong>Stakeholder Impact Assessment</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Who is affected by this analysis or decision? How can we ensure fair outcomes for all stakeholders?</span>
+                    </div>
+                </div>
+                
+                <div class="checkpoint-item">
+                    <div style="background: #8b5cf6; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">4</div>
+                    <div>
+                        <strong>Transparency & Accountability</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Can we explain our reasoning clearly? Are we prepared to take responsibility for outcomes?</span>
+                    </div>
+                </div>
+                
+                <div class="checkpoint-item">
+                    <div style="background: #ef4444; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">5</div>
+                    <div>
+                        <strong>Professional Standards Compliance</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Does this align with professional codes, regulations, and organizational policies?</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Persona Development -->
+            <h2 class="section-title"><i class="fas fa-user-shield"></i>Responsible AI Persona Design</h2>
+
+            <div class="persona-ethics">
+                <h4 style="color: #475569; margin-bottom: 1.5rem;">
+                    <i class="fas fa-theater-masks"></i> Building Ethical Professional Personas
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Transform the role-playing techniques from Module 6 into ethically-grounded professional personas that embody the values and standards of your industry.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <!-- Legal Persona -->
+                    <div class="professional-scenario">
+                        <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="risk-indicator risk-high">High Stakes</span>
+                            Ethical Legal Advisor
+                        </h5>
+                        <div class="ethical-prompt-showcase">"Act as an experienced attorney who strictly adheres to professional ethics:
+
+Core Values:
+- Client confidentiality is paramount
+- Duty of candor to courts and opposing parties
+- Competent representation with thorough preparation
+- Avoiding conflicts of interest
+- Pro bono service to underserved communities
+
+Decision Framework:
+1. Is this advice in the client's best interest?
+2. Does this comply with bar rules and regulations?
+3. Am I qualified to handle this matter?
+4. Are there any conflicts of interest?
+5. What are my disclosure obligations?
+
+Always disclose:
+- When AI assistance was used in research
+- Limitations of the analysis provided
+- Areas requiring additional legal research
+- Potential conflicts or ethical considerations
+
+Refuse to:
+- Provide advice outside areas of competence
+- Violate attorney-client privilege
+- Engage in frivolous arguments
+- Make false statements to any party"</div>
+                    </div>
+
+                    <!-- Healthcare Persona -->
+                    <div class="professional-scenario">
+                        <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="risk-indicator risk-critical">Critical</span>
+                            Ethical Healthcare Professional
+                        </h5>
+                        <div class="ethical-prompt-showcase">"Act as a healthcare professional committed to ethical practice:
+
+Hippocratic Principles:
+- First, do no harm (primum non nocere)
+- Patient autonomy and informed consent
+- Beneficence and best patient outcomes
+- Justice and fair treatment for all
+- Professional competence and continued learning
+
+Clinical Decision Framework:
+1. What is in the patient's best medical interest?
+2. Have I obtained proper informed consent?
+3. Am I qualified to make this recommendation?
+4. Are there any biases affecting my judgment?
+5. How do I balance competing ethical principles?
+
+Always maintain:
+- Patient confidentiality and privacy
+- Cultural sensitivity and respect
+- Clear communication about limitations
+- Proper documentation and accountability
+- Referral when expertise is exceeded
+
+Never compromise:
+- Patient safety for convenience
+- Evidence-based practice for popularity
+- Professional boundaries for relationships
+- Confidentiality for any external pressure"</div>
+                    </div>
+
+                    <!-- Financial Advisor Persona -->
+                    <div class="professional-scenario">
+                        <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                            <span class="risk-indicator risk-high">High Stakes</span>
+                            Ethical Financial Advisor
+                        </h5>
+                        <div class="ethical-prompt-showcase">"Act as a fiduciary financial advisor with unwavering ethical standards:
+
+Fiduciary Duties:
+- Client interest always comes first
+- Full disclosure of fees and conflicts
+- Competent and diligent service
+- Fair dealing and honest communication
+- Suitability of all recommendations
+
+Ethical Decision Process:
+1. Is this recommendation in the client's best interest?
+2. Do I have any conflicts of interest to disclose?
+3. Are the fees fair and fully disclosed?
+4. Is this suitable for the client's situation?
+5. Am I providing competent advice?
+
+Always prioritize:
+- Client financial well-being over commissions
+- Transparent fee structures and explanations
+- Ongoing education and professional development
+- Fair treatment regardless of account size
+- Clear communication of risks and limitations
+
+Refuse to:
+- Recommend unsuitable products for commissions
+- Make guarantees about future performance
+- Advise outside areas of competence
+- Accept inappropriate gifts or incentives"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ethical Workflow Design -->
+            <h2 class="section-title"><i class="fas fa-route"></i>Transparent Multi-Step Workflows</h2>
+
+            <div class="workflow-ethics">
+                <h4 style="color: #92400e; margin-bottom: 1.5rem;">
+                    <i class="fas fa-sitemap"></i> Building Accountable AI Workflows
+                </h4>
+                
+                <p style="margin-bottom: 1.5rem; color: #374151;">
+                    Enhance the multi-step workflow techniques from Module 6 with ethical guardrails, transparent documentation, and accountability measures.
+                </p>
+                
+                <div class="ethical-prompt-showcase"># Ethical Workflow Template: Strategic Business Analysis
+
+## Pre-Analysis Ethics Check
+"Before beginning this analysis, I will:
+1. Verify I have authorization to analyze this data
+2. Confirm all data sources are legitimate and appropriately obtained
+3. Identify potential biases that might affect my analysis
+4. Consider who will be impacted by the results and recommendations
+5. Establish clear boundaries for what I can and cannot conclude
+
+Proceed only if all ethical requirements are met."
+
+## Step 1: Data Collection & Validation
+"I will gather information systematically while:
+- Using only publicly available or properly authorized data
+- Documenting all sources and their limitations
+- Noting any gaps or uncertainties in the data
+- Identifying potential sampling biases or data quality issues
+- Respecting confidentiality and privacy requirements"
+
+## Step 2: Analysis with Bias Awareness
+"I will analyze the data while actively considering:
+- What assumptions am I making that could bias results?
+- Are there alternative explanations I haven't considered?
+- How might my perspective or background influence interpretation?
+- What voices or viewpoints might be missing from this analysis?
+- How can I test the robustness of my conclusions?"
+
+## Step 3: Stakeholder Impact Assessment
+"Before making recommendations, I will evaluate:
+- Who will be affected by the proposed actions?
+- How might different groups experience different impacts?
+- Are there unintended consequences I should anticipate?
+- How can negative impacts be minimized or mitigated?
+- What safeguards should be put in place?"
+
+## Step 4: Recommendation Development
+"I will formulate recommendations that:
+- Prioritize the welfare of affected stakeholders
+- Are feasible and practically implementable
+- Include consideration of ethical implications
+- Acknowledge limitations and uncertainties
+- Provide alternatives when appropriate"
+
+## Step 5: Transparency & Documentation
+"I will clearly document:
+- My methodology and reasoning process
+- Data sources and their limitations
+- Assumptions made and alternatives considered
+- Potential biases and how they were addressed
+- Areas of uncertainty or requiring further research
+- Ethical considerations that influenced the analysis"
+
+## Post-Analysis Review
+"After completing the analysis, I will:
+1. Review for any ethical concerns or oversights
+2. Ensure recommendations align with professional standards
+3. Verify transparency and accountability requirements are met
+4. Consider if external review or consultation is needed
+5. Prepare appropriate disclosures for stakeholders"</div>
+            </div>
+
+            <!-- Professional Application Examples -->
+            <h2 class="section-title"><i class="fas fa-briefcase"></i>Ethical Integration in Practice</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <!-- Risk Assessment -->
+                <div class="professional-scenario">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <span class="risk-indicator risk-medium">Medium Risk</span>
+                        Ethical Market Research
+                    </h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> Using advanced prompting for competitive intelligence analysis
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Integration Points:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Verify all data sources are publicly available</li>
+                            <li>Include bias detection in chain-of-thought reasoning</li>
+                            <li>Consider impact on smaller competitors</li>
+                            <li>Document methodology for transparency</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Prompting Addition:</strong> "Before analyzing, confirm all data is ethically sourced and consider potential market manipulation effects."
+                    </div>
+                </div>
+
+                <!-- Client Communication -->
+                <div class="professional-scenario">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <span class="risk-indicator risk-high">High Risk</span>
+                        Ethical Client Advisory
+                    </h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> AI-assisted investment recommendations for diverse client base
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Integration Points:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Embed fiduciary duty considerations in persona</li>
+                            <li>Include suitability assessment in workflow</li>
+                            <li>Test for bias against demographic groups</li>
+                            <li>Ensure transparent fee and risk disclosure</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Prompting Addition:</strong> "For each recommendation, explicitly verify it serves the client's best interest regardless of commission potential."
+                    </div>
+                </div>
+
+                <!-- HR Decision Making -->
+                <div class="professional-scenario">
+                    <h5 style="color: #8b5cf6; margin-bottom: 1rem;">
+                        <span class="risk-indicator risk-critical">Critical</span>
+                        Ethical HR Analytics
+                    </h5>
+                    <div style="background: var(--neutral-light); padding: 1rem; border-radius: 6px; margin-bottom: 1rem;">
+                        <strong>Scenario:</strong> AI-driven hiring and performance evaluation support
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Ethical Integration Points:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; font-size: 0.9rem;">
+                            <li>Mandatory bias testing in all analyses</li>
+                            <li>Fairness validation across protected groups</li>
+                            <li>Privacy protection in data handling</li>
+                            <li>Transparent criteria and decision processes</li>
+                        </ul>
+                    </div>
+                    <div style="background: #f3e8ff; padding: 1rem; border-radius: 6px;">
+                        <strong>Key Prompting Addition:</strong> "Before any HR recommendation, test for discriminatory impact and ensure equal opportunity compliance."
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Ethical Prompt Builder -->
+            <h2 class="section-title"><i class="fas fa-tools"></i>Ethical Advanced Prompt Builder</h2>
+
+            <div class="ethical-framework-builder">
+                <h4 style="color: #8b5cf6; margin-bottom: 1.5rem;">
+                    <i class="fas fa-wrench"></i> Build Your Ethical Advanced Prompt
+                </h4>
+                
+                <div class="framework-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Your Professional Challenge:</label>
+                    <textarea id="ethicalChallenge" placeholder="Describe the complex task you need to tackle ethically..." style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px; min-height: 100px;"></textarea>
+                </div>
+                
+                <div class="framework-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Advanced Technique to Use:</label>
+                    <select id="advancedTechnique" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Select technique...</option>
+                        <option value="cot">Chain-of-Thought Reasoning</option>
+                        <option value="persona">Professional Persona Role-Playing</option>
+                        <option value="workflow">Multi-Step Workflow</option>
+                        <option value="combined">Combined Techniques</option>
+                    </select>
+                </div>
+                
+                <div class="framework-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Risk Level Assessment:</label>
+                    <select id="riskLevel" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                        <option value="">Assess risk level...</option>
+                        <option value="low">Low Risk (Routine tasks, minimal impact)</option>
+                        <option value="medium">Medium Risk (Important decisions, moderate impact)</option>
+                        <option value="high">High Risk (Significant decisions, major impact)</option>
+                        <option value="critical">Critical Risk (Life, legal, or financial consequences)</option>
+                    </select>
+                </div>
+                
+                <div class="framework-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Key Stakeholders Affected:</label>
+                    <input type="text" id="ethicalStakeholders" placeholder="e.g., Clients, employees, patients, community, shareholders" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <div class="framework-section">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Professional Standards to Uphold:</label>
+                    <input type="text" id="professionalStandards" placeholder="e.g., Medical ethics, Bar rules, Fiduciary duty, Academic integrity" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 6px;">
+                </div>
+                
+                <button onclick="buildEthicalPrompt()" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-magic"></i> Generate Ethical Advanced Prompt
+                </button>
+                
+                <div id="generatedEthicalPrompt" class="generated-ethical-prompt">
+                    <strong style="color: #065f46;">Your Ethical Advanced Prompt:</strong><br><br>
+                    <div id="ethicalPromptText" style="background: #f8fafc; padding: 1rem; border-radius: 6px; border: 2px solid #e2e8f0; white-space: pre-wrap; font-family: monospace;"></div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef3c7; border-radius: 6px;">
+                        <strong><i class="fas fa-lightbulb"></i> Implementation Guide:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Test this prompt with low-stakes scenarios first</li>
+                            <li>Review outputs carefully for ethical compliance</li>
+                            <li>Document your process for accountability</li>
+                            <li>Seek peer review for high-risk applications</li>
+                            <li>Update regularly as standards evolve</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Practices Summary -->
+            <div class="tips-card">
+                <h3><i class="fas fa-star"></i>Ethical Advanced Prompting Best Practices</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Start with Ethics</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Begin every advanced prompt with ethical considerations, not as an afterthought</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Build in Checkpoints</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Include validation steps throughout complex reasoning chains</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Document Everything</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Maintain clear records of AI assistance and decision processes</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: #065f46;">Test for Bias</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Regularly evaluate outputs for fairness across different groups</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); border-radius: 12px;">
+                <h3 style="color: #7c3aed; margin-bottom: 1rem;">Apply Ethics in Real Scenarios</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Now put your ethical advanced prompting skills to the test with realistic professional scenarios and case studies.</p>
+                <a href="../practice/ethics-scenarios.html" class="nav-btn">
+                    <i class="fas fa-gavel"></i>
+                    Practice Ethical Scenarios
+                </a>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="activity-1-ethics-blueprint.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Ethics Blueprint
+                </a>
+                <a href="../practice/ethics-scenarios.html" class="nav-btn">
+                    Next: Practice Scenarios
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function buildEthicalPrompt() {
+            const challenge = document.getElementById('ethicalChallenge').value;
+            const technique = document.getElementById('advancedTechnique').value;
+            const risk = document.getElementById('riskLevel').value;
+            const stakeholders = document.getElementById('ethicalStakeholders').value;
+            const standards = document.getElementById('professionalStandards').value;
+            
+            if (!challenge || !technique || !risk || !stakeholders || !standards) {
+                alert('Please fill in all fields to generate your ethical advanced prompt.');
+                return;
+            }
+            
+            const riskCheckpoints = {
+                low: 'Basic ethical validation',
+                medium: 'Enhanced stakeholder consideration and bias checking',
+                high: 'Comprehensive ethical review and documentation',
+                critical: 'Multi-layered ethical validation with external review considerations'
+            };
+            
+            const techniques = {
+                cot: `# Ethical Chain-of-Thought Analysis
+
+I need to address this challenge using systematic reasoning with ethical validation at each step:
+
+"${challenge}"
+
+Please work through this with integrated ethical oversight:
+
+## Pre-Analysis Ethics Check
+1. Do I have proper authorization for this analysis?
+2. Are all data sources legitimate and ethically obtained?
+3. What biases might I bring to this situation?
+4. Who are the stakeholders affected by this decision: ${stakeholders}?
+5. How do professional standards apply: ${standards}?
+
+## Step-by-Step Analysis with Ethical Integration
+
+Step 1: Situation Assessment & Ethical Context
+- What are the key facts and ethical dimensions?
+- How do ${standards} standards apply to this situation?
+- What are my obligations to ${stakeholders}?
+
+Step 2: Options Generation with Stakeholder Impact
+- What are all possible approaches?
+- How would each option affect ${stakeholders}?
+- Which options best align with ${standards}?
+
+Step 3: Bias Detection & Fairness Evaluation
+- What assumptions or biases might influence my analysis?
+- Are there perspectives I'm missing or undervaluing?
+- How can I ensure fair treatment of all affected parties?
+
+Step 4: Risk Assessment & Harm Prevention
+- What could go wrong with each approach?
+- How can I minimize potential harm to ${stakeholders}?
+- What safeguards should be in place?
+
+Step 5: Ethical Decision & Implementation
+- Which approach best serves the interests of ${stakeholders}?
+- How does this align with ${standards}?
+- What transparency and accountability measures are needed?
+
+Step 6: Documentation & Review
+- How will I document this decision-making process?
+- What should be disclosed to relevant parties?
+- How will I monitor outcomes and learn from this experience?
+
+Given the ${risk} nature of this decision, please include ${riskCheckpoints[risk]} throughout your analysis.`,
+
+                persona: `# Ethical Professional Persona Prompt
+
+I need you to take on the role of an ethical professional who embodies the highest standards of ${standards}:
+
+## Professional Identity & Values
+You are an experienced professional who:
+- Upholds ${standards} as fundamental principles
+- Always prioritizes the welfare of ${stakeholders}
+- Demonstrates unwavering ethical integrity
+- Takes full accountability for all recommendations
+- Maintains transparency in all professional interactions
+
+## Ethical Decision Framework
+For every recommendation or analysis, you must:
+
+1. **Stakeholder Impact Assessment**
+   - How does this affect ${stakeholders}?
+   - Are there any potential conflicts of interest?
+   - What are my obligations to each stakeholder group?
+
+2. **Professional Standards Compliance**
+   - Does this align with ${standards}?
+   - Are there any regulatory or legal considerations?
+   - What professional guidelines apply?
+
+3. **Transparency & Accountability**
+   - Can I clearly explain my reasoning?
+   - Am I prepared to defend this recommendation?
+   - What should be disclosed to relevant parties?
+
+4. **Risk & Harm Assessment**
+   - Given the ${risk} nature of this situation, what safeguards are needed?
+   - How can potential negative outcomes be prevented?
+   - What monitoring should be in place?
+
+## Professional Challenge
+Please address this challenge while embodying these ethical standards:
+
+"${challenge}"
+
+## Required Outputs
+- Clear reasoning that demonstrates ethical consideration
+- Explicit consideration of impact on ${stakeholders}
+- Compliance verification with ${standards}
+- Risk mitigation strategies appropriate for ${risk} scenarios
+- Transparency about limitations and assumptions`,
+
+                workflow: `# Ethical Multi-Step Workflow
+
+I need to create a systematic workflow to address this challenge with embedded ethical safeguards:
+
+"${challenge}"
+
+## Workflow Design with Ethical Integration
+
+### Phase 1: Ethical Foundation Setting
+**Step 1.1: Authorization & Permissions**
+- Verify I have proper authority to undertake this analysis
+- Confirm all necessary permissions and approvals are in place
+- Document the scope and boundaries of the work
+
+**Step 1.2: Stakeholder Identification & Impact Planning**
+- Identify all affected parties: ${stakeholders}
+- Assess potential positive and negative impacts on each group
+- Establish communication and consideration protocols
+
+**Step 1.3: Professional Standards Integration**
+- Review applicable standards: ${standards}
+- Identify specific requirements and constraints
+- Establish compliance checkpoints throughout the workflow
+
+### Phase 2: Ethical Analysis & Development
+**Step 2.1: Data Collection with Ethics Validation**
+- Gather information using only legitimate, authorized sources
+- Document data quality, limitations, and potential biases
+- Ensure privacy and confidentiality requirements are met
+
+**Step 2.2: Analysis with Bias Detection**
+- Conduct systematic analysis while actively identifying potential biases
+- Consider multiple perspectives and alternative explanations
+- Test assumptions and validate reasoning chains
+
+**Step 2.3: Solution Development with Stakeholder Consideration**
+- Generate options that consider impact on ${stakeholders}
+- Prioritize solutions that align with ${standards}
+- Include risk mitigation and safeguard measures
+
+### Phase 3: Ethical Validation & Implementation
+**Step 3.1: Comprehensive Ethics Review**
+- Review all work against ${standards}
+- Assess fairness and equity of proposed solutions
+- Verify transparency and accountability measures
+
+**Step 3.2: Risk Assessment for ${risk.charAt(0).toUpperCase() + risk.slice(1)} Risk Scenarios**
+- Conduct thorough risk analysis appropriate for ${risk} risk level
+- Develop contingency plans and monitoring protocols
+- Establish clear escalation and review procedures
+
+**Step 3.3: Documentation & Transparency**
+- Document complete methodology and reasoning
+- Prepare appropriate disclosures for ${stakeholders}
+- Establish ongoing monitoring and feedback mechanisms
+
+### Phase 4: Ethical Implementation & Monitoring
+**Step 4.1: Responsible Implementation**
+- Execute solutions with appropriate oversight
+- Monitor impact on ${stakeholders}
+- Maintain open communication channels
+
+**Step 4.2: Continuous Ethical Monitoring**
+- Regular assessment of outcomes and impacts
+- Adjustment of approaches based on feedback
+- Ongoing compliance with ${standards}
+
+Please execute this workflow systematically, ensuring each phase is completed with appropriate ethical consideration for the ${risk} risk level of this situation.`,
+
+                combined: `# Comprehensive Ethical Advanced Prompting Framework
+
+I need to address this complex challenge using multiple advanced techniques with integrated ethical oversight:
+
+"${challenge}"
+
+## Multi-Technique Ethical Framework
+
+### Component 1: Ethical Professional Persona
+You are acting as an expert who embodies ${standards} and serves ${stakeholders} with unwavering integrity.
+
+### Component 2: Ethical Chain-of-Thought Process
+Think through this systematically with ethical validation at each step:
+
+1. **Ethical Context Assessment**
+   - What ethical principles and standards apply?
+   - Who are the affected stakeholders and what are their interests?
+   - What are the potential benefits and risks?
+
+2. **Multi-Perspective Analysis**
+   - How would different stakeholders view this situation?
+   - What biases might influence the analysis?
+   - What alternatives should be considered?
+
+3. **Professional Standards Integration**
+   - How do ${standards} apply to this specific situation?
+   - What are the compliance requirements?
+   - What professional obligations must be met?
+
+4. **Risk-Appropriate Decision Making**
+   - Given the ${risk} risk level, what safeguards are needed?
+   - How can potential harm be minimized?
+   - What monitoring and review processes are required?
+
+### Component 3: Ethical Workflow Execution
+Execute the following workflow with integrated checkpoints:
+
+**Pre-Work Ethics Validation** → **Systematic Analysis** → **Stakeholder Impact Assessment** → **Professional Standards Compliance** → **Risk Mitigation Planning** → **Transparent Documentation** → **Implementation with Monitoring**
+
+### Component 4: Accountability & Transparency Requirements
+- Document all reasoning and decision points
+- Prepare clear explanations for ${stakeholders}
+- Establish accountability measures appropriate for ${risk} risk scenarios
+- Include mechanisms for feedback and course correction
+
+Please address the challenge using this comprehensive framework, ensuring that ethical considerations are integrated throughout, not added as an afterthought. The ${risk} risk level requires ${riskCheckpoints[risk]} throughout the process.`
+            };
+            
+            const prompt = techniques[technique];
+            
+            document.getElementById('ethicalPromptText').textContent = prompt;
+            document.getElementById('generatedEthicalPrompt').style.display = 'block';
+            
+            // Scroll to show the result
+            document.getElementById('generatedEthicalPrompt').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
+</body>
+</html>

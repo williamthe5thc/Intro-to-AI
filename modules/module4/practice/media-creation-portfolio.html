@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 2: Professional Media Portfolio Creation - Module 4</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .portfolio-builder {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid var(--neutral-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: var(--primary-blue);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .project-type {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .beginner { background: #d1fae5; color: #065f46; }
+        .intermediate { background: #fef3c7; color: #92400e; }
+        .advanced { background: #fee2e2; color: #dc2626; }
+        
+        .portfolio-requirements {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .submission-template {
+            background: #f0fdf4;
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .progress-tracker {
+            background: var(--neutral-white);
+            border: 2px solid var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: var(--neutral-light);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .checklist-item.completed {
+            background: #d1fae5;
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .checklist-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neutral-medium);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .checklist-checkbox.checked {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+        
+        .checklist-checkbox.checked::after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+        }
+        
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--neutral-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .rubric-table th {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .rubric-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--neutral-light);
+            vertical-align: top;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: var(--neutral-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .timeline-day {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .inspiration-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .inspiration-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+        
+        .inspiration-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .inspiration-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 3rem;
+        }
+        
+        .inspiration-content {
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 4</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Media Portfolio</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-info-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-media-tools-overview.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="../assets/media-creation-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="../assets/discussion.html"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Professional Media Portfolio Creation</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Create a comprehensive portfolio showcasing your AI media creation skills across different professional contexts. This capstone project demonstrates your mastery of AI-powered content creation.
+            </p>
+
+            <!-- Project Overview -->
+            <div class="objectives-card">
+                <h3><i class="fas fa-briefcase"></i>Portfolio Project Overview</h3>
+                <p style="margin-bottom: 1rem;">Build a professional portfolio that demonstrates your AI media creation capabilities:</p>
+                <ul class="modern-list">
+                    <li>Create 8-10 diverse media pieces using different AI tools and techniques</li>
+                    <li>Document your creative process, tools used, and prompt strategies</li>
+                    <li>Present work in a professional format suitable for client or employer review</li>
+                    <li>Include reflection on lessons learned and best practices discovered</li>
+                    <li>Demonstrate consistent brand and quality standards across all pieces</li>
+                </ul>
+            </div>
+
+            <!-- Portfolio Requirements -->
+            <div class="portfolio-requirements">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-clipboard-list"></i>Portfolio Requirements
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Variety</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Minimum 3 different content types (images, presentations, graphics)</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Quality</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Professional standards suitable for business use</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Documentation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Process notes, prompts used, and tool justifications</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                        <strong style="color: var(--primary-blue);">Presentation</strong><br>
+                        <span style="font-size: 0.9rem; color: #6b7280;">Organized, professional portfolio format</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Timeline -->
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i>5-Day Project Timeline</h2>
+            
+            <div style="margin: 1.5rem 0;">
+                <div class="timeline-item">
+                    <div class="timeline-day">Day 1</div>
+                    <div>
+                        <strong>Planning & Strategy</strong><br>
+                        <span style="color: #6b7280;">Define portfolio theme, select tools, create project brief and content strategy</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-day">Day 2</div>
+                    <div>
+                        <strong>Image & Visual Content</strong><br>
+                        <span style="color: #6b7280;">Create professional images, graphics, and visual assets using AI image generation tools</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-day">Day 3</div>
+                    <div>
+                        <strong>Presentations & Documents</strong><br>
+                        <span style="color: #6b7280;">Develop presentation materials, infographics, and document layouts</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-day">Day 4</div>
+                    <div>
+                        <strong>Refinement & Optimization</strong><br>
+                        <span style="color: #6b7280;">Polish content, ensure consistency, optimize for different use cases</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-day">Day 5</div>
+                    <div>
+                        <strong>Portfolio Assembly</strong><br>
+                        <span style="color: #6b7280;">Organize materials, create documentation, prepare final presentation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Projects -->
+            <h2 class="section-title"><i class="fas fa-tasks"></i>Required Portfolio Projects</h2>
+
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-type">
+                        <i class="fas fa-image"></i> Project 1: Professional Brand Assets
+                    </div>
+                    <div class="difficulty-badge beginner">Beginner</div>
+                </div>
+                <p style="margin-bottom: 1rem; color: #6b7280;">Create a cohesive set of brand assets for a fictional or real business.</p>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <strong>Deliverables:</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: #374151;">
+                        <li>Logo concept variations (3-4 options)</li>
+                        <li>Business card design</li>
+                        <li>Letterhead template</li>
+                        <li>Social media profile graphics</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--accent-green);">
+                    <strong>Tools Suggested:</strong> DALL-E 3, Canva AI, Adobe Firefly<br>
+                    <strong>Focus:</strong> Brand consistency, scalability, professional quality
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-type">
+                        <i class="fas fa-presentation"></i> Project 2: Executive Presentation
+                    </div>
+                    <div class="difficulty-badge intermediate">Intermediate</div>
+                </div>
+                <p style="margin-bottom: 1rem; color: #6b7280;">Design a complete presentation for a business or professional context.</p>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <strong>Deliverables:</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: #374151;">
+                        <li>Title slide with compelling visual</li>
+                        <li>Data visualization slides (3-4)</li>
+                        <li>Process flow or infographic slide</li>
+                        <li>Call-to-action closing slide</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--accent-green);">
+                    <strong>Tools Suggested:</strong> Gamma, Beautiful.AI, Tome<br>
+                    <strong>Focus:</strong> Information hierarchy, visual storytelling, executive appeal
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-type">
+                        <i class="fas fa-bullhorn"></i> Project 3: Marketing Campaign Assets
+                    </div>
+                    <div class="difficulty-badge intermediate">Intermediate</div>
+                </div>
+                <p style="margin-bottom: 1rem; color: #6b7280;">Develop a coordinated marketing campaign with multiple touchpoints.</p>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <strong>Deliverables:</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: #374151;">
+                        <li>Hero image for website/landing page</li>
+                        <li>Social media post variations (3 platforms)</li>
+                        <li>Email header graphic</li>
+                        <li>Digital advertisement banner</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--accent-green);">
+                    <strong>Tools Suggested:</strong> Midjourney, Canva AI, DALL-E 3<br>
+                    <strong>Focus:</strong> Campaign cohesion, platform optimization, engagement potential
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-type">
+                        <i class="fas fa-graduation-cap"></i> Project 4: Training/Educational Content
+                    </div>
+                    <div class="difficulty-badge advanced">Advanced</div>
+                </div>
+                <p style="margin-bottom: 1rem; color: #6b7280;">Create educational materials that demonstrate clear communication and learning design.</p>
+                
+                <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin: 1rem 0;">
+                    <strong>Deliverables:</strong>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: #374151;">
+                        <li>Step-by-step process infographic</li>
+                        <li>Training manual cover and layout</li>
+                        <li>Interactive diagram or flowchart</li>
+                        <li>Assessment or quiz visual elements</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #f0fdf4; padding: 1rem; border-radius: 6px; border-left: 4px solid var(--accent-green);">
+                    <strong>Tools Suggested:</strong> Canva AI, Adobe Creative Cloud, Figma AI<br>
+                    <strong>Focus:</strong> Clarity, instructional design, accessibility
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="portfolio-builder">
+                <h3 style="color: var(--neutral-dark); margin-bottom: 1.5rem;">
+                    <i class="fas fa-tasks"></i> Portfolio Progress Tracker
+                </h3>
+                
+                <div class="progress-tracker">
+                    <h4 style="margin-bottom: 1rem;">Project Completion Checklist</h4>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Project 1: Professional Brand Assets - Complete all 4 deliverables</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Project 2: Executive Presentation - Complete all 4 slide types</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Project 3: Marketing Campaign - Complete all 4 asset types</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Project 4: Training Content - Complete all 4 educational pieces</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Document all prompts and tools used for each project</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Organize portfolio in professional presentation format</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Write reflection on learning outcomes and best practices</span>
+                    </div>
+                    
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checklist-checkbox"></div>
+                        <span>Prepare final portfolio for submission and discussion</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submission Template -->
+            <div class="submission-template">
+                <h3 style="color: #065f46; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-file-upload"></i>Portfolio Submission Template
+                </h3>
+                
+                <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <strong>Required Submission Components:</strong>
+                    <ol style="margin: 0.5rem 0 0 1.5rem; color: #374151;">
+                        <li><strong>Portfolio Gallery:</strong> All media pieces organized by project</li>
+                        <li><strong>Process Documentation:</strong> Prompts, tools, and creation notes for each piece</li>
+                        <li><strong>Professional Presentation:</strong> 10-12 slide summary of your work</li>
+                        <li><strong>Reflection Essay:</strong> 500-word reflection on learning and best practices</li>
+                        <li><strong>Tool Comparison:</strong> Brief analysis of which tools worked best for different tasks</li>
+                    </ol>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.8); padding: 1rem; border-radius: 8px;">
+                    <strong>Submission Format:</strong> PDF portfolio document + individual high-resolution files<br>
+                    <strong>File Naming:</strong> [LastName]_[FirstName]_AI_Media_Portfolio_[Date]<br>
+                    <strong>Due Date:</strong> As specified in course schedule
+                </div>
+            </div>
+
+            <!-- Assessment Rubric -->
+            <h2 class="section-title"><i class="fas fa-star"></i>Assessment Rubric</h2>
+            
+            <table class="rubric-table">
+                <thead>
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Excellent (90-100%)</th>
+                        <th>Proficient (80-89%)</th>
+                        <th>Developing (70-79%)</th>
+                        <th>Beginning (60-69%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Technical Quality</strong></td>
+                        <td>All pieces meet professional standards with excellent resolution and composition</td>
+                        <td>Most pieces meet professional standards with good technical quality</td>
+                        <td>Some pieces meet professional standards but inconsistent quality</td>
+                        <td>Few pieces meet professional standards, needs improvement</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Creative Application</strong></td>
+                        <td>Innovative use of AI tools with sophisticated prompt engineering</td>
+                        <td>Good use of AI tools with effective prompting strategies</td>
+                        <td>Adequate use of AI tools with basic prompting</td>
+                        <td>Limited use of AI capabilities, simple prompting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Professional Relevance</strong></td>
+                        <td>All pieces highly relevant and suitable for professional use</td>
+                        <td>Most pieces relevant and professional in appearance</td>
+                        <td>Some pieces relevant but may need refinement for professional use</td>
+                        <td>Limited professional relevance, significant improvement needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portfolio Presentation</strong></td>
+                        <td>Exceptionally well-organized with comprehensive documentation</td>
+                        <td>Well-organized with good documentation of process</td>
+                        <td>Adequately organized with basic documentation</td>
+                        <td>Poor organization, minimal documentation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reflection & Analysis</strong></td>
+                        <td>Insightful reflection with clear learning outcomes and best practices</td>
+                        <td>Good reflection with solid understanding of learning</td>
+                        <td>Basic reflection with some learning insights</td>
+                        <td>Minimal reflection, limited learning demonstration</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Success Tips -->
+            <div class="tips-card">
+                <h3><i class="fas fa-trophy"></i>Portfolio Success Tips</h3>
+                <ul class="modern-list">
+                    <li><strong>Plan Your Brand:</strong> Establish a consistent visual theme across all portfolio pieces</li>
+                    <li><strong>Document Everything:</strong> Keep detailed notes on prompts, tools, and iterations for each piece</li>
+                    <li><strong>Iterate and Refine:</strong> Don't accept first results - refine prompts for better quality</li>
+                    <li><strong>Think Like a Client:</strong> Create work that demonstrates real business value and application</li>
+                    <li><strong>Show Your Process:</strong> Include before/after examples and explain your decision-making</li>
+                    <li><strong>Professional Polish:</strong> Ensure all pieces are ready for actual business use</li>
+                </ul>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #e879f9 0%, #c084fc 100%); border-radius: 12px;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">Ready to Build Your Portfolio?</h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">Start creating professional-quality media content that showcases your AI mastery and opens new career opportunities.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../assets/media-creation-quiz.html" class="nav-btn">
+                        <i class="fas fa-question-circle"></i>
+                        Take Knowledge Quiz
+                    </a>
+                    <a href="../assets/discussion.html" class="nav-btn secondary">
+                        <i class="fas fa-comments"></i>
+                        Share Your Work
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="tools-comparison-matrix.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Tools Comparison
+                </a>
+                <a href="../assets/media-creation-quiz.html" class="nav-btn">
+                    Next: Assessment Quiz
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleChecklist(item) {
+            const checkbox = item.querySelector('.checklist-checkbox');
+            const isChecked = checkbox.classList.contains('checked');
+            
+            if (isChecked) {
+                checkbox.classList.remove('checked');
+                item.classList.remove('completed');
+            } else {
+                checkbox.classList.add('checked');
+                item.classList.add('completed');
+            }
+            
+            // Update progress
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const totalItems = document.querySelectorAll('.checklist-item').length;
+            const completedItems = document.querySelectorAll('.checklist-item.completed').length;
+            const progressPercent = (completedItems / totalItems) * 100;
+            
+            // You could add a progress bar here if desired
+            console.log(`Portfolio Progress: ${progressPercent.toFixed(0)}% (${completedItems}/${totalItems})`);
+        }
+    </script>
+</body>
+</html>

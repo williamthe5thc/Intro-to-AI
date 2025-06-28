@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4 Discussion: Showcasing Your AI-Created Media - Module 4</title>
+    <link rel="stylesheet" href="../../../css/modern-styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .discussion-thread {
+            background: var(--neutral-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid #9333ea;
+        }
+        .discussion-prompt {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #9333ea;
+        }
+        .prompt-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #581c87;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .participation-guidelines {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--accent-green);
+        }
+        .guidelines-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sample-post {
+            background: var(--neutral-light);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid #9333ea;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--neutral-medium);
+        }
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .post-content {
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+        .discussion-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .point-card {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--neutral-light);
+            transition: all 0.2s;
+        }
+        .point-card:hover {
+            border-color: #c084fc;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .point-number {
+            background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+            color: var(--neutral-white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+        .external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #9333ea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .external-link:hover {
+            text-decoration: underline;
+        }
+        .showcase-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .showcase-item {
+            background: var(--neutral-white);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 2px solid var(--neutral-light);
+            transition: all 0.2s;
+        }
+        .showcase-item:hover {
+            border-color: #c084fc;
+            transform: translateY(-2px);
+        }
+        .media-placeholder {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 50%, #c084fc 100%);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #581c87;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">AI</div>
+                <span>Introduction to AI for Working Professionals</span>
+            </div>
+            <nav class="nav-breadcrumbs">
+                <a href="../../../index.html">Course Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../welcome.html">Module 4</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Discussion</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Modern Sidebar -->
+        <aside class="modern-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="../../../index.html"><i class="fas fa-home"></i>Course Home</a></li>
+                    <li><a href="../welcome.html"><i class="fas fa-play-circle"></i>Module Overview</a></li>
+                    <li><a href="../learn/activity-1-media-tools-overview.html"><i class="fas fa-book-open"></i>Learning Activities</a></li>
+                    <li><a href="../practice/tools-comparison-matrix.html"><i class="fas fa-puzzle-piece"></i>Practice</a></li>
+                    <li><a href="media-creation-quiz.html"><i class="fas fa-question-circle"></i>Quizzes</a></li>
+                    <li><a href="#" class="active"><i class="fas fa-comments"></i>Discussions</a></li>
+                    <li><a href="../../../00-Syllabus/syllabus.html"><i class="fas fa-file-alt"></i>Syllabus</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <h1 class="page-title">Module 4 Discussion: Showcasing Your AI-Created Media</h1>
+            
+            <p style="font-size: 1.1rem; color: #6b7280; margin-bottom: 2rem;">
+                Share your AI-generated media creations, discuss your experiences with different tools, and learn from your peers' creative approaches.
+            </p>
+
+            <!-- Discussion Prompt -->
+            <div class="discussion-prompt">
+                <div class="prompt-title">
+                    <i class="fas fa-palette"></i>
+                    Discussion Prompt: Your AI Media Creation Journey
+                </div>
+                <p style="margin-bottom: 1rem;">Now that you've explored various AI media creation tools and completed the comparison matrix, it's time to share your experiences and creations with the class.</p>
+                
+                <div class="discussion-points">
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #9333ea;">
+                            <span class="point-number">1</span>Share Your Creation
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Post a piece of media you created using AI tools. Describe what you made and which tool you used.
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #9333ea;">
+                            <span class="point-number">2</span>Describe Your Process
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Walk us through your creation process. What prompts did you use? How many iterations did it take?
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #9333ea;">
+                            <span class="point-number">3</span>Share Lessons Learned
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            What surprised you? What challenges did you face? What tips would you share with others?
+                        </p>
+                    </div>
+                    <div class="point-card">
+                        <h4 style="margin-bottom: 0.5rem; color: #9333ea;">
+                            <span class="point-number">4</span>Professional Applications
+                        </h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            How could this type of content be used in your professional work? What value does it provide?
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Showcase Examples -->
+            <div class="content-section">
+                <h2 class="section-title"><i class="fas fa-gallery"></i>Types of Media to Share</h2>
+                
+                <div class="showcase-examples">
+                    <div class="showcase-item">
+                        <div class="media-placeholder">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <h4 style="color: #9333ea; margin-bottom: 0.5rem;">Generated Images</h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Marketing graphics, illustrations, concept art, social media visuals
+                        </p>
+                    </div>
+                    
+                    <div class="showcase-item">
+                        <div class="media-placeholder">
+                            <i class="fas fa-presentation"></i>
+                        </div>
+                        <h4 style="color: #9333ea; margin-bottom: 0.5rem;">Presentations</h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Business slides, educational content, pitch decks, reports
+                        </p>
+                    </div>
+                    
+                    <div class="showcase-item">
+                        <div class="media-placeholder">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 style="color: #9333ea; margin-bottom: 0.5rem;">Video Content</h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Training videos, explainers, social media clips, animations
+                        </p>
+                    </div>
+                    
+                    <div class="showcase-item">
+                        <div class="media-placeholder">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h4 style="color: #9333ea; margin-bottom: 0.5rem;">Design Assets</h4>
+                        <p style="font-size: 0.9rem; color: var(--neutral-medium);">
+                            Logos, icons, brochures, infographics, brand materials
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Participation Guidelines -->
+            <div class="participation-guidelines">
+                <div class="guidelines-title">
+                    <i class="fas fa-users"></i>
+                    Discussion Guidelines & Best Practices
+                </div>
+                <ul class="modern-list">
+                    <li><strong>Share Responsibly:</strong> Only post content you have rights to use and that's appropriate for professional settings</li>
+                    <li><strong>Give Credit:</strong> Always mention which AI tool you used to create your content</li>
+                    <li><strong>Be Constructive:</strong> Provide helpful feedback and ask thoughtful questions about others' work</li>
+                    <li><strong>Document Your Process:</strong> Include details about prompts, iterations, and techniques used</li>
+                    <li><strong>Discuss Professional Applications:</strong> Focus on how these tools can enhance professional work</li>
+                    <li><strong>Engage Actively:</strong> Comment meaningfully on at least 3 classmates' posts</li>
+                </ul>
+            </div>
+
+            <!-- Sample Posts -->
+            <div class="discussion-thread">
+                <h3 style="margin-bottom: 1rem; color: var(--neutral-dark);">
+                    <i class="fas fa-star" style="color: #9333ea; margin-right: 0.5rem;"></i>
+                    Sample Posts for Inspiration
+                </h3>
+                
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">SM</div>
+                        <strong>Sarah Martinez</strong>
+                        <span>•</span>
+                        <span>Marketing Director</span>
+                        <span>•</span>
+                        <span>Posted 3 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>My Creation:</strong> I used DALL-E 3 to create a series of professional headshots for our company's "About Us" page when we couldn't arrange a photoshoot in time.</p>
+                        
+                        <p><strong>Process:</strong> My prompt was: "Professional corporate headshot of a confident marketing director, business attire, neutral background, LinkedIn style, high quality, professional lighting." It took about 5 iterations to get the style consistent across different team members.</p>
+                        
+                        <p><strong>Lessons Learned:</strong> Being specific about lighting and style helped maintain consistency. I was surprised by how realistic the results were, but I had to be careful about making them look too perfect.</p>
+                        
+                        <p><strong>Professional Application:</strong> This saved us $2,000+ in photography costs and allowed us to launch our website redesign on schedule. The AI-generated images actually perform better in our A/B tests than stock photos!</p>
+                        
+                        <p><strong>Tip for Others:</strong> Create a style guide prompt that you can reuse for consistency across multiple images.</p>
+                    </div>
+                </div>
+
+                <div class="sample-post">
+                    <div class="post-header">
+                        <div class="avatar">DK</div>
+                        <strong>David Kim</strong>
+                        <span>•</span>
+                        <span>Training Manager</span>
+                        <span>•</span>
+                        <span>Posted 5 hours ago</span>
+                    </div>
+                    <div class="post-content">
+                        <p><strong>My Creation:</strong> Used Gamma to create an entire onboarding presentation for new hires. What usually takes me 8+ hours took less than 2 hours!</p>
+                        
+                        <p><strong>Process:</strong> I input our key onboarding topics and company information. Gamma generated slides, suggested layouts, and even recommended relevant stock images. I then customized the content and branding.</p>
+                        
+                        <p><strong>Biggest Surprise:</strong> The AI actually suggested better information flow than my usual approach. It organized content more logically than I initially planned.</p>
+                        
+                        <p><strong>Challenge:</strong> Had to spend time fact-checking and ensuring all company-specific information was accurate. AI got the general structure right but needed human oversight for details.</p>
+                        
+                        <p><strong>Professional Impact:</strong> This has revolutionized how quickly I can create training materials. I'm now able to focus more time on interactive activities rather than slide creation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discussion Platform Note -->
+            <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e879f9 50%, #c084fc 100%); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; border-left: 4px solid #9333ea; text-align: center;">
+                <h3 style="color: #581c87; margin-bottom: 1rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    Join the Creative Community
+                </h3>
+                <p style="color: #374151; margin-bottom: 1.5rem;">
+                    Share your AI media creations and get feedback from fellow professionals. Access the discussion forum through your learning management system.
+                </p>
+                <a href="#" class="external-link" style="font-size: 1.1rem; font-weight: 600; color: #581c87;">
+                    <i class="fas fa-arrow-right"></i>
+                    Access Discussion Forum
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+                <p style="font-size: 0.9rem; color: #6b7280; margin-top: 1rem;">
+                    Remember to respect copyright and only share content you have rights to use.
+                </p>
+            </div>
+
+            <!-- Reflection Questions -->
+            <div class="tips-card">
+                <h3><i class="fas fa-brain"></i>Reflection Questions for Your Post</h3>
+                <p style="margin-bottom: 1rem;">Consider these questions to create a thoughtful, valuable discussion post:</p>
+                <ul class="modern-list">
+                    <li>How did the AI tool perform compared to your expectations?</li>
+                    <li>What aspects of your professional workflow could be improved with AI media creation?</li>
+                    <li>What quality standards do you need to maintain when using AI-generated content professionally?</li>
+                    <li>How might clients or colleagues react to knowing content was AI-generated?</li>
+                    <li>What ethical considerations should professionals keep in mind when using these tools?</li>
+                    <li>Which tool features would you prioritize if you were purchasing for your organization?</li>
+                </ul>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="nav-buttons">
+                <a href="media-creation-quiz.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous: Knowledge Quiz
+                </a>
+                <a href="../../module5/welcome.html" class="nav-btn">
+                    Next: Module 5
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
